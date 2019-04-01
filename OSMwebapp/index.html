@@ -1,291 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Webmap 201</title>
-        <link rel="stylesheet" href="src/leaflet.css">
-        <link rel="stylesheet" href="src/css/bootstrap.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.Pan.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
-        <link rel="stylesheet" href="src/plugins/Leaflet.PolylineMeasure.css">
-        <link rel="stylesheet" href="src/plugins/easy-button.css">
-        <link rel="stylesheet" href="src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css">
-        <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
-        <script src="src/leaflet-src.js"></script>
-        <script src="src/jquery-3.3.1.min.js"></script>
-        <script src="src/plugins/L.Control.Pan.js"></script>
-        <script src="src/plugins/L.Control.Zoomslider.js"></script>
-        <script src="src/plugins/L.Control.MousePosition.js"></script>
-        <script src="src/plugins/L.Control.Sidebar.js"></script>
-        <script src="src/plugins/Leaflet.PolylineMeasure.js"></script>
-        <script src="src/plugins/easy-button.js"></script>
-        <script src="src/plugins/leaflet-providers.js"></script>
-        <script src="src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js"></script>
-        <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
-        <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
-        
-        
-        <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
-        <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
-        <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
-
-        <script src="src/plugins/leaflet-draw/Toolbar.js"></script>
-        <script src="src/plugins/leaflet-draw/Tooltip.js"></script>
-
-        <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
-        <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
-        <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
-        <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
-        <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
-        <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
-
-        <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
-        <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Webmap 201</title>
+    <link rel="stylesheet" href="src/leaflet.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Pan.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    <link rel="stylesheet" href="src/plugins/Leaflet.PolylineMeasure.css">
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <link rel="stylesheet" href="src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css">
+    <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.3.1.min.js"></script>
+    <script src="src/plugins/L.Control.Pan.js"></script>
+    <script src="src/plugins/L.Control.Zoomslider.js"></script>
+    <script src="src/plugins/L.Control.MousePosition.js"></script>
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <script src="src/plugins/Leaflet.PolylineMeasure.js"></script>
+    <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/leaflet-providers.js"></script>
+    <script src="src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
 
 
-        <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+    <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
+    <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
 
-        <script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+    <script src="src/plugins/leaflet-draw/Toolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/Tooltip.js"></script>
 
-        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
-        <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
-        
+    <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
 
-        <style>
-            #mapdiv {
-                height:100vh;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="side-bar" class="col-md-2">
-            <button id='Location' class='btn btn-primary btn-block'>Location</button>
-            <button id='zoomtoPaluno' class='btn btn-primary btn-block'>Zoom To Paluno</button>
-            <button id='delete' class='btn btn-primary btn-block'>delete localstorage</button>
-            <h4>Aufgabestellung:</h4>
-            <input id="text" class="btn-block">
-            <button id='speichern' class='btn btn-primary btn-block'>Task speichern</button>
-            <h4>Zoom Level: <span id='zoom-level'></span></h4>
-            <h4>Map Center: <span id='map-center'></span></h4>
-        </div>
-        <div id="mapdiv" class="col-md-12"></div>
-        <script>
-            var mymap;
-            var lyrOSM;
-            var layerHyddaFull
-            var lyrImagery;
-            var lyrOutdoors;
-            var layerBlackandwhite;
-            var layerTerrain;
-            
-            /*Location*/
-            var mrkCurrentLocation;
-            
-            /*Easybutton*/
-            var easybuttonControlUni;/*easybuttonUni plugin*/        
-            
-            /*Popup*/
-            var popPaluno;
-            var popUni;
-            
-            /*Control plugin*/
-            var ctlAttribute;
-            var ctlPan;
-            var ctlZoomslider;
-            var ctlMouseposition;
-            var ctlMeasure;
-            var ctlEasybutton;
-            var ctlSidebar;
-            var ctlSearch;
-            var ctlLayers;
-            var ctlDraw;
-            var ctlStyle;
-            
-            /*Layers*/
-            var DrawnItems;
-            var Basemaps;
-            var Overlayers;
-            
-            $(document).ready(function(){
-                mymap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:18, zoomControl:false, attributionControl:false});
-                lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
-                layerBlackandwhite=L.tileLayer.provider('OpenStreetMap.BlackAndWhite');
-                lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
-                lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
-                layerHyddaFull=L.tileLayer.provider('Hydda.Full');
-                layerTerrain=L.tileLayer.provider('Stamen.Terrain');
-                mymap.addLayer(lyrOSM);
-                
-                /*pan plugin*/
-                ctlPan = L.control.pan({position:'topright'}).addTo(mymap);
-                                              
-                /*slider plugin*/
-                ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
-                
-                /*easybuttonUni plugin*/
-                easybuttonControlUni=L.easyButton('glyphicon-education',function(){
-                    mymap.setView([51.463426, 7.005627],18);
-                    mymap.openPopup(Unipopup);
-                }).addTo(mymap);
-                
-                
-                Basemaps = {
-                    "Layer OSM": lyrOSM,
-                    "Layer BAW":layerBlackandwhite,
-                    "Layer Imagery":lyrImagery,
-                    "Layer Outdoors":lyrOutdoors,
-                    "Layer Hydda.Full":layerHyddaFull,
-                    "Layer Terrain":layerTerrain
-                };
-                
-                /*styleEditor*/
-                DrawnItems = new L.FeatureGroup();
-                DrawnItems.addTo(mymap);
-                
-                Overlayers = {
-                    "Layer of Drawn Shapes":DrawnItems
-                };
-                
-                /*cagesearch plugin*/
-                ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(mymap);
- 
-                /*PolylineMearsure plugin
-                ctlMeasure = L.control.polylineMeasure().addTo(mymap);*/
-                
-                /*sidebar plugin*/
-                ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
-                
-                /*sidebar-easybutton plugin*/
-                ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
-                   ctlSidebar.toggle(); 
-                }).addTo(mymap);
-                
-                /*cagesearch plugin*/
-                ctlSearch = L.Control.openCageSearch({key: 'c343052893144a3ca875c952c5c67e76',limit: 10}).addTo(mymap);
-                
-                /*contributor control*/
-                ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
-                ctlAttribute.addAttribution('OSM');
-                ctlAttribute.addAttribution('&copy;Xu Pan Gu');
-                
-                /*mouseposition plugin*/
-                ctlMouseposition = L.control.mousePosition().addTo(mymap);
-                
+    <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
+
+
+    <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
+
+
+    <style>
+        #mapdiv {
+            height:100vh;
+        }
+    </style>
+</head>
+<body>
+<div id="side-bar" class="col-md-2">
+    <button id='Location' class='btn btn-primary btn-block'>Location</button>
+    <button id='zoomtoPaluno' class='btn btn-primary btn-block'>Zoom To Paluno</button>
+    <button id='delete' class='btn btn-primary btn-block'>delete localstorage</button>
+    <h4>Aufgabestellung:</h4>
+    <input id="text" class="btn-block">
+    <button id='speichern' class='btn btn-primary btn-block'>Task speichern</button>
+    <h4>Zoom Level: <span id='zoom-level'></span></h4>
+    <h4>Map Center: <span id='map-center'></span></h4>
+</div>
+<div id="mapdiv" class="col-md-12"></div>
+<script type="text/javascript">
+    var mymap;
+    var lyrOSM;
+    var layerHyddaFull
+    var lyrImagery;
+    var lyrOutdoors;
+    var layerBlackandwhite;
+    var layerTerrain;
+
+    /*Location*/
+    var mrkCurrentLocation;
+
+    /*Easybutton*/
+    var easybuttonControlUni;/*easybuttonUni plugin*/
+    var easybuttonAufgabeErstellung;
+
+    /*Popup*/
+    var popPaluno;
+    var popUni;
+
+    /*Control plugin*/
+    var ctlAttribute;
+    var ctlPan;
+    var ctlZoomslider;
+    var ctlMouseposition;
+    var ctlMeasure;
+    var ctlEasybutton;
+    var ctlSidebar;
+    var ctlSearch;
+    var ctlLayers;
+    var ctlDraw;
+    var ctlStyle;
+
+    /*Layers*/
+    var DrawnItems;
+    var Basemaps;
+    var Overlayers;
+
+    $(document).ready(function(){
+        mymap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:18, zoomControl:false, attributionControl:false});
+        lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+        layerBlackandwhite=L.tileLayer.provider('OpenStreetMap.BlackAndWhite');
+        lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+        lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
+        layerHyddaFull=L.tileLayer.provider('Hydda.Full');
+        layerTerrain=L.tileLayer.provider('Stamen.Terrain');
+        mymap.addLayer(lyrOSM);
+
+        /*pan plugin*/
+        ctlPan = L.control.pan({position:'topright'}).addTo(mymap);
+
+        /*slider plugin*/
+        ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
+
+        /*easybuttonUni plugin*/
+        easybuttonControlUni=L.easyButton('glyphicon-education',function(){
+            mymap.setView([51.463426, 7.005627],18);
+            mymap.openPopup(Unipopup);
+        }).addTo(mymap);
+
+
+        /*sidebar-easybutton plugin*/
+        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
+            ctlSidebar.toggle();
+        }).addTo(mymap);
+
+        ctlEasybutton.existed='true';
+        console.log(111);
+        /*easybuttonAufgabeErstellung plugin*/
+        easybuttonAufgabeErstellung=L.easyButton('glyphicon-pencil',function(){
+
+            var Aufgabestellung=prompt("Bitte geben Sie die Aufgabestellungen ein.");
+
+            if(Aufgabestellung&&ctlEasybutton.existed=='true')
+            {
                 /*shapestyle plugin*/
                 ctlStyle = L.control.styleEditor({position:'topleft'}).addTo(mymap);
-                
+
                 /*Drawing tools*/
                 ctlDraw = new L.Control.Draw({
                     draw:{
                         position: 'topleft',
                         shapeOptions: {
                             color: '#bada55'
-                            },
-                        showArea: true
                         },
+                        showArea: true
+                    },
                     edit:{
                         featureGroup:DrawnItems
                     }
                 });
                 ctlDraw.addTo(mymap);
-                
-                /*Draw:created function*/
-                mymap.on('draw:created', function(e){
-                    console.log(e);
-                    DrawnItems.addLayer(e.layer);
-                    alert(JSON.stringify(e.layer.toGeoJSON()));
-                    var obj=JSON.stringify(e.layer.toGeoJSON());
-                    localStorage.setItem("data",obj);
-                    console.log(obj);
-                    
-                });
-                
-                /*{keepInView:true} in popup() Uni*/
-                Unipopup=L.popup({maxWidth:200});
-                Unipopup.setLatLng([51.463426, 7.005627]);
-                Unipopup.setContent("<h2>Uni-Essen</h2> <img src='img/uni.jpg' width='200px'>");
-                              
-                /*{keepInView:true} in popup() Uni*/
-                popPaluno = L.popup({maxWidth:200});
-                popPaluno.setLatLng([51.46089, 7.01651]);
-                popPaluno.setContent("<h2>Paluno</h2> <img src='img/paluno.jpg' width='200px'>");
-                
-                /*click function
-                mymap.on('click',function(e){
-                    if(e.originalEvent.shiftKey)
-                        alert(mymap.getZoom());
-                    else
-                        alert(e.latlng.toString());
-                });*/
-                                            
-                /*set marker on the map
-                mymap.on('contextmenu',function(e){
-                    var CurrentTime= new Date();
-                    L.marker(e.latlng).addTo(mymap).bindPopup(e.latlng.toString()+"</br>"+CurrentTime.toString());
-                });*/
-                
-                /*draw location-circle*/
-                mymap.on('locationfound', function(e) {
-                    console.log(e);
-                    if (mrkCurrentLocation) {
-                        mrkCurrentLocation.remove();
-                    }
-                    $("#Location").addClass("btn btn-success");
-                    mrkCurrentLocation = L.circle(e.latlng, {radius:e.accuracy/4}).addTo(mymap);
-                    mymap.setView(e.latlng, 18);
-                    
-                });
-                
-                /*location not found*/
-                mymap.on('locationerror', function(e) {
-                    console.log(e);
-                    $("#Location").addClass("btn btn-warning");
-                    alert("Location was not found");
-                })
-                
-                mymap.on('zoomend', function(){
-                    $("#zoom-level").html(mymap.getZoom());
-                });
-                
-                mymap.on('moveend', function(){
-                    $("#map-center").html(mymap.getCenter().toString());
-                });
-                
-                /*speichern button*/
-                $("#speichern").click(function(){
-                    alert("Möchten Sie diese Aufgabestellung speichern?");
-                })
-                /*delete localstorage*/
-                $("#delete").click(function(){
-                     localStorage.clear();              
-                });
-                /*get Location*/
-                $("#Location").click(function(){
-                    mymap.locate();
-                });
-                
-                /*get ZoomtoPaluno*/
-                $("#zoomtoPaluno").click(function(){
-                    $("#zoomtoPaluno").addClass("btn btn-success");
-                    mymap.setView([51.460751, 7.016971], 18);
-                    mymap.openPopup(popPaluno);
-                });
-                
-            });
-                     
-        </script>
-    </body>
+                ctlEasybutton.existed='false';
+
+            }
+            console.log(ctlEasybutton.existed);
+        }).addTo(mymap);
+
+
+        Basemaps = {
+            "Layer OSM": lyrOSM,
+            "Layer BAW":layerBlackandwhite,
+            "Layer Imagery":lyrImagery,
+            "Layer Outdoors":lyrOutdoors,
+            "Layer Hydda.Full":layerHyddaFull,
+            "Layer Terrain":layerTerrain
+        };
+
+        /*styleEditor*/
+        DrawnItems = new L.FeatureGroup();
+        DrawnItems.addTo(mymap);
+
+        Overlayers = {
+            "Layer of Drawn Shapes":DrawnItems
+        };
+
+        /*cagesearch plugin*/
+        ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(mymap);
+
+        /*PolylineMearsure plugin
+        ctlMeasure = L.control.polylineMeasure().addTo(mymap);*/
+
+        /*sidebar plugin*/
+        ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
+
+
+
+        /*cagesearch plugin*/
+        ctlSearch = L.Control.openCageSearch({key: 'c343052893144a3ca875c952c5c67e76',limit: 10}).addTo(mymap);
+
+        /*contributor control*/
+        ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
+        ctlAttribute.addAttribution('OSM');
+        ctlAttribute.addAttribution('&copy;Xu Pan Gu');
+
+        /*mouseposition plugin*/
+        ctlMouseposition = L.control.mousePosition().addTo(mymap);
+
+
+        /*Draw:created function*/
+        mymap.on('draw:created', function(e){
+            console.log(e);
+            DrawnItems.addLayer(e.layer);
+            alert(JSON.stringify(e.layer.toGeoJSON()));
+            var obj=JSON.stringify(e.layer.toGeoJSON());
+            localStorage.setItem("data",obj);
+            console.log(obj);
+
+        });
+
+        /*{keepInView:true} in popup() Uni*/
+        Unipopup=L.popup({maxWidth:200});
+        Unipopup.setLatLng([51.463426, 7.005627]);
+        Unipopup.setContent("<h2>Uni-Essen</h2> <img src='img/uni.jpg' width='200px'>");
+
+        /*{keepInView:true} in popup() Uni*/
+        popPaluno = L.popup({maxWidth:200});
+        popPaluno.setLatLng([51.46089, 7.01651]);
+        popPaluno.setContent("<h2>Paluno</h2> <img src='img/paluno.jpg' width='200px'>");
+
+        /*click function
+        mymap.on('click',function(e){
+            if(e.originalEvent.shiftKey)
+                alert(mymap.getZoom());
+            else
+                alert(e.latlng.toString());
+        });*/
+
+        /*set marker on the map
+        mymap.on('contextmenu',function(e){
+            var CurrentTime= new Date();
+            L.marker(e.latlng).addTo(mymap).bindPopup(e.latlng.toString()+"</br>"+CurrentTime.toString());
+        });*/
+
+        /*draw location-circle*/
+        mymap.on('locationfound', function(e) {
+            console.log(e);
+            if (mrkCurrentLocation) {
+                mrkCurrentLocation.remove();
+            }
+            $("#Location").addClass("btn btn-success");
+            mrkCurrentLocation = L.circle(e.latlng, {radius:e.accuracy/4}).addTo(mymap);
+            mymap.setView(e.latlng, 18);
+
+        });
+
+        /*location not found*/
+        mymap.on('locationerror', function(e) {
+            console.log(e);
+            $("#Location").addClass("btn btn-warning");
+            alert("Location was not found");
+        })
+
+        mymap.on('zoomend', function(){
+            $("#zoom-level").html(mymap.getZoom());
+        });
+
+        mymap.on('moveend', function(){
+            $("#map-center").html(mymap.getCenter().toString());
+        });
+
+        /*speichern button*/
+        $("#speichern").click(function(){
+
+        })
+        /*delete localstorage*/
+        $("#delete").click(function(){
+            localStorage.clear();
+        });
+        /*get Location*/
+        $("#Location").click(function(){
+            mymap.locate();
+        });
+
+        /*get ZoomtoPaluno*/
+        $("#zoomtoPaluno").click(function(){
+            $("#zoomtoPaluno").addClass("btn btn-success");
+            mymap.setView([51.460751, 7.016971], 18);
+            mymap.openPopup(popPaluno);
+        });
+
+    });
+
+</script>
+</body>
 </html>
