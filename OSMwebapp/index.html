@@ -75,8 +75,6 @@
     <button id='Location' class='btn btn-primary btn-block'>Location</button>
     <button id='zoomtoPaluno' class='btn btn-primary btn-block'>Zoom To Paluno</button>
     <button id='delete' class='btn btn-primary btn-block'>delete localstorage</button>
-    <h4>Aufgabestellung:</h4>
-    <input id="text" class="btn-block">
     <button id='speichern' class='btn btn-primary btn-block'>Task speichern</button>
     <h4>Zoom Level: <span id='zoom-level'></span></h4>
     <h4>Map Center: <span id='map-center'></span></h4>
@@ -176,7 +174,7 @@
                 });
                 ctlDraw.addTo(mymap);
                 ctlEasybutton.existed='false';
-
+                //localstorage.setItem("Task",Aufgabestellung);
             }
 
         }).addTo(mymap);
@@ -228,7 +226,7 @@
             DrawnItems.addLayer(e.layer);
             alert(JSON.stringify(e.layer.toGeoJSON()));
             var obj=JSON.stringify(e.layer.toGeoJSON());
-            localStorage.setItem("data",obj);
+            localStorage.setItem("Mapdata",obj);
             console.log(obj);
 
         });
