@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="src/plugins/easy-button.css">
     <link rel="stylesheet" href="src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css">
     <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
+
     <script src="src/leaflet-src.js"></script>
     <script src="src/jquery-3.3.1.min.js"></script>
     <script src="src/plugins/L.Control.Pan.js"></script>
@@ -25,6 +26,7 @@
     <script src="src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
+    <script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 
 
     <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
@@ -152,31 +154,41 @@
         /*easybuttonAufgabeErstellung plugin*/
         easybuttonAufgabeErstellung=L.easyButton('glyphicon-pencil',function(){
 
-            var Aufgabestellung=prompt("Bitte geben Sie die Aufgabestellungen ein.");
+            swal("Bitte geben Sie Ihre Aufgabestellungen ein!!", {
+                content: "input",
+                buttons: ["Cancel", "Fertig"],
+            }).then((value)=>{
+                if(value)
+                {
+                    swal(`Die von Ihnen eingegebenen Tasks: ${value}`);
+                }
 
-            if(Aufgabestellung&&ctlEasybutton.existed=='true')
-            {
-                /*shapestyle plugin*/
-                ctlStyle = L.control.styleEditor({position:'topleft'}).addTo(mymap);
+            /*shapestyle plugin*/
+            ctlStyle = L.control.styleEditor({position:'topleft'});
 
-                /*Drawing tools*/
-                ctlDraw = new L.Control.Draw({
-                    draw:{
-                        position: 'topleft',
-                        shapeOptions: {
-                            color: '#bada55'
-                        },
-                        showArea: true
+            /*Drawing tools*/
+            ctlDraw = new L.Control.Draw({
+                draw:{
+                    position: 'topleft',
+                    shapeOptions: {
+                        color: '#bada55'
                     },
-                    edit:{
-                        featureGroup:DrawnItems
-                    }
-                });
+                    showArea: true
+                },
+                edit:{
+                    featureGroup:DrawnItems
+                }
+            });
+
+            if(ctlEasybutton.existed=='true')
+            {
+                ctlStyle.addTo(mymap);
                 ctlDraw.addTo(mymap);
                 ctlEasybutton.existed='false';
                 //localstorage.setItem("Task",Aufgabestellung);
             }
 
+            });
         }).addTo(mymap);
 
 
@@ -271,7 +283,11 @@
         mymap.on('locationerror', function(e) {
             console.log(e);
             $("#Location").addClass("btn btn-warning");
-            alert("Location was not found");
+            swal({
+                text: "Failed!",
+                icon: "error",
+            });
+
         })
 
         mymap.on('zoomend', function(){
@@ -293,6 +309,10 @@
         /*get Location*/
         $("#Location").click(function(){
             mymap.locate();
+            swal({
+                text: "Successfully!",
+                icon: "success",
+            });
         });
 
         /*get ZoomtoPaluno*/
