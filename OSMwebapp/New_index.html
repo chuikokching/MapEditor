@@ -43,10 +43,12 @@
 				var shades = new L.LeafletShades({bounds: rect.getBounds()});
 				shades.addTo(newmap);
 
-				//shades.on('shades:bounds-changed', function(e) {
+				//console.log(shades.toString());
+				shades.on('shades:bounds-changed', function(e) {
 					//console.log(JSON.stringify(e.toGeoJSON()));
-				//	var bounds = e.bounds
-				//});
+					var bounds = e.bounds;
+					console.log(bounds);
+				});
 			}).addTo(newmap);
 			
 
