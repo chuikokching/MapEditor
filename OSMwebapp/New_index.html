@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MapEditor</title>
+		<link rel="stylesheet" href="src/leaflet.css">
+		<link rel="stylesheet" href="src/css/bootstrap.css">
+		<link rel="stylesheet" href="src/plugins/easy-button.css">
+		<link rel="stylesheet" href="src/plugins/leaflet-shades-master/src/css/leaflet-shades.css"/>
+		
+		<script src="src/leaflet-src.js"></script>
+		<script src="src/jquery-3.3.1.min.js"></script>
+		<script src="src/plugins/easy-button.js"></script>
+		<script src="src/plugins/leaflet-shades-master/dist/leaflet-shades.js"></script>
+		
+		<style type="text/css">
+			#mapdiv{
+				 height:100vh;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="mapdiv" class="col-md-12"></div>
+		<script type="text/javascript">
+			var newmap;
+			var easybuttonTask;
+			var rect;
+			
+			$(document).ready(function(){
+
+			newmap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:18, zoomControl:false, attributionControl:false, editable:true});
+			var Maplayer=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+			newmap.addLayer(Maplayer);
+			
+			/*EasyButton*/
+			easybuttonTask=L.easyButton('glyphicon-pencil',function(){
+				rect=newmap.editTools.startRectangle();
+				//const rect = L.rectangle([[54.559322, -5.767822], [56.1210604, -3.021240]]).addTo(newmap);
+                rect.enableEdit();
+				console.log(rect.getBounds());
+				
+				var shades = new L.LeafletShades({bounds: rect.getBounds()});
+				shades.addTo(newmap);
+
+				//shades.on('shades:bounds-changed', function(e) {
+					//console.log(JSON.stringify(e.toGeoJSON()));
+				//	var bounds = e.bounds
+				//});
+			}).addTo(newmap);
+			
+
+			
+			
+			});
+		</script>
+	</body>
+</html>
