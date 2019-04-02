@@ -50,16 +50,16 @@
 				shades.on('shades:bounds-changed', function(e) {
 					bounds = e.bounds;
 					console.log(bounds);
-					console.log(bounds._northEast.lat);
+					//console.log(bounds._northEast.lat);
 					point1_lat=bounds._northEast.lat;
 					console.log(bounds._northEast.lat+" point1 coordinate lat");
-					console.log(bounds._northEast.lng);
+					//console.log(bounds._northEast.lng);
 					point1_lng=bounds._northEast.lng;
 					console.log(bounds._northEast.lng+" point1 coordinate lng");
-					console.log(bounds._southWest.lat);
+					//console.log(bounds._southWest.lat);
 					point2_lat=bounds._southWest.lat;
 					console.log(bounds._southWest.lat+" point2 coordinate lat");
-					console.log(bounds._southWest.lng);
+					//console.log(bounds._southWest.lng);
 					point2_lng=bounds._southWest.lng;
 					console.log(bounds._southWest.lng+" point2 coordinate lng");
 				});
@@ -70,13 +70,19 @@
 			/*easybuttonFertig*/
 				easybuttonFertig=L.easyButton('glyphicon-share',function(){
 
-
+					var op1=(Number(point1_lat)+Number(point2_lat))/2;
+					var op2=(Number(point1_lng)+Number(point2_lng))/2;
+					console.log(op1);
+					console.log(op2);
+					newmap.setView([op1,op2],17);
+					//newmap.removeLayer(rect);
+					//newmap.removeLayer(shades);
 				}).addTo(newmap);
 
-			/*easybuttonHome*/
+			/*easybuttonDelete*/
 				easybuttonDelete=L.easyButton('glyphicon-remove-circle',function() {
 					newmap.removeLayer(rect);
-					newmap.removeLayer(shades);
+					//newmap.removeLayer(shades);
 
 				}).addTo(newmap);
 
