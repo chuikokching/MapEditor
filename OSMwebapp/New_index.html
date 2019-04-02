@@ -25,36 +25,64 @@
 		<script type="text/javascript">
 			var newmap;
 			var easybuttonTask;
+			var easybuttonFertig;
+			var easybuttonDelete;
 			var rect;
+			var shades;
+			var bounds;
+			var point1_lat,point1_lng,point2_lat,point2_lng;
 			
 			$(document).ready(function(){
 
-			newmap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:18, zoomControl:false, attributionControl:false, editable:true});
+			newmap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:16, zoomControl:false, attributionControl:false, editable:true});
 			var Maplayer=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 			newmap.addLayer(Maplayer);
-			
+			shades = new L.LeafletShades();
+
 			/*EasyButton*/
-			easybuttonTask=L.easyButton('glyphicon-pencil',function(){
+			easybuttonTask=L.easyButton('glyphicon-edit',function(){
 				rect=newmap.editTools.startRectangle();
 				//const rect = L.rectangle([[54.559322, -5.767822], [56.1210604, -3.021240]]).addTo(newmap);
                 rect.enableEdit();
-				console.log(rect.getBounds());
-				
-				var shades = new L.LeafletShades({bounds: rect.getBounds()});
+
 				shades.addTo(newmap);
 
-				//console.log(shades.toString());
 				shades.on('shades:bounds-changed', function(e) {
-					//console.log(JSON.stringify(e.toGeoJSON()));
-					var bounds = e.bounds;
+					bounds = e.bounds;
 					console.log(bounds);
+					console.log(bounds._northEast.lat);
+					point1_lat=bounds._northEast.lat;
+					console.log(bounds._northEast.lat+" point1 coordinate lat");
+					console.log(bounds._northEast.lng);
+					point1_lng=bounds._northEast.lng;
+					console.log(bounds._northEast.lng+" point1 coordinate lng");
+					console.log(bounds._southWest.lat);
+					point2_lat=bounds._southWest.lat;
+					console.log(bounds._southWest.lat+" point2 coordinate lat");
+					console.log(bounds._southWest.lng);
+					point2_lng=bounds._southWest.lng;
+					console.log(bounds._southWest.lng+" point2 coordinate lng");
 				});
-			}).addTo(newmap);
-			
 
-			
-			
+			}).addTo(newmap);
+
+
+			/*easybuttonFertig*/
+				easybuttonFertig=L.easyButton('glyphicon-share',function(){
+
+
+				}).addTo(newmap);
+
+			/*easybuttonHome*/
+				easybuttonDelete=L.easyButton('glyphicon-remove-circle',function() {
+					newmap.removeLayer(rect);
+					newmap.removeLayer(shades);
+
+				}).addTo(newmap);
+
 			});
+
+
 		</script>
 	</body>
 </html>
