@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css">
 	<link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
 
+
 	<script src="src/leaflet-src.js"></script>
 	<script src="src/jquery-3.3.1.min.js"></script>
 	<script src="src/plugins/L.Control.Pan.js"></script>
@@ -27,7 +28,7 @@
 	<script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
 	<script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
 	<script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
-
+	<script src="src/plugins/leaflet.ajax.min.js"></script>
 
 	<script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
 	<script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
@@ -84,6 +85,7 @@
 	var layerBlackandwhite;
 	var layerTerrain;
 	var point1_lat,point1_lng,point2_lat,point2_lng;
+	var layerUnijason;//layer of Uni
 
 
 	/*Easybutton*/
@@ -115,7 +117,6 @@
 
 		/*Custom Property*/
 		newmap.existed='false';
-
 
 
 		/*easybuttonAufgabeErstellung plugin*/
@@ -178,7 +179,13 @@
 		DrawnItems = new L.FeatureGroup();
 		DrawnItems.addTo(newmap);
 
+
+		//Ajax loads geojson
+		layerUnijason=L.geoJSON.ajax('data/Uni.geojson').addTo(newmap);
+
+
 		Overlayers = {
+			"Layer of Uni":layerUnijason,//new layer of Uni
 			"Layer of Drawn Shapes":DrawnItems
 		};
 
