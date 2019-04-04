@@ -1,94 +1,218 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>MapEditor</title>
-		<link rel="stylesheet" href="src/leaflet.css">
-		<link rel="stylesheet" href="src/css/bootstrap.css">
-		<link rel="stylesheet" href="src/plugins/easy-button.css">
-		<link rel="stylesheet" href="src/plugins/leaflet-shades-master/src/css/leaflet-shades.css"/>
-		
-		<script src="src/leaflet-src.js"></script>
-		<script src="src/jquery-3.3.1.min.js"></script>
-		<script src="src/plugins/easy-button.js"></script>
-		<script src="src/plugins/leaflet-shades-master/dist/leaflet-shades.js"></script>
-		
-		<style type="text/css">
-			#mapdiv{
-				 height:100vh;
-			}
-		</style>
-		
-	</head>
-	<body>
-		<div id="mapdiv" class="col-md-12"></div>
-		<script type="text/javascript">
-			var newmap;
-			var easybuttonTask;
-			var easybuttonFertig;
-			var easybuttonDelete;
-			var rect;
-			var shades;
-			var bounds;
-			var point1_lat,point1_lng,point2_lat,point2_lng;
-			
-			$(document).ready(function(){
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MapEditor</title>
+	<link rel="stylesheet" href="src/leaflet.css">
+	<link rel="stylesheet" href="src/css/bootstrap.css">
+	<link rel="stylesheet" href="src/plugins/L.Control.Pan.css">
+	<link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
+	<link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css">
+	<link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+	<link rel="stylesheet" href="src/plugins/Leaflet.PolylineMeasure.css">
+	<link rel="stylesheet" href="src/plugins/easy-button.css">
+	<link rel="stylesheet" href="src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css">
+	<link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
 
-			newmap = L.map('mapdiv', {center:[51.463426, 7.005627],zoom:16, zoomControl:false, attributionControl:false, editable:true});
-			var Maplayer=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-			newmap.addLayer(Maplayer);
-			shades = new L.LeafletShades();
-
-			/*EasyButton*/
-			easybuttonTask=L.easyButton('glyphicon-edit',function(){
-				rect=newmap.editTools.startRectangle();
-				//const rect = L.rectangle([[54.559322, -5.767822], [56.1210604, -3.021240]]).addTo(newmap);
-                rect.enableEdit();
-
-				shades.addTo(newmap);
-
-				shades.on('shades:bounds-changed', function(e) {
-					bounds = e.bounds;
-					console.log(bounds);
-					//console.log(bounds._northEast.lat);
-					point1_lat=bounds._northEast.lat;
-					console.log(bounds._northEast.lat+" point1 coordinate lat");
-					//console.log(bounds._northEast.lng);
-					point1_lng=bounds._northEast.lng;
-					console.log(bounds._northEast.lng+" point1 coordinate lng");
-					//console.log(bounds._southWest.lat);
-					point2_lat=bounds._southWest.lat;
-					console.log(bounds._southWest.lat+" point2 coordinate lat");
-					//console.log(bounds._southWest.lng);
-					point2_lng=bounds._southWest.lng;
-					console.log(bounds._southWest.lng+" point2 coordinate lng");
-				});
-
-			}).addTo(newmap);
+	<script src="src/leaflet-src.js"></script>
+	<script src="src/jquery-3.3.1.min.js"></script>
+	<script src="src/plugins/L.Control.Pan.js"></script>
+	<script src="src/plugins/L.Control.Zoomslider.js"></script>
+	<script src="src/plugins/L.Control.MousePosition.js"></script>
+	<script src="src/plugins/L.Control.Sidebar.js"></script>
+	<script src="src/plugins/Leaflet.PolylineMeasure.js"></script>
+	<script src="src/plugins/easy-button.js"></script>
+	<script src="src/plugins/leaflet-providers.js"></script>
+	<script src="src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js"></script>
+	<script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
+	<script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
+	<script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 
 
-			/*easybuttonFertig*/
-				easybuttonFertig=L.easyButton('glyphicon-share',function(){
+	<script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
+	<script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
+	<link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
 
-					var op1=(Number(point1_lat)+Number(point2_lat))/2;
-					var op2=(Number(point1_lng)+Number(point2_lng))/2;
-					console.log(op1);
-					console.log(op2);
-					newmap.setView([op1,op2],17);
-					//newmap.removeLayer(rect);
-					//newmap.removeLayer(shades);
-				}).addTo(newmap);
+	<script src="src/plugins/leaflet-draw/Toolbar.js"></script>
+	<script src="src/plugins/leaflet-draw/Tooltip.js"></script>
 
-			/*easybuttonDelete*/
-				//easybuttonDelete=L.easyButton('glyphicon-remove-circle',function() {
-					//newmap.removeLayer(rect);
-					//newmap.removeLayer(shades);
+	<script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
+	<script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
+	<script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
+	<script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
+	<script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
+	<script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
 
-				//}).addTo(newmap);
+	<script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
+	<script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
 
+
+	<script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+
+	<script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+
+	<script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
+	<script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
+
+
+	<style>
+		#mapdiv {
+			height:100vh;
+		}
+	</style>
+</head>
+<body>
+
+<div id="mapdiv" class="col-md-12"></div>
+<script type="text/javascript">
+	var newmap;
+	var lyrOSM;
+	var layerHyddaFull
+	var lyrImagery;
+	var lyrOutdoors;
+	var layerBlackandwhite;
+	var layerTerrain;
+	var point1_lat,point1_lng,point2_lat,point2_lng;
+
+
+	/*Easybutton*/
+	var easybuttonFertig;
+	var easybuttonAufgabeErstellung;
+
+
+	/*Control plugin*/
+	var ctlAttribute;
+	var ctlMouseposition;
+	var ctlLayers;
+	var ctlDraw;
+	var ctlStyle;
+
+	/*Layers*/
+	var DrawnItems;
+	var Basemaps;
+	var Overlayers;
+
+	$(document).ready(function(){
+		newmap = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:17, zoomControl:false, attributionControl:false});
+		lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+		layerBlackandwhite=L.tileLayer.provider('OpenStreetMap.BlackAndWhite');
+		lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+		lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
+		layerHyddaFull=L.tileLayer.provider('Hydda.Full');
+		layerTerrain=L.tileLayer.provider('Stamen.Terrain');
+		newmap.addLayer(lyrOSM);
+
+
+		/*easybuttonAufgabeErstellung plugin*/
+		easybuttonAufgabeErstellung=L.easyButton('glyphicon-pencil',function(){
+
+			/*shapestyle plugin*/
+			ctlStyle = L.control.styleEditor({position:'topleft'});
+
+			/*Drawing tools*/
+			ctlDraw = new L.Control.Draw({
+				draw:{
+					position: 'topleft',
+					circle: false,
+					marker: false,
+					polyline: false,
+					polygon: false,
+					shapeOptions: {
+						color: '#8cd6da'
+					},
+					showArea: true
+				},
+				edit:{
+					featureGroup:DrawnItems
+				}
 			});
 
+			ctlStyle.addTo(newmap);
+			ctlDraw.addTo(newmap);
 
-		</script>
-	</body>
+		}).addTo(newmap);
+
+
+		/*easybuttonFertig*/
+		easybuttonFertig=L.easyButton('glyphicon-share',function(){
+			var op1=(Number(point1_lat)+Number(point2_lat))/2;
+			var op2=(Number(point1_lng)+Number(point2_lng))/2;
+			newmap.setView([op1,op2],17);
+
+		}).addTo(newmap);
+
+		Basemaps = {
+			"Layer OSM": lyrOSM,
+			"Layer BAW":layerBlackandwhite,
+			"Layer Imagery":lyrImagery,
+			"Layer Outdoors":lyrOutdoors,
+			"Layer Hydda.Full":layerHyddaFull,
+			"Layer Terrain":layerTerrain
+		};
+
+		/*styleEditor*/
+		DrawnItems = new L.FeatureGroup();
+		DrawnItems.addTo(newmap);
+
+		Overlayers = {
+			"Layer of Drawn Shapes":DrawnItems
+		};
+
+		/*Layers plugin*/
+		ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(newmap);
+
+
+		/*contributor control*/
+		ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(newmap);
+		ctlAttribute.addAttribution('OSM');
+		ctlAttribute.addAttribution('&copy;Xu Pan Gu');
+
+		/*mouseposition plugin*/
+		ctlMouseposition = L.control.mousePosition().addTo(newmap);
+
+
+		/*Draw:created function*/
+		newmap.on('draw:created', function(e){
+			console.log(e.layer);
+			DrawnItems.addLayer(e.layer);
+			//console.log(e.layer._bounds._northEast.lat+"  111");
+			point1_lat=e.layer._bounds._northEast.lat;
+			//console.log(e.layer._bounds._northEast.lng+"  111");
+			point1_lng=e.layer._bounds._northEast.lng;
+			//console.log(e.layer._bounds._southWest.lat+"  111");
+			point2_lat=e.layer._bounds._southWest.lat;
+			//console.log(e.layer._bounds._southWest.lng+"  111");
+			point2_lng=e.layer._bounds._southWest.lng;
+
+
+
+			//console.log(e.layer._latlngs[0]);
+			//console.log(e.layer._latlngs[0][1]);
+			//console.log(JSON.stringify(e.layer.toGeoJSON()));
+			//var object=Object.keys(e.layer.toGeoJSON());
+			//console.log(object+" propertys!!");
+			//console.log(e.layer._latlng);
+			//var obj=JSON.stringify(e.layer.toGeoJSON());
+			//localStorage.setItem("Mapdata",obj);
+			//console.log(obj);
+
+		});
+
+
+
+	});
+
+</script>
+</body>
 </html>

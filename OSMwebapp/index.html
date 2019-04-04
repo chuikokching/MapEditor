@@ -92,10 +92,10 @@
     var layerTerrain;
 
     /*Location*/
-    var mrkCurrentLocation;
+    //var mrkCurrentLocation;
 
     /*Easybutton*/
-    var easybuttonControlUni;/*easybuttonUni plugin*/
+    //var easybuttonControlUni;/*easybuttonUni plugin*/
     var easybuttonAufgabeErstellung;
 
     /*Popup*/
@@ -131,37 +131,28 @@
         mymap.addLayer(lyrOSM);
 
         /*pan plugin*/
-        ctlPan = L.control.pan({position:'topright'}).addTo(mymap);
+       // ctlPan = L.control.pan({position:'topright'}).addTo(mymap);
 
         /*slider plugin*/
-        ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
+       // ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
 
         /*easybuttonUni plugin*/
-        easybuttonControlUni=L.easyButton('glyphicon-education',function(){
-            mymap.setView([51.463426, 7.005627],18);
-            mymap.openPopup(Unipopup);
-        }).addTo(mymap);
+        //easybuttonControlUni=L.easyButton('glyphicon-education',function(){
+        //    mymap.setView([51.463426, 7.005627],18);
+        //    mymap.openPopup(Unipopup);
+        //}).addTo(mymap);
 
 
         /*sidebar-easybutton plugin*/
-        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
-            ctlSidebar.toggle();
-        }).addTo(mymap);
+       // ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
+        //    ctlSidebar.toggle();
+       // }).addTo(mymap);
 
         //Custom Property
-        ctlEasybutton.existed='true';
+       // ctlEasybutton.existed='true';
 
         /*easybuttonAufgabeErstellung plugin*/
         easybuttonAufgabeErstellung=L.easyButton('glyphicon-pencil',function(){
-
-            swal("Bitte geben Sie Ihre Aufgabestellungen ein!!", {
-                content: "input",
-                buttons: ["Cancel", "Fertig"],
-            }).then((value)=>{
-                if(value)
-                {
-                    swal(`Die von Ihnen eingegebenen Tasks: ${value}`);
-                }
 
             /*shapestyle plugin*/
             ctlStyle = L.control.styleEditor({position:'topleft'});
@@ -180,15 +171,9 @@
                 }
             });
 
-            if(ctlEasybutton.existed=='true')
-            {
-                ctlStyle.addTo(mymap);
-                ctlDraw.addTo(mymap);
-                ctlEasybutton.existed='false';
-                //localstorage.setItem("Task",Aufgabestellung);
-            }
+            ctlStyle.addTo(mymap);
+            ctlDraw.addTo(mymap);
 
-            });
         }).addTo(mymap);
 
 
@@ -209,19 +194,25 @@
             "Layer of Drawn Shapes":DrawnItems
         };
 
-        /*cagesearch plugin*/
+        /*Layers plugin*/
         ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(mymap);
+
+
+
+        /*easybuttonFertig*/
+        easybuttonFertig=L.easyButton('glyphicon-share',function(){
+
+            }).addTo(newmap);
 
         /*PolylineMearsure plugin
         ctlMeasure = L.control.polylineMeasure().addTo(mymap);*/
 
         /*sidebar plugin*/
-        ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
-
+        //ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
 
         /*cagesearch plugin*/
-        ctlSearch = L.Control.openCageSearch({key: 'c343052893144a3ca875c952c5c67e76',limit: 10}).addTo(mymap);
+        //ctlSearch = L.Control.openCageSearch({key: 'c343052893144a3ca875c952c5c67e76',limit: 10}).addTo(mymap);
 
         /*contributor control*/
         ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
