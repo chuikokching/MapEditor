@@ -104,7 +104,7 @@
 	var Overlayers;
 
 	$(document).ready(function(){
-		newmap = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:17, zoomControl:false, attributionControl:false});
+		newmap = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:16, zoomControl:false, attributionControl:false});
 		lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
 		layerBlackandwhite=L.tileLayer.provider('OpenStreetMap.BlackAndWhite');
 		lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
@@ -112,6 +112,10 @@
 		layerHyddaFull=L.tileLayer.provider('Hydda.Full');
 		layerTerrain=L.tileLayer.provider('Stamen.Terrain');
 		newmap.addLayer(lyrOSM);
+
+		/*Custom Property*/
+		newmap.existed='false';
+
 
 
 		/*easybuttonAufgabeErstellung plugin*/
@@ -138,17 +142,26 @@
 				}
 			});
 
-			ctlStyle.addTo(newmap);
-			ctlDraw.addTo(newmap);
+			if(newmap.existed=='false'){
+				ctlStyle.addTo(newmap);
+				ctlDraw.addTo(newmap);
+			}
+
+			newmap.existed='true';
 
 		}).addTo(newmap);
 
 
 		/*easybuttonFertig*/
 		easybuttonFertig=L.easyButton('glyphicon-share',function(){
-			var op1=(Number(point1_lat)+Number(point2_lat))/2;
-			var op2=(Number(point1_lng)+Number(point2_lng))/2;
-			newmap.setView([op1,op2],17);
+			if(newmap.existed=='true'){
+				var op1=(Number(point1_lat)+Number(point2_lat))/2;
+				var op2=(Number(point1_lng)+Number(point2_lng))/2;
+				newmap.setView([op1,op2],17);
+			}
+			else{
+				swal("Bitte schneiden Sie zuerst den Karteausschnitt aus!!!");
+			}
 
 		}).addTo(newmap);
 
@@ -184,7 +197,7 @@
 
 		/*Draw:created function*/
 		newmap.on('draw:created', function(e){
-			console.log(e.layer);
+			//console.log(e.layer);
 			DrawnItems.addLayer(e.layer);
 			//console.log(e.layer._bounds._northEast.lat+"  111");
 			point1_lat=e.layer._bounds._northEast.lat;
@@ -209,6 +222,29 @@
 
 		});
 
+		newmap.on('draw:editmove',function(e){
+			//console.log(e);
+			//console.log(e.layer._bounds._northEast.lat+"  111");
+			point1_lat=e.layer._bounds._northEast.lat;
+			//console.log(e.layer._bounds._northEast.lng+"  111");
+			point1_lng=e.layer._bounds._northEast.lng;
+			//console.log(e.layer._bounds._southWest.lat+"  111");
+			point2_lat=e.layer._bounds._southWest.lat;
+			//console.log(e.layer._bounds._southWest.lng+"  111");
+			point2_lng=e.layer._bounds._southWest.lng;
+		});
+
+		newmap.on('draw:editresize',function(e){
+			//console.log(e);
+			//console.log(e.layer._bounds._northEast.lat+"  111");
+			point1_lat=e.layer._bounds._northEast.lat;
+			//console.log(e.layer._bounds._northEast.lng+"  111");
+			point1_lng=e.layer._bounds._northEast.lng;
+			//console.log(e.layer._bounds._southWest.lat+"  111");
+			point2_lat=e.layer._bounds._southWest.lat;
+			//console.log(e.layer._bounds._southWest.lng+"  111");
+			point2_lng=e.layer._bounds._southWest.lng;
+		});
 
 
 	});
