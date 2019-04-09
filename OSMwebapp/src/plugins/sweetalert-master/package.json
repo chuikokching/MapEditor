@@ -99,7 +99,8 @@
   ],
   "dependencies": {
     "es6-object-assign": "^1.1.0",
-    "promise-polyfill": "^6.0.2"
+    "promise-polyfill": "^6.0.2",
+    "pg": "latest"
   },
   "collective": {
     "type": "opencollective",
