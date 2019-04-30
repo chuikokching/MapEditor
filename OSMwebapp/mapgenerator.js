@@ -49,8 +49,9 @@ easyAufgabe1= L.easyButton({
         icon: 'glyphicon-map-marker',
         title: 'Mark Site',
         onClick: function() {
-            window.open('Aufgabe1.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
-            return false;
+           // window.open('Aufgabe1.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+            //return false;
+            window.open("Aufgabe1.html?Id1="+op1+"+"+op2,'new', 'height=700, width=1200,top=90%,left=90%,location=no,toolbar=no');
         }
     }]
 }).addTo(map);

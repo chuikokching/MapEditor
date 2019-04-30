@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Mark Site</title>
+    <link rel="stylesheet" href="src/leaflet.css" />
+
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="map.css"/>
 </head>
 <body>
+<div id="mapdiv"></div>
+<script type="text/javascript">
 
+    var afterUrl =  window.location.search.substring(1);
+    var afterEqual = afterUrl.substring(afterUrl.indexOf('=')+1).toUpperCase();
+    //alert(afterEqual);
+    var op1=afterEqual.substring(0,afterEqual.indexOf('+'));
+    var op2=afterEqual.substring(afterEqual.indexOf('+')+1);
+    //alert(op1);
+    //alert(op2);
+
+    $(document).ready(function() {
+
+        var map = L.map('mapdiv', {
+            center: [op1, op2],
+            zoom: 18,
+            scrollWheelZoom:false,
+            dragging: false,
+            zoomControl: false,
+            attributionControl: false
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    });
+</script>
 </body>
 </html>
