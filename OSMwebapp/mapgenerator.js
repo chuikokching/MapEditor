@@ -19,21 +19,54 @@ easybuttonAusschnitt=L.easyButton('glyphicon-scissors',function(){
 }).addTo(map);
 
 
-easyAufgabe1=L.easyButton('glyphicon-map-marker',function(){
+easyAufgabe1= L.easyButton({
+    states: [{
+        stateName: 'Aufgabe1',
+        icon: 'glyphicon-map-marker',
+        title: 'Markieren Standort',
+        onClick: function() {
+            alert("Aufgabe1");
+        }
+    }]
+}).addTo(map);
 
-}).addTo(map)
 
-easyAufgabe2=L.easyButton('glyphicon-th-list',function(){
+easyAufgabe2= L.easyButton({
+    states: [{
+        stateName: 'Aufgabe2',
+        icon: 'glyphicon-th-list',
+        title: 'Multiple Choice',
+        onClick: function() {
+            alert("Aufgabe2");
+        }
+    }]
+}).addTo(map);
 
-}).addTo(map)
 
-easyAufgabe3=L.easyButton('glyphicon-picture',function(){
+easyAufgabe3= L.easyButton({
+    states: [{
+        stateName: 'Aufgabe3',
+        icon: 'glyphicon-picture',
+        title: 'Map Puzzle',
+        onClick: function() {
+            alert("Aufgabe3");
+        }
+    }]
+}).addTo(map);
 
-}).addTo(map)
 
-easyAufgabe4=L.easyButton('glyphicon-text-size',function(){
+easyAufgabe4= L.easyButton({
+    states: [{
+        stateName: 'Aufgabe4',
+        icon: 'glyphicon-text-size',
+        title: 'Fill-in-the-blank',
+        onClick: function() {
+            alert("Aufgabe4");
+        }
+    }]
+}).addTo(map);
 
-}).addTo(map)
+
 
 
 
