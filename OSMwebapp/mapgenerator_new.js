@@ -1,5 +1,5 @@
 var newmap;
-
+var sidebar;
 var lyrOSM;
 var layerHyddaFull
 var lyrImagery;
@@ -8,7 +8,6 @@ var layerBlackandwhite;
 var layerTerrain;
 var point1_lat,point1_lng,point2_lat,point2_lng;
 var op1,op2;
-var layerUnijason;//layer of Uni
 
 
 /*Easybutton*/
@@ -40,7 +39,7 @@ $(document).ready(function(){
 	newmap.addLayer(lyrOSM);
 
 	newmap.options.maxZoom=16;
-	newmap.options.minZoom=10;
+	//newmap.options.minZoom=10;
 	/*Custom Property*/
 	newmap.existed='false';
 
@@ -84,7 +83,7 @@ $(document).ready(function(){
 			op1=(Number(point1_lat)+Number(point2_lat))/2;
 			op2=(Number(point1_lng)+Number(point2_lng))/2;
 			//newmap.setView([op1,op2],17);
-			openWindow();
+			//openWindow();
 		}
 		else{
 			swal("Bitte schneiden Sie zuerst den Karteausschnitt aus!!!");
@@ -119,7 +118,7 @@ $(document).ready(function(){
 	/*Layers plugin*/
 	ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(newmap);
 
-
+    /*
 	function openWindow(){
 		new MyLayer({
 			top:"10%",
@@ -198,6 +197,9 @@ $(document).ready(function(){
 		div_content.style.height = "780px";
 		var content_area = document.createTextNode(this.options.content === undefined ? "" : this.options.content);
 		content_area.id = "map5";
+		var bar = document.createElement("div");
+		bar.id="sidebar";
+		div_content.appendChild(bar);
 		div_content.appendChild(content_area);
 		open_layer.appendChild(div_content);
 		document.body.appendChild(open_layer);
@@ -206,13 +208,14 @@ $(document).ready(function(){
 		background_layer.style.display = "block";
 
 
+
 		newmap = L.map('map4', {center:[op1, op2],zoom:18,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,zoomControl:false, attributionControl:false});
 		lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
-		console.log(op1+" TTTTT "+op2);
+		//console.log(op1+" TTTTT "+op2);
 		newmap.addLayer(lyrOSM);
-	};
 
-
+		sidebar = L.control.sidebar('sidebar').addTo(newmap);
+	};*/
 
 
 
