@@ -35,7 +35,8 @@ easyAufgabe1= L.easyButton({
         icon: 'glyphicon-map-marker',
         title: 'Mark Site',
         onClick: function() {
-            alert("Aufgabe1");
+            window.open('Aufgabe1.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+            return false;
         }
     }]
 }).addTo(map);
@@ -47,7 +48,8 @@ easyAufgabe2= L.easyButton({
         icon: 'glyphicon-th-list',
         title: 'Multiple Choice',
         onClick: function() {
-            alert("Aufgabe2");
+            window.open('Aufgabe2.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+            return false;
         }
     }]
 }).addTo(map);
@@ -59,7 +61,8 @@ easyAufgabe3= L.easyButton({
         icon: 'glyphicon-picture',
         title: 'Map Puzzle',
         onClick: function() {
-            alert("Aufgabe3");
+            window.open('Aufgabe3.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+            return false;
         }
     }]
 }).addTo(map);
@@ -71,7 +74,8 @@ easyAufgabe4= L.easyButton({
         icon: 'glyphicon-text-size',
         title: 'Fill-in-the-blank',
         onClick: function() {
-            alert("Aufgabe4");
+            window.open('Aufgabe4.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+            return false;
         }
     }]
 }).addTo(map);
