@@ -50,7 +50,7 @@ $(document).ready(function(){
 		/*shapestyle plugin*/
 		ctlStyle = L.control.styleEditor({position:'topleft'});
 
-		/*Drawing tools*/
+		///*Drawing tools*/
 		ctlDraw = new L.Control.Draw({
 			draw:{
 				position: 'topleft',
@@ -73,7 +73,6 @@ $(document).ready(function(){
 			ctlDraw.addTo(newmap);
 		}
 
-
 	}).addTo(newmap);
 
 
@@ -84,6 +83,10 @@ $(document).ready(function(){
 			op2=(Number(point1_lng)+Number(point2_lng))/2;
 			//newmap.setView([op1,op2],17);
 			//openWindow();
+			newmap = L.map('map4', {center:[op1, op2],zoom:18,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,zoomControl:false, attributionControl:false});
+			lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+			//console.log(op1+" TTTTT "+op2);
+			newmap.addLayer(lyrOSM);
 		}
 		else{
 			swal("Bitte schneiden Sie zuerst den Karteausschnitt aus!!!");
