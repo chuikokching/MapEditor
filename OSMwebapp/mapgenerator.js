@@ -13,25 +13,25 @@ map.options.maxZoom=16;
 easybuttonAusschnitt=L.easyButton('glyphicon-scissors',function(){
     map.editTools.startRectangle();
 
-// var shades = new L.LeafletShades();
+    //var shades = new L.LeafletShades();
     var shades = L.leafletShades();
     shades.addTo(map);
 }).addTo(map);
 
 
-easyAufgabe1=L.easyButton('glyphicon-scissors',function(){
+easyAufgabe1=L.easyButton('glyphicon-map-marker',function(){
 
 }).addTo(map)
 
-easyAufgabe2=L.easyButton('glyphicon-scissors',function(){
+easyAufgabe2=L.easyButton('glyphicon-th-list',function(){
 
 }).addTo(map)
 
-easyAufgabe3=L.easyButton('glyphicon-scissors',function(){
+easyAufgabe3=L.easyButton('glyphicon-picture',function(){
 
 }).addTo(map)
 
-easyAufgabe4=L.easyButton('glyphicon-scissors',function(){
+easyAufgabe4=L.easyButton('glyphicon-text-size',function(){
 
 }).addTo(map)
 
