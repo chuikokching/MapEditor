@@ -5,13 +5,16 @@ var easyAufgabe3;
 var easyAufgabe4;
 var removeLayer;
 var shades;
+var bounds;
+var op1,op2;
+
+
+$(document).ready(function(){
 
 var map = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:15, editable:true, zoomControl:false, attributionControl:false});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 map.options.maxZoom=16;
-
-
 
 easybuttonAusschnitt= L.easyButton({
     states: [{
@@ -24,6 +27,17 @@ easybuttonAusschnitt= L.easyButton({
             //var shades = new L.LeafletShades();
             shades = L.leafletShades();
             shades.addTo(map);
+
+
+            shades.on('shades:bounds-changed', function(event) {
+                bounds = event.bounds;
+                console.log(bounds);
+
+                op1=(Number(bounds._northEast.lat)+Number(bounds._southWest.lat))/2;
+                op2=(Number(bounds._northEast.lng)+Number(bounds._southWest.lng))/2;
+                //console.log(op1 + "      " + op2);
+            });
+
         }
     }]
 }).addTo(map);
@@ -92,6 +106,14 @@ removeLayer= L.easyButton({
 }).addTo(map);
 
 
+
+
+//map.on('',function(e){
+
+//});
+
+
+});
 
 
 
