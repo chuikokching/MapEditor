@@ -110,23 +110,23 @@ L.Control.StyleEditor = L.Control.extend({
     disableLeafletActions: function() {
     	var m = this.options.map;
 
-        m.dragging.disable();
-        m.touchZoom.disable();
-        m.doubleClickZoom.disable();
-        m.scrollWheelZoom.disable();
-        m.boxZoom.disable();
-        m.keyboard.disable();
+        //m.dragging.disable();
+        //m.touchZoom.disable();
+        //m.doubleClickZoom.disable();
+        //m.scrollWheelZoom.disable();
+        //m.boxZoom.disable();
+        //m.keyboard.disable();
     },
 
     enableLeafletActions: function() {
     	var m = this.options.map;
 
-        m.dragging.enable();
-        m.touchZoom.enable();
-        m.doubleClickZoom.enable();
-        m.scrollWheelZoom.enable();
-        m.boxZoom.enable();
-        m.keyboard.enable();
+        //m.dragging.enable();
+        //m.touchZoom.enable();
+        //m.doubleClickZoom.enable();
+        //m.scrollWheelZoom.enable();
+        //m.boxZoom.enable();
+        //m.keyboard.enable();
     },
 
     enable: function() {

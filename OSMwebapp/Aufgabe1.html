@@ -10,8 +10,11 @@
     <script src="src/plugins/leaflet-providers.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
+    <script src="src/plugins/easy-button.js"></script>
 
     <link rel="stylesheet" type="text/css" href="map.css"/>
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css">
 
     <!-- Draw Plugin-->
     <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
@@ -52,14 +55,23 @@
 
     <!-- Draw Plugin-->
 
+    <!-- Sidebar-->
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <!-- Sidebar-->
+
 </head>
 <body>
-<div id="mapdiv"></div>
+<div id="sidebar" class="col-md-2">
+    <h4>Aufgabestellung:</h4>
+</div>
+<div id="mapdiv" class="col-md-12"></div>
 <script type="text/javascript">
 
     var ctlStyle;
     var ctlDraw;
     var DrawnItems;
+    var sidebar;
     var afterUrl =  window.location.search.substring(1);
     var afterEqual = afterUrl.substring(afterUrl.indexOf('=')+1).toUpperCase();
     //alert(afterEqual);
@@ -72,7 +84,7 @@
 
         var map = L.map('mapdiv', {
             center: [op1, op2],
-            zoom: 18,
+            zoom: 17,
             scrollWheelZoom:false,
             dragging: false,
             zoomControl: false,
@@ -93,6 +105,21 @@
             "Layer of Drawn Shapes":DrawnItems
         };
 
+
+        sidebar= L.control.sidebar('sidebar').addTo(map);
+
+
+        easybuttonAusschnitt= L.easyButton({
+            states: [{
+                stateName: 'Toolbar',
+                icon: 'glyphicon-transfer',
+                title: 'Open Text-Editor',
+                onClick: function() {
+                    sidebar.toggle();
+                }
+            }]
+        }).addTo(map);
+
         /*Layers plugin*/
         ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(map);
 
@@ -101,11 +128,12 @@
 
         ctlDraw = new L.Control.Draw({
             draw:{
-                position: 'topleft',
+                position: 'topright',
+                rectangle:false,
                 circle: false,
                 marker: false,
                 polyline: false,
-                polygon: false,
+                //polygon: false,
                 shapeOptions: {
                     color: '#8cd6da'
                 },
