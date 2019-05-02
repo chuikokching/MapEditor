@@ -3,16 +3,63 @@
 <head>
     <title>Mark Site</title>
     <link rel="stylesheet" href="src/leaflet.css" />
+    <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
 
     <script src="src/leaflet-src.js"></script>
     <script src="src/jquery-3.3.1.min.js"></script>
+    <script src="src/plugins/leaflet-providers.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
 
     <link rel="stylesheet" type="text/css" href="map.css"/>
+
+    <!-- Draw Plugin-->
+    <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
+    <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
+
+    <script src="src/plugins/leaflet-draw/Toolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/Tooltip.js"></script>
+
+    <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
+
+    <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
+
+
+    <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
+
+    <!-- Draw Plugin-->
+
 </head>
 <body>
 <div id="mapdiv"></div>
 <script type="text/javascript">
 
+    var ctlStyle;
+    var ctlDraw;
+    var DrawnItems;
     var afterUrl =  window.location.search.substring(1);
     var afterEqual = afterUrl.substring(afterUrl.indexOf('=')+1).toUpperCase();
     //alert(afterEqual);
@@ -31,7 +78,68 @@
             zoomControl: false,
             attributionControl: false
         });
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+        map.addLayer(lyrOSM);
+
+        Basemaps = {
+            "Layer OSM": lyrOSM,
+        };
+        /*styleEditor*/
+        DrawnItems = new L.FeatureGroup();
+        DrawnItems.addTo(map);
+
+
+        Overlayers = {
+            "Layer of Drawn Shapes":DrawnItems
+        };
+
+        /*Layers plugin*/
+        ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(map);
+
+        /*Style Controller*/
+        ctlStyle = L.control.styleEditor({position:'topleft'}).addTo(map);
+
+        ctlDraw = new L.Control.Draw({
+            draw:{
+                position: 'topleft',
+                circle: false,
+                marker: false,
+                polyline: false,
+                polygon: false,
+                shapeOptions: {
+                    color: '#8cd6da'
+                },
+                showArea: true
+            },
+            edit:{
+                featureGroup:DrawnItems
+            }
+        }).addTo(map);
+
+        /*Map Event Listener*/
+        map.on('draw:created', function(e){
+            //console.log(e.layer);
+            DrawnItems.addLayer(e.layer);
+            //console.log(e.layer._bounds._northEast.lat+"  111");
+            point1_lat=e.layer._bounds._northEast.lat;
+            //console.log(e.layer._bounds._northEast.lng+"  111");
+            point1_lng=e.layer._bounds._northEast.lng;
+            //console.log(e.layer._bounds._southWest.lat+"  111");
+            point2_lat=e.layer._bounds._southWest.lat;
+            //console.log(e.layer._bounds._southWest.lng+"  111");
+            point2_lng=e.layer._bounds._southWest.lng;
+
+            //console.log(e.layer._latlngs[0]);
+            //console.log(e.layer._latlngs[0][1]);
+            //console.log(JSON.stringify(e.layer.toGeoJSON()));
+            //var object=Object.keys(e.layer.toGeoJSON());
+            //console.log(object+" propertys!!");
+            //console.log(e.layer._latlng);
+            //var obj=JSON.stringify(e.layer.toGeoJSON());
+            //localStorage.setItem("Mapdata",obj);
+            //console.log(obj);
+        });
+
 
     });
 </script>
