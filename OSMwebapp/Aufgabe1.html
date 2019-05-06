@@ -62,6 +62,7 @@
 
 </head>
 <body>
+<div id="mapdiv" class="col-md-12"></div>
 <div id="sidebar" class="col-md-2">
     <h4>Question:</h4>
     <div id="top_div">
@@ -70,22 +71,21 @@
         <button id="delete">delete</button>
         <!--        <label> Your Question is</label>-->
     </div>
-    <h4>Answer:</h4>
+    <h4>Vertex Infos:</h4>
     <div id="bottom_div">
         <!--        <input type="button" id="getData" value="getData" onclick="addButtonGetData()"/>-->
-        <button id="getData">GetData</button>
+        <p id="vertex">Null</p>
+
     </div>
 
-
-
 </div>
-<div id="mapdiv" class="col-md-12"></div>
 <script type="text/javascript">
 
     var ctlStyle;
     var ctlDraw;
     var DrawnItems;
     var sidebar;
+    var shape_infos;
     var afterUrl =  window.location.search.substring(1);
     var afterEqual = afterUrl.substring(afterUrl.indexOf('=')+1).toUpperCase();
     //alert(afterEqual);
@@ -162,15 +162,9 @@
         map.on('draw:created', function(e){
             //console.log(e.layer);
             DrawnItems.addLayer(e.layer);
-            //console.log(e.layer._bounds._northEast.lat+"  111");
-            // point1_lat=e.layer._bounds._northEast.lat;
-            // //console.log(e.layer._bounds._northEast.lng+"  111");
-            // point1_lng=e.layer._bounds._northEast.lng;
-            // //console.log(e.layer._bounds._southWest.lat+"  111");
-            // point2_lat=e.layer._bounds._southWest.lat;
-            // //console.log(e.layer._bounds._southWest.lng+"  111");
-            // point2_lng=e.layer._bounds._southWest.lng;
 
+            shape_infos=JSON.stringify(e.layer.toGeoJSON());
+            document.getElementById("vertex").innerHTML=shape_infos;
             //console.log(e.layer._latlngs[0]);
             //console.log(e.layer._latlngs[0][1]);
             // console.log(JSON.stringify(e.layer.toGeoJSON()));
@@ -181,6 +175,7 @@
             //localStorage.setItem("Mapdata",obj);
             //console.log(obj);
         });
+
 
 
         $("#save").click(function(){
