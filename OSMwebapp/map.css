@@ -10,3 +10,24 @@ html, body {
 	padding: 0;
 	text-align: center;
 }
+/*#sidebar {*/
+/*	min-height:100%;*/
+/*}*/
+
+#top_div {
+	height:50%;
+	width:100%;
+	background-color:#f9f9f9;
+	margin:auto;
+	animation: false;
+	/*text-align:center;*/
+}
+
+#bottom_div {
+	height:50%;
+	width:100%;
+	background-color:#d7f2ea;
+	margin:auto;
+	animation: false;
+	/*text-align:center;*/
+}

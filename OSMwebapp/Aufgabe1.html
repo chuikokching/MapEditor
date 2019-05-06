@@ -63,7 +63,21 @@
 </head>
 <body>
 <div id="sidebar" class="col-md-2">
-    <h4>Aufgabestellung:</h4>
+    <h4>Question:</h4>
+    <div id="top_div">
+        <textarea id="text" style=" font-size:14pt;width:360px;height:150px;line-height:16px;border:1px solid #006699;padding:2px;color:#006699;"></textarea>
+        <button id="save">save</button>
+        <button id="delete">delete</button>
+        <!--        <label> Your Question is</label>-->
+    </div>
+    <h4>Answer:</h4>
+    <div id="bottom_div">
+        <!--        <input type="button" id="getData" value="getData" onclick="addButtonGetData()"/>-->
+        <button id="getData">GetData</button>
+    </div>
+
+
+
 </div>
 <div id="mapdiv" class="col-md-12"></div>
 <script type="text/javascript">
@@ -149,17 +163,17 @@
             //console.log(e.layer);
             DrawnItems.addLayer(e.layer);
             //console.log(e.layer._bounds._northEast.lat+"  111");
-            point1_lat=e.layer._bounds._northEast.lat;
-            //console.log(e.layer._bounds._northEast.lng+"  111");
-            point1_lng=e.layer._bounds._northEast.lng;
-            //console.log(e.layer._bounds._southWest.lat+"  111");
-            point2_lat=e.layer._bounds._southWest.lat;
-            //console.log(e.layer._bounds._southWest.lng+"  111");
-            point2_lng=e.layer._bounds._southWest.lng;
+            // point1_lat=e.layer._bounds._northEast.lat;
+            // //console.log(e.layer._bounds._northEast.lng+"  111");
+            // point1_lng=e.layer._bounds._northEast.lng;
+            // //console.log(e.layer._bounds._southWest.lat+"  111");
+            // point2_lat=e.layer._bounds._southWest.lat;
+            // //console.log(e.layer._bounds._southWest.lng+"  111");
+            // point2_lng=e.layer._bounds._southWest.lng;
 
             //console.log(e.layer._latlngs[0]);
             //console.log(e.layer._latlngs[0][1]);
-            //console.log(JSON.stringify(e.layer.toGeoJSON()));
+            // console.log(JSON.stringify(e.layer.toGeoJSON()));
             //var object=Object.keys(e.layer.toGeoJSON());
             //console.log(object+" propertys!!");
             //console.log(e.layer._latlng);
