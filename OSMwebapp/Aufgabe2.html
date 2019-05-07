@@ -178,11 +178,8 @@
         map.on('draw:created', function(e){
             //console.log(e.layer);
             DrawnItems.addLayer(e.layer);
-
             shape_infos=JSON.stringify(e.layer.toGeoJSON());
-            $("#vertex").html(shape_infos);
-            //console.log(e.layer._latlngs[0]);
-            //console.log(e.layer._latlngs[0][1]);
+
             // console.log(JSON.stringify(e.layer.toGeoJSON()));
             //var object=Object.keys(e.layer.toGeoJSON());
             //console.log(object+" propertys!!");
