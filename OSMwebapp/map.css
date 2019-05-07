@@ -24,7 +24,7 @@ html, body {
 }
 
 #bottom_div {
-	height:45%;
+	/*height:45%;*/
 	width:100%;
 	background-color:#d7f2ea;
 	margin:auto;
