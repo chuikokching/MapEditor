@@ -75,7 +75,7 @@
     <h4>Vertex Infos:</h4>
     <div id="bottom_div">
         <!--        <input type="button" id="getData" value="getData" onclick="addButtonGetData()"/>-->
-        <p id="vertex"></p>
+<!--        <p id="vertex"></p>-->
 
     </div>
 
@@ -170,7 +170,7 @@
             DrawnItems.addLayer(e.layer);
 
             shape_infos=JSON.stringify(e.layer.toGeoJSON());
-            $("#vertex").html(shape_infos);
+            //$("#vertex").html(shape_infos);
             //console.log(e.layer._latlngs[0]);
             //console.log(e.layer._latlngs[0][1]);
             // console.log(JSON.stringify(e.layer.toGeoJSON()));
@@ -180,9 +180,15 @@
             //var obj=JSON.stringify(e.layer.toGeoJSON());
             //localStorage.setItem("Mapdata",obj);
             //console.log(obj);
+            var div = document.getElementById("bottom_div");
+            var p = document.createElement('p');
+            p.innerHTML = shape_infos;
+            div.appendChild(p);
         });
 
-
+        map.on('draw:deleted',function (e) {
+            $("p").remove();
+        });
 
         $("#save").click(function(){
             var x=document.getElementById("text").value;
