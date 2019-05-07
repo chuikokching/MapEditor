@@ -77,14 +77,12 @@
 
         <div id="options_div">
 
-            <p style="text-align: left">Options:</p>
-
-
-
+            <h6 style="text-align: left">Options:</h6>
+            <br>
         </div>
 
         <div id="answers_div">
-            <p style="text-align: left">Answers:</p>
+            <h6 style="text-align: left">Answers:</h6>
 
         </div>
 
@@ -193,14 +191,21 @@
             //localStorage.setItem("Mapdata",obj);
             //console.log(obj);
             var div = document.getElementById("options_div");
-
-
             var p = document.createElement('p');
             p.innerHTML = shape_infos;
             div.appendChild(p);
         });
 
+        map.on('draw:deleted',function (e) {
+           //  var div = document.getElementById("options_div");
+           //  var aP = div.getElementsByTagName("p")[0];
+           // // alert(aP.length);
+           //  for(var i = 0;i < aP.length;i++){
+           //     div.removeChild(aP[i]);
+           //  }
+            $("p").remove();
 
+        });
 
 
 
