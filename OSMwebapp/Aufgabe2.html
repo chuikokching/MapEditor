@@ -1,10 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Multiple Choice</title>
+    <link rel="stylesheet" href="src/leaflet.css" />
+    <link rel="stylesheet" href="src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css">
+
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.3.1.min.js"></script>
+    <script src="src/plugins/leaflet-providers.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
+    <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
+    <script src="src/plugins/easy-button.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="map.css"/>
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+
+    <!-- Draw Plugin-->
+    <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
+    <script src="src/plugins/leaflet-draw/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="src/plugins/leaflet-draw/leaflet.draw.css"/>
+
+    <script src="src/plugins/leaflet-draw/Toolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/Tooltip.js"></script>
+
+    <script src="src/plugins/leaflet-draw/ext/GeometryUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LatLngUtil.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/LineUtil.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polygon.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/Polyline.Intersect.js"></script>
+    <script src="src/plugins/leaflet-draw/ext/TouchEvents.js"></script>
+
+    <script src="src/plugins/leaflet-draw/draw/DrawToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Feature.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polyline.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Marker.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Polygon.js"></script>
+    <script src="src/plugins/leaflet-draw/draw/handler/Draw.Rectangle.js"></script>
+
+
+    <script src="src/plugins/leaflet-draw/edit/EditToolbar.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="src/plugins/leaflet-draw/Control.Draw.js"></script>
+
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Poly.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Circle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Rectangle.js"></script>
+    <script src="src/plugins/leaflet-draw/edit/handler/Edit.Marker.js"></script>
+
+    <!-- Draw Plugin-->
+
+    <!-- Sidebar-->
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <!-- Sidebar-->
+
 </head>
 <body>
+<div id="mapdiv" class="col-md-12"></div>
+<div id="sidebar" class="col-md-2">
+    <h4>Question:</h4>
+    <div id="top_div">
+        <textarea id="text" style=" font-size:14pt;width:360px;height:250px;line-height:16px;border:1px solid #006699;padding:2px;color:#006699;"></textarea>
+        <br>
+        <button id="save">save</button>
+        <button id="delete">delete</button>
+        <!--        <label> Your Question is</label>-->
+    </div>
+    <h4>Vertex Infos:</h4>
+    <div id="bottom_div">
 
+        <p id="vertex"></p>
+
+        <div id="options_div">
+
+            <p style="text-align: left">Options:</p>
+        </div>
+
+        <div id="answers_div">
+            <p style="text-align: left">Answers:</p>
+        </div>
+
+    </div>
+
+    <br>
+    <div>
+        <button id="upload" class="btn btn-primary btn-block">Upload</button>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    var ctlStyle;
+    var ctlDraw;
+    var DrawnItems;
+    var sidebar;
+    var shape_infos;
+    var afterUrl =  window.location.search.substring(1);
+    var afterEqual = afterUrl.substring(afterUrl.indexOf('=')+1).toUpperCase();
+    //alert(afterEqual);
+    var op1=afterEqual.substring(0,afterEqual.indexOf('+'));
+    var op2=afterEqual.substring(afterEqual.indexOf('+')+1);
+    //alert(op1);
+    //alert(op2);
+
+    $(document).ready(function() {
+
+        var map = L.map('mapdiv', {
+            center: [op1, op2],
+            zoom: 17,
+            scrollWheelZoom:false,
+            dragging: false,
+            zoomControl: false,
+            attributionControl: false
+        });
+        lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+        map.addLayer(lyrOSM);
+
+        Basemaps = {
+            "Layer OSM": lyrOSM,
+        };
+        /*styleEditor*/
+        DrawnItems = new L.FeatureGroup();
+        DrawnItems.addTo(map);
+
+
+        Overlayers = {
+            "Layer of Drawn Shapes":DrawnItems
+        };
+
+
+        sidebar= L.control.sidebar('sidebar').addTo(map);
+
+
+        easybuttonAusschnitt= L.easyButton({
+            states: [{
+                stateName: 'Toolbar',
+                icon: 'glyphicon-transfer',
+                title: 'Open Text-Editor',
+                onClick: function() {
+                    sidebar.toggle();
+                }
+            }]
+        }).addTo(map);
+
+        /*Layers plugin*/
+        ctlLayers = L.control.layers(Basemaps, Overlayers).addTo(map);
+
+        /*Style Controller*/
+        ctlStyle = L.control.styleEditor({position:'topleft'}).addTo(map);
+
+        ctlDraw = new L.Control.Draw({
+            draw:{
+                position: 'topright',
+                rectangle:true,
+                circle: true,
+                marker: true,
+                polyline: false,
+                polygon: true,
+
+                shapeOptions: {
+                    color: '#8cd6da'
+                },
+                showArea: true
+            },
+            edit:{
+                featureGroup:DrawnItems
+            }
+        }).addTo(map);
+
+        /*Map Event Listener*/
+        map.on('draw:created', function(e){
+            //console.log(e.layer);
+            DrawnItems.addLayer(e.layer);
+
+            shape_infos=JSON.stringify(e.layer.toGeoJSON());
+            $("#vertex").html(shape_infos);
+            //console.log(e.layer._latlngs[0]);
+            //console.log(e.layer._latlngs[0][1]);
+            // console.log(JSON.stringify(e.layer.toGeoJSON()));
+            //var object=Object.keys(e.layer.toGeoJSON());
+            //console.log(object+" propertys!!");
+            //console.log(e.layer._latlng);
+            //var obj=JSON.stringify(e.layer.toGeoJSON());
+            //localStorage.setItem("Mapdata",obj);
+            //console.log(obj);
+        });
+
+
+
+        $("#save").click(function(){
+            var x=document.getElementById("text").value;
+            //console.log(x.innerHTML);
+            console.log(x);
+        });
+
+        $("#delete").click(function () {
+            document.getElementById("text").value="";
+        })
+
+    });
+</script>
 </body>
 </html>

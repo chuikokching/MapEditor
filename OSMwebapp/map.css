@@ -31,3 +31,18 @@ html, body {
 	animation: false;
 	/*text-align:center;*/
 }
+
+#options_div{
+	height:50%;
+	width:100%;
+	/*background-color: #b6f0f2;*/
+	margin:auto;
+	animation: false;
+}
+#answers_div{
+	height:50%;
+	width:100%;
+	/*background-color: #f2daee;*/
+	margin:auto;
+	animation: false;
+}

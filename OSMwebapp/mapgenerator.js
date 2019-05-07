@@ -63,8 +63,7 @@ easyAufgabe2= L.easyButton({
         icon: 'glyphicon-th-list',
         title: 'Multiple Choice',
         onClick: function() {
-            window.open('Aufgabe2.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
-            return false;
+            window.open("Aufgabe2.html?Id1="+op1+"+"+op2,'new', 'height=700, width=1200,top=90%,left=90%,location=no,toolbar=no')
         }
     }]
 }).addTo(map);
