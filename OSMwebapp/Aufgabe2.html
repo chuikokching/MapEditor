@@ -78,7 +78,7 @@
         <div id="options_div">
 
             <h6 style="text-align: left">Options:</h6>
-            <br>
+
         </div>
 
         <div id="answers_div">
@@ -94,6 +94,7 @@
     </div>
 
 </div>
+<script type="text/javascript" src="GeojsonInterpreter.js"></script>
 <script type="text/javascript">
 
     var ctlStyle;
@@ -170,7 +171,8 @@
                 showArea: true
             },
             edit:{
-                featureGroup:DrawnItems
+                featureGroup:DrawnItems,
+                edit:false
             }
         }).addTo(map);
 
@@ -178,27 +180,29 @@
         map.on('draw:created', function(e){
             //console.log(e.layer);
             DrawnItems.addLayer(e.layer);
-            shape_infos=JSON.stringify(e.layer.toGeoJSON());
 
+            shape_infos=e.layer.toGeoJSON();
             // console.log(JSON.stringify(e.layer.toGeoJSON()));
             //var object=Object.keys(e.layer.toGeoJSON());
             //console.log(object+" propertys!!");
             //console.log(e.layer._latlng);
             //var obj=JSON.stringify(e.layer.toGeoJSON());
             //localStorage.setItem("Mapdata",obj);
-            //console.log(obj);
-            var div = document.getElementById("options_div");
-            var p = document.createElement('p');
-            p.innerHTML = shape_infos;
-            div.appendChild(p);
+
 
             var conf = confirm("Is it determined as the correct answer?");
             if(conf === true){
                 alert("It has been determined as the correct answer.");
                 var divAnswer = document.getElementById("answers_div");
                 var pAnswer = document.createElement('p');
-                pAnswer.innerHTML = shape_infos;
+                pAnswer.innerHTML ="Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
                 divAnswer.appendChild(pAnswer);
+            }
+            else{
+                var div = document.getElementById("options_div");
+                var pOption = document.createElement('p');
+                pOption.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+                div.appendChild(pOption);
             }
         });
 
