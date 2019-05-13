@@ -109,6 +109,7 @@
     var op2=afterEqual.substring(afterEqual.indexOf('+')+1);
     //alert(op1);
     //alert(op2);
+    var textContent;
 
     $(document).ready(function() {
 
@@ -189,7 +190,6 @@
             //var obj=JSON.stringify(e.layer.toGeoJSON());
             //localStorage.setItem("Mapdata",obj);
 
-
             var conf = confirm("Is it determined as the correct answer?");
             if(conf === true){
                 alert("It has been determined as the correct answer.");
@@ -220,13 +220,18 @@
 
 
         $("#save").click(function(){
-            var x=document.getElementById("text").value;
+            textContent=document.getElementById("text").value;
             //console.log(x.innerHTML);
             console.log(x);
         });
 
         $("#delete").click(function () {
             document.getElementById("text").value="";
+        })
+
+
+        $("#upload").click(function () {
+
         })
 
     });

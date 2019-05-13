@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <button id="create" onclick="CreateXML()">Create XML</button>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
+    <script src="src/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<script language=javascript type="text/javascript">
+    function CreateXML(){
+        var x="ttggdddd"
+        var blob = new Blob([x], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "testfile1.xml");
+
+    }
+</script>
+
+
+</body>
+</html>
