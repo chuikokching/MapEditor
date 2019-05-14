@@ -13,7 +13,23 @@ $(document).ready(function(){
 
 var map = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:15, editable:true, zoomControl:false, attributionControl:false});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    var select = L.countrySelect().addTo(map);
 
+
+    select.on('change', function(e){
+        if (e.feature === undefined){ //Do nothing on title
+            return;
+        }
+        var country = L.geoJson(e.feature);
+        if (this.previousCountry != null){
+            map.removeLayer(this.previousCountry);
+        }
+        this.previousCountry = country;
+        map.addLayer(country);
+        map.fitBounds(country.getBounds());
+
+
+    });
 map.options.maxZoom=16;
 
 easybuttonAusschnitt= L.easyButton({
