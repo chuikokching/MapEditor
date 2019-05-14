@@ -11,6 +11,8 @@
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
     <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
+    <script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="map.css"/>
     <link rel="stylesheet" href="src/plugins/easy-button.css">
@@ -97,7 +99,8 @@
 <script type="text/javascript" src="XMLGenerator.js"></script>
 <script type="text/javascript" src="GeojsonInterpreter.js"></script>
 <script type="text/javascript">
-
+    var GeojasonObjectOption=[];
+    var GeojasonObjectAnswer=[];
     var ctlStyle;
     var ctlDraw;
     var DrawnItems;
@@ -196,14 +199,16 @@
                 alert("It has been determined as the correct answer.");
                 var divAnswer = document.getElementById("answers_div");
                 var pAnswer = document.createElement('p');
-                pAnswer.innerHTML ="Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+                pAnswer.innerHTML ="Type:"+getGeoJsonType(shape_infos)+",Coordinates:"+ getGeoJsonCoordinates(shape_infos);
                 divAnswer.appendChild(pAnswer);
+                GeojasonObjectAnswer.push(shape_infos);
             }
             else{
                 var div = document.getElementById("options_div");
                 var pOption = document.createElement('p');
-                pOption.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+                pOption.innerHTML = "Type:"+getGeoJsonType(shape_infos)+",Coordinates:"+ getGeoJsonCoordinates(shape_infos);
                 div.appendChild(pOption);
+                GeojasonObjectOption.push(shape_infos);
             }
             // var div = document.getElementById("bottom_div");
             // var p = document.createElement('p');
@@ -219,27 +224,35 @@
            //     div.removeChild(aP[i]);
            //  }
             $("p").remove();
+            GeojasonObjectAnswer.length=0;
+            GeojasonObjectOption.length=0;
 
         });
 
 
 
         $("#save").click(function(){
-            textContent=document.getElementById("text").value;
+            textContent=$("#text").val();
         });
 
         $("#delete").click(function () {
-            document.getElementById("text").value="";
+            $("#text").val("");
         })
 
 
         $("#export").click(function () {
-            //console.log(map);
-            var x= document.getElementById("options_div");
-            var f=x.getElementsByTagName("p");
-            alert(f.length);
-            createXML();
 
+            alert(GeojasonObjectOption.length);
+            alert(GeojasonObjectAnswer.length);
+            if(GeojasonObjectOption.length==0 || GeojasonObjectAnswer.length==0)
+            {
+                swal("Please select at least one optionarea or answerarea!");
+            }
+            else{
+                var txt=createXMLString(textContent,GeojasonObjectOption,GeojasonObjectAnswer);
+                var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "Aufgabe2.xml");
+            }
         })
 
     });

@@ -19,8 +19,6 @@ function getGeoJsonCoordinates(json){
         for(var i=0;i<len;i++)
         {
 
-            {
-
                 if(i==len-1)
                 {
                     info=info+"["+json.geometry.coordinates[0][i]+"]";
@@ -28,8 +26,6 @@ function getGeoJsonCoordinates(json){
                 else{
                     info=info+"["+json.geometry.coordinates[0][i]+"],";
                 }
-            }
-
         }
     }
 
