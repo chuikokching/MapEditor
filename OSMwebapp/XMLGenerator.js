@@ -49,6 +49,6 @@ function createXMLString(textContent,arrayOption,arrayAnswer){
     }
     txt=txt+"       </Aufgabe>"+'\n';
     txt=txt+"</leaflet_data>";
-    alert(txt);
+    //alert(txt);
     return txt;
 }

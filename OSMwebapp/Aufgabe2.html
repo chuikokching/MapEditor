@@ -233,6 +233,7 @@
 
         $("#save").click(function(){
             textContent=$("#text").val();
+            swal("Your task has been saved!");
         });
 
         $("#delete").click(function () {
@@ -242,8 +243,8 @@
 
         $("#export").click(function () {
 
-            alert(GeojasonObjectOption.length);
-            alert(GeojasonObjectAnswer.length);
+            //alert(GeojasonObjectOption.length);
+            //alert(GeojasonObjectAnswer.length);
             if(GeojasonObjectOption.length==0 || GeojasonObjectAnswer.length==0)
             {
                 swal("Please select at least one optionarea or answerarea!");
