@@ -46,3 +46,18 @@ html, body {
 	margin:auto;
 	animation: false;
 }
+#left_div{
+	float:left;
+	width:30%;
+	height:100%;
+}
+#mittle_div{
+	float:left;
+	width:40%;
+	height:100%;
+}
+#right_div{
+	width:30%;
+	height:100%;
+	float:right;
+}
