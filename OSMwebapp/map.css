@@ -51,6 +51,74 @@ html, body {
 	width:30%;
 	height:100%;
 }
+#left_top{
+	float: top;
+	width: 100%;
+	height: 50%;
+}
+#left_top_top{
+	float: top;
+	width: 100%;
+	height: 50%;
+}
+#left_top_top_left{
+	float:left ;
+	width: 50%;
+	height: 100%;
+}
+#left_top_top_right{
+	float: right;
+	width: 50%;
+	height: 100%;
+}
+#left_top_bottom{
+	float: bottom;
+	width: 100%;
+	height: 50%;
+}
+#left_top_bottom_left{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#left_top_bottom_right{
+	float: right;
+	width: 50%;
+	height: 100%;
+}
+#left_bottom{
+	width: 100%;
+	height: 50%;
+}
+#left_bottom_top{
+	width: 100%;
+	height: 50%;
+}
+#left_bottom_top_left{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#left_bottom_top_right{
+	float: right;
+	width: 50%;
+	height: 100%;
+}
+
+#left_bottom_bottom{
+	width: 100%;
+	height: 50%;
+}
+#left_bottom_bottom_left{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#left_bottom_bottom_right{
+	float: right;
+	width: 50%;
+	height: 100%;
+}
 #mittle_div{
 	float:left;
 	width:40%;
@@ -61,67 +129,67 @@ html, body {
 	height:100%;
 	float:right;
 }
-#left1{
-	height: 15%;
-	width:100%;
-}
-#left2{
-	height: 15%;
-	width:100%;
-}
-#left3{
-	height: 15%;
-	width:100%;
-}
-#left4{
-	height: 15%;
-	width:100%;
-}
-#left5{
-	height: 15%;
-	width:100%;
-}
-#left6{
-	height: 15%;
-	width:100%;
-}
-#left7{
-	height: 15%;
-	width:100%;
-}
-#left8{
-	height: 15%;
-	width:100%;
-}
+/*#left1{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left2{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left3{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left4{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left5{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left6{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left7{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
+/*#left8{*/
+/*	height: 20%;*/
+/*	width:20%;*/
+/*}*/
 #right1{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%
 }
 #right2{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right3{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right4{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right5{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right6{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right7{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
 #right8{
-	height: 15%;
-	width:100%;
+	height: 40%;
+	width:40%;
 }
