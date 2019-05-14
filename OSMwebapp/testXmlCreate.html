@@ -10,8 +10,10 @@
 <body>
 <script language=javascript type="text/javascript">
     function CreateXML(){
-        var x="ttggdddd"
-        var blob = new Blob([x], {type: "text/plain;charset=utf-8"});
+        var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"ISO-8859-1"+ '"' + "?>";
+        txt=txt+'\n'+"<leaflet_data>";
+        txt=txt+"</leaflet_data>";
+        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
         saveAs(blob, "testfile1.xml");
 
     }
