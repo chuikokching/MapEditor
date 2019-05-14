@@ -75,16 +75,16 @@
     <h4>Vertex Infos:</h4>
     <div id="bottom_div">
 
-        <div id="options_div">
+<!--        <div id="options_div">-->
 
-            <h6 style="text-align: left">Options:</h6>
+<!--            <h6 style="text-align: left">Options:</h6>-->
 
-        </div>
+<!--        </div>-->
 
-        <div id="answers_div">
-            <h6 style="text-align: left">Answers:</h6>
+<!--        <div id="answers_div">-->
+<!--            <h6 style="text-align: left">Answers:</h6>-->
 
-        </div>
+<!--        </div>-->
 
     </div>
 
@@ -190,20 +190,24 @@
             //var obj=JSON.stringify(e.layer.toGeoJSON());
             //localStorage.setItem("Mapdata",obj);
 
-            var conf = confirm("Is it determined as the correct answer?");
-            if(conf === true){
-                alert("It has been determined as the correct answer.");
-                var divAnswer = document.getElementById("answers_div");
-                var pAnswer = document.createElement('p');
-                pAnswer.innerHTML ="Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
-                divAnswer.appendChild(pAnswer);
-            }
-            else{
-                var div = document.getElementById("options_div");
-                var pOption = document.createElement('p');
-                pOption.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
-                div.appendChild(pOption);
-            }
+            // var conf = confirm("Is it determined as the correct answer?");
+            // if(conf === true){
+            //     alert("It has been determined as the correct answer.");
+            //     var divAnswer = document.getElementById("answers_div");
+            //     var pAnswer = document.createElement('p');
+            //     pAnswer.innerHTML ="Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+            //     divAnswer.appendChild(pAnswer);
+            // }
+            // else{
+            //     var div = document.getElementById("options_div");
+            //     var pOption = document.createElement('p');
+            //     pOption.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+            //     div.appendChild(pOption);
+            // }
+            var div = document.getElementById("bottom_div");
+            var p = document.createElement('p');
+            p.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
+            div.appendChild(p);
         });
 
         map.on('draw:deleted',function (e) {
