@@ -123,12 +123,6 @@ removeLayer= L.easyButton({
 
 
 
-
-//map.on('',function(e){
-
-//});
-
-
 });
 
 

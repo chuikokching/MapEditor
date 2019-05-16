@@ -96,11 +96,12 @@
     </div>
 
 </div>
-<script type="text/javascript" src="XMLGenerator.js"></script>
-<script type="text/javascript" src="GeojsonInterpreter.js"></script>
+<script type="text/javascript" src="src/js/XMLGenerator.js"></script>
+<script type="text/javascript" src="src/js/GeojsonInterpreter.js"></script>
 <script type="text/javascript">
     var GeojasonObjectOption=[];
     var GeojasonObjectAnswer=[];
+    var map_parameter=[];
     var ctlStyle;
     var ctlDraw;
     var DrawnItems;
@@ -250,7 +251,8 @@
                 swal("Please select at least one optionarea or answerarea!");
             }
             else{
-                var txt=createXMLString(textContent,GeojasonObjectOption,GeojasonObjectAnswer);
+                map_parameter.push(op1,op2,map.getZoom());
+                var txt=createXMLString(textContent,GeojasonObjectOption,GeojasonObjectAnswer,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "Aufgabe2.xml");
             }

@@ -1,9 +1,14 @@
-function createXMLString(textContent,arrayOption,arrayAnswer){
+function createXMLString(textContent,arrayOption,arrayAnswer,map_parameter){
     var length;
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"ISO-8859-1"+ '"' + "?>"+'\n';
     txt=txt+"<leaflet_data>"+'\n';
     txt=txt+"       <Aufgabe>"+'\n';
     txt=txt+"          <Aufgabestellung>"+textContent+"</Aufgabestellung>"+'\n';
+    txt=txt+"          <View_Coordinate>"+'\n';
+    txt=txt+"              <lat>"+map_parameter[0]+"</lat>"+'\n';
+    txt=txt+"              <lng>"+map_parameter[1]+"</lng>"+'\n';
+    txt=txt+"          </View_Coordinate>"+'\n';
+    txt=txt+"          <Zoom>"+map_parameter[2]+"</Zoom>"+'\n';
     for(let i=0;i<arrayOption.length;i++)
     {
         txt=txt+"          <Type>"+getGeoJsonType(arrayOption[i])+"</Type>"+'\n';
