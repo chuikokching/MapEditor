@@ -252,7 +252,7 @@
             }
             else{
                 map_parameter.push(op1,op2,map.getZoom());
-                var txt=createXMLString(textContent,GeojasonObjectOption,GeojasonObjectAnswer,map_parameter);
+                var txt=createXMLString2(textContent,GeojasonObjectOption,GeojasonObjectAnswer,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "Aufgabe2.xml");
             }

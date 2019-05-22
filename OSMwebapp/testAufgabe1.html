@@ -36,7 +36,7 @@
             {// code for IE6, IE5
                 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
             }
-            xmlhttp.open("GET","Aufgabe2.xml",false);//Read Example.xml
+            xmlhttp.open("GET","Aufgabe1.xml",false);//Read Example.xml
             xmlhttp.send();
             //var text=xmlhttp.responseText;
             var xmlDoc=xmlhttp.responseXML;//XML Object
@@ -75,12 +75,7 @@
 
             for(let i=0;i<length;i++)
             {
-                if(aufgabe[i].firstChild.nodeValue=="Point")
-                {
-                   marker.push(L.marker([mark[i].getElementsByTagName("lng")[0].firstChild.nodeValue,mark[i].getElementsByTagName("lat")[0].firstChild.nodeValue]).on('click',function () {
-                       alert(answer[i].firstChild.nodeValue+"");
-                   }).addTo(map));
-                }
+
                 if(aufgabe[i].firstChild.nodeValue=="Polygon")
                 {
                     latlng=new Array(mark[i].getElementsByTagName("lat").length);
@@ -92,9 +87,7 @@
                     }
 
                     console.log(latlng);
-                   // poly.push(L.polygon(latlng,{color: 'red'}));
                     poly.push(L.polygon(latlng,{color:'red'}).on('click',function () {
-                        alert(answer[i].firstChild.nodeValue+"");
                     }).addTo(map));
                 }
             }

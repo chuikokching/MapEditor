@@ -11,10 +11,12 @@
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
     <script src="src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
     <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
 
     <link rel="stylesheet" type="text/css" href="map.css"/>
     <link rel="stylesheet" href="src/plugins/easy-button.css">
     <link rel="stylesheet" href="src/css/bootstrap.css">
+    <script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 
     <!-- Draw Plugin-->
     <script src="src/plugins/leaflet-draw/Leaflet.draw.js"></script>
@@ -80,13 +82,15 @@
 
     <br>
     <div>
-        <button id="upload" class="btn btn-primary btn-block">Upload</button>
+        <button id="export" class="btn btn-primary btn-block">XML Export</button>
     </div>
 
 </div>
+<script type="text/javascript" src="src/js/XMLGenerator.js"></script>
 <script type="text/javascript" src="src/js/GeojsonInterpreter.js"></script>
 <script type="text/javascript">
-
+    var map_parameter=[];
+    var GeojsonObject=[];
     var ctlStyle;
     var ctlDraw;
     var DrawnItems;
@@ -184,20 +188,34 @@
             var p = document.createElement('p');
             p.innerHTML = "Type:"+getGeoJsonType(shape_infos)+", Coordinates:"+ getGeoJsonCoordinates(shape_infos);
             div.appendChild(p);
+            GeojsonObject.push(shape_infos);
         });
 
         map.on('draw:deleted',function (e) {
             $("p").remove();
+            GeojsonObject.length=0;
         });
 
         $("#save").click(function(){
-            var x=document.getElementById("text").value;
-            //console.log(x.innerHTML);
-            console.log(x);
+            textContent=$("#text").val();
+            swal("Your task has been saved!");
         });
 
         $("#delete").click(function () {
             document.getElementById("text").value="";
+        })
+
+        $("#export").click(function () {
+            if(GeojsonObject.length==0)
+            {
+                swal("Please select at least one optionarea or answerarea!");
+            }
+            else{
+                map_parameter.push(op1,op2,map.getZoom());
+                var txt=createXMLString1(textContent,GeojsonObject,map_parameter);
+                var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "Aufgabe1.xml");
+            }
         })
 
     });
