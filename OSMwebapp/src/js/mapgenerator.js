@@ -67,6 +67,9 @@ easyAufgabe1= L.easyButton({
         onClick: function() {
            // window.open('Aufgabe1.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
             //return false;
+            if(op1==null || op2 == null)
+                swal("Please cut off an area first!!");
+            else
             window.open("Aufgabe1.html?Id1="+op1+"+"+op2,'new', 'height=700, width=1200,top=90%,left=90%,location=no,toolbar=no');
         }
     }]
@@ -79,6 +82,9 @@ easyAufgabe2= L.easyButton({
         icon: 'glyphicon-th-list',
         title: 'Multiple Choice',
         onClick: function() {
+            if(op1==null || op2 == null)
+                swal("Please cut off an area first!!");
+            else
             window.open("Aufgabe2.html?Id1="+op1+"+"+op2,'new', 'height=700, width=1200,top=90%,left=90%,location=no,toolbar=no')
         }
     }]
