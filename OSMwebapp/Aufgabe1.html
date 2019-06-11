@@ -76,13 +76,17 @@
     </div>
     <h4>Vertex Infos:</h4>
     <div id="bottom_div">
-<!--        <h6 style="text-align: left">Answers:</h6>-->
+        <!--        <h6 style="text-align: left">Answers:</h6>-->
 
     </div>
 
     <br>
     <div>
-        <button id="export" class="btn btn-primary btn-block">XML Export</button>
+        <button id="export_exerciseChain" class="btn btn-primary btn-block">ExerciseChain Export</button>
+    </div>
+    <br>
+    <div>
+        <button id="export_Stage" class="btn btn-primary btn-block">Stage Export</button>
     </div>
 
 </div>
@@ -153,11 +157,11 @@
         ctlDraw = new L.Control.Draw({
             draw:{
                 position: 'topright',
-                rectangle:false,
+                rectangle:true,
                 circle: false,
                 marker: false,
                 polyline: false,
-                //polygon: false,
+                polygon: false,
                 shapeOptions: {
                     color: '#8cd6da'
                 },
@@ -205,7 +209,7 @@
             document.getElementById("text").value="";
         })
 
-        $("#export").click(function () {
+        $("#export_Stage").click(function () {
             if(GeojsonObject.length==0)
             {
                 swal("Please select at least one optionarea or answerarea!");
@@ -214,8 +218,20 @@
                 map_parameter.push(op1,op2,map.getZoom());
                 var txt=createXMLString1(textContent,GeojsonObject,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
-                saveAs(blob, "Aufgabe1.xml");
+                saveAs(blob, "stage1.xml");
             }
+        })
+
+        $("#export_exerciseChain").click(function () {
+            var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+            txt= txt + "<exercisechain>"+'\n';
+            txt= txt + "  <step id=\"1\" displayName=\"Stage 1\" file=\"stage1.xml\" >" +'\n';
+            txt= txt +"    <next default=\"repeat\" message=\"Versuche es noch mal.\" >"+ '\n';
+            txt= txt +"      <path target=\"end\" result=\"100\" />" + '\n' + "    </next>"+'\n';
+            txt= txt +"  </step>"+'\n';
+            txt= txt +"</exercisechain>";
+            var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "exerciseChain.xml");
         })
 
     });

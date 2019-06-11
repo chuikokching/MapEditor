@@ -92,7 +92,11 @@
 
     <br>
     <div>
-        <button id="export" class="btn btn-primary btn-block">XML Export</button>
+        <button id="export_exerciseChain" class="btn btn-primary btn-block">ExerciseChain Export</button>
+    </div>
+
+    <div>
+        <button id="export_Stage" class="btn btn-primary btn-block">Stage Export</button>
     </div>
 
 </div>
@@ -218,12 +222,12 @@
         });
 
         map.on('draw:deleted',function (e) {
-           //  var div = document.getElementById("options_div");
-           //  var aP = div.getElementsByTagName("p")[0];
-           // // alert(aP.length);
-           //  for(var i = 0;i < aP.length;i++){
-           //     div.removeChild(aP[i]);
-           //  }
+            //  var div = document.getElementById("options_div");
+            //  var aP = div.getElementsByTagName("p")[0];
+            // // alert(aP.length);
+            //  for(var i = 0;i < aP.length;i++){
+            //     div.removeChild(aP[i]);
+            //  }
             $("p").remove();
             GeojasonObjectAnswer.length=0;
             GeojasonObjectOption.length=0;
@@ -242,7 +246,7 @@
         })
 
 
-        $("#export").click(function () {
+        $("#export_Stage").click(function () {
 
             //alert(GeojasonObjectOption.length);
             //alert(GeojasonObjectAnswer.length);
@@ -254,8 +258,20 @@
                 map_parameter.push(op1,op2,map.getZoom());
                 var txt=createXMLString2(textContent,GeojasonObjectOption,GeojasonObjectAnswer,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
-                saveAs(blob, "Aufgabe2.xml");
+                saveAs(blob, "stage1.xml");
             }
+        })
+
+        $("#export_exerciseChain").click(function () {
+            var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+            txt= txt + "<exercisechain>"+'\n';
+            txt= txt + "  <step id=\"1\" displayName=\"Stage 1\" file=\"stage1.xml\" >" +'\n';
+            txt= txt +"    <next default=\"repeat\" message=\"Versuche es noch mal.\" >"+ '\n';
+            txt= txt +"      <path target=\"end\" result=\"100\" />" + '\n' + "    </next>"+'\n';
+            txt= txt +"  </step>"+'\n';
+            txt= txt +"</exercisechain>";
+            var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, "exerciseChain.xml");
         })
 
     });
