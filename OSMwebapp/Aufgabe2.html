@@ -268,7 +268,7 @@
             txt= txt + "  <step id=\"1\" displayName=\"Stage 1\" file=\"stage1.xml\" >" +'\n';
             txt= txt +"    <next default=\"repeat\" message=\"Versuche es noch mal.\" >"+ '\n';
             txt= txt +"      <path target=\"end\" result=\"100\" />" + '\n' + "    </next>"+'\n';
-            txt= txt +"  </step>"+'\n';
+            txt= txt +"   </step>"+'\n';
             txt= txt +"</exercisechain>";
             var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "exerciseChain.xml");
