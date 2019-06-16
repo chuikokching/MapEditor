@@ -65,8 +65,9 @@ function createXMLString1(textContent,array,map_parameter){
     var length;
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
     txt=txt+"<exercise type="+'"'+"fillIn"+'"'+">"+'\n';
-    txt=txt+"  <task>";
+    txt=txt+"  <task>"+'\n';
 
+    txt=txt+textContent+":"+'\n';
 
     txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='600px';document.getElementById('mapdiv').style.width='1000px';";
     txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,dragging: false,zoomControl: false,attributionControl: false});";
