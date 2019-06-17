@@ -21,19 +21,21 @@
     <script src="src/plugins/Leaflet.Path.Drag-master/src/Canvas.js" ></script>
     <script src="src/plugins/Leaflet.Path.Drag-master/src/SVG.js" ></script>
     <script src="src/plugins/Leaflet.Path.Drag-master/src/SVG.VML.js" ></script>
-    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
 
     <script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
     <style>
         #mapdiv {
             height:100vh;
         }
-
+        #eumapdiv{
+            height:100vh;
+        }
     </style>
 </head>
 <body>
 <div>
     <div id="mapdiv" class="col-md-12"></div>
+    <div id="eumapdiv" class="col-md-12"></div>
     <div id="side-bar" class="col-md-10">
         <h4>Zoom Level: <span id='zoom-level'></span></h4>
         <h4>Map Center: <span id='map-center'></span></h4>
@@ -41,7 +43,7 @@
         <h4>Image Opacity: <span id='image-opacity'>0.5</span></h4>
         <br>
         <button id="Germany" style="width: 120px; height:79px; border-style:none;background:url(img/Germany.jpeg) no-repeat left top; margin-right: 10px"></button>
-        <button id="Europa" style="width: 120px; height:79px;border-style:none;background:url(img/EU.png) no-repeat left top;margin-right: 10px"; onclick="window.open(this.html)"></button>
+        <button id="Europa" style="width: 120px; height:79px;border-style:none;background:url(img/EU.png) no-repeat left top;margin-right: 10px"></button>
         <button id="China" style="width: 120px; height:79px; border-style:none;background:url(img/China.png) no-repeat left top"></button>
         <br>
         <br>
@@ -99,6 +101,8 @@
             zoomControl: false,
             attributionControl: false
         });
+
+
         lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
         lyrTopo = L.tileLayer.provider('OpenTopoMap');
         lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
@@ -133,8 +137,6 @@
             [51.51567325569717,3.408486843109058],
             [51.51567325569717,6.013641357421802],
             [53.67976834496321,6.013641357421802]];
-
-
 
         Sachsen_Anhaltpoly_array=[
             [55.0509163404584,9.514524936675953],
@@ -1200,6 +1202,90 @@
         });
 
 
+        $("#Germany").click(function () {
+            DEadd();
+        });
+
+
+        $("#Europa").click(function () {
+            DEremove();
+            var point = mymap.point[50.51501,4.21234];
+            mymap._getCenterLayerPoint(point);
+        });
+
+        $("#China").click(function () {
+            DEremove();
+        });
+
+        function DEadd(){
+            mymap.addLayer(Bremen);
+            mymap.addLayer(Berlin);
+            mymap.addLayer(Brandenburg);
+            mymap.addLayer(Thueringen);
+            mymap.addLayer(Badenwuer);
+            mymap.addLayer(Bayern);
+            mymap.addLayer(Saarland);
+            mymap.addLayer(Sachsen);
+            mymap.addLayer(Sachsen_Anhalt);
+            mymap.addLayer(Hamburg);
+            mymap.addLayer(Hessen);
+            mymap.addLayer(Niedersachsen);
+            mymap.addLayer(NRW);
+            mymap.addLayer(Rheinland);
+            mymap.addLayer(Mecklenburg);
+            mymap.addLayer(Schleswig);
+            mymap.addLayer(Bremen_overlay);
+            mymap.addLayer(Berlin_overlay);
+            mymap.addLayer(Brandenburg_overlay);
+            mymap.addLayer(Thueringen_overlay);
+            mymap.addLayer(Badenwuer_overlay);
+            mymap.addLayer(Bayern_overlay);
+            mymap.addLayer(Saarland_overlay);
+            mymap.addLayer(Sachsen_overlay);
+            mymap.addLayer(Sachsen_Anhalt_overlay);
+            mymap.addLayer(Hamburg_overlay);
+            mymap.addLayer(Hessen_overlay);
+            mymap.addLayer(Niedersachsen_overlay);
+            mymap.addLayer(NRW_overlay);
+            mymap.addLayer(Rheinland_overlay);
+            mymap.addLayer(Mecklenburg_overlay);
+            mymap.addLayer(Schleswig_overlay);
+        }
+        function DEremove(){
+            mymap.removeLayer(Bremen);
+            mymap.removeLayer(Bremen_overlay);
+            mymap.removeLayer(Berlin);
+            mymap.removeLayer(Berlin_overlay);
+            mymap.removeLayer(Brandenburg);
+            mymap.removeLayer(Brandenburg_overlay);
+            mymap.removeLayer(Thueringen);
+            mymap.removeLayer(Thueringen_overlay);
+            mymap.removeLayer(Badenwuer);
+            mymap.removeLayer(Badenwuer_overlay);
+            mymap.removeLayer(Bayern);
+            mymap.removeLayer(Bayern_overlay);
+            mymap.removeLayer(Saarland);
+            mymap.removeLayer(Saarland_overlay);
+            mymap.removeLayer(Sachsen);
+            mymap.removeLayer(Sachsen_overlay);
+            mymap.removeLayer(Sachsen_Anhalt);
+            mymap.removeLayer(Sachsen_Anhalt_overlay);
+            mymap.removeLayer(Hamburg);
+            mymap.removeLayer(Hamburg_overlay);
+            mymap.removeLayer(Hessen);
+            mymap.removeLayer(Hessen_overlay);
+            mymap.removeLayer(Niedersachsen);
+            mymap.removeLayer(Niedersachsen_overlay);
+            mymap.removeLayer(NRW);
+            mymap.removeLayer(NRW_overlay);
+            mymap.removeLayer(Rheinland);
+            mymap.removeLayer(Rheinland_overlay);
+            mymap.removeLayer(Mecklenburg);
+            mymap.removeLayer(Mecklenburg_overlay);
+            mymap.removeLayer(Schleswig);
+            mymap.removeLayer(Schleswig_overlay);
+        }
+
         $("#export_Stage").click(function(){
 
         });
@@ -1215,7 +1301,9 @@
             txt= txt +"</exercisechain>";
             var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "exerciseChain.xml");
-        })
+        });
+
+
 
         // $("#sldOpacity").on('change', function(){
         //     $("#image-opacity").html(this.value);
