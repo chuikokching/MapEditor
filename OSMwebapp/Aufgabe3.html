@@ -1207,13 +1207,13 @@
 
         $("#Germany").click(function () {
             DEadd();
+            mymap.flyTo([51.65001, 10.67920],6);
         });
 
 
         $("#Europa").click(function () {
             DEremove();
-            var point = mymap.point[50.51501,4.21234];
-            mymap._getCenterLayerPoint(point);
+            mymap.flyTo([55.59309,1.21234],4);
         });
 
         $("#China").click(function () {
