@@ -72,11 +72,11 @@
         <br>
         <button id="save">save</button>
         <button id="delete">delete</button>
-        <!--        <label> Your Question is</label>-->
+
     </div>
     <h4>Vertex Infos:</h4>
     <div id="bottom_div">
-        <!--        <h6 style="text-align: left">Answers:</h6>-->
+
 
     </div>
 
@@ -175,7 +175,6 @@
 
         /*Map Event Listener*/
         map.on('draw:created', function(e){
-            //console.log(e.layer);
             DrawnItems.addLayer(e.layer);
 
             shape_infos=e.layer.toGeoJSON();
