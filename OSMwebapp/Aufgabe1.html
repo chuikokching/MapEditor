@@ -215,7 +215,7 @@
             }
             else{
                 map_parameter.push(op1,op2,map.getZoom());
-                var txt=createXMLString1(textContent,GeojsonObject,map_parameter);
+                var txt=createXMLStringAufgabe1(textContent,GeojsonObject,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "stage1.xml");
             }

@@ -1,4 +1,4 @@
-function createXMLString2(textContent,arrayOption,arrayAnswer,map_parameter){
+function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_parameter){
     var length;
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
     txt=txt+"<exercise type="+'"'+"mc"+'"'+">"+'\n';
@@ -59,9 +59,7 @@ function createXMLString2(textContent,arrayOption,arrayAnswer,map_parameter){
 }
 
 
-
-
-function createXMLString1(textContent,array,map_parameter){
+function createXMLStringAufgabe1(textContent,array,map_parameter){
     var length;
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
     txt=txt+"<exercise type="+'"'+"fillIn"+'"'+">"+'\n';
