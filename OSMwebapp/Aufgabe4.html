@@ -52,6 +52,10 @@
     var ctlMouseposition;
     var ctlSidebar;
     var ctlEasybutton;
+    var popup1;
+    var popup2;
+    var marker1;
+    var marker2;
 
     var mymap = L.map('mapdiv', {
         center:[48.82791, 17.28320],
@@ -61,15 +65,28 @@
         zoomControl: false,
         attributionControl: false});
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png').addTo(mymap);
 
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
+    popup2 = L.popup({closeButton:false,autoClose:false})
+        .setContent('Staat:2');
+
+    popup1 = L.popup({closeButton:false,autoClose:false})
+        .setContent('Staat:1');
+
     ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
         ctlSidebar.toggle();
+
     }).addTo(mymap);
+
+    marker1 = new L.Marker([50.93057,9.84375], { draggable:false});
+    marker1.bindPopup(popup1).addTo(mymap).openPopup();
+
+    marker2 = new L.Marker([52.12000,5.38330], { draggable:false});
+    marker2.bindPopup(popup2).addTo(mymap).openPopup();
 
 
 
