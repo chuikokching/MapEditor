@@ -133,7 +133,7 @@
         mymap.addLayer(lyrOSM);
 
         mymap.options.maxZoom=8;
-        mymap.options.minZoom=6;
+        mymap.options.minZoom=5;
 
         Berlinpoly_array=[
             [49.64591627445775,13.437566757201964],
@@ -236,6 +236,24 @@
         //mymap.fitBounds(Saarpolygon.getBounds());
 
 
+        Iceland = L.imageOverlay('img-EU/Iceland_grey.png',[[55.39967,-10.80284],[51.33054,-5.86644]],{opacity:1});
+        UK = L.imageOverlay('img-EU/UK_grey.png',[[60.93439,-8.40180],[49.85510,3.23311]],{opacity:1});
+        Austria = L.imageOverlay('img-EU/Austria.png',[[49.08250,9.50115],[46.34658,17.20256]],{opacity:1});
+        Belgium = L.imageOverlay('img-EU/Belgium.png',[[51.52291,2.51672],[49.50668,6.42785]],{opacity:1});
+        Denmaik = L.imageOverlay('img-EU/Denmaik.png',[[57.79589,8.02885],[54.52946,12.70916]],{opacity:1});
+        Deutschland = L.imageOverlay('img-EU/Deutschland.png',[[55.08081,5.81999],[47.22000,15.08901]],{opacity:1});
+        Netherland = L.imageOverlay('img-EU/Netherland.png',[[53.52636,3.34687],[50.75692,7.21406]],{opacity:1});
+        Luxenburg = L.imageOverlay('img-EU/Luxenburg.png',[[50.18446,5.72073],[49.44570,6.51175]],{opacity:1});
+
+
+        Hungary = L.imageOverlay('img-EU/Hungary.png',[[48.60508,16.11591],[45.73038,22.96546]],{opacity:1});
+        Slovakia = L.imageOverlay('img-EU/Slovakia.png',[[49.62573,16.81903],[47.70480,22.59784]],{opacity:1});
+        Poland = L.imageOverlay('img-EU/Poland.png',[[54.86267,14.05039],[48.99806,24.15781]],{opacity:1});
+        Slovenia = L.imageOverlay('img-EU/Slovenia.png',[[46.87579,13.35486],[45.40242,16.66695]],{opacity:1});
+        Croatia = L.imageOverlay('img-EU/croatia.png',[[46.55371,13.50888],[42.35481,19.45953]],{opacity:1});
+        Czechia = L.imageOverlay('img-EU/C zechia.png',[[51.07226,12.10480],[48.55835,18.83643]],{opacity:1});
+        Romania = L.imageOverlay('img-EU/romania.png',[[48.26397,20.19226],[43.60243,29.63958]],{opacity:1});
+        Sweden = L.imageOverlay('img-EU/sweden.png',[[69.13583,9.26957],[55.12188,25.37861]],{opacity:1});
 
         Bremen = L.imageOverlay('img/Bremen_grey.png',[[53.60835,8.47211],[53.00432,9.00545]],{opacity:1}).addTo(mymap);
 
@@ -1226,13 +1244,14 @@
 
         $("#Germany").click(function () {
             DEadd();
+            EUremove();
             mymap.flyTo([51.65001, 10.67920],6);
         });
 
 
         $("#Europa").click(function () {
             DEremove();
-
+            EUadd();
             mymap.flyTo([48.82791, 17.28320],5);
         });
 
@@ -1240,8 +1259,42 @@
             DEremove();
         });
 
-        function EUadd(){
+        function EUremove(){
+            mymap.removeLayer(Iceland) ;
+            mymap.removeLayer(UK);
+            mymap.removeLayer(Austria) ;
+            mymap.removeLayer(Belgium) ;
+            mymap.removeLayer(Denmaik) ;
+            mymap.removeLayer(Deutschland) ;
+            mymap.removeLayer(Netherland );
+            mymap.removeLayer(Luxenburg);
+            mymap.removeLayer(Hungary);
+            mymap.removeLayer(Slovakia);
+            mymap.removeLayer(Poland);
+            mymap.removeLayer(Slovenia);
+            mymap.removeLayer(Croatia);
+            mymap.removeLayer(Czechia);
+            mymap.removeLayer(Romania);
+            mymap.removeLayer(Sweden);
+        };
 
+        function EUadd(){
+            mymap.addLayer(Iceland) ;
+            mymap.addLayer(UK);
+            mymap.addLayer(Austria) ;
+            mymap.addLayer(Belgium) ;
+            mymap.addLayer(Denmaik) ;
+            mymap.addLayer(Deutschland) ;
+            mymap.addLayer(Netherland );
+            mymap.addLayer(Luxenburg);
+            mymap.addLayer(Hungary);
+            mymap.addLayer(Slovakia);
+            mymap.addLayer(Poland);
+            mymap.addLayer(Slovenia);
+            mymap.addLayer(Croatia);
+            mymap.addLayer(Czechia);
+            mymap.addLayer(Romania);
+            mymap.addLayer(Sweden);
         };
 
         function DEadd(){
