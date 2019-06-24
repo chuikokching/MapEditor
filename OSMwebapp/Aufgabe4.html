@@ -100,22 +100,10 @@
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
-    // popup2 = L.popup({closeButton:false,autoClose:false})
-    //     .setContent('Staat:2');
-    //
-    // popup1 = L.popup({closeButton:false,autoClose:false})
-    //     .setContent('Staat:1');
-    //
-
     ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
         ctlSidebar.toggle();
     }).addTo(mymap);
 
-    // marker1 = new L.Marker([50.93057,9.84375], { draggable:false});
-    // marker1.bindPopup(popup1).addTo(mymap).openPopup();
-    //
-    // marker2 = new L.Marker([52.12000,5.38330], { draggable:false});
-    // marker2.bindPopup(popup2).addTo(mymap).openPopup();
 
     for(let i=0;i<markerarray.length;i++)
     {

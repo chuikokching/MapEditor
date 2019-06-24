@@ -94,6 +94,18 @@
     var Czechia;
     var Romania;
     var Sweden;
+    var Italy;
+    var Bulgaria;
+    var Cyprus;
+    var Estonia;
+    var Finland;
+    var France;
+    var Greece;
+    var Latvia;
+    var Lithuania;
+    var Malta;
+    var Portugal;
+    var Spain;
 
     var Nieder_spare,Bawuer_spare,Bayern_spare,NRW_spare,Brandenburg_spare;
     var Bremen,Bremenpoly_array,Bremen_polygon,Bremen_imageBound,Bremen_overlay;
@@ -132,8 +144,8 @@
         lyrCavans=L.tileLayer.provider('Esri.WorldGrayCanvas');
         mymap.addLayer(lyrOSM);
 
-        mymap.options.maxZoom=8;
-        mymap.options.minZoom=5;
+        mymap.options.maxZoom=7;
+        mymap.options.minZoom=4;
 
         Berlinpoly_array=[
             [49.64591627445775,13.437566757201964],
@@ -236,24 +248,66 @@
         //mymap.fitBounds(Saarpolygon.getBounds());
 
 
+        /*-------------------------------------Europe Union-------------------------------*/
+
         Iceland = L.imageOverlay('img-EU/Iceland_grey.png',[[55.39967,-10.80284],[51.33054,-5.86644]],{opacity:1});
+
         UK = L.imageOverlay('img-EU/UK_grey.png',[[60.93439,-8.40180],[49.85510,3.23311]],{opacity:1});
+
         Austria = L.imageOverlay('img-EU/Austria.png',[[49.08250,9.50115],[46.34658,17.20256]],{opacity:1});
+
         Belgium = L.imageOverlay('img-EU/Belgium.png',[[51.52291,2.51672],[49.50668,6.42785]],{opacity:1});
+
         Denmaik = L.imageOverlay('img-EU/Denmaik.png',[[57.79589,8.02885],[54.52946,12.70916]],{opacity:1});
+
         Deutschland = L.imageOverlay('img-EU/Deutschland.png',[[55.08081,5.81999],[47.22000,15.08901]],{opacity:1});
+
         Netherland = L.imageOverlay('img-EU/Netherland.png',[[53.52636,3.34687],[50.75692,7.21406]],{opacity:1});
+
         Luxenburg = L.imageOverlay('img-EU/Luxenburg.png',[[50.18446,5.72073],[49.44570,6.51175]],{opacity:1});
 
-
         Hungary = L.imageOverlay('img-EU/Hungary.png',[[48.60508,16.11591],[45.73038,22.96546]],{opacity:1});
+
         Slovakia = L.imageOverlay('img-EU/Slovakia.png',[[49.62573,16.81903],[47.70480,22.59784]],{opacity:1});
+
         Poland = L.imageOverlay('img-EU/Poland.png',[[54.86267,14.05039],[48.99806,24.15781]],{opacity:1});
+
         Slovenia = L.imageOverlay('img-EU/Slovenia.png',[[46.87579,13.35486],[45.40242,16.66695]],{opacity:1});
+
         Croatia = L.imageOverlay('img-EU/croatia.png',[[46.55371,13.50888],[42.35481,19.45953]],{opacity:1});
+
         Czechia = L.imageOverlay('img-EU/C zechia.png',[[51.07226,12.10480],[48.55835,18.83643]],{opacity:1});
+
         Romania = L.imageOverlay('img-EU/romania.png',[[48.26397,20.19226],[43.60243,29.63958]],{opacity:1});
+
         Sweden = L.imageOverlay('img-EU/sweden.png',[[69.13583,9.26957],[55.12188,25.37861]],{opacity:1});
+
+
+        ////
+
+        Italy = L.imageOverlay('img-EU/Italy.png',[[47.18971,6.30003],[36.45664,18.88465]],{opacity:1});
+
+        Bulgaria = L.imageOverlay('img-EU/Bulgaria.png',[[44.36957,22.25830],[41.06279,28.75023]],{opacity:1});
+
+        Cyprus = L.imageOverlay('img-EU/Cyprus.png',[[35.89326,32.18000],[34.29158,34.92427]],{opacity:1});
+
+        Estonia =L.imageOverlay('img-EU/estonia.png',[[59.77533,21.68504],[57.38578,28.49954]],{opacity:1});
+
+        Finland =L.imageOverlay('img-EU/Finland.png',[[70.23290,19.19600],[59.69962,32.73119]],{opacity:1});
+
+        France = L.imageOverlay('img-EU/France.png',[[51.24034,-5.2200],[41.14865,9.99630]],{opacity:1});
+
+        Greece = L.imageOverlay('img-EU/Greece.png',[[41.93766,19.30080],[34.81380,28.57064]],{opacity:1});
+        Latvia = L.imageOverlay('img-EU/Latvia.png',[[58.11271,20.78613],[55.52863,28.41797]],{opacity:1});
+        Lithuania= L.imageOverlay('img-EU/Lithuania.png',[[56.55948,20.80205],[53.76170,26.96777]],{opacity:1});
+        Malta = L.imageOverlay('img-EU/Malta.png',[[36.09992,14.15955],[35.75691,14.61548]],{opacity:1});
+        Portugal = L.imageOverlay('img-EU/Portugal.png',[[42.23936,-9.79064],[36.80101,-5.60713]],{opacity:1});
+        Spain = L.imageOverlay('img-EU/spain.png',[[43.85037,-9.31895],[35.96969,4.36186]],{opacity:1});
+
+
+        /*-------------------------------------Europe Union-------------------------------*/
+
+        /*-------------------------------------Deutschland--------------------------------*/
 
         Bremen = L.imageOverlay('img/Bremen_grey.png',[[53.60835,8.47211],[53.00432,9.00545]],{opacity:1}).addTo(mymap);
 
@@ -286,7 +340,6 @@
         Rheinland = L.imageOverlay('img/Rheinland_grey.png',[[50.93035,6.13589],[48.97219,8.49595]],{opacity:1}).addTo(mymap);
 
         Badenwuer = L.imageOverlay('img/Bawuer_grey.png',[[49.79906,7.49879],[47.53232,10.48808]] ,{opacity:1}).addTo(mymap);
-
 
         Brandenburg_spare=L.imageOverlay('img/Brandenburg_grey.png',[[53.57769065527759,11.171550750732148],[51.35871813296017,14.793820381164277]],{opacity:1});
         NRW_spare= L.imageOverlay('img/NRW_grey.png',[[52.51850886754137,5.821316242217626],[50.29096508631147,9.48866844177207]],{opacity:1});
@@ -559,6 +612,8 @@
             opacity:0,
             fillOpacity:0
         }).addTo(mymap);
+
+        /*-------------------------------------Deutschland--------------------------------*/
 
         objBasemaps = {
             "Open Street Maps": lyrOSM,
@@ -1280,6 +1335,24 @@
         };
 
         function EUadd(){
+
+            mymap.addLayer(Italy) ;
+
+            mymap.addLayer(Bulgaria);
+
+            mymap.addLayer(Cyprus) ;
+            mymap.addLayer(Estonia);
+
+            mymap.addLayer(Finland) ;
+
+            mymap.addLayer(France);
+
+            mymap.addLayer(Greece);
+            mymap.addLayer (Latvia);
+            mymap.addLayer ( Lithuania);
+            mymap.addLayer (Malta);
+            mymap.addLayer (Portugal);
+            mymap.addLayer(Spain) ;
             mymap.addLayer(Iceland) ;
             mymap.addLayer(UK);
             mymap.addLayer(Austria) ;
