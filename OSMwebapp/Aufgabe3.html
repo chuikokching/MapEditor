@@ -77,6 +77,24 @@
     var objBasemaps;
     var objOverlays;
 
+
+    var Iceland;
+    var UK;
+    var Austria;
+    var Belgium;
+    var Denmaik;
+    var Deutschland;
+    var Netherland;
+    var Luxenburg;
+    var Hungary;
+    var Slovakia;
+    var Poland;
+    var Slovenia;
+    var Croatia;
+    var Czechia;
+    var Romania;
+    var Sweden;
+
     var Nieder_spare,Bawuer_spare,Bayern_spare,NRW_spare,Brandenburg_spare;
     var Bremen,Bremenpoly_array,Bremen_polygon,Bremen_imageBound,Bremen_overlay;
     var Brandenburg,Brandenburgpoly_array,Brandenburg_polygon,Brandenburg_imageBound,Brandenburg_overlay;
@@ -218,6 +236,7 @@
         //mymap.fitBounds(Saarpolygon.getBounds());
 
 
+
         Bremen = L.imageOverlay('img/Bremen_grey.png',[[53.60835,8.47211],[53.00432,9.00545]],{opacity:1}).addTo(mymap);
 
         Brandenburg = L.imageOverlay('img/Brandenburg_grey.png',[[53.52929,11.22867],[51.30927,14.84964]],{opacity:1}).addTo(mymap);
@@ -265,17 +284,17 @@
         Bayern_imageBound = L.latLngBounds([
             Bayernpoly_array[0],
             Bayernpoly_array[2]
-        ])
+        ]);
 
         Berlin_imageBound = L.latLngBounds([
             Berlinpoly_array[0],
             Berlinpoly_array[2]
-        ])
+        ]);
 
         Sachsen_Anhalt_imageBound = L.latLngBounds([
             Sachsen_Anhaltpoly_array[0],
             Sachsen_Anhaltpoly_array[2]
-        ])
+        ]);
 
         Brandenburg_imageBound = L.latLngBounds([
             Brandenburgpoly_array[0],
@@ -1213,12 +1232,17 @@
 
         $("#Europa").click(function () {
             DEremove();
+
             mymap.flyTo([48.82791, 17.28320],5);
         });
 
         $("#China").click(function () {
             DEremove();
         });
+
+        function EUadd(){
+
+        };
 
         function DEadd(){
             mymap.addLayer(Bremen);
