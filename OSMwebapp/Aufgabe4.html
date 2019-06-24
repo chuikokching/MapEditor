@@ -52,10 +52,38 @@
     var ctlMouseposition;
     var ctlSidebar;
     var ctlEasybutton;
-    var popup1;
-    var popup2;
-    var marker1;
-    var marker2;
+    var marker_map;
+    var popup_map;
+    var markerarray=[
+        [50.93057,9.84375],
+        [52.12000,5.38330],
+        [50.67171,4.75056],
+        [49.71521,6.13483],
+        [47.06141,2.46969],
+        [40.48058,-3.40714],
+        [39.74118,-8.15323],
+        [47.54415,14.48110],
+        [44.33668,11.40492],
+        [45.57560,16.52927],
+        [46.00459,14.74949],
+        [55.99372,9.35469],
+        [49.73935,15.32172],
+        [52.02609,19.29877],
+        [60.86631,15.33691],
+        [53.22577,-7.82227],
+        [53.38333,-1.66992],
+        [62.45141,26.45508],
+        [58.76767,25.3725],
+        [56.99232,25.08685],
+        [55.31606,23.94427],
+        [39.10535,22.35271],
+        [35.85177,14.31759],
+        [46.85544,19.30289],
+        [45.96159,24.75211],
+        [42.5965,25.27946],
+        [34.97438,33.2054],
+        [48.76343,19.29199]
+    ];
 
     var mymap = L.map('mapdiv', {
         center:[48.82791, 17.28320],
@@ -72,23 +100,29 @@
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
-    popup2 = L.popup({closeButton:false,autoClose:false})
-        .setContent('Staat:2');
-
-    popup1 = L.popup({closeButton:false,autoClose:false})
-        .setContent('Staat:1');
+    // popup2 = L.popup({closeButton:false,autoClose:false})
+    //     .setContent('Staat:2');
+    //
+    // popup1 = L.popup({closeButton:false,autoClose:false})
+    //     .setContent('Staat:1');
+    //
 
     ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
         ctlSidebar.toggle();
-
     }).addTo(mymap);
 
-    marker1 = new L.Marker([50.93057,9.84375], { draggable:false});
-    marker1.bindPopup(popup1).addTo(mymap).openPopup();
+    // marker1 = new L.Marker([50.93057,9.84375], { draggable:false});
+    // marker1.bindPopup(popup1).addTo(mymap).openPopup();
+    //
+    // marker2 = new L.Marker([52.12000,5.38330], { draggable:false});
+    // marker2.bindPopup(popup2).addTo(mymap).openPopup();
 
-    marker2 = new L.Marker([52.12000,5.38330], { draggable:false});
-    marker2.bindPopup(popup2).addTo(mymap).openPopup();
-
+    for(let i=0;i<markerarray.length;i++)
+    {
+        popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(i+1));
+        marker_map = new L.Marker(markerarray[i], { draggable:false});
+        marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
+    };
 
 
     mymap.on('zoomend', function(){
