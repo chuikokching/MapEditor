@@ -105,13 +105,22 @@
     }).addTo(mymap);
 
 
-    for(let i=0;i<markerarray.length;i++)
+    for(let i=0;i<10;i++)
     {
+
         popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(i+1));
-        marker_map = new L.Marker(markerarray[i], { draggable:false});
+        marker_map = new L.Marker(getRandomarrayIndex(markerarray), { draggable:false});
         marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
     };
 
+    function getRandomarrayIndex(array){
+
+        var min=0;
+        var max=(array.length-1);
+        //get a random integer between max and min
+        var index = Math.floor(Math.random()* (max - min)) + min;
+        return array[index];
+    }
 
     mymap.on('zoomend', function(){
         $("#zoom-level").html(mymap.getZoom());
