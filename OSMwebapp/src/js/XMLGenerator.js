@@ -101,6 +101,10 @@ function createXMLStringMapPuzzleGermany(){
 }
 
 
-function createXMLStringAufgabe4fill_in_blanks(){
+function createXMLStringAufgabe4fill_in_blanks(output,markerarray,EU_staaten){
 
+    var txt=" Bitte geben Sie den Namen der folgenden EU-Mitgliedsstaaten ein:  "+'\n'+'\n';
+    txt=txt + "&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapContainer\">&lt;div id=\"mapdiv\">&lt;script>";
+    txt=txt + "&lt;/script>&lt;/div>&lt;/div>"+'\n';
+    return txt;
 }

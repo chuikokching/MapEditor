@@ -11,9 +11,11 @@
     <script src="src/jquery-3.2.0.min.js"></script>
     <script src="https://leaflet.github.io/Path.Drag.js/src/Path.Drag.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="src/js/XMLGenerator.js"></script>
     <script src="src/plugins/L.Control.MousePosition.js"></script>
     <script src="src/plugins/L.Control.Sidebar.js"></script>
     <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
 
     <style>
         #mapdiv{
@@ -53,6 +55,11 @@
     var ctlEasybutton;
     var marker_map;
     var popup_map;
+    var output=[];
+    var record=[];
+    var Europäische_Union=["Deutschland","Niederlande","Belgien","Luxemburg","Frankreich","Spanien","Portugal",
+    "Österreich","Italien","Kroatien","Slowenien","Dänemark","Tschechien","Polen","Schweden","Irland","Vereinigtes Königreich","Finnland",
+    "Estland","Lettland","Litauen","Griechenland","Malta","Ungarn","Rumänien","Bulgarien","Zypern","Slowakei"];
     var markerarray=[
         [50.93057,9.84375],
         [52.12000,5.38330],
@@ -103,21 +110,43 @@
     }).addTo(mymap);
 
 
-    for(let i=0;i<10;i++)
-    {
-        popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(i+1));
-        marker_map = new L.Marker(getRandomarrayIndex(markerarray), { draggable:false});
-        marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
+    var min=0;
+    var max=(markerarray.length-1);
+    //get a random integer between max and min
+    var index = Math.floor(Math.random()* (max - min)) + min;
+
+    for(let i=0;output.length<10;i++){
+        //get a random integer between max and min
+
+        index = Math.floor(Math.random()* (max - min)) + min;
+        if(!test_in_array(index,output))
+        {
+            continue;
+        }
+        output.push(index);
     };
 
-    function getRandomarrayIndex(array){
+    function test_in_array(index,arr)
+    {
+        for(let j=0;j<output.length;j++)
+        {
+            if(arr[j]==index)
+            {
+               return false;
+            }
+        }
+        return true;
+    };
+    
+    for(let k = 0; k<output.length;k++)
+    {
+        console.log(markerarray[output[k]]+ " " + Europäische_Union[output[k]]);
+        popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(k+1));
+        marker_map = new L.Marker(markerarray[output[k]], { draggable:false});
+        marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
 
-        var min=0;
-        var max=(array.length-1);
-        //get a random integer between max and min
-        var index = Math.floor(Math.random()* (max - min)) + min;
-        return array[index];
     }
+
 
     mymap.on('zoomend', function(){
         $("#zoom-level").html(mymap.getZoom());
@@ -131,9 +160,34 @@
         $("#mouse-location").html(LatLngToArrayString(e.latlng));
     });
 
+    $("#export_exerciseChain").click(function () {
+        var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+        txt= txt + "<exercisechain>"+'\n';
+        txt= txt + "  <step id=\"1\" displayName=\"Stage 1\" file=\"stage1.xml\" >" +'\n';
+        txt= txt + "    <next default=\"repeat\" message=\"Versuche es noch mal.\" >"+ '\n';
+        txt= txt + "      <path target=\"end\" result=\"100\" />" + '\n' + "    </next>"+'\n';
+        txt= txt + "  </step>"+'\n';
+        txt= txt + "</exercisechain>";
+        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "exerciseChain.xml");
+    });
+
+    $("#export_Stage").click(function () {
+        var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+        txt= txt + "<exercise type=\"fillIn\">"+'\n';
+        txt= txt + "    <task>"+'\n';
+        txt= txt + createXMLStringAufgabe4fill_in_blanks(output,markerarray,Europäische_Union);
+        txt= txt + "    </task>"+'\n';
+        txt= txt + "   <skipmessage>" +'\n';
+        txt= txt + "   </skipmessage>"+'\n';
+        txt= txt + "</exercise>";
+        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "stage1.xml");
+    });
 
     function LatLngToArrayString(ll) {
         return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
+
     }
 
 
