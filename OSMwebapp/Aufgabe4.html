@@ -48,7 +48,6 @@
 
 </div>
 <script type="text/javascript">
-
     var ctlMouseposition;
     var ctlSidebar;
     var ctlEasybutton;
@@ -82,8 +81,7 @@
         [45.96159,24.75211],
         [42.5965,25.27946],
         [34.97438,33.2054],
-        [48.76343,19.29199]
-    ];
+        [48.76343,19.29199]];
 
     var mymap = L.map('mapdiv', {
         center:[48.82791, 17.28320],
@@ -107,7 +105,6 @@
 
     for(let i=0;i<10;i++)
     {
-
         popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(i+1));
         marker_map = new L.Marker(getRandomarrayIndex(markerarray), { draggable:false});
         marker_map.bindPopup(popup_map).addTo(mymap).openPopup();

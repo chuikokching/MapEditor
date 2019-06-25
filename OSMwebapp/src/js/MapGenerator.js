@@ -11,10 +11,16 @@ var op1,op2;
 
 $(document).ready(function(){
 
-var map = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:15, editable:true, zoomControl:false, attributionControl:false});
+var map = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:15,
+    editable:true,
+    scrollWheelZoom:true,
+    dragging: true,
+    zoomControl: true,
+    attributionControl: true});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 map.options.maxZoom=16;
+map.options.minZoom=10;
 
 easybuttonAusschnitt= L.easyButton({
     states: [{
