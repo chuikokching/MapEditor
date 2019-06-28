@@ -283,8 +283,6 @@
         Sweden = L.imageOverlay('img-EU/sweden.png',[[69.13583,9.26957],[55.12188,25.37861]],{opacity:1});
 
 
-        ////
-
         Italy = L.imageOverlay('img-EU/Italy.png',[[47.18971,6.30003],[36.45664,18.88465]],{opacity:1});
 
         Bulgaria = L.imageOverlay('img-EU/Bulgaria.png',[[44.36957,22.25830],[41.06279,28.75023]],{opacity:1});
@@ -298,10 +296,15 @@
         France = L.imageOverlay('img-EU/France.png',[[51.24034,-5.2200],[41.14865,9.99630]],{opacity:1});
 
         Greece = L.imageOverlay('img-EU/Greece.png',[[41.93766,19.30080],[34.81380,28.57064]],{opacity:1});
+
         Latvia = L.imageOverlay('img-EU/Latvia.png',[[58.11271,20.78613],[55.52863,28.41797]],{opacity:1});
+
         Lithuania= L.imageOverlay('img-EU/Lithuania.png',[[56.55948,20.80205],[53.76170,26.96777]],{opacity:1});
+
         Malta = L.imageOverlay('img-EU/Malta.png',[[36.09992,14.15955],[35.75691,14.61548]],{opacity:1});
+
         Portugal = L.imageOverlay('img-EU/Portugal.png',[[42.23936,-9.79064],[36.80101,-5.60713]],{opacity:1});
+
         Spain = L.imageOverlay('img-EU/spain.png',[[43.85037,-9.31895],[35.96969,4.36186]],{opacity:1});
 
 
@@ -896,7 +899,6 @@
                 Bremen_polygon.dragging.disable();
                 mymap.removeLayer(Bremen);
             }
-
             //console.log(Schleswigpolygon.getBounds());
             console.log(Bremen_polygon.getBounds().getNorthWest().lat);
             console.log(Bremen_polygon.getBounds().getSouthEast().lng);
@@ -1296,6 +1298,7 @@
 
         });
 
+        /*--------------------------Deutschland---------------------------*/
 
         $("#Germany").click(function () {
             DEadd();
