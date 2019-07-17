@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map puzzle</title>
+    <link rel="stylesheet" href="src/leaflet.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.2.0.min.js"></script>
+    <script src="src/plugins/L.Control.Zoomslider.js"></script>
+    <script src="src/plugins/L.Control.MousePosition.js"></script>
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/leaflet-providers.js"></script>
+    <script src="src/plugins/Leaflet.Path.Drag-master/src/Path.Drag.js"></script>
+    <script src="src/plugins/Leaflet.Path.Drag-master/src/Path.Transform.js"></script>
+    <script src="src/plugins/Leaflet.Path.Drag-master/src/Canvas.js" ></script>
+    <script src="src/plugins/Leaflet.Path.Drag-master/src/SVG.js" ></script>
+    <script src="src/plugins/Leaflet.Path.Drag-master/src/SVG.VML.js" ></script>
+    <script type="text/javascript" src="src/js/XMLGenerator.js"></script>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
+
+    <script src="src/plugins/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
+    <style>
+        #mapdiv {
+            height:100vh;
+        }
+        #eumapdiv{
+            height:100vh;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <div id="mapdiv" class="col-md-12"></div>
+    <div id="eumapdiv" class="col-md-12"></div>
+    <div id="side-bar" class="col-md-10">
+        <h4>Zoom Level: <span id='zoom-level'></span></h4>
+        <h4>Map Center: <span id='map-center'></span></h4>
+        <h4>Mouse Location: <span id='mouse-location'></span></h4>
+        <h4>Image Opacity: <span id='image-opacity'>0.5</span></h4>
+
+        <br>
+        <div>
+            <button id="export_exerciseChain" class="btn btn-primary btn-block">ExerciseChain Export</button>
+        </div>
+        <br>
+        <div>
+            <button id="export_Stage" class="btn btn-primary btn-block">Stage Export</button>
+        </div>
+        <!--<input type='range' id='sldOpacity' min='0' max='1' step='0.1' value='0.5'>-->
+    </div>
+
+</div>
+
+<script>
+    var mymap;
+    var lyrOSM;
+    var lyrWatercolor;
+    var lyrTopo;
+    var lyrImagery;
+    var lyrOutdoors;
+    var lyStammtoner;
+    var lyStammtonerlite;
+
+    var lyrCavans;
+    var ctlAttribute;
+    var ctlMouseposition;
+    var ctlEasybutton;
+    var ctlSidebar;
+    var ctlLayers;
+    var objBasemaps;
+    var objOverlays;
+
+
+    var sterne;
+
+
+
+    $(document).ready(function(){
+        mymap = L.map('mapdiv', {
+            center:[31.61597,104.37012],
+            zoom:5,
+            scrollWheelZoom:true,
+            dragging: true,
+            zoomControl: false,
+            attributionControl: false
+        });
+
+
+        lyrOSM = L.tileLayer.provider('OpenStreetMap.Mapnik');
+        lyrTopo = L.tileLayer.provider('OpenTopoMap');
+        lyrImagery = L.tileLayer.provider('Esri.WorldImagery');
+        lyrOutdoors = L.tileLayer.provider('Thunderforest.Outdoors');
+        lyrWatercolor = L.tileLayer.provider('Stamen.Watercolor');
+        lyrCavans=L.tileLayer.provider('Esri.WorldGrayCanvas');
+        lyStammtoner = L.tileLayer.provider('Stamen.TonerBackground');
+        lyStammtonerlite = L.tileLayer.provider('Stamen.TonerLite');
+
+        mymap.addLayer(lyrOutdoors);
+
+        mymap.options.maxZoom=7;
+        mymap.options.minZoom=4;
+
+        sterne = L.imageOverlay('img-China/ChinaSterne.png',[[44.76752,78.77148],[31.22866,95.80078]],{opacity:1}).addTo(mymap);
+
+        objBasemaps = {
+            "Open Street Maps": lyrOSM,
+            "Topo Map":lyrTopo,
+            "Imagery":lyrImagery,
+            "Outdoors":lyrOutdoors,
+            "Watercolor":lyrWatercolor,
+            "Canvans":lyrCavans,
+            "StamenTonerBackground":lyStammtoner,
+            "StamenTonerLite": lyStammtonerlite
+        };
+
+        objOverlays = {
+        };
+
+        ctlLayers = L.control.layers(objBasemaps, objOverlays).addTo(mymap);
+
+        ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
+
+        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
+            ctlSidebar.toggle();
+        }).addTo(mymap);
+
+
+        ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
+        ctlAttribute.addAttribution('OSM');
+        ctlAttribute.addAttribution('&copy; Xu Gu Pan');
+
+        ctlMouseposition = L.control.mousePosition().addTo(mymap);
+
+
+        mymap.on('zoomend', function(){
+            $("#zoom-level").html(mymap.getZoom());
+        });
+
+        mymap.on('moveend', function(){
+            $("#map-center").html(LatLngToArrayString(mymap.getCenter()));
+        });
+
+        mymap.on('mousemove', function(e){
+            $("#mouse-location").html(LatLngToArrayString(e.latlng));
+        });
+        function LatLngToArrayString(ll) {
+            return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
+        }
+
+    });
+</script>
+</body>
+</html>
