@@ -55,7 +55,9 @@
     var ctlEasybutton;
     var output=[];
     var record=[];
-    var coordinate=[
+    var marker_map;
+    var popup_map;
+    var coordination=[
         [48.45835,9.22852],
         [49.18170,11.60156],
         [52.45601,13.44727],
@@ -98,7 +100,7 @@
     for(let k = 0; k<16;k++)
     {
         popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Bundesland:"+(k+1));
-        marker_map = new L.Marker(coordinate[k], { draggable:false});
+        marker_map = new L.Marker(coordination[k], { draggable:false});
         marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
 
     }
