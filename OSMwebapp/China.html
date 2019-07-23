@@ -77,10 +77,23 @@
     var objBasemaps;
     var objOverlays;
 
-
-    var sterne;
-
-
+    var Xinjiang,Xinjiangpoly_array,Xinjiang_imageBound,Xinjiang_overlayer,Xinjiang_polygon;
+    var Qinghai,Qinghaipoly_array,Qinghai_imageBound,Qinghai_overlayer,Qinghai_polygon;
+    var Xizang,Xizangpoly_array,Xizang_imageBound,Xizang_overlayer,Xizang_polygon;
+    var Sichuan,Sichuanpoly_array,Sichuan_imageBound,Sichuan_overlayer,Sichuan_polygon;
+    var Yunnan,Yunnanpoly_array,Yunnan_imageBound,Yunnan_overlayer,Yunnan_polygon;
+    var Neimeng,Neimengpoly_array,Neimeng_imageBound,Neimeng_overlayer,Neimeng_polygon;
+    var Gansu,Gansupoly_array,Gansu_imageBound,Gansu_overlayer,Gansu_polygon;
+    var Ningxia,Ningxiapoly_array,Ningxia_imageBound,Ningxia_overlayer,Ningxia_polygon;
+    var Shaanxi,Shaanxipoly_array,Shaanxi_imageBound,Shaanxi_overlayer,Shaanxi_polygon;
+    var Chongqing,Chongqingpoly_array,Chongqing_imageBound,Chongqing_overlayer,Chongqing_polygon;
+    var Guizhou,Guizhoupoly_array,Guizhou_imageBound,Guizhou_overlayer,Guizhou_polygon;
+    var Guangxi,Guangxipoly_array,Guangxi_imageBound,Guangxi_overlayer,Guangxi_polygon;
+    var Guangdong,Guangdongpoly_array,Guangdong_imageBound,Guangdong_overlayer,Guangdong_polygon;
+    var Fujian,Fujianpoly_array,Fujian_imageBound,Fujian_overlayer,Fujian_polygon;
+    var Zhejiang,Zhejiangpoly_array,Zhejiang_imageBound,Zhejiang_overlayer,Zhejiang_polygon;
+    var Hainan,Hainanpoly_array,Hainan_imageBound,Hainan_overlayer,Hainan_polygon;
+    var Taiwan,Taiwanpoly_array,Taiwan_imageBound,Taiwan_overlayer,Taiwan_polygon;
 
     $(document).ready(function(){
         mymap = L.map('mapdiv', {
@@ -107,7 +120,893 @@
         mymap.options.maxZoom=7;
         mymap.options.minZoom=4;
 
-        sterne = L.imageOverlay('img-China/ChinaSterne.png',[[46.26752,78.27148],[32.72866,95.30078]],{opacity:1}).addTo(mymap);
+        /*-------------------------------------China-------------------------------*/
+        Xinjiang = L.imageOverlay('img-China/Xinjiang.png',[[49.34421,73.68867],[34.34052,96.26758]]);
+        Qinghai  = L.imageOverlay('img-China/Qinghai.png',[[39.70569,89.15504],[31.66340,103.22121]]);
+        Xizang  = L.imageOverlay('img-China/Xizang.png',[[36.73888,78.29082],[27.26166,99.1613]]);
+        Sichuan  = L.imageOverlay('img-China/Sichuan.png',[[34.36086,97.23125],[25.92047,108.65254]]);
+        Yunnan = L.imageOverlay('img-China/Yunnan.png',[[29.31167,97.40084],[21.14092,106.32357]]);
+        Neimeng = L.imageOverlay('img-China/Neimeng.png',[[53.36677,97.05859],[37.37486,126.19516]]);
+        Gansu = L.imageOverlay('img-China/Gansu.png',[[42.98375,92.45672],[32.45337,108.79648]]);
+        Ningxia = L.imageOverlay('img-China/Ningxia.png',[[39.32922,104.36223],[35.26381,107.73982]]);
+        Shaanxi = L.imageOverlay('img-China/Shaanxi.png',[[39.53619,105.50059],[31.67854,111.25742]]);
+        Chongqing = L.imageOverlay('img-China/Chongqing.png',[[32.20119,105.23691],[28.17793,110.34668]]);
+        Guizhou = L.imageOverlay('img-China/Guizhou.png',[[29.41053,103.59121],[24.59687,109.76172]]);
+        Guangxi = L.imageOverlay('img-China/Guangxi.png',[[26.44922,104.46209],[21.44842,112.08252]]);
+        Guangdong = L.imageOverlay('img-China/Guangdong.png',[[25.56311,109.58750],[20.20035,117.11426]]);
+        Fujian = L.imageOverlay('img-China/Fujian.png',[[28.48306,115.60379],[23.39370,120.60199]]);
+        Zhejiang = L.imageOverlay('img-China/Zhejiang.png',[[31.24099,117.83199],[27.15692,122.51756]]);
+        Hainan = L.imageOverlay('img-China/Hainan.png',[[20.13465,108.52070],[18.08761,111.08980]]);
+        Taiwan = L.imageOverlay('img-China/Taiwan.png',[[25.42047,119.97070],[21.94005,121.99263]]);
+
+        Xinjiangpoly_array=[
+            [46.49839225859788,96.47461116313909],
+            [58.72259882804355,96.47461116313909],
+            [58.72259882804355,119.4433593749998],
+            [46.49839225859788,119.4433593749998]];
+
+        Qinghaipoly_array=[
+            [15.707662769583594,123.36914241313934],
+            [25.00597265623924,123.36914241313934],
+            [25.00597265623924,137.37304687500003],
+            [15.707662769583594,137.37304687500003]];
+
+        Xizangpoly_array=[
+            [33.01480378475888,125.5664080381391],
+            [41.836827860727524,125.5664080381391],
+            [41.836827860727524,146.66015803813903],
+            [33.01480378475888,146.66015803813903]];
+
+        Sichuanpoly_array=[
+            [26.588527147308717,121.7431658506393],
+            [34.885930940753276,121.7431658506393],
+            [34.885930940753276,133.28613281250003],
+            [26.588527147308717,133.28613281250003]];
+
+        Yunnanpoly_array=[
+            [38.616870463929885,138.6181658506392],
+            [45.357291774157545,138.6181658506392],
+            [45.357291774157545,147.61230468749986],
+            [38.616870463929885,147.61230468749986]];
+
+        Neimengpoly_array=[
+            [3.425691524418278,118.30078124999983],
+            [25.72073513441236,118.30078124999983],
+            [25.72073513441236,147.24609732627846],
+            [3.425691524418278,147.24609732627846]];
+
+        Gansupoly_array=[
+            [47.95069193833618,126.13769710063933],
+            [55.90816764405999,126.13769710063933],
+            [55.90816764405999,142.48535335063937],
+            [47.95069193833618,142.48535335063937]];
+
+        Ningxiapoly_array=[
+            [27.566721430409736,132.07031428813937],
+            [32.23758463811588,132.07031428813937],
+            [32.23758463811588,135.58593928813934],
+            [27.566721430409736,135.58593928813934]];
+
+        Shaanxipoly_array=[
+            [12.16822567739031,114.25781249999994],
+            [21.49396356306467,114.25781249999994],
+            [21.49396356306467,120.05859375],
+            [12.16822567739031,120.05859375]];
+
+        Chongqingpoly_array=[
+            [42.71473218539463,132.6562508940697],
+            [46.04273565384656,132.6562508940697],
+            [46.04273565384656,137.69531428813934],
+            [42.71473218539463,137.69531428813934]];
+
+        Guizhoupoly_array=[
+            [28.80617350885488,136.15722835063937],
+            [33.394759218578095,136.15722835063937],
+            [33.394759218578095,142.22168147563926],
+            [28.80617350885488,142.22168147563926]];
+
+        Guangxipoly_array=[
+            [45.336701909968184,140.02441585063926],
+            [49.03786794532649,140.02441585063926],
+            [49.03786794532649,147.78808593749997],
+            [45.336701909968184,147.78808593749997]];
+
+        Guangdongpoly_array=[
+            [54.95238569063372,131.82128995656967],
+            [58.17842661703234,131.82128995656967],
+            [58.17842661703234,139.35058593749991],
+            [54.95238569063372,139.35058593749991]];
+
+        Fujianpoly_array=[
+            [41.640078384678986,147.15820401906967],
+            [45.64476821775198,147.15820401906967],
+            [45.64476821775198,151.84570491313937],
+            [41.640078384678986,151.84570491313937]];
+
+        Zhejiangpoly_array=[
+            [52.96187505907611,138.04687678813937],
+            [55.661061399119255,138.04687678813937],
+            [55.661061399119255,142.8808611631393],
+            [52.96187505907611,142.8808611631393]];
+
+        Hainanpoly_array=[
+            [54.367758524068456,144.84375000000006],
+            [55.59490107236914,144.84375000000006],
+            [55.59490107236914,147.56835937500003],
+            [54.367758524068456,147.56835937500003]];
+
+        Taiwanpoly_array=[
+            [50.438847907639435,145.60547053813931],
+            [52.83816992891243,145.60547053813931],
+            [52.83816992891243,147.59765714406967],
+            [50.438847907639435,147.59765714406967]];
+
+        Xinjiang_imageBound = L.latLngBounds([
+            Xinjiangpoly_array[0],
+            Xinjiangpoly_array[2]
+        ]);
+        Xinjiang_overlayer = L.imageOverlay(('img-China/Xinjiang.png'),Xinjiang_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Xinjiang_polygon = L.polygon((Xinjiangpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Qinghai_imageBound = L.latLngBounds([
+            Qinghaipoly_array[0],
+            Qinghaipoly_array[2]
+        ]);
+        Qinghai_overlayer = L.imageOverlay(('img-China/Qinghai.png'),Qinghai_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Qinghai_polygon = L.polygon((Qinghaipoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Xizang_imageBound = L.latLngBounds([
+            Xizangpoly_array[0],
+            Xizangpoly_array[2]
+        ]);
+        Xizang_overlayer = L.imageOverlay(('img-China/Xizang.png'),Xizang_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Xizang_polygon = L.polygon((Xizangpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Sichuan_imageBound = L.latLngBounds([
+            Sichuanpoly_array[0],
+            Sichuanpoly_array[2]
+        ]);
+        Sichuan_overlayer = L.imageOverlay(('img-China/Sichuan.png'),Sichuan_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Sichuan_polygon = L.polygon((Sichuanpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Yunnan_imageBound = L.latLngBounds([
+            Yunnanpoly_array[0],
+            Yunnanpoly_array[2]
+        ]);
+        Yunnan_overlayer = L.imageOverlay(('img-China/Yunnan.png'),Yunnan_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Yunnan_polygon = L.polygon((Yunnanpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Neimeng_imageBound = L.latLngBounds([
+            Neimengpoly_array[0],
+            Neimengpoly_array[2]
+        ]);
+        Neimeng_overlayer = L.imageOverlay(('img-China/Neimeng.png'),Neimeng_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Neimeng_polygon = L.polygon((Neimengpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Gansu_imageBound = L.latLngBounds([
+            Gansupoly_array[0],
+            Gansupoly_array[2]
+        ]);
+        Gansu_overlayer = L.imageOverlay(('img-China/Gansu.png'),Gansu_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Gansu_polygon = L.polygon((Gansupoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Ningxia_imageBound = L.latLngBounds([
+            Ningxiapoly_array[0],
+            Ningxiapoly_array[2]
+        ]);
+        Ningxia_overlayer = L.imageOverlay(('img-China/Ningxia.png'),Ningxia_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Ningxia_polygon = L.polygon((Ningxiapoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Shaanxi_imageBound = L.latLngBounds([
+            Shaanxipoly_array[0],
+            Shaanxipoly_array[2]
+        ]);
+        Shaanxi_overlayer = L.imageOverlay(('img-China/Shaanxi.png'),Shaanxi_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Shaanxi_polygon = L.polygon((Shaanxipoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Chongqing_imageBound = L.latLngBounds([
+            Chongqingpoly_array[0],
+            Chongqingpoly_array[2]
+        ]);
+        Chongqing_overlayer = L.imageOverlay(('img-China/Chongqing.png'),Chongqing_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Chongqing_polygon = L.polygon((Chongqingpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Guizhou_imageBound = L.latLngBounds([
+            Guizhoupoly_array[0],
+            Guizhoupoly_array[2]
+        ]);
+        Guizhou_overlayer = L.imageOverlay(('img-China/Guizhou.png'),Guizhou_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Guizhou_polygon = L.polygon((Guizhoupoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Guangxi_imageBound = L.latLngBounds([
+            Guangxipoly_array[0],
+            Guangxipoly_array[2]
+        ]);
+        Guangxi_overlayer = L.imageOverlay(('img-China/Guangxi.png'),Guangxi_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Guangxi_polygon = L.polygon((Guangxipoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Guangdong_imageBound = L.latLngBounds([
+            Guangdongpoly_array[0],
+            Guangdongpoly_array[2]
+        ]);
+        Guangdong_overlayer = L.imageOverlay(('img-China/Guangdong.png'),Guangdong_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Guangdong_polygon = L.polygon((Guangdongpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Fujian_imageBound = L.latLngBounds([
+            Fujianpoly_array[0],
+            Fujianpoly_array[2]
+        ]);
+        Fujian_overlayer = L.imageOverlay(('img-China/Fujian.png'),Fujian_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Fujian_polygon = L.polygon((Fujianpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Zhejiang_imageBound = L.latLngBounds([
+            Zhejiangpoly_array[0],
+            Zhejiangpoly_array[2]
+        ]);
+        Zhejiang_overlayer = L.imageOverlay(('img-China/Zhejiang.png'),Zhejiang_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Zhejiang_polygon = L.polygon((Zhejiangpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Hainan_imageBound = L.latLngBounds([
+            Hainanpoly_array[0],
+            Hainanpoly_array[2]
+        ]);
+        Hainan_overlayer = L.imageOverlay(('img-China/Hainan.png'),Hainan_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Hainan_polygon = L.polygon((Hainanpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        Taiwan_imageBound = L.latLngBounds([
+            Taiwanpoly_array[0],
+            Taiwanpoly_array[2]
+        ]);
+        Taiwan_overlayer = L.imageOverlay(('img-China/Taiwan.png'),Taiwan_imageBound,{
+            opacity:1,
+            interactive:true
+        }).addTo(mymap);
+        Taiwan_polygon = L.polygon((Taiwanpoly_array),{
+            draggable: true,
+            opacity:0,
+            fillOpacity:0
+        }).addTo(mymap);
+
+        /**Xinjiang**/
+        Xinjiang_polygon.on('drag',function (e) {
+            Xinjiang_overlayer.setBounds(Xinjiang_polygon.getBounds());
+        });
+
+        Xinjiang_polygon.on('dragstart',function (e) {
+            Xinjiang_overlayer.setBounds(Xinjiang_polygon.getBounds());
+        });
+        Xinjiang_polygon.on('dragend',function (e) {
+            Xinjiang_overlayer.setBounds(Xinjiang_polygon.getBounds());
+            if(Number(Xinjiang_polygon.getBounds().getNorthWest().lat)<50.94421 && Number(Xinjiang_polygon.getBounds().getSouthEast().lng)<97.86758
+                &&Number(Xinjiang_polygon.getBounds().getSouthEast().lat)>33.00052 && Number(Xinjiang_polygon.getBounds().getNorthWest().lng)>72.08867)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Xinjiang',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+
+                Xinjiang_overlayer.setBounds(Xinjiang.getBounds());
+                Xinjiang_polygon.dragging.disable();
+                mymap.removeLayer(Xinjiang);
+            }
+            console.log(Xinjiang_polygon.getBounds().getNorthWest().lat);
+            console.log(Xinjiang_polygon.getBounds().getSouthEast().lng);
+            console.log(Xinjiang_polygon.getBounds().getSouthEast().lat);
+            console.log(Xinjiang_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Qinghai**/
+        Qinghai_polygon.on('drag',function (e) {
+            Qinghai_overlayer.setBounds(Qinghai_polygon.getBounds());
+        });
+
+        Qinghai_polygon.on('dragstart',function (e) {
+            Qinghai_overlayer.setBounds(Qinghai_polygon.getBounds());
+        });
+        Qinghai_polygon.on('dragend',function (e) {
+            Qinghai_overlayer.setBounds(Qinghai_polygon.getBounds());
+            if(Number(Qinghai_polygon.getBounds().getNorthWest().lat)<40.70569 && Number(Qinghai_polygon.getBounds().getSouthEast().lng)<104.22121
+                &&Number(Qinghai_polygon.getBounds().getSouthEast().lat)>30.66340 && Number(Qinghai_polygon.getBounds().getNorthWest().lng)>88.15504)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Qinghai',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Qinghai_overlayer.setBounds(Qinghai.getBounds());
+                Qinghai_polygon.dragging.disable();
+                mymap.removeLayer(Qinghai);
+            }
+            console.log(Qinghai_polygon.getBounds().getNorthWest().lat);
+            console.log(Qinghai_polygon.getBounds().getSouthEast().lng);
+            console.log(Qinghai_polygon.getBounds().getSouthEast().lat);
+            console.log(Qinghai_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Xizang**/
+        Xizang_polygon.on('drag',function (e) {
+            Xizang_overlayer.setBounds(Xizang_polygon.getBounds());
+        });
+
+        Xizang_polygon.on('dragstart',function (e) {
+            Xizang_overlayer.setBounds(Xizang_polygon.getBounds());
+        });
+        Xizang_polygon.on('dragend',function (e) {
+            Xizang_overlayer.setBounds(Xizang_polygon.getBounds());
+            if(Number(Xizang_polygon.getBounds().getNorthWest().lat)<37.73888 && Number(Xizang_polygon.getBounds().getSouthEast().lng)<100.1613
+                &&Number(Xizang_polygon.getBounds().getSouthEast().lat)>26.26166 && Number(Xizang_polygon.getBounds().getNorthWest().lng)>77.29082)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Xizang',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Xizang_overlayer.setBounds(Xizang.getBounds());
+                Xizang_polygon.dragging.disable();
+                mymap.removeLayer(Xizang);
+            }
+            console.log(Xizang_polygon.getBounds().getNorthWest().lat);
+            console.log(Xizang_polygon.getBounds().getSouthEast().lng);
+            console.log(Xizang_polygon.getBounds().getSouthEast().lat);
+            console.log(Xizang_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Sichuan**/
+        Sichuan_polygon.on('drag',function (e) {
+            Sichuan_overlayer.setBounds(Sichuan_polygon.getBounds());
+        });
+
+        Sichuan_polygon.on('dragstart',function (e) {
+            Sichuan_overlayer.setBounds(Sichuan_polygon.getBounds());
+        });
+        Sichuan_polygon.on('dragend',function (e) {
+            Sichuan_overlayer.setBounds(Sichuan_polygon.getBounds());
+            if(Number(Sichuan_polygon.getBounds().getNorthWest().lat)<35.36086 && Number(Sichuan_polygon.getBounds().getSouthEast().lng)<109.65254
+                &&Number(Sichuan_polygon.getBounds().getSouthEast().lat)>24.92047 && Number(Sichuan_polygon.getBounds().getNorthWest().lng)>96.23125)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Sichuan',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Sichuan_overlayer.setBounds(Sichuan.getBounds());
+                Sichuan_polygon.dragging.disable();
+                mymap.removeLayer(Sichuan);
+            }
+            console.log(Sichuan_polygon.getBounds().getNorthWest().lat);
+            console.log(Sichuan_polygon.getBounds().getSouthEast().lng);
+            console.log(Sichuan_polygon.getBounds().getSouthEast().lat);
+            console.log(Sichuan_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Yunnan**/
+        Yunnan_polygon.on('drag',function (e) {
+            Yunnan_overlayer.setBounds(Yunnan_polygon.getBounds());
+        });
+
+        Yunnan_polygon.on('dragstart',function (e) {
+            Yunnan_overlayer.setBounds(Yunnan_polygon.getBounds());
+        });
+        Yunnan_polygon.on('dragend',function (e) {
+            Yunnan_overlayer.setBounds(Yunnan_polygon.getBounds());
+            if(Number(Yunnan_polygon.getBounds().getNorthWest().lat)<30.31167 && Number(Yunnan_polygon.getBounds().getSouthEast().lng)<107.12357
+                &&Number(Yunnan_polygon.getBounds().getSouthEast().lat)>20.14092 && Number(Yunnan_polygon.getBounds().getNorthWest().lng)>96.50084)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Yunnan',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Yunnan_overlayer.setBounds(Yunnan.getBounds());
+                Yunnan_polygon.dragging.disable();
+                mymap.removeLayer(Yunnan);
+            }
+            console.log(Yunnan_polygon.getBounds().getNorthWest().lat);
+            console.log(Yunnan_polygon.getBounds().getSouthEast().lng);
+            console.log(Yunnan_polygon.getBounds().getSouthEast().lat);
+            console.log(Yunnan_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Neimeng**/
+        Neimeng_polygon.on('drag',function (e) {
+            Neimeng_overlayer.setBounds(Neimeng_polygon.getBounds());
+        });
+
+        Neimeng_polygon.on('dragstart',function (e) {
+            Neimeng_overlayer.setBounds(Neimeng_polygon.getBounds());
+        });
+        Neimeng_polygon.on('dragend',function (e) {
+            Neimeng_overlayer.setBounds(Neimeng_polygon.getBounds());
+            if(Number(Neimeng_polygon.getBounds().getNorthWest().lat)<54.36677 && Number(Neimeng_polygon.getBounds().getSouthEast().lng)<127.19516
+                &&Number(Neimeng_polygon.getBounds().getSouthEast().lat)>36.37486 && Number(Neimeng_polygon.getBounds().getNorthWest().lng)>96.05859)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Neimeng',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Neimeng_overlayer.setBounds(Neimeng.getBounds());
+                Neimeng_polygon.dragging.disable();
+                mymap.removeLayer(Neimeng);
+            }
+            console.log(Neimeng_polygon.getBounds().getNorthWest().lat);
+            console.log(Neimeng_polygon.getBounds().getSouthEast().lng);
+            console.log(Neimeng_polygon.getBounds().getSouthEast().lat);
+            console.log(Neimeng_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Gansu**/
+        Gansu_polygon.on('drag',function (e) {
+            Gansu_overlayer.setBounds(Gansu_polygon.getBounds());
+        });
+
+        Gansu_polygon.on('dragstart',function (e) {
+            Gansu_overlayer.setBounds(Gansu_polygon.getBounds());
+        });
+        Gansu_polygon.on('dragend',function (e) {
+            Gansu_overlayer.setBounds(Gansu_polygon.getBounds());
+            if(Number(Gansu_polygon.getBounds().getNorthWest().lat)<43.98375&& Number(Gansu_polygon.getBounds().getSouthEast().lng)<109.79648
+                &&Number(Gansu_polygon.getBounds().getSouthEast().lat)>31.45337 && Number(Gansu_polygon.getBounds().getNorthWest().lng)>91.45672)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Gansu',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Gansu_overlayer.setBounds(Gansu.getBounds());
+                Gansu_polygon.dragging.disable();
+                mymap.removeLayer(Gansu);
+            }
+            console.log(Gansu_polygon.getBounds().getNorthWest().lat);
+            console.log(Gansu_polygon.getBounds().getSouthEast().lng);
+            console.log(Gansu_polygon.getBounds().getSouthEast().lat);
+            console.log(Gansu_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Ningxia**/
+        Ningxia_polygon.on('drag',function (e) {
+            Ningxia_overlayer.setBounds(Ningxia_polygon.getBounds());
+        });
+
+        Ningxia_polygon.on('dragstart',function (e) {
+            Ningxia_overlayer.setBounds(Ningxia_polygon.getBounds());
+        });
+        Ningxia_polygon.on('dragend',function (e) {
+            Ningxia_overlayer.setBounds(Ningxia_polygon.getBounds());
+            if(Number(Ningxia_polygon.getBounds().getNorthWest().lat)<40.32922&& Number(Ningxia_polygon.getBounds().getSouthEast().lng)<108.73982
+                &&Number(Ningxia_polygon.getBounds().getSouthEast().lat)>34.26381 && Number(Ningxia_polygon.getBounds().getNorthWest().lng)>103.36223)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Ningxia',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Ningxia_overlayer.setBounds(Ningxia.getBounds());
+                Ningxia_polygon.dragging.disable();
+                mymap.removeLayer(Ningxia);
+            }
+            console.log(Ningxia_polygon.getBounds().getNorthWest().lat);
+            console.log(Ningxia_polygon.getBounds().getSouthEast().lng);
+            console.log(Ningxia_polygon.getBounds().getSouthEast().lat);
+            console.log(Ningxia_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Shaanxi**/
+        Shaanxi_polygon.on('drag',function (e) {
+            Shaanxi_overlayer.setBounds(Shaanxi_polygon.getBounds());
+        });
+
+        Shaanxi_polygon.on('dragstart',function (e) {
+            Shaanxi_overlayer.setBounds(Shaanxi_polygon.getBounds());
+        });
+        Shaanxi_polygon.on('dragend',function (e) {
+            Shaanxi_overlayer.setBounds(Shaanxi_polygon.getBounds());
+            if(Number(Shaanxi_polygon.getBounds().getNorthWest().lat)<40.53619&& Number(Shaanxi_polygon.getBounds().getSouthEast().lng)<112.25742
+                &&Number(Shaanxi_polygon.getBounds().getSouthEast().lat)>30.67854 && Number(Shaanxi_polygon.getBounds().getNorthWest().lng)>104.50059)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Shaanxi',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Shaanxi_overlayer.setBounds(Shaanxi.getBounds());
+                Shaanxi_polygon.dragging.disable();
+                mymap.removeLayer(Shaanxi);
+            }
+            console.log(Shaanxi_polygon.getBounds().getNorthWest().lat);
+            console.log(Shaanxi_polygon.getBounds().getSouthEast().lng);
+            console.log(Shaanxi_polygon.getBounds().getSouthEast().lat);
+            console.log(Shaanxi_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Chongqing**/
+        Chongqing_polygon.on('drag',function (e) {
+            Chongqing_overlayer.setBounds(Chongqing_polygon.getBounds());
+        });
+
+        Chongqing_polygon.on('dragstart',function (e) {
+            Chongqing_overlayer.setBounds(Chongqing_polygon.getBounds());
+        });
+        Chongqing_polygon.on('dragend',function (e) {
+            Chongqing_overlayer.setBounds(Chongqing_polygon.getBounds());
+            if(Number(Chongqing_polygon.getBounds().getNorthWest().lat)<33.20119&& Number(Chongqing_polygon.getBounds().getSouthEast().lng)<111.34668
+                &&Number(Chongqing_polygon.getBounds().getSouthEast().lat)>27.17793 && Number(Chongqing_polygon.getBounds().getNorthWest().lng)>104.23691)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Chongqing',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Chongqing_overlayer.setBounds(Chongqing.getBounds());
+                Chongqing_polygon.dragging.disable();
+                mymap.removeLayer(Chongqing);
+            }
+            console.log(Chongqing_polygon.getBounds().getNorthWest().lat);
+            console.log(Chongqing_polygon.getBounds().getSouthEast().lng);
+            console.log(Chongqing_polygon.getBounds().getSouthEast().lat);
+            console.log(Chongqing_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Guizhou**/
+        Guizhou_polygon.on('drag',function (e) {
+            Guizhou_overlayer.setBounds(Guizhou_polygon.getBounds());
+        });
+
+        Guizhou_polygon.on('dragstart',function (e) {
+            Guizhou_overlayer.setBounds(Guizhou_polygon.getBounds());
+        });
+        Guizhou_polygon.on('dragend',function (e) {
+            Guizhou_overlayer.setBounds(Guizhou_polygon.getBounds());
+            if(Number(Guizhou_polygon.getBounds().getNorthWest().lat)<30.41053&& Number(Guizhou_polygon.getBounds().getSouthEast().lng)<110.76172
+                &&Number(Guizhou_polygon.getBounds().getSouthEast().lat)>23.59687 && Number(Guizhou_polygon.getBounds().getNorthWest().lng)>102.59121)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Guizhou',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Guizhou_overlayer.setBounds(Guizhou.getBounds());
+                Guizhou_polygon.dragging.disable();
+                mymap.removeLayer(Guizhou);
+            }
+            console.log(Guizhou_polygon.getBounds().getNorthWest().lat);
+            console.log(Guizhou_polygon.getBounds().getSouthEast().lng);
+            console.log(Guizhou_polygon.getBounds().getSouthEast().lat);
+            console.log(Guizhou_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Guangxi**/
+        Guangxi_polygon.on('drag',function (e) {
+            Guangxi_overlayer.setBounds(Guangxi_polygon.getBounds());
+        });
+
+        Guangxi_polygon.on('dragstart',function (e) {
+            Guangxi_overlayer.setBounds(Guangxi_polygon.getBounds());
+        });
+        Guangxi_polygon.on('dragend',function (e) {
+            Guangxi_overlayer.setBounds(Guangxi_polygon.getBounds());
+            if(Number(Guangxi_polygon.getBounds().getNorthWest().lat)<27.44922&& Number(Guangxi_polygon.getBounds().getSouthEast().lng)<113.08252
+                &&Number(Guangxi_polygon.getBounds().getSouthEast().lat)>20.44842 && Number(Guangxi_polygon.getBounds().getNorthWest().lng)>103.46209)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Guangxi',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Guangxi_overlayer.setBounds(Guangxi.getBounds());
+                Guangxi_polygon.dragging.disable();
+                mymap.removeLayer(Guangxi);
+            }
+            console.log(Guangxi_polygon.getBounds().getNorthWest().lat);
+            console.log(Guangxi_polygon.getBounds().getSouthEast().lng);
+            console.log(Guangxi_polygon.getBounds().getSouthEast().lat);
+            console.log(Guangxi_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Guangdong**/
+        Guangdong_polygon.on('drag',function (e) {
+            Guangdong_overlayer.setBounds(Guangdong_polygon.getBounds());
+        });
+
+        Guangdong_polygon.on('dragstart',function (e) {
+            Guangdong_overlayer.setBounds(Guangdong_polygon.getBounds());
+        });
+        Guangdong_polygon.on('dragend',function (e) {
+            Guangdong_overlayer.setBounds(Guangdong_polygon.getBounds());
+            if(Number(Guangdong_polygon.getBounds().getNorthWest().lat)<26.56311&& Number(Guangdong_polygon.getBounds().getSouthEast().lng)<118.11426
+                &&Number(Guangdong_polygon.getBounds().getSouthEast().lat)>19.20035&& Number(Guangdong_polygon.getBounds().getNorthWest().lng)>108.58750)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Guangdong',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Guangdong_overlayer.setBounds(Guangdong.getBounds());
+                Guangdong_polygon.dragging.disable();
+                mymap.removeLayer(Guangdong);
+            }
+            console.log(Guangdong_polygon.getBounds().getNorthWest().lat);
+            console.log(Guangdong_polygon.getBounds().getSouthEast().lng);
+            console.log(Guangdong_polygon.getBounds().getSouthEast().lat);
+            console.log(Guangdong_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Fujian**/
+        Fujian_polygon.on('drag',function (e) {
+            Fujian_overlayer.setBounds(Fujian_polygon.getBounds());
+        });
+
+        Fujian_polygon.on('dragstart',function (e) {
+            Fujian_overlayer.setBounds(Fujian_polygon.getBounds());
+        });
+        Fujian_polygon.on('dragend',function (e) {
+            Fujian_overlayer.setBounds(Fujian_polygon.getBounds());
+            if(Number(Fujian_polygon.getBounds().getNorthWest().lat)<29.48306&& Number(Fujian_polygon.getBounds().getSouthEast().lng)<121.60199
+                &&Number(Fujian_polygon.getBounds().getSouthEast().lat)>22.39370&& Number(Fujian_polygon.getBounds().getNorthWest().lng)>114.60379)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Fujian',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Fujian_overlayer.setBounds(Fujian.getBounds());
+                Fujian_polygon.dragging.disable();
+                mymap.removeLayer(Fujian);
+            }
+            console.log(Fujian_polygon.getBounds().getNorthWest().lat);
+            console.log(Fujian_polygon.getBounds().getSouthEast().lng);
+            console.log(Fujian_polygon.getBounds().getSouthEast().lat);
+            console.log(Fujian_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Zhejiang**/
+        Zhejiang_polygon.on('drag',function (e) {
+            Zhejiang_overlayer.setBounds(Zhejiang_polygon.getBounds());
+        });
+
+        Zhejiang_polygon.on('dragstart',function (e) {
+            Zhejiang_overlayer.setBounds(Zhejiang_polygon.getBounds());
+        });
+        Zhejiang_polygon.on('dragend',function (e) {
+            Zhejiang_overlayer.setBounds(Zhejiang_polygon.getBounds());
+            if(Number(Zhejiang_polygon.getBounds().getNorthWest().lat)<32.24099&& Number(Zhejiang_polygon.getBounds().getSouthEast().lng)<123.51756
+                &&Number(Zhejiang_polygon.getBounds().getSouthEast().lat)>26.15692&& Number(Zhejiang_polygon.getBounds().getNorthWest().lng)>116.83199)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Zhejiang',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Zhejiang_overlayer.setBounds(Zhejiang.getBounds());
+                Zhejiang_polygon.dragging.disable();
+                mymap.removeLayer(Zhejiang);
+            }
+            console.log(Zhejiang_polygon.getBounds().getNorthWest().lat);
+            console.log(Zhejiang_polygon.getBounds().getSouthEast().lng);
+            console.log(Zhejiang_polygon.getBounds().getSouthEast().lat);
+            console.log(Zhejiang_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Hainan**/
+        Hainan_polygon.on('drag',function (e) {
+            Hainan_overlayer.setBounds(Hainan_polygon.getBounds());
+        });
+
+        Hainan_polygon.on('dragstart',function (e) {
+            Hainan_overlayer.setBounds(Hainan_polygon.getBounds());
+        });
+        Hainan_polygon.on('dragend',function (e) {
+            Hainan_overlayer.setBounds(Hainan_polygon.getBounds());
+            if(Number(Hainan_polygon.getBounds().getNorthWest().lat)<21.13465&& Number(Hainan_polygon.getBounds().getSouthEast().lng)<112.08980
+                &&Number(Hainan_polygon.getBounds().getSouthEast().lat)>17.08761&& Number(Hainan_polygon.getBounds().getNorthWest().lng)>107.52070)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Hainan',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Hainan_overlayer.setBounds(Hainan.getBounds());
+                Hainan_polygon.dragging.disable();
+                mymap.removeLayer(Hainan);
+            }
+            console.log(Hainan_polygon.getBounds().getNorthWest().lat);
+            console.log(Hainan_polygon.getBounds().getSouthEast().lng);
+            console.log(Hainan_polygon.getBounds().getSouthEast().lat);
+            console.log(Hainan_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+
+        /**Taiwan**/
+        Taiwan_polygon.on('drag',function (e) {
+            Taiwan_overlayer.setBounds(Taiwan_polygon.getBounds());
+        });
+
+        Taiwan_polygon.on('dragstart',function (e) {
+            Taiwan_overlayer.setBounds(Taiwan_polygon.getBounds());
+        });
+        Taiwan_polygon.on('dragend',function (e) {
+            Taiwan_overlayer.setBounds(Taiwan_polygon.getBounds());
+            if(Number(Taiwan_polygon.getBounds().getNorthWest().lat)<26.42047&& Number(Taiwan_polygon.getBounds().getSouthEast().lng)<122.99263
+                &&Number(Taiwan_polygon.getBounds().getSouthEast().lat)>20.94005&& Number(Taiwan_polygon.getBounds().getNorthWest().lng)>118.97070)
+            {
+                swal({
+                    position: 'top-end',
+                    text: 'Taiwan',
+                    icon:"success",
+                    buttons: false,
+                    timer: 1000
+                })
+                Taiwan_overlayer.setBounds(Taiwan.getBounds());
+                Taiwan_polygon.dragging.disable();
+                mymap.removeLayer(Taiwan);
+            }
+            console.log(Taiwan_polygon.getBounds().getNorthWest().lat);
+            console.log(Taiwan_polygon.getBounds().getSouthEast().lng);
+            console.log(Taiwan_polygon.getBounds().getSouthEast().lat);
+            console.log(Taiwan_polygon.getBounds().getNorthWest().lng);
+            console.log("------------------------");
+        });
+        /*-------------------------------------China End-------------------------------*/
 
         objBasemaps = {
             "Open Street Maps": lyrOSM,
