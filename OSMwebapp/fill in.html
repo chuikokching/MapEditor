@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fill-in-the-blank text</title>
+    <link rel="stylesheet" href="src/plugins/easy-button.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+    <link rel="stylesheet" href="src/leaflet.css">
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.2.0.min.js"></script>
+    <script src="https://leaflet.github.io/Path.Drag.js/src/Path.Drag.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="src/js/XMLGenerator.js"></script>
+    <script src="src/plugins/L.Control.MousePosition.js"></script>
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <script src="src/plugins/easy-button.js"></script>
+    <script src="src/plugins/FileSaver.js-master/src/FileSaver.js"></script>
+
+    <style>
+        #mapdiv{
+            height:100vh;
+            text-align: center;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="mapdiv" class="col-md-12"></div>
+    <div id="side-bar" class="col-md-10">
+        <h4>Zoom Level: <span id='zoom-level'></span></h4>
+        <h4>Map Center: <span id='map-center'></span></h4>
+        <h4>Mouse Location: <span id='mouse-location'></span></h4>
+        <br>
+        <div>
+            <button id="export_exerciseChain" class="btn btn-primary btn-block">ExerciseChain Export</button>
+        </div>
+        <br>
+        <div>
+            <button id="export_Stage" class="btn btn-primary btn-block">Stage Export</button>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    var ctlMouseposition;
+    var ctlSidebar;
+    var ctlEasybutton;
+    var output=[];
+    var record=[];
+    var coordinate=[
+        [48.45835,9.22852],
+        [49.18170,11.60156],
+        [52.45601,13.44727],
+        [51.89154,14.00911],
+        [52.98978,8.91146],
+        [53.41096,10.22982],
+        [50.43105,9.04329],
+        [53.82665,12.63222],
+        [52.77624,9.92958],
+        [51.48144,7.44667],
+        [49.92299,7.27089],
+        [49.30162,7.06704],
+        [50.97724,13.61489],
+        [52.08436,11.68130],
+        [54.23132,9.76968],
+        [50.86643,11.08804]];
+    var Deutschland=["Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern",
+        "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"];
+
+    var mymap = L.map('mapdiv', {
+        center:[51.65001, 10.67920],
+        zoom:7,
+        scrollWheelZoom:false,
+        dragging: true,
+        zoomControl: false,
+        closePopupOnClick:false,
+        attributionControl: false});
+
+    L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);
+
+    ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
+
+    ctlMouseposition = L.control.mousePosition().addTo(mymap);
+
+    ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
+        ctlSidebar.toggle();
+    }).addTo(mymap);
+
+
+    for(let k = 0; k<16;k++)
+    {
+        popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Bundesland:"+(k+1));
+        marker_map = new L.Marker(coordinate[k], { draggable:false});
+        marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
+
+    }
+
+
+   // var BadenWürttemberg = L.marker([48.45835,9.22852]).addTo(mymap); BadenWürttemberg.bindPopup("Bundesland: 1").openPopup();
+  //  var Bayern = L.marker([49.18170,11.60156]).addTo(mymap); Bayern.bindPopup("Bundesland: 2").openPopup();
+  //  var Berlin = L.marker([52.45601,13.44727]).addTo(mymap); Berlin.bindPopup("<b>Bundesland: 3</b>").openPopup();
+   // var Brandenburg = L.marker([51.89154,14.00911]).addTo(mymap); Brandenburg.bindPopup("<b>Bundesland: 4</b>").openPopup();
+   // var Bremen = L.marker([52.98978,8.91146]).addTo(mymap); Bremen.bindPopup("<b>Bundesland: 5</b>").openPopup();
+  //  var Hamburg = L.marker([53.41096,10.22982]).addTo(mymap); Hamburg.bindPopup("<b>Bundesland: 6</b>").openPopup();
+  //  var Hessen = L.marker([50.43105,9.04329]).addTo(mymap); Hessen.bindPopup("<b>Bundesland: 7</b>").openPopup();
+  //  var Mecklenburg = L.marker([53.82665,12.63222]).addTo(mymap); Mecklenburg.bindPopup("<b>Bundesland: 8</b>").openPopup();
+  //  var Niedersachsen = L.marker([52.77624,9.92958]).addTo(mymap); Niedersachsen.bindPopup("<b>Bundesland: 9</b>").openPopup();
+  //  var NordrheinWestfalen = L.marker([51.48144,7.44667]).addTo(mymap); NordrheinWestfalen.bindPopup("<b>Bundesland: 10</b>").openPopup();
+   // var RheinlandPfalz = L.marker([49.92299,7.27089]).addTo(mymap); RheinlandPfalz.bindPopup("<b>Bundesland: 11</b>").openPopup();
+  //  var Saarland = L.marker([49.30162,7.06704]).addTo(mymap); Saarland.bindPopup("<b>Bundesland: 12</b>").openPopup();
+   // var Sachsen = L.marker([50.97724,13.61489]).addTo(mymap); Sachsen.bindPopup("<b>Bundesland: 13</b>").openPopup();
+  //  var SachsenAnhalt = L.marker([52.08436,11.68130]).addTo(mymap); SachsenAnhalt.bindPopup("<b>Bundesland: 14</b>").openPopup();
+  //  var SchleswigHolstein = L.marker([54.23132,9.76968]).addTo(mymap); SchleswigHolstein.bindPopup("<b>Bundesland: 15</b>").openPopup();
+  //  var Thüringen = L.marker([50.86643,11.08804]).addTo(mymap); Thüringen.bindPopup("<b>Bundesland: 16</b>").openPopup();
+
+
+
+    mymap.on('zoomend', function(){
+        $("#zoom-level").html(mymap.getZoom());
+    });
+
+    mymap.on('moveend', function(){
+        $("#map-center").html(LatLngToArrayString(mymap.getCenter()));
+    });
+
+    mymap.on('mousemove', function(e){
+        $("#mouse-location").html(LatLngToArrayString(e.latlng));
+    });
+
+    $("#export_exerciseChain").click(function () {
+        var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+        txt= txt + "<exercisechain>"+'\n';
+        txt= txt + "  <step id=\"1\" displayName=\"Stage 1\" file=\"stage1.xml\" >" +'\n';
+        txt= txt + "    <next default=\"repeat\" message=\"Versuche es noch mal.\" >"+ '\n';
+        txt= txt + "      <path target=\"end\" result=\"100\" />" + '\n' + "    </next>"+'\n';
+        txt= txt + "  </step>"+'\n';
+        txt= txt + "</exercisechain>";
+        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "exerciseChain.xml");
+    });
+
+    $("#export_Stage").click(function () {
+        var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
+        txt= txt + "<exercise type=\"fillIn\">"+'\n';
+        txt= txt + "    <task>"+'\n';
+        txt= txt + createXMLStringAufgabe4fill_in_blanks(output,markerarray,Deutschland);
+        txt= txt + "    </task>"+'\n';
+        txt= txt + "   <skipmessage>" +'\n';
+        txt= txt + "   </skipmessage>"+'\n';
+        txt= txt + "</exercise>";
+        var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, "stage1.xml");
+    });
+
+    function LatLngToArrayString(ll) {
+        return "["+ll.lat.toFixed(5)+", "+ll.lng.toFixed(5)+"]";
+
+    }
+
+
+</script>
+
+</body>
+</html>
