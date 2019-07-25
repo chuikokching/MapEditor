@@ -132,7 +132,7 @@
 
         mymap.addLayer(lyStammtonerlite);
 
-        mymap.options.maxZoom=7;
+        mymap.options.maxZoom=5;
         mymap.options.minZoom=4;
 
         /*-------------------------------------China-------------------------------*/
@@ -204,10 +204,10 @@
             [55.59490107236914,147.56835937500003], [54.367758524068456,147.56835937500003]];
         Taiwanpoly_array=[[50.438847907639435,145.60547053813931], [52.83816992891243,145.60547053813931],
             [52.83816992891243,147.59765714406967], [50.438847907639435,147.59765714406967]];
-        Beijingpoly_array = [[46.28895228635053,95.63787460327144], [47.654981695243265,95.63787460327144],
-            [47.654981695243265,97.92800903320308], [46.28895228635053,97.92800903320308]];
-        Tianjinpoly_array = [[44.22330603105093,103.73273849487303], [45.84350988465541,103.73273849487303],
-            [45.84350988465541,105.07719039916988], [44.22330603105093,105.07719039916988]];
+        Beijingpoly_array = [[53.464240964548,94.05584335327143], [54.63947254501615,94.05584335327143],
+            [54.63947254501615,96.34597778320307], [53.464240964548,96.34597778320307]];
+        Tianjinpoly_array = [[54.375558294813366,89.494457244873], [55.689487908438075,89.494457244873],
+            [55.689487908438075,90.83890914916991], [54.375558294813366,90.83890914916991]];
         Hebeipoly_array = [[38.779379916387995,68.6388511657715], [45.18070585818836,68.6388511657715],
             [45.18070585818836,75.45942306518556], [38.779379916387995,75.45942306518556]];
         Shanxipoly_array = [[32.26536210918115,63.24279785156248], [38.63577964379899,63.24279785156248],
@@ -220,8 +220,8 @@
             [36.81835507168012,72.8124046325683], [31.64446736237761,72.8124046325683]];
         Jiangsupoly_array = [[44.17444795686899,64.06385421752928], [47.798050735684185,64.06385421752928],
             [47.798050735684185,69.72164154052732], [44.17444795686899,69.72164154052732]];
-        Shanghaipoly_array = [[45.311597503792086,99.49321746826168], [46.0177076733273,99.49321746826168],
-            [46.0177076733273,100.62961578369139], [45.311597503792086,100.62961578369139]];
+        Shanghaipoly_array = [[53.38824275010833,87.2764205932616], [53.98657831843078,87.2764205932616],
+            [53.98657831843078,88.41281890869136], [53.38824275010833,88.41281890869136]];
         Hubeipoly_array = [[27.794135843885673,64.13492202758788], [32.10511588590253,64.13492202758788],
             [32.10511588590253,72.08971023559569], [27.794135843885673,72.08971023559569]];
         Hunanpoly_array = [[28.864068761776295,72.71970748901371], [34.16281244978306,72.71970748901371],
@@ -232,8 +232,9 @@
             [53.13616446377831,87.16861724853517],[48.37050559387284,87.16861724853517]];
         Liaoningpoly_array = [[48.720300977075645,87.16157913208009],[52.73577196136776,87.16157913208009],
             [52.73577196136776,94.24089431762697],[48.720300977075645,94.24089431762697]];
-        Jiangxipoly_array = [[46.00316240388879,92.36961364746094],[50.24511916081227,92.36961364746094],
-            [50.24511916081227,97.51670837402344],[46.00316240388879,97.51670837402344]];
+        Jiangxipoly_array = [[53.427946519516695,80.1528167724609],[57.050908075962326,80.1528167724609],
+            [57.050908075962326,85.2999114990234],[53.427946519516695,85.2999114990234]];
+
 
         Xinjiang_imageBound = L.latLngBounds([Xinjiangpoly_array[0], Xinjiangpoly_array[2]]);
         Beijing_imageBound = L.latLngBounds([Beijingpoly_array[0], Beijingpoly_array[2]]);
@@ -497,7 +498,11 @@
                 &&Number(Beijing_polygon.getBounds().getSouthEast().lat)>39.303 && Number(Beijing_polygon.getBounds().getNorthWest().lng)>115.017)
             {swal({position: 'top-end', icon:"success", text: 'Beijing', buttons: false, timer: 1000});
                 Beijing_overlay.setBounds(Beijing.getBounds());
-                Beijing_polygon.dragging.disable();}});
+                Beijing_polygon.dragging.disable();}
+            console.log(Beijing_polygon.getBounds().getNorthWest().lat);
+            console.log(Beijing_polygon.getBounds().getSouthEast().lng);
+            console.log(Beijing_polygon.getBounds().getSouthEast().lat);
+            console.log(Beijing_polygon.getBounds().getNorthWest().lng);});
 
         Tianjin_polygon.on('drag',function (e) {Tianjin_overlay.setBounds(Tianjin_polygon.getBounds());});
         Tianjin_polygon.on('dragstart',function (e) {Tianjin_overlay.setBounds(Tianjin_polygon.getBounds());});
@@ -506,7 +511,11 @@
                 &&Number(Tianjin_polygon.getBounds().getSouthEast().lat)>38.386 && Number(Tianjin_polygon.getBounds().getNorthWest().lng)>116.520)
             {swal({position: 'top-end', icon:"success", text: 'Tianjin', buttons: false,timer: 1000});
                 Tianjin_overlay.setBounds(Tianjin.getBounds());
-                Tianjin_polygon.dragging.disable();}});
+                Tianjin_polygon.dragging.disable();}
+            console.log(Tianjin_polygon.getBounds().getNorthWest().lat);
+            console.log(Tianjin_polygon.getBounds().getSouthEast().lng);
+            console.log(Tianjin_polygon.getBounds().getSouthEast().lat);
+            console.log(Tianjin_polygon.getBounds().getNorthWest().lng);});
 
         Hebei_polygon.on('drag',function (e) {Hebei_overlay.setBounds(Hebei_polygon.getBounds());});
         Hebei_polygon.on('dragstart',function (e) {Hebei_overlay.setBounds(Hebei_polygon.getBounds());});
@@ -569,7 +578,11 @@
                 &&Number(Shanghai_polygon.getBounds().getSouthEast().lat)>30.417 && Number(Shanghai_polygon.getBounds().getNorthWest().lng)>120.674)
             {swal({position: 'top-end', icon:"success", text: 'Shanghai', buttons: false, timer: 1000});
                 Shanghai_polygon.dragging.disable();
-                Shanghai_overlay.setBounds(Shanghai.getBounds());}});
+                Shanghai_overlay.setBounds(Shanghai.getBounds());}
+            console.log(Shanghai_polygon.getBounds().getNorthWest().lat);
+            console.log(Shanghai_polygon.getBounds().getSouthEast().lng);
+            console.log(Shanghai_polygon.getBounds().getSouthEast().lat);
+            console.log(Shanghai_polygon.getBounds().getNorthWest().lng);});
 
         Hubei_polygon.on('drag',function (e) {Hubei_overlay.setBounds(Hubei_polygon.getBounds());});
         Hubei_polygon.on('dragstart',function (e) {Hubei_overlay.setBounds(Hubei_polygon.getBounds());});
