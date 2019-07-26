@@ -395,8 +395,8 @@
     Hamburg_polygon.on('drag',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
     Hamburg_polygon.on('dragstart',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
     Hamburg_polygon.on('dragend',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
-        if(Number(Hamburg_polygon.getBounds().getNorthWest().lat)<55.62726717387009&& Number(Hamburg_polygon.getBounds().getSouthEast().lng)<12.187988728284836
-            &&Number(Hamburg_polygon.getBounds().getSouthEast().lat)>51.46189043285914 && Number(Hamburg_polygon.getBounds().getNorthWest().lng)>7.895020425319673)
+        if(Number(Hamburg_polygon.getBounds().getNorthWest().lat)<54.62726717387009&& Number(Hamburg_polygon.getBounds().getSouthEast().lng)<11.187988728284836
+            &&Number(Hamburg_polygon.getBounds().getSouthEast().lat)>52.46189043285914 && Number(Hamburg_polygon.getBounds().getNorthWest().lng)>8.895020425319673)
         {swal({position: 'top-end', text: 'Hamburg', icon:"success", buttons: false, timer: 1000});
             Hamburg_overlay.setBounds(Hamburg.getBounds());
             Hamburg_polygon.dragging.disable();
@@ -425,8 +425,8 @@
     Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
     Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
     Bremen_polygon.on('dragend',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());
-        if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<55.20822574276112&& Number(Bremen_polygon.getBounds().getSouthEast().lng)<10.942871093750002
-            &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>51.03240463975814 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>6.591308593750002)
+        if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<54.20822574276112&& Number(Bremen_polygon.getBounds().getSouthEast().lng)<9.942871093750002
+            &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>52.03240463975814 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>7.591308593750002)
         {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
             Bremen_overlay.setBounds(Bremen.getBounds());
             Bremen_polygon.dragging.disable();
