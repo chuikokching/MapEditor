@@ -67,383 +67,164 @@
 
     L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);
 
-    var SaxonyAnhalt =
-        [[51.890053935216926,11.323243081569672],
-            [52.25919183822973,11.323243081569672],
-            [52.25919183822973,12.099609822034836],
-            [51.890053935216926,12.099609822034836]];
+    var SaxonyAnhalt = [[51.890053935216926,11.323243081569672], [52.25919183822973,11.323243081569672],
+        [52.25919183822973,12.099609822034836],[51.890053935216926,12.099609822034836]];
     var SaxonyAnhaltPolygon = L.polygon(SaxonyAnhalt, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var SchleswingHolstein =
-        [[53.951775568681086,9.331055134534838],
-            [54.295156093819024,9.331055134534838],
-            [54.295156093819024,10.283203125000002],
-            [53.951775568681086,10.283203125000002]];
+    var SchleswingHolstein = [[53.951775568681086,9.331055134534838], [54.295156093819024,9.331055134534838],
+        [54.295156093819024,10.283203125000002],[53.951775568681086,10.283203125000002]];
     var SchleswingHolsteinPolygon = L.polygon(SchleswingHolstein, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var MecklenburgVorpommern =
-        [[53.53595456570721,11.909179687500002],
-            [53.960394653308995,11.909179687500002],
-            [53.960394653308995,13.139648437500002],
-            [53.53595456570721,13.139648437500002]];
+    var MecklenburgVorpommern = [[53.53595456570721,11.909179687500002], [53.960394653308995,11.909179687500002],
+        [53.960394653308995,13.139648437500002], [53.53595456570721,13.139648437500002]];
     var MecklenburgVorpommernPolygon = L.polygon(MecklenburgVorpommern , {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var Niedersachsen =
-        [[52.286082186502085,9.345704019069673],
-            [52.77618568896171,9.345704019069673],
-            [52.77618568896171,10.634765625],
-            [52.286082186502085,10.634765625]];
+    var Niedersachsen = [[52.286082186502085,9.345704019069673], [52.77618568896171,9.345704019069673],
+        [52.77618568896171,10.634765625],[52.286082186502085,10.634765625]];
     var NiedersachsenPolygon = L.polygon(Niedersachsen, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var NordrheinWestfalen =
-        [[51.25274723429458,6.8408212065696725],
-            [51.754240074033525,6.8408212065696725],
-            [51.754240074033525,8.173828125000002],
-            [51.25274723429458,8.173828125000002]];
+    var NordrheinWestfalen = [[51.25274723429458,6.8408212065696725],[51.754240074033525,6.8408212065696725],
+        [51.754240074033525,8.173828125000002],[51.25274723429458,8.173828125000002]];
     var NordrheinWestfalenPolygon = L.polygon(NordrheinWestfalen , {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var Bremen =
-        [[53.46189043285914,9.895020425319673],
-            [53.62726717387009,9.895020425319673],
-            [53.62726717387009,10.187988728284836],
-            [53.46189043285914,10.187988728284836]];
+    var Bremen = [[53.46189043285914,9.895020425319673],[53.62726717387009,9.895020425319673],
+        [53.62726717387009,10.187988728284836],[53.46189043285914,10.187988728284836]];
     var BremenPolygon = L.polygon(Bremen, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
-    var Brandenburg =
-        [[51.72702815704777,13.300782144069673],
-            [52.16045455774706,13.300782144069673],
-            [52.16045455774706,14.501953125000002],
-            [51.72702815704777,14.501953125000002]];
+    var Brandenburg = [[51.72702815704777,13.300782144069673],[52.16045455774706,13.300782144069673],
+            [52.16045455774706,14.501953125000002],[51.72702815704777,14.501953125000002]];
     var BrandenburgPolygon = L.polygon(Brandenburg, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
     /**SaxonyAnhalt**/
     SaxonyAnhaltAnfang = L.imageOverlay('img-Bundesland/Sachsen-Anhalt.png',[[52.25919183822973,11.323243081569672],[51.890053935216926,12.099609822034836]]);
-    SaxonyAnhalt_array=[
-        [54.01637587487684,15.761719644069673],
-        [54.66535965321276,15.761719644069673],
-        [54.66535965321276,17.724611163139347],
-        [54.01637587487684,17.724611163139347]];
-    SaxonyAnhalt_imageBound = L.latLngBounds([
-        SaxonyAnhalt_array[0],
-        SaxonyAnhalt_array[2]
-    ]);
-    SaxonyAnhalt_overlayer = L.imageOverlay(('img-Bundesland/Sachsen-Anhalt.png'),SaxonyAnhalt_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    SchleswingHolsteinAnfang = L.imageOverlay('img-Bundesland/Schleswig.png',[[54.295156093819024,9.331055134534838],[53.951775568681086,10.283203125000002]]);
+    MecklenburgVorpommernAnfang = L.imageOverlay('img-Bundesland/Mecklenburg-Vorpommern.png',[[53.960394653308995,11.909179687500002],[53.53595456570721,13.139648437500002]]);
+    NiedersachsenAnfang = L.imageOverlay('img-Bundesland/Niedersachsen.png',[[52.77618568896171,9.345704019069673],[52.286082186502085,10.634765625]]);
+    NordrheinWestfalenAnfang = L.imageOverlay('img-Bundesland/Nordrhein-Westfalen.png',[[51.754240074033525,6.8408212065696725],[51.25274723429458,8.173828125000002]]);
+    BremenAnfang = L.imageOverlay('img-Bundesland/Bremen.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]);
+    BrandenburgAnfang = L.imageOverlay('img-Bundesland/Brandenburg.png',[[52.16045455774706,13.300782144069673],[51.72702815704777,14.501953125000002]]);
 
-    SaxonyAnhalt_polygon = L.polygon((SaxonyAnhalt_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
 
-    SaxonyAnhalt_polygon.on('drag',function (e) {
-        SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());
-    });
+    SaxonyAnhalt_array=[[54.01637587487684,15.761719644069673],[54.66535965321276,15.761719644069673],
+        [54.66535965321276,17.724611163139347],[54.01637587487684,17.724611163139347]];
+    SchleswingHolstein_array=[[54.01637587487684,18.867189288139347], [54.682299736451164,18.867189288139347],
+        [54.682299736451164,20.771485269069675], [54.01637587487684,20.771485269069675]];
+    MecklenburgVorpommern_array=[[52.8823912222619,15.761719644069673], [53.56641415275043,15.761719644069673],
+        [53.56641415275043,17.783204019069675], [52.8823912222619,17.783204019069675]];
+    Niedersachsen_array=[[52.917734847050504,18.867189288139347], [53.6011975858283,18.867189288139347],
+        [53.6011975858283,20.859375894069675], [52.917734847050504,20.859375894069675]];
+    NordrheinWestfalen_array=[[51.68163798295035,15.878908038139345], [52.3666553831557,15.878908038139345],
+        [52.3666553831557,17.871094644069675], [51.68163798295035,17.871094644069675]];
+    Bremen_array=[[51.66346966023437,18.837891519069675], [52.38454034067938,18.837891519069675],
+        [52.38454034067938,20.976564288139347], [51.66346966023437,20.976564288139347]];
+    Brandenburg_array=[[50.3734961443035,15.878908038139345], [51.188524386418884,15.878908038139345],
+        [51.188524386418884,18.017578125000004], [50.3734961443035,18.017578125000004]];
 
-    SaxonyAnhalt_polygon.on('dragstart',function (e) {
-        SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());
-    });
-    SaxonyAnhalt_polygon.on('dragend',function (e) {
-        SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());
-        if(Number(SaxonyAnhalt_polygon.getBounds().getNorthWest().lat)<53.25919183822973&& Number(SaxonyAnhalt_polygon.getBounds().getSouthEast().lng)<13.099609822034836
+    /**SaxonyAnhalt**/
+    SaxonyAnhalt_imageBound = L.latLngBounds([SaxonyAnhalt_array[0], SaxonyAnhalt_array[2]]);
+    SaxonyAnhalt_overlayer = L.imageOverlay(('img-Bundesland/Sachsen-Anhalt.png'),SaxonyAnhalt_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    SaxonyAnhalt_polygon = L.polygon((SaxonyAnhalt_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+
+    SaxonyAnhalt_polygon.on('drag',function (e) {SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());});
+    SaxonyAnhalt_polygon.on('dragstart',function (e) {SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());});
+    SaxonyAnhalt_polygon.on('dragend',function (e) {SaxonyAnhalt_overlayer.setBounds(SaxonyAnhalt_polygon.getBounds());
+    if(Number(SaxonyAnhalt_polygon.getBounds().getNorthWest().lat)<53.25919183822973&& Number(SaxonyAnhalt_polygon.getBounds().getSouthEast().lng)<13.099609822034836
             &&Number(SaxonyAnhalt_polygon.getBounds().getSouthEast().lat)>50.890053935216926 && Number(SaxonyAnhalt_polygon.getBounds().getNorthWest().lng)>10.323243081569672)
-        {
-            swal({
-                position: 'top-end',
-                text: 'SaxonyAnhalt',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'SaxonyAnhalt', icon:"success", buttons: false, timer: 1000});
             SaxonyAnhalt_overlayer.setBounds(SaxonyAnhaltAnfang.getBounds());
             SaxonyAnhalt_polygon.dragging.disable();
-            mymap.removeLayer(SaxonyAnhaltPolygon);
-        }
-    });
+            mymap.removeLayer(SaxonyAnhaltPolygon);}});
 
     /**SchleswingHolstein**/
-    SchleswingHolsteinAnfang = L.imageOverlay('img-Bundesland/Schleswig.png',[[54.295156093819024,9.331055134534838],[53.951775568681086,10.283203125000002]]);
-    SchleswingHolstein_array=[
-        [54.01637587487684,18.867189288139347],
-        [54.682299736451164,18.867189288139347],
-        [54.682299736451164,20.771485269069675],
-        [54.01637587487684,20.771485269069675]];
-    SchleswingHolstein_imageBound = L.latLngBounds([
-        SchleswingHolstein_array[0],
-        SchleswingHolstein_array[2]
-    ]);
-    SchleswingHolstein_overlayer = L.imageOverlay(('img-Bundesland/Schleswig.png'),SchleswingHolstein_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    SchleswingHolstein_imageBound = L.latLngBounds([SchleswingHolstein_array[0], SchleswingHolstein_array[2]]);
+    SchleswingHolstein_overlayer = L.imageOverlay(('img-Bundesland/Schleswig.png'),SchleswingHolstein_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    SchleswingHolstein_polygon = L.polygon((SchleswingHolstein_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    SchleswingHolstein_polygon = L.polygon((SchleswingHolstein_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    SchleswingHolstein_polygon.on('drag',function (e) {
-        SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());
-    });
-
-    SchleswingHolstein_polygon.on('dragstart',function (e) {
-        SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());
-    });
-    SchleswingHolstein_polygon.on('dragend',function (e) {
-        SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());
+    SchleswingHolstein_polygon.on('drag',function (e) {SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());});
+    SchleswingHolstein_polygon.on('dragstart',function (e) {SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());});
+    SchleswingHolstein_polygon.on('dragend',function (e) {SchleswingHolstein_overlayer.setBounds(SchleswingHolstein_polygon.getBounds());
         if(Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lat)<55.295156093819024&& Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lng)<11.283203125000002
             &&Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lat)>52.951775568681086 && Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lng)>8.331055134534838)
-        {
-            swal({
-                position: 'top-end',
-                text: 'SchleswingHolstein',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'SchleswingHolstein', icon:"success", buttons: false, timer: 1000});
             SchleswingHolstein_overlayer.setBounds(SchleswingHolsteinAnfang.getBounds());
             SchleswingHolstein_polygon.dragging.disable();
-            mymap.removeLayer(SchleswingHolsteinPolygon);
-        }
-    });
+            mymap.removeLayer(SchleswingHolsteinPolygon);}});
 
     /**MecklenburgVorpommern**/
-    MecklenburgVorpommernAnfang = L.imageOverlay('img-Bundesland/Mecklenburg-Vorpommern.png',[[53.960394653308995,11.909179687500002],[53.53595456570721,13.139648437500002]]);
-    MecklenburgVorpommern_array=[
-        [52.8823912222619,15.761719644069673],
-        [53.56641415275043,15.761719644069673],
-        [53.56641415275043,17.783204019069675],
-        [52.8823912222619,17.783204019069675]];
-    MecklenburgVorpommern_imageBound = L.latLngBounds([
-        MecklenburgVorpommern_array[0],
-        MecklenburgVorpommern_array[2]
-    ]);
-    MecklenburgVorpommern_overlayer = L.imageOverlay(('img-Bundesland/Mecklenburg-Vorpommern.png'),MecklenburgVorpommern_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    MecklenburgVorpommern_imageBound = L.latLngBounds([MecklenburgVorpommern_array[0], MecklenburgVorpommern_array[2]]);
+    MecklenburgVorpommern_overlayer = L.imageOverlay(('img-Bundesland/Mecklenburg-Vorpommern.png'),MecklenburgVorpommern_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    MecklenburgVorpommern_polygon = L.polygon((MecklenburgVorpommern_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    MecklenburgVorpommern_polygon = L.polygon((MecklenburgVorpommern_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    MecklenburgVorpommern_polygon.on('drag',function (e) {
-        MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());
-    });
-
-    MecklenburgVorpommern_polygon.on('dragstart',function (e) {
-        MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());
-    });
-    MecklenburgVorpommern_polygon.on('dragend',function (e) {
-        MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());
+    MecklenburgVorpommern_polygon.on('drag',function (e) {MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());});
+    MecklenburgVorpommern_polygon.on('dragstart',function (e) {MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());});
+    MecklenburgVorpommern_polygon.on('dragend',function (e) {MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommern_polygon.getBounds());
         if(Number(MecklenburgVorpommern_polygon.getBounds().getNorthWest().lat)<54.960394653308995&& Number(MecklenburgVorpommern_polygon.getBounds().getSouthEast().lng)<14.139648437500002
             &&Number(MecklenburgVorpommern_polygon.getBounds().getSouthEast().lat)>52.53595456570721 && Number(MecklenburgVorpommern_polygon.getBounds().getNorthWest().lng)>10.909179687500002)
-        {
-            swal({
-                position: 'top-end',
-                text: 'MecklenburgVorpommern',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'MecklenburgVorpommern', icon:"success", buttons: false, timer: 1000});
             MecklenburgVorpommern_overlayer.setBounds(MecklenburgVorpommernAnfang.getBounds());
             MecklenburgVorpommern_polygon.dragging.disable();
-            mymap.removeLayer(MecklenburgVorpommernPolygon);
-        }
-    });
+            mymap.removeLayer(MecklenburgVorpommernPolygon);}});
 
     /**Niedersachsen**/
-    NiedersachsenAnfang = L.imageOverlay('img-Bundesland/Niedersachsen.png',[[52.77618568896171,9.345704019069673],[52.286082186502085,10.634765625]]);
-    Niedersachsen_array=[
-        [52.917734847050504,18.867189288139347],
-        [53.6011975858283,18.867189288139347],
-        [53.6011975858283,20.859375894069675],
-        [52.917734847050504,20.859375894069675]];
-    Niedersachsen_imageBound = L.latLngBounds([
-        Niedersachsen_array[0],
-        Niedersachsen_array[2]
-    ]);
-    Niedersachsen_overlayer = L.imageOverlay(('img-Bundesland/Niedersachsen.png'),Niedersachsen_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    Niedersachsen_imageBound = L.latLngBounds([Niedersachsen_array[0], Niedersachsen_array[2]]);
+    Niedersachsen_overlayer = L.imageOverlay(('img-Bundesland/Niedersachsen.png'),Niedersachsen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    Niedersachsen_polygon = L.polygon((Niedersachsen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    Niedersachsen_polygon = L.polygon((Niedersachsen_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    Niedersachsen_polygon.on('drag',function (e) {
-        Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());
-    });
-
-    Niedersachsen_polygon.on('dragstart',function (e) {
-        Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());
-    });
-    Niedersachsen_polygon.on('dragend',function (e) {
-        Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());
+    Niedersachsen_polygon.on('drag',function (e) {Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());});
+    Niedersachsen_polygon.on('dragstart',function (e) {Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());});
+    Niedersachsen_polygon.on('dragend',function (e) {Niedersachsen_overlayer.setBounds(Niedersachsen_polygon.getBounds());
         if(Number(Niedersachsen_polygon.getBounds().getNorthWest().lat)<53.77618568896171&& Number(Niedersachsen_polygon.getBounds().getSouthEast().lng)<11.634765625
             &&Number(Niedersachsen_polygon.getBounds().getSouthEast().lat)>51.286082186502085 && Number(Niedersachsen_polygon.getBounds().getNorthWest().lng)>8.345704019069673)
-        {
-            swal({
-                position: 'top-end',
-                text: 'Niedersachsen',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'Niedersachsen', icon:"success", buttons: false, timer: 1000});
             Niedersachsen_overlayer.setBounds(NiedersachsenAnfang.getBounds());
             Niedersachsen_polygon.dragging.disable();
-            mymap.removeLayer(NiedersachsenPolygon);
-        }
-    });
+            mymap.removeLayer(NiedersachsenPolygon);}});
 
     /**NordrheinWestfalen**/
-    NordrheinWestfalenAnfang = L.imageOverlay('img-Bundesland/Nordrhein-Westfalen.png',[[51.754240074033525,6.8408212065696725],[51.25274723429458,8.173828125000002]]);
-    NordrheinWestfalen_array=[
-        [51.68163798295035,15.878908038139345],
-        [52.3666553831557,15.878908038139345],
-        [52.3666553831557,17.871094644069675],
-        [51.68163798295035,17.871094644069675]];
-    NordrheinWestfalen_imageBound = L.latLngBounds([
-        NordrheinWestfalen_array[0],
-        NordrheinWestfalen_array[2]
-    ]);
-    NordrheinWestfalen_overlayer = L.imageOverlay(('img-Bundesland/Nordrhein-Westfalen.png'),NordrheinWestfalen_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    NordrheinWestfalen_imageBound = L.latLngBounds([NordrheinWestfalen_array[0], NordrheinWestfalen_array[2]]);
+    NordrheinWestfalen_overlayer = L.imageOverlay(('img-Bundesland/Nordrhein-Westfalen.png'),NordrheinWestfalen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    NordrheinWestfalen_polygon = L.polygon((NordrheinWestfalen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    NordrheinWestfalen_polygon = L.polygon((NordrheinWestfalen_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    NordrheinWestfalen_polygon.on('drag',function (e) {
-        NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());
-    });
-
-    NordrheinWestfalen_polygon.on('dragstart',function (e) {
-        NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());
-    });
-    NordrheinWestfalen_polygon.on('dragend',function (e) {
-        NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());
+    NordrheinWestfalen_polygon.on('drag',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());});
+    NordrheinWestfalen_polygon.on('dragstart',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());});
+    NordrheinWestfalen_polygon.on('dragend',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());
         if(Number(NordrheinWestfalen_polygon.getBounds().getNorthWest().lat)<52.754240074033525&& Number(NordrheinWestfalen_polygon.getBounds().getSouthEast().lng)<9.173828125000002
             &&Number(NordrheinWestfalen_polygon.getBounds().getSouthEast().lat)>50.25274723429458 && Number(NordrheinWestfalen_polygon.getBounds().getNorthWest().lng)>5.8408212065696725)
-        {
-            swal({
-                position: 'top-end',
-                text: 'NordrheinWestfalen',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'NordrheinWestfalen', icon:"success", buttons: false, timer: 1000});
             NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalenAnfang.getBounds());
             NordrheinWestfalen_polygon.dragging.disable();
-            mymap.removeLayer(NordrheinWestfalenPolygon);
-        }
-    });
+            mymap.removeLayer(NordrheinWestfalenPolygon);}});
 
     /**Bremen**/
-    BremenAnfang = L.imageOverlay('img-Bundesland/Bremen.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]);
-    Bremen_array=[
-        [51.66346966023437,18.837891519069675],
-        [52.38454034067938,18.837891519069675],
-        [52.38454034067938,20.976564288139347],
-        [51.66346966023437,20.976564288139347]];
-    Bremen_imageBound = L.latLngBounds([
-        Bremen_array[0],
-        Bremen_array[2]
-    ]);
-    Bremen_overlayer = L.imageOverlay(('img-Bundesland/Bremen.png'),Bremen_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    Bremen_imageBound = L.latLngBounds([Bremen_array[0], Bremen_array[2]]);
+    Bremen_overlayer = L.imageOverlay(('img-Bundesland/Bremen.png'),Bremen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    Bremen_polygon = L.polygon((Bremen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    Bremen_polygon = L.polygon((Bremen_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    Bremen_polygon.on('drag',function (e) {
-        Bremen_overlayer.setBounds(Bremen_polygon.getBounds());
-    });
-
-    Bremen_polygon.on('dragstart',function (e) {
-        Bremen_overlayer.setBounds(Bremen_polygon.getBounds());
-    });
-    Bremen_polygon.on('dragend',function (e) {
-        Bremen_overlayer.setBounds(Bremen_polygon.getBounds());
+    Bremen_polygon.on('drag',function (e) {Bremen_overlayer.setBounds(Bremen_polygon.getBounds());});
+    Bremen_polygon.on('dragstart',function (e) {Bremen_overlayer.setBounds(Bremen_polygon.getBounds());});
+    Bremen_polygon.on('dragend',function (e) {Bremen_overlayer.setBounds(Bremen_polygon.getBounds());
         if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<55.62726717387009&& Number(Bremen_polygon.getBounds().getSouthEast().lng)<12.187988728284836
             &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>51.46189043285914 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>7.895020425319673)
-        {
-            swal({
-                position: 'top-end',
-                text: 'Bremen',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
             Bremen_overlayer.setBounds(BremenAnfang.getBounds());
             Bremen_polygon.dragging.disable();
-            mymap.removeLayer(BremenPolygon);
-        }
-    });
+            mymap.removeLayer(BremenPolygon);}});
 
     /**Brandenburg**/
-    BrandenburgAnfang = L.imageOverlay('img-Bundesland/Brandenburg.png',[[52.16045455774706,13.300782144069673],[51.72702815704777,14.501953125000002]]);
-    Brandenburg_array=[
-        [50.3734961443035,15.878908038139345],
-        [51.188524386418884,15.878908038139345],
-        [51.188524386418884,18.017578125000004],
-        [50.3734961443035,18.017578125000004]];
-    Brandenburg_imageBound = L.latLngBounds([
-        Brandenburg_array[0],
-        Brandenburg_array[2]
-    ]);
-    Brandenburg_overlayer = L.imageOverlay(('img-Bundesland/Brandenburg.png'),Brandenburg_imageBound,{
-        opacity:1,
-        interactive:true
-    }).addTo(mymap);
+    Brandenburg_imageBound = L.latLngBounds([Brandenburg_array[0], Brandenburg_array[2]]);
+    Brandenburg_overlayer = L.imageOverlay(('img-Bundesland/Brandenburg.png'),Brandenburg_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    Brandenburg_polygon = L.polygon((Brandenburg_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
-    Brandenburg_polygon = L.polygon((Brandenburg_array),{
-        draggable: true,
-        opacity:0,
-        fillOpacity:0
-    }).addTo(mymap);
-
-    Brandenburg_polygon.on('drag',function (e) {
-        Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());
-    });
-
-    Brandenburg_polygon.on('dragstart',function (e) {
-        Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());
-    });
-    Brandenburg_polygon.on('dragend',function (e) {
-        Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());
+    Brandenburg_polygon.on('drag',function (e) {Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());});
+    Brandenburg_polygon.on('dragstart',function (e) {Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());});
+    Brandenburg_polygon.on('dragend',function (e) {Brandenburg_overlayer.setBounds(Brandenburg_polygon.getBounds());
         if(Number(Brandenburg_polygon.getBounds().getNorthWest().lat)<53.16045455774706&& Number(Brandenburg_polygon.getBounds().getSouthEast().lng)<15.501953125000002
             &&Number(Brandenburg_polygon.getBounds().getSouthEast().lat)>50.72702815704777 && Number(Brandenburg_polygon.getBounds().getNorthWest().lng)>12.300782144069673)
-        {
-            swal({
-                position: 'top-end',
-                text: 'Brandenburg',
-                icon:"success",
-                buttons: false,
-                timer: 1000
-            })
+        {swal({position: 'top-end', text: 'Brandenburg', icon:"success", buttons: false, timer: 1000});
             Brandenburg_overlayer.setBounds(BrandenburgAnfang.getBounds());
             Brandenburg_polygon.dragging.disable();
-            mymap.removeLayer(BrandenburgPolygon);
-        }
-    });
+            mymap.removeLayer(BrandenburgPolygon);}});
+
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
