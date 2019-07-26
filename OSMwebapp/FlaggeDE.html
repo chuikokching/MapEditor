@@ -56,7 +56,7 @@
     var output=[];
     var record=[];
 
-    var badenwuerttemberg,badenwuerttemberg_array,badenwuerttemberg_imageBound,sachsen_overlay;
+    var badenwuerttemberg,badenwuerttemberg_array,badenwuerttemberg_imageBound,badenwuerttemberg_overlay;
     var bayern,bayern_array,bayern_imageBound,bayern_overlay;
     var berlin,berlin_array,berlin_imageBound,berlin_overlay;
     var hessen,hessen_array,hessen_imageBound,hessen_overlay;
@@ -69,9 +69,9 @@
     var SchleswingHolstein, SchleswingHolstein_array,SchleswingHolstein_imageBound,SchleswingHolstein_overlay;
     var MecklenburgVorpommern, MecklenburgVorpommern_array,MecklenburgVorpommern_imageBound,MecklenburgVorpommern_overlay;
     var Niedersachsen, Niedersachsen_array,Niedersachsen_imageBound,Niedersachsen_overlay;
-    var Bremen, Bremen_array, Bremen_imageBound,Bremen_overlay;
+    var Hamburg, Hamburg_array, Hamburg_imageBound,Hamburg_overlay;
     var Brandenburg, Brandenburg_array,Brandenburg_imageBound,Brandenburg_overlay;
-    var Hamburg, Hamburg_array,Hamburg_imageBound, Hamburg_overlay;
+
 
 
     var mymap = L.map('mapdiv', {
@@ -106,8 +106,9 @@
     SchleswingHolstein = L.imageOverlay('img-Bundesland/background.png',[[54.295156093819024,9.331055134534838],[53.951775568681086,10.283203125000002]]).addTo(mymap);
     MecklenburgVorpommern = L.imageOverlay('img-Bundesland/background.png',[[53.960394653308995,11.909179687500002],[53.53595456570721,13.139648437500002]]).addTo(mymap);
     Niedersachsen = L.imageOverlay('img-Bundesland/background.png',[[52.77618568896171,9.345704019069673],[52.286082186502085,10.634765625]]).addTo(mymap);
-    Bremen = L.imageOverlay('img-Bundesland/background.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]).addTo(mymap);
+    Hamburg = L.imageOverlay('img-Bundesland/background.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]).addTo(mymap);
     Brandenburg = L.imageOverlay('img-Bundesland/background.png',[[52.16045455774706,13.300782144069673],[51.72702815704777,14.501953125000002]]).addTo(mymap);
+    Bremen = L.imageOverlay('img-Bundesland/background.png',[[53.20822574276112,8.591308593750002],[53.03240463975814,8.942871093750002]]).addTo(mymap);
 
 
     sachsen_array = [[52.62657693959687,5.28965950012207],[53.087348894989795,5.28965950012207],
@@ -136,10 +137,12 @@
         [53.56641415275043,17.783204019069675], [52.8823912222619,17.783204019069675]];
     Niedersachsen_array=[[52.917734847050504,18.867189288139347], [53.6011975858283,18.867189288139347],
         [53.6011975858283,20.859375894069675], [52.917734847050504,20.859375894069675]];
-    Bremen_array=[[51.66346966023437,18.837891519069675], [52.38454034067938,18.837891519069675],
+    Hamburg_array=[[51.66346966023437,18.837891519069675], [52.38454034067938,18.837891519069675],
         [52.38454034067938,20.976564288139347], [51.66346966023437,20.976564288139347]];
     Brandenburg_array=[[50.3734961443035,15.878908038139345], [51.188524386418884,15.878908038139345],
         [51.188524386418884,18.017578125000004], [50.3734961443035,18.017578125000004]];
+    Bremen_array=[[51.68163798295035,15.878908038139345], [52.3666553831557,15.878908038139345],
+        [52.3666553831557,17.871094644069675], [51.68163798295035,17.871094644069675]];
 
 
     sachsen_polygon = L.polygon((sachsen_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
@@ -155,8 +158,9 @@
     SchleswingHolstein_polygon = L.polygon((SchleswingHolstein_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
     MecklenburgVorpommern_polygon = L.polygon((MecklenburgVorpommern_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
     Niedersachsen_polygon = L.polygon((Niedersachsen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
-    Bremen_polygon = L.polygon((Bremen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+    Hamburg_polygon = L.polygon((Hamburg_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
     Brandenburg_polygon = L.polygon((Brandenburg_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+    Bremen_polygon = L.polygon((Bremen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
 
 
     sachsen_imageBound = L.latLngBounds([sachsen_array[0], sachsen_array[2]]);
@@ -172,8 +176,9 @@
     SchleswingHolstein_imageBound = L.latLngBounds([SchleswingHolstein_array[0], SchleswingHolstein_array[2]]);
     MecklenburgVorpommern_imageBound = L.latLngBounds([MecklenburgVorpommern_array[0], MecklenburgVorpommern_array[2]]);
     Niedersachsen_imageBound = L.latLngBounds([Niedersachsen_array[0], Niedersachsen_array[2]]);
-    Bremen_imageBound = L.latLngBounds([Bremen_array[0], Bremen_array[2]]);
+    Hamburg_imageBound = L.latLngBounds([Hamburg_array[0], Hamburg_array[2]]);
     Brandenburg_imageBound = L.latLngBounds([Brandenburg_array[0], Brandenburg_array[2]]);
+    Bremen_imageBound = L.latLngBounds([Bremen_array[0], Bremen_array[2]]);
 
 
     sachsen_overlay = L.imageOverlay(('img-Bundesland/sachsen.png'),sachsen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
@@ -189,8 +194,9 @@
     SchleswingHolstein_overlay = L.imageOverlay(('img-Bundesland/Schleswig.png'),SchleswingHolstein_imageBound,{opacity:1, interactive:true}).addTo(mymap);
     MecklenburgVorpommern_overlay = L.imageOverlay(('img-Bundesland/Mecklenburg-Vorpommern.png'),MecklenburgVorpommern_imageBound,{opacity:1, interactive:true}).addTo(mymap);
     Niedersachsen_overlay = L.imageOverlay(('img-Bundesland/Niedersachsen.png'),Niedersachsen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
-    Bremen_overlay = L.imageOverlay(('img-Bundesland/Bremen.png'),Bremen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    Hamburg_overlay = L.imageOverlay(('img-Bundesland/Hamburg.png'),Hamburg_imageBound,{opacity:1, interactive:true}).addTo(mymap);
     Brandenburg_overlay = L.imageOverlay(('img-Bundesland/Brandenburg.png'),Brandenburg_imageBound,{opacity:1, interactive:true}).addTo(mymap);
+    Bremen_overlay = L.imageOverlay(('img-Bundesland/Bremen.png'),Bremen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
 
 
 
@@ -359,15 +365,15 @@
             Niedersachsen_polygon.dragging.disable();
             mymap.removeLayer(Niedersachsen);}});
 
-    Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
-    Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
-    Bremen_polygon.on('dragend',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());
-        if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<55.62726717387009&& Number(Bremen_polygon.getBounds().getSouthEast().lng)<12.187988728284836
-            &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>51.46189043285914 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>7.895020425319673)
-        {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
-            Bremen_overlay.setBounds(Bremen.getBounds());
-            Bremen_polygon.dragging.disable();
-            mymap.removeLayer(Bremen);}});
+    Hamburg_polygon.on('drag',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
+    Hamburg_polygon.on('dragstart',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
+    Hamburg_polygon.on('dragend',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
+        if(Number(Hamburg_polygon.getBounds().getNorthWest().lat)<55.62726717387009&& Number(Hamburg_polygon.getBounds().getSouthEast().lng)<12.187988728284836
+            &&Number(Hamburg_polygon.getBounds().getSouthEast().lat)>51.46189043285914 && Number(Hamburg_polygon.getBounds().getNorthWest().lng)>7.895020425319673)
+        {swal({position: 'top-end', text: 'Hamburg', icon:"success", buttons: false, timer: 1000});
+            Hamburg_overlay.setBounds(Hamburg.getBounds());
+            Hamburg_polygon.dragging.disable();
+            mymap.removeLayer(Hamburg);}});
 
     Brandenburg_polygon.on('drag',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
     Brandenburg_polygon.on('dragstart',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
@@ -378,6 +384,18 @@
             Brandenburg_overlay.setBounds(Brandenburg.getBounds());
             Brandenburg_polygon.dragging.disable();
             mymap.removeLayer(Brandenburg);}});
+
+    Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
+    Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
+    Bremen_polygon.on('dragend',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());
+        if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<55.20822574276112&& Number(Bremen_polygon.getBounds().getSouthEast().lng)<10.942871093750002
+            &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>51.03240463975814 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>6.591308593750002)
+        {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
+            Bremen_overlay.setBounds(Bremen.getBounds());
+            Bremen_polygon.dragging.disable();
+            mymap.removeLayer(Bremen);}});
+
+
 
 
     mymap.on('zoomend', function(){
