@@ -346,12 +346,11 @@
         console.log(SaxonyAnhalt_polygon.getBounds().getSouthEast().lat);
         console.log(SaxonyAnhalt_polygon.getBounds().getNorthWest().lng);
     });
-
     SchleswingHolstein_polygon.on('drag',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
     SchleswingHolstein_polygon.on('dragstart',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
     SchleswingHolstein_polygon.on('dragend',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());
-        if(Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lat)<55.295156093819024&& Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lng)<10.283203125000002
-            &&Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lat)>53.951775568681086 && Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lng)>8.331055134534838)
+        if(Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lat)<55.295156093819024&& Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lng)<11.283203125000002
+            &&Number(SchleswingHolstein_polygon.getBounds().getSouthEast().lat)>52.951775568681086 && Number(SchleswingHolstein_polygon.getBounds().getNorthWest().lng)>8.331055134534838)
         {swal({position: 'top-end', text: 'Schleswig-Holstein', icon:"success", buttons: false, timer: 1000});
             SchleswingHolstein_overlay.setBounds(SchleswingHolstein.getBounds());
             SchleswingHolstein_polygon.dragging.disable();
