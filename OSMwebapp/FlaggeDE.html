@@ -75,15 +75,17 @@
 
 
     var mymap = L.map('mapdiv', {
-        center:[51.65001, 10.67920],
-        zoom:7,
-        scrollWheelZoom:false,
+        center:[51.02391, 11.57912],
+        zoom:6,
+        scrollWheelZoom:true,
         dragging: true,
-        zoomControl: true,
+        zoomControl: false,
         closePopupOnClick:false,
         attributionControl: false});
 
     L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);
+    mymap.options.maxZoom=7;
+    mymap.options.minZoom=6;
 
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
@@ -141,8 +143,8 @@
         [52.38454034067938,20.976564288139347], [51.66346966023437,20.976564288139347]];
     Brandenburg_array=[[50.3734961443035,15.878908038139345], [51.188524386418884,15.878908038139345],
         [51.188524386418884,18.017578125000004], [50.3734961443035,18.017578125000004]];
-    Bremen_array=[[51.68163798295035,15.878908038139345], [52.3666553831557,15.878908038139345],
-        [52.3666553831557,17.871094644069675], [51.68163798295035,17.871094644069675]];
+    Bremen_array=[[51.94772115350341,16.54772758483887], [52.127938078882316,16.54772758483887],
+        [52.127938078882316,16.89929008483887], [51.94772115350341,16.89929008483887]];
 
 
     sachsen_polygon = L.polygon((sachsen_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
@@ -393,7 +395,12 @@
         {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
             Bremen_overlay.setBounds(Bremen.getBounds());
             Bremen_polygon.dragging.disable();
-            mymap.removeLayer(Bremen);}});
+            mymap.removeLayer(Bremen);}
+        console.log(Bremen_polygon.getBounds().getNorthWest().lat);
+        console.log(Bremen_polygon.getBounds().getSouthEast().lng);
+        console.log(Bremen_polygon.getBounds().getSouthEast().lat);
+        console.log(Bremen_polygon.getBounds().getNorthWest().lng);
+    });
 
 
 
