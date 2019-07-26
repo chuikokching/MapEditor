@@ -57,7 +57,7 @@
     var record=[];
     var marker_map;
     var popup_map;
-    var coordination=[
+    var coordinates=[
         [48.45835,9.22852],
         [49.18170,11.60156],
         [52.45601,13.44727],
@@ -76,7 +76,6 @@
         [50.86643,11.08804]];
     var Deutschland=["Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern",
         "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"];
-
     var mymap = L.map('mapdiv', {
         center:[51.65001, 10.67920],
         zoom:7,
@@ -87,6 +86,13 @@
         attributionControl: false});
 
     L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);
+
+
+    //var latlngs = [[52.374996593991085,13.145055770874025],[52.63842805112276,13.145055770874025],[52.63842805112276,13.714542388916017],[52.374996593991085,13.714542388916017]];
+    //var polygon = L.polygon(latlngs, {color: '#ed8798',fillOpacity:1}).addTo(mymap);
+
+
+    //var Berlin = L.imageOverlay('img-Bundesland/Berlin.png',[[52.374996593991085,13.145055770874025],[52.63842805112276,13.714542388916017]],{opacity:1}).addTo(mymap);
 
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
@@ -100,7 +106,7 @@
     for(let k = 0; k<16;k++)
     {
         popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Bundesland:"+(k+1));
-        marker_map = new L.Marker(coordination[k], { draggable:false});
+        marker_map = new L.Marker(coordinates[k], { draggable:false});
         marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
 
     }
