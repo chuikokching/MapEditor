@@ -56,21 +56,23 @@
     var output=[];
     var record=[];
 
-    var badenwuerttemberg,badenwuerttemberg_array,badenwuerttembergpoly,badenwuerttemberg_imageBound,badenwuerttembergpoly_array;
-    var bayern,bayern_array,bayernpoly,bayern_imageBound,bayernpoly_array;
-    var berlin,berlin_array,berlinpoly,berlin_imageBound,berlinpoly_array;
-    var hessen,hessen_array,hessenpoly,hessen_imageBound,hessenpoly_array;
-    var nordrhein,nordrhein_array,nordrheinpoly,nordrhein_imageBound,nordrheinpoly_array;
-    var rheinlandplatz,rheinlandplatz_array,rheinlandplatzpoly,rheinlandplatz_imageBound,rheinlandplatzpoly_array;
-    var saarland,saarland_array,saarlandpoly,saarland_imageBound,saarlandpoly_array;
-    var sachsen, sachsen_array,sachsenpoly,sachsen_imageBound,sachsenpoly_array;
-    var tueringen,tueringen_array,tueringenpoly,tueringen_imageBound,tueringenpoly_array;
-    var SaxonyAnhalt, SaxonyAnhalt_array,SaxonyAnhaltpoly,SaxonyAnhalt_imageBound,SaxonyAnhaltpoly_array;
-    var SchleswingHolstein, SchleswingHolstein_array,SchleswingHolsteinpoly,SchleswingHolstein_imageBound,SchleswingHolsteinpoly_array;
-    var MecklenburgVorpommern, MecklenburgVorpommern_array,MecklenburgVorpommernpoly,MecklenburgVorpommern_imageBound,MecklenburgVorpommernpoly_array;
-    var Niedersachsen, Niedersachsen_array,Niedersachsenpoly,Niedersachsen_imageBound,Niedersachsenpoly_array;
-    var Bremen, Bremen_array, Bremenpoly, Bremen_imageBound, Bremenpoly_array;
-    var Brandenburg, Brandenburg_array,Brandenburgpoly,Brandenburg_imageBound,Brandenburgpoly_array;
+    var badenwuerttemberg,badenwuerttemberg_array,badenwuerttemberg_imageBound,sachsen_overlay;
+    var bayern,bayern_array,bayern_imageBound,bayern_overlay;
+    var berlin,berlin_array,berlin_imageBound,berlin_overlay;
+    var hessen,hessen_array,hessen_imageBound,hessen_overlay;
+    var nordrhein,nordrhein_array,nordrhein_imageBound,nordrhein_overlay;
+    var rheinlandplatz,rheinlandplatz_array,rheinlandplatz_imageBound,rheinlandplatz_overlay;
+    var saarland,saarland_array,saarland_imageBound,saarland_overlay;
+    var sachsen, sachsen_array,sachsen_imageBound,sachsen_overlay;
+    var tueringen,tueringen_array,tueringen_imageBound,tueringen_overlay;
+    var SaxonyAnhalt, SaxonyAnhalt_array,SaxonyAnhalt_imageBound,SaxonyAnhalt_overlay;
+    var SchleswingHolstein, SchleswingHolstein_array,SchleswingHolstein_imageBound,SchleswingHolstein_overlay;
+    var MecklenburgVorpommern, MecklenburgVorpommern_array,MecklenburgVorpommern_imageBound,MecklenburgVorpommern_overlay;
+    var Niedersachsen, Niedersachsen_array,Niedersachsen_imageBound,Niedersachsen_overlay;
+    var Bremen, Bremen_array, Bremen_imageBound,Bremen_overlay;
+    var Brandenburg, Brandenburg_array,Brandenburg_imageBound,Brandenburg_overlay;
+    var Hamburg, Hamburg_array,Hamburg_imageBound, Hamburg_overlay;
+
 
     var mymap = L.map('mapdiv', {
         center:[51.65001, 10.67920],
@@ -91,54 +93,53 @@
         ctlSidebar.toggle();
     }).addTo(mymap);
 
-    sachsen = L.imageOverlay('img-Bundesland/sachsen.png',[[51.29788614754179,12.666463851928713],[50.81824572517489,14.004478454589846]]);
-    badenwuerttemberg = L.imageOverlay('img-Bundesland/Baden-Württemberg.png',[[48.76371402200387,8.215970993041994],[48.06626452431942,9.908380508422853]]);
-    bayern = L.imageOverlay('img-Bundesland/Bayern.png',[[49.254753284557744,10.824022293090822],[48.483618004570395,12.641658782958986]]);
-    berlin = L.imageOverlay('img-Bundesland/Berlin.png',[[52.59496697023287,13.219213485717775],[52.419748717449544,13.64982604980469]]);
-    saarland = L.imageOverlay('img-Bundesland/Saarland.png',[[49.51322839625276,6.6790008544921875],[49.29389672854882,7.22951889038086]]);
-    rheinlandplatz = L.imageOverlay('img-Bundesland/Rheinland-Pfalz.png',[[50.27568259030461,6.55686378479004],[49.754377168315045,7.742357254028321]]);
-    nordrhein = L.imageOverlay('img-Bundesland/Nordrhein-Westfalen.png',[[51.83869442188983,6.561155319213868],[51.085248131647475,8.448400497436525]]);
-    hessen = L.imageOverlay('img-Bundesland/Hessen.png',[[50.92630197325519,8.575687408447267],[50.42547171609858,9.804782867431642]]);
-    tueringen = L.imageOverlay('img-Bundesland/Thüringen.png',[[51.11834052531011,10.318479537963869],[50.685909129613414,11.367244720458986]]);
-    SaxonyAnhalt = L.imageOverlay('img-Bundesland/Sachsen-Anhalt.png',[[52.25919183822973,11.323243081569672],[51.890053935216926,12.099609822034836]]);
-    SchleswingHolstein = L.imageOverlay('img-Bundesland/Schleswig.png',[[54.295156093819024,9.331055134534838],[53.951775568681086,10.283203125000002]]);
-    MecklenburgVorpommern = L.imageOverlay('img-Bundesland/Mecklenburg-Vorpommern.png',[[53.960394653308995,11.909179687500002],[53.53595456570721,13.139648437500002]]);
-    Niedersachsen = L.imageOverlay('img-Bundesland/Niedersachsen.png',[[52.77618568896171,9.345704019069673],[52.286082186502085,10.634765625]]);
-    NordrheinWestfalen = L.imageOverlay('img-Bundesland/Nordrhein-Westfalen.png',[[51.754240074033525,6.8408212065696725],[51.25274723429458,8.173828125000002]]);
-    Bremen = L.imageOverlay('img-Bundesland/Bremen.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]);
-    Brandenburg = L.imageOverlay('img-Bundesland/Brandenburg.png',[[52.16045455774706,13.300782144069673],[51.72702815704777,14.501953125000002]]);
+    sachsen = L.imageOverlay('img-Bundesland/background.png',[[51.29788614754179,12.666463851928713],[50.81824572517489,14.004478454589846]]).addTo(mymap);
+    badenwuerttemberg = L.imageOverlay('img-Bundesland/background.png',[[48.76371402200387,8.215970993041994],[48.06626452431942,9.908380508422853]]).addTo(mymap);
+    bayern = L.imageOverlay('img-Bundesland/background.png',[[49.254753284557744,10.824022293090822],[48.483618004570395,12.641658782958986]]).addTo(mymap);
+    berlin = L.imageOverlay('img-Bundesland/background.png',[[52.59496697023287,13.219213485717775],[52.419748717449544,13.64982604980469]]).addTo(mymap);
+    saarland = L.imageOverlay('img-Bundesland/background.png',[[49.51322839625276,6.6790008544921875],[49.29389672854882,7.22951889038086]]).addTo(mymap);
+    rheinlandplatz = L.imageOverlay('img-Bundesland/background.png',[[50.27568259030461,6.55686378479004],[49.754377168315045,7.742357254028321]]).addTo(mymap);
+    nordrhein = L.imageOverlay('img-Bundesland/background.png',[[51.83869442188983,6.561155319213868],[51.085248131647475,8.448400497436525]]).addTo(mymap);
+    hessen = L.imageOverlay('img-Bundesland/background.png',[[50.92630197325519,8.575687408447267],[50.42547171609858,9.804782867431642]]).addTo(mymap);
+    tueringen = L.imageOverlay('img-Bundesland/background.png',[[51.11834052531011,10.318479537963869],[50.685909129613414,11.367244720458986]]).addTo(mymap);
+    SaxonyAnhalt = L.imageOverlay('img-Bundesland/background.png',[[52.25919183822973,11.323243081569672],[51.890053935216926,12.099609822034836]]).addTo(mymap);
+    SchleswingHolstein = L.imageOverlay('img-Bundesland/background.png',[[54.295156093819024,9.331055134534838],[53.951775568681086,10.283203125000002]]).addTo(mymap);
+    MecklenburgVorpommern = L.imageOverlay('img-Bundesland/background.png',[[53.960394653308995,11.909179687500002],[53.53595456570721,13.139648437500002]]).addTo(mymap);
+    Niedersachsen = L.imageOverlay('img-Bundesland/background.png',[[52.77618568896171,9.345704019069673],[52.286082186502085,10.634765625]]).addTo(mymap);
+    Bremen = L.imageOverlay('img-Bundesland/background.png',[[53.62726717387009,9.895020425319673],[53.46189043285914,10.187988728284836]]).addTo(mymap);
+    Brandenburg = L.imageOverlay('img-Bundesland/background.png',[[52.16045455774706,13.300782144069673],[51.72702815704777,14.501953125000002]]).addTo(mymap);
 
 
-    sachsenpoly_array = [[50.81824572517489,12.666463851928713],[51.29788614754179,12.666463851928713],
-        [51.29788614754179,14.004478454589846],[50.81824572517489,14.004478454589846]];
-    badenwuerttembergpoly_array = [[48.06626452431942,8.215970993041994], [48.76371402200387,8.215970993041994],
-        [48.76371402200387,9.908380508422853],[48.06626452431942,9.908380508422853]];
-    bayernpoly_array = [[48.483618004570395,10.824022293090822], [49.254753284557744,10.824022293090822],
-        [49.254753284557744,12.641658782958986], [48.483618004570395,12.641658782958986]];
-    berlinpoly_array = [[52.419748717449544,13.219213485717775],[52.59496697023287,13.219213485717775],
-        [52.59496697023287,13.64982604980469],[52.419748717449544,13.64982604980469]];
-    saarlandpoly_array = [[49.29389672854882,6.6790008544921875],[49.51322839625276,6.6790008544921875],
-        [49.51322839625276,7.22951889038086],[49.29389672854882,7.22951889038086]];
-    rheinlandplatzpoly_array = [[49.754377168315045,6.55686378479004],[50.27568259030461,6.55686378479004],
-        [50.27568259030461,7.742357254028321],[49.754377168315045,7.742357254028321]];
-    nordrheinpoly_array = [[51.085248131647475,6.561155319213868],[51.83869442188983,6.561155319213868],
-        [51.83869442188983,8.448400497436525],[51.085248131647475,8.448400497436525]];
-    hessenpoly_array = [[50.42547171609858,8.575687408447267],[50.92630197325519,8.575687408447267],
-        [50.92630197325519,9.804782867431642],[50.42547171609858,9.804782867431642]];
-    tueringenpoly_array = [[50.685909129613414,10.318479537963869],[51.11834052531011,10.318479537963869],
-        [51.11834052531011,11.367244720458986],[50.685909129613414,11.367244720458986]];
-    SaxonyAnhaltpoly_array =[[51.890053935216926,11.323243081569672],[52.25919183822973,11.323243081569672],
-        [52.25919183822973,12.099609822034836],[51.890053935216926,12.099609822034836]];
-    SchleswingHolsteinpoly_array = [[53.951775568681086,9.331055134534838], [54.295156093819024,9.331055134534838],
-        [54.295156093819024,10.283203125000002],[53.951775568681086,10.283203125000002]];
-    MecklenburgVorpommernpoly_array = [[53.53595456570721,11.909179687500002], [53.960394653308995,11.909179687500002],
-        [53.960394653308995,13.139648437500002], [53.53595456570721,13.139648437500002]];
-    Niedersachsenpoly_array = [[52.286082186502085,9.345704019069673], [52.77618568896171,9.345704019069673],
-        [52.77618568896171,10.634765625],[52.286082186502085,10.634765625]];
-    Bremenpoly_array= [[53.46189043285914,9.895020425319673],[53.62726717387009,9.895020425319673],
-        [53.62726717387009,10.187988728284836],[53.46189043285914,10.187988728284836]];
-    Brandenburgpoly_array = [[51.72702815704777,13.300782144069673],[52.16045455774706,13.300782144069673],
-        [52.16045455774706,14.501953125000002],[51.72702815704777,14.501953125000002]];
+    // sachsenpoly_array = [[50.81824572517489,12.666463851928713],[51.29788614754179,12.666463851928713],
+    //     [51.29788614754179,14.004478454589846],[50.81824572517489,14.004478454589846]];
+    // badenwuerttembergpoly_array = [[48.06626452431942,8.215970993041994], [48.76371402200387,8.215970993041994],
+    //     [48.76371402200387,9.908380508422853],[48.06626452431942,9.908380508422853]];
+    // bayernpoly_array = [[48.483618004570395,10.824022293090822], [49.254753284557744,10.824022293090822],
+    //     [49.254753284557744,12.641658782958986], [48.483618004570395,12.641658782958986]];
+    // berlinpoly_array = [[52.419748717449544,13.219213485717775],[52.59496697023287,13.219213485717775],
+    //     [52.59496697023287,13.64982604980469],[52.419748717449544,13.64982604980469]];
+    // saarlandpoly_array = [[49.29389672854882,6.6790008544921875],[49.51322839625276,6.6790008544921875],
+    //     [49.51322839625276,7.22951889038086],[49.29389672854882,7.22951889038086]];
+    // rheinlandplatzpoly_array = [[49.754377168315045,6.55686378479004],[50.27568259030461,6.55686378479004],
+    //     [50.27568259030461,7.742357254028321],[49.754377168315045,7.742357254028321]];
+    // nordrheinpoly_array = [[51.085248131647475,6.561155319213868],[51.83869442188983,6.561155319213868],
+    //     [51.83869442188983,8.448400497436525],[51.085248131647475,8.448400497436525]];
+    // hessenpoly_array = [[50.42547171609858,8.575687408447267],[50.92630197325519,8.575687408447267],
+    //     [50.92630197325519,9.804782867431642],[50.42547171609858,9.804782867431642]];
+    // tueringenpoly_array = [[50.685909129613414,10.318479537963869],[51.11834052531011,10.318479537963869],
+    //     [51.11834052531011,11.367244720458986],[50.685909129613414,11.367244720458986]];
+    // SaxonyAnhaltpoly_array =[[51.890053935216926,11.323243081569672],[52.25919183822973,11.323243081569672],
+    //     [52.25919183822973,12.099609822034836],[51.890053935216926,12.099609822034836]];
+    // SchleswingHolsteinpoly_array = [[53.951775568681086,9.331055134534838], [54.295156093819024,9.331055134534838],
+    //     [54.295156093819024,10.283203125000002],[53.951775568681086,10.283203125000002]];
+    // MecklenburgVorpommernpoly_array = [[53.53595456570721,11.909179687500002], [53.960394653308995,11.909179687500002],
+    //     [53.960394653308995,13.139648437500002], [53.53595456570721,13.139648437500002]];
+    // Niedersachsenpoly_array = [[52.286082186502085,9.345704019069673], [52.77618568896171,9.345704019069673],
+    //     [52.77618568896171,10.634765625],[52.286082186502085,10.634765625]];
+    // Bremenpoly_array= [[53.46189043285914,9.895020425319673],[53.62726717387009,9.895020425319673],
+    //     [53.62726717387009,10.187988728284836],[53.46189043285914,10.187988728284836]];
+    // Brandenburgpoly_array = [[51.72702815704777,13.300782144069673],[52.16045455774706,13.300782144069673],
+    //     [52.16045455774706,14.501953125000002],[51.72702815704777,14.501953125000002]];
 
 
     sachsen_array = [[52.62657693959687,5.28965950012207],[53.087348894989795,5.28965950012207],
@@ -167,29 +168,27 @@
         [53.56641415275043,17.783204019069675], [52.8823912222619,17.783204019069675]];
     Niedersachsen_array=[[52.917734847050504,18.867189288139347], [53.6011975858283,18.867189288139347],
         [53.6011975858283,20.859375894069675], [52.917734847050504,20.859375894069675]];
-    NordrheinWestfalen_array=[[51.68163798295035,15.878908038139345], [52.3666553831557,15.878908038139345],
-        [52.3666553831557,17.871094644069675], [51.68163798295035,17.871094644069675]];
     Bremen_array=[[51.66346966023437,18.837891519069675], [52.38454034067938,18.837891519069675],
         [52.38454034067938,20.976564288139347], [51.66346966023437,20.976564288139347]];
     Brandenburg_array=[[50.3734961443035,15.878908038139345], [51.188524386418884,15.878908038139345],
         [51.188524386418884,18.017578125000004], [50.3734961443035,18.017578125000004]];
 
 
-    sachsenpoly = L.polygon(sachsenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    badenwuerttembergpoly = L.polygon(badenwuerttembergpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    bayernpoly = L.polygon(bayernpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    berlinpoly = L.polygon(berlinpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    saarlandpoly = L.polygon(saarlandpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    rheinlandplatzpoly = L.polygon(rheinlandplatzpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    nordrheinpoly = L.polygon(nordrheinpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    hessenpoly = L.polygon(hessenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    tueringenpoly = L.polygon(tueringenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
-    SaxonyAnhaltpoly = L.polygon(SaxonyAnhaltpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
-    SchleswingHolsteinpoly = L.polygon(SchleswingHolsteinpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
-    MecklenburgVorpommernpoly = L.polygon(MecklenburgVorpommernpoly_array , {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
-    Niedersachsenpoly = L.polygon(Niedersachsenpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
-    Bremenpoly = L.polygon(Bremenpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
-    Brandenburgpoly = L.polygon(Brandenburgpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // sachsenpoly = L.polygon(sachsenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // badenwuerttembergpoly = L.polygon(badenwuerttembergpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // bayernpoly = L.polygon(bayernpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // berlinpoly = L.polygon(berlinpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // saarlandpoly = L.polygon(saarlandpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // rheinlandplatzpoly = L.polygon(rheinlandplatzpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // nordrheinpoly = L.polygon(nordrheinpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // hessenpoly = L.polygon(hessenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // tueringenpoly = L.polygon(tueringenpoly_array, {color: '#ed8798', fillOpacity:0.8}).addTo(mymap);
+    // SaxonyAnhaltpoly = L.polygon(SaxonyAnhaltpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // SchleswingHolsteinpoly = L.polygon(SchleswingHolsteinpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // MecklenburgVorpommernpoly = L.polygon(MecklenburgVorpommernpoly_array , {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // Niedersachsenpoly = L.polygon(Niedersachsenpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // Bremenpoly = L.polygon(Bremenpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+    // Brandenburgpoly = L.polygon(Brandenburgpoly_array, {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
 
 
 
@@ -253,7 +252,7 @@
         {swal({position: 'top-end', icon:"success", text: 'sachsen', buttons: false, timer: 1000});
             sachsen_overlay.setBounds(sachsen.getBounds());
             sachsen_polygon.dragging.disable();
-            mymap.removeLayer(sachsenpoly);}
+            mymap.removeLayer(sachsen);}
         console.log(sachsen_polygon.getBounds().getNorthWest().lat);
         console.log(sachsen_polygon.getBounds().getSouthEast().lng);
         console.log(sachsen_polygon.getBounds().getSouthEast().lat);
@@ -268,7 +267,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Baden-Württemberg', buttons: false, timer: 1000});
             badenwuerttemberg_overlay.setBounds(badenwuerttemberg.getBounds());
             badenwuerttemberg_polygon.dragging.disable();
-            mymap.removeLayer(badenwuerttembergpoly);}
+            mymap.removeLayer(badenwuerttemberg);}
         console.log(badenwuerttemberg_polygon.getBounds().getNorthWest().lat);
         console.log(badenwuerttemberg_polygon.getBounds().getSouthEast().lng);
         console.log(badenwuerttemberg_polygon.getBounds().getSouthEast().lat);
@@ -283,7 +282,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Bayern', buttons: false, timer: 1000});
             bayern_overlay.setBounds(bayern.getBounds());
             bayern_polygon.dragging.disable();
-            mymap.removeLayer(bayernpoly);}
+            mymap.removeLayer(bayern);}
         console.log(bayern_polygon.getBounds().getNorthWest().lat);
         console.log(bayern_polygon.getBounds().getSouthEast().lng);
         console.log(bayern_polygon.getBounds().getSouthEast().lat);
@@ -298,7 +297,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Berlin', buttons: false, timer: 1000});
             berlin_overlay.setBounds(berlin.getBounds());
             berlin_polygon.dragging.disable();
-            mymap.removeLayer(berlinpoly);}
+            mymap.removeLayer(berlin);}
         console.log(berlin_polygon.getBounds().getNorthWest().lat);
         console.log(berlin_polygon.getBounds().getSouthEast().lng);
         console.log(berlin_polygon.getBounds().getSouthEast().lat);
@@ -312,7 +311,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Saarland', buttons: false, timer: 1000});
             saarland_overlay.setBounds(saarland.getBounds());
             saarland_polygon.dragging.disable();
-            mymap.removeLayer(saarlandpoly);}
+            mymap.removeLayer(saarland);}
         console.log(saarland_polygon.getBounds().getNorthWest().lat);
         console.log(saarland_polygon.getBounds().getSouthEast().lng);
         console.log(saarland_polygon.getBounds().getSouthEast().lat);
@@ -326,7 +325,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Rheinland-Pflaz', buttons: false, timer: 1000});
             rheinlandplatz_overlay.setBounds(rheinlandplatz.getBounds());
             rheinlandplatz_polygon.dragging.disable();
-            mymap.removeLayer(rheinlandplatzpoly);}
+            mymap.removeLayer(rheinlandplatz);}
         console.log(rheinlandplatz_polygon.getBounds().getNorthWest().lat);
         console.log(rheinlandplatz_polygon.getBounds().getSouthEast().lng);
         console.log(rheinlandplatz_polygon.getBounds().getSouthEast().lat);
@@ -340,7 +339,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Nordrhein-Westfalen', buttons: false, timer: 1000});
             nordrhein_overlay.setBounds(nordrhein.getBounds());
             nordrhein_polygon.dragging.disable();
-            mymap.removeLayer(nordrheinpoly);}
+            mymap.removeLayer(nordrhein);}
         console.log(nordrhein_polygon.getBounds().getNorthWest().lat);
         console.log(nordrhein_polygon.getBounds().getSouthEast().lng);
         console.log(nordrhein_polygon.getBounds().getSouthEast().lat);
@@ -354,7 +353,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Hessen', buttons: false, timer: 1000});
             hessen_overlay.setBounds(hessen.getBounds());
             hessen_polygon.dragging.disable();
-            mymap.removeLayer(hessenpoly);}
+            mymap.removeLayer(hessen);}
         console.log(hessen_polygon.getBounds().getNorthWest().lat);
         console.log(hessen_polygon.getBounds().getSouthEast().lng);
         console.log(hessen_polygon.getBounds().getSouthEast().lat);
@@ -368,7 +367,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Thüringen', buttons: false, timer: 1000});
             tueringen_overlay.setBounds(tueringen.getBounds());
             tueringen_polygon.dragging.disable();
-            mymap.removeLayer(tueringenpoly);}});
+            mymap.removeLayer(tueringen);}});
 
     SaxonyAnhalt_polygon.on('drag',function (e) {SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt_polygon.getBounds());});
     SaxonyAnhalt_polygon.on('dragstart',function (e) {SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt_polygon.getBounds());});
@@ -378,11 +377,7 @@
         {swal({position: 'top-end', text: 'Sachsen-Anhalt', icon:"success", buttons: false, timer: 1000});
             SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt.getBounds());
             SaxonyAnhalt_polygon.dragging.disable();
-            mymap.removeLayer(SaxonyAnhaltpoly);}});
-
-    // var NordrheinWestfalen = [[51.25274723429458,6.8408212065696725],[51.754240074033525,6.8408212065696725],
-    //     [51.754240074033525,8.173828125000002],[51.25274723429458,8.173828125000002]];
-    // var NordrheinWestfalenPolygon = L.polygon(NordrheinWestfalen , {color: '#ed8798',fillOpacity:0.8}).addTo(mymap);
+            mymap.removeLayer(SaxonyAnhalt);}});
 
     SchleswingHolstein_polygon.on('drag',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
     SchleswingHolstein_polygon.on('dragstart',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
@@ -392,7 +387,7 @@
         {swal({position: 'top-end', text: 'Schleswig-Holstein', icon:"success", buttons: false, timer: 1000});
             SchleswingHolstein_overlay.setBounds(SchleswingHolstein.getBounds());
             SchleswingHolstein_polygon.dragging.disable();
-            mymap.removeLayer(SchleswingHolsteinpoly);}});
+            mymap.removeLayer(SchleswingHolstein);}});
 
     MecklenburgVorpommern_polygon.on('drag',function (e) {MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern_polygon.getBounds());});
     MecklenburgVorpommern_polygon.on('dragstart',function (e) {MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern_polygon.getBounds());});
@@ -402,7 +397,7 @@
         {swal({position: 'top-end', text: 'Mecklenburg-Vorpommern', icon:"success", buttons: false, timer: 1000});
             MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern.getBounds());
             MecklenburgVorpommern_polygon.dragging.disable();
-            mymap.removeLayer(MecklenburgVorpommernpoly);}});
+            mymap.removeLayer(MecklenburgVorpommern);}});
 
     Niedersachsen_polygon.on('drag',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
     Niedersachsen_polygon.on('dragstart',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
@@ -412,22 +407,7 @@
         {swal({position: 'top-end', text: 'Niedersachsen', icon:"success", buttons: false, timer: 1000});
             Niedersachsen_overlay.setBounds(Niedersachsen.getBounds());
             Niedersachsen_polygon.dragging.disable();
-            mymap.removeLayer(Niedersachsenpoly);}});
-
-    // /**NordrheinWestfalen**/
-    // NordrheinWestfalen_imageBound = L.latLngBounds([NordrheinWestfalen_array[0], NordrheinWestfalen_array[2]]);
-    // NordrheinWestfalen_overlayer = L.imageOverlay(('img-Bundesland/Nordrhein-Westfalen.png'),NordrheinWestfalen_imageBound,{opacity:1, interactive:true}).addTo(mymap);
-    // NordrheinWestfalen_polygon = L.polygon((NordrheinWestfalen_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
-    //
-    // NordrheinWestfalen_polygon.on('drag',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());});
-    // NordrheinWestfalen_polygon.on('dragstart',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());});
-    // NordrheinWestfalen_polygon.on('dragend',function (e) {NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalen_polygon.getBounds());
-    //     if(Number(NordrheinWestfalen_polygon.getBounds().getNorthWest().lat)<52.754240074033525&& Number(NordrheinWestfalen_polygon.getBounds().getSouthEast().lng)<9.173828125000002
-    //         &&Number(NordrheinWestfalen_polygon.getBounds().getSouthEast().lat)>50.25274723429458 && Number(NordrheinWestfalen_polygon.getBounds().getNorthWest().lng)>5.8408212065696725)
-    //     {swal({position: 'top-end', text: 'Nordrhein-Westfalen', icon:"success", buttons: false, timer: 1000});
-    //         NordrheinWestfalen_overlayer.setBounds(NordrheinWestfalenAnfang.getBounds());
-    //         NordrheinWestfalen_polygon.dragging.disable();
-    //         mymap.removeLayer(NordrheinWestfalenPolygon);}});
+            mymap.removeLayer(Niedersachsen);}});
 
     Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
     Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
@@ -437,7 +417,7 @@
         {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
             Bremen_overlay.setBounds(Bremen.getBounds());
             Bremen_polygon.dragging.disable();
-            mymap.removeLayer(Bremenpoly);}});
+            mymap.removeLayer(Bremen);}});
 
     Brandenburg_polygon.on('drag',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
     Brandenburg_polygon.on('dragstart',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
@@ -447,7 +427,7 @@
         {swal({position: 'top-end', text: 'Brandenburg', icon:"success", buttons: false, timer: 1000});
             Brandenburg_overlay.setBounds(Brandenburg.getBounds());
             Brandenburg_polygon.dragging.disable();
-            mymap.removeLayer(Brandenburgpoly);}});
+            mymap.removeLayer(Brandenburg);}});
 
 
     mymap.on('zoomend', function(){
