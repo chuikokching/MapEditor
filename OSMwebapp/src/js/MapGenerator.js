@@ -15,12 +15,12 @@ var map = L.map('mapdiv', {center:[51.46379, 7.00546],zoom:15,
     editable:true,
     scrollWheelZoom:true,
     dragging: true,
-    zoomControl: true,
-    attributionControl: true});
+    zoomControl: false,
+    attributionControl: false});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
 map.options.maxZoom=16;
-map.options.minZoom=10;
+map.options.minZoom=13;
 
 easybuttonAusschnitt= L.easyButton({
     states: [{
@@ -116,7 +116,6 @@ removeLayer= L.easyButton({
         }
     }]
 }).addTo(map);
-
 
 
 });
