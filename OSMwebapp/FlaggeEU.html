@@ -270,14 +270,13 @@
     {
          temp = Land_array[output[k]];
          temp[0].addTo(mymap);
-        temp[1] = [Land_overlay_array_coordinate[k][0],[Land_overlay_array_coordinate[k][1][0],Land_overlay_array_coordinate[k][0][1]],Land_overlay_array_coordinate[k][1],[Land_overlay_array_coordinate[k][0][0],Land_overlay_array_coordinate[k][1][1]]];
-        temp[4] =  L.polygon(temp[1], {draggable: true, opacity: 0.5, fillOpacity: 0}).addTo(mymap);
-        temp[2] = L.latLngBounds([temp[1][0], temp[1][2]]);
-        temp[3] = L.imageOverlay(Land_overlay_imagepath[output[k]],temp[2],{opacity:1, interactive:true}).addTo(mymap);
-        temp[4].on('drag',function (e) {temp[3].setBounds(temp[4].getBounds());});
-        temp[4].on('dragstart',function (e) {temp[3].setBounds(temp[4].getBounds());});
-        temp[4].on('dragend',function (e) {
-            temp[3].setBounds(temp[4].getBounds());
+         temp[1] = [Land_overlay_array_coordinate[k][0],[Land_overlay_array_coordinate[k][1][0],Land_overlay_array_coordinate[k][0][1]],Land_overlay_array_coordinate[k][1],[Land_overlay_array_coordinate[k][0][0],Land_overlay_array_coordinate[k][1][1]]];
+         temp[4] =  L.polygon(temp[1], {draggable: true, opacity: 0.5, fillOpacity: 0}).addTo(mymap);
+         temp[2] = L.latLngBounds([temp[1][0], temp[1][2]]);
+         temp[3] = L.imageOverlay(Land_overlay_imagepath[output[k]],temp[2],{opacity:1, interactive:true}).addTo(mymap);
+         temp[4].on('drag',function (e) {temp[3].setBounds(temp[4].getBounds());});
+         temp[4].on('dragstart',function (e) {temp[3].setBounds(temp[4].getBounds());});
+         temp[4].on('dragend',function (e) {temp[3].setBounds(temp[4].getBounds());
         });
     }
 
