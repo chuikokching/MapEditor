@@ -54,7 +54,81 @@
     var ctlSidebar;
     var ctlEasybutton;
     var output=[];
-    var record=[];
+    var Land_array=[];
+    var Land_overlay_array=[];
+    var Land_overlay_imagepath=[
+        "img-EUFlag/Germany.png",
+        "img-EUFlag/France.png",
+        "img-EUFlag/Spain.png",
+        "img-EUFlag/Croatia.png",
+        "img-EUFlag/Belgium.png",
+        "img-EUFlag/Bulgaria.png",
+        "img-EUFlag/Cyprus.png",
+        "img-EUFlag/Estonia.png",
+        "img-EUFlag/Finland.png",
+        "img-EUFlag/Greece.png",
+        "img-EUFlag/Latvia.png",
+        "img-EUFlag/Lithuania.png",
+        "img-EUFlag/Malta.png",
+        "img-EUFlag/Portugal.png",
+        "img-EUFlag/Italy.png",
+        "img-EUFlag/Romania.png",
+        "img-EUFlag/Denmark.png",
+        "img-EUFlag/Ireland.png",
+        "img-EUFlag/The United Kingdom.png",
+        "img-EUFlag/The Netherlands.png",
+        "img-EUFlag/Luxemburg.png",
+        "img-EUFlag/Austria.png",
+        "img-EUFlag/The Czech Republic.png",
+        "img-EUFlag/Hungary.png",
+        "img-EUFlag/Slovakia.png",
+        "img-EUFlag/Poland.png",
+        "img-EUFlag/Slovenia.png",
+        "img-EUFlag/Sweden.png",
+    ];
+    var Land_overlay_array_coordinate=[
+        [[50.9779,-19.4233],[48.6701,-13.3545]],
+        [[47.9779,-19.4233],[45.6701,-13.3545]],
+        [[44.9779,-19.4233],[42.6701,-13.3545]],
+        [[41.9779,-19.4233],[39.6701,-13.3545]],
+        [[38.9779,-19.4233],[36.6701,-13.3545]],
+        [[50.9779,-26.4233],[48.6701,-20.3545]],
+        [[47.9779,-26.4233],[45.6701,-20.3545]],
+        [[44.9779,-26.4233],[42.6701,-20.3545]],
+        [[41.9779,-26.4233],[39.6701,-20.3545]],
+        [[38.9779,-26.4233],[36.6701,-20.3545]]
+    ];
+
+    var Deutschland,Deutschland_overlay;
+    var Frankreich,Frankreich_overlay;
+    var Spanien,Spanien_overlay;
+    var Croatia, Croatiapoly_array, Croatia_imageBound, Croatia_overlay, Croatia_polygon;
+    var Belgium,Belgiumpoly_array,Belgium_imageBound,Belgium_overlayer,Belgium_polygon;
+    var Bulgaria,Bulgariapoly_array,Bulgaria_imageBound,Bulgaria_overlayer,Bulgaria_polygon;
+    var Cyprus,Cypruspoly_array,Cyprus_imageBound,Cyprus_overlayer,Cyprus_polygon;
+    var Estonia,Estoniapoly_array,Estonia_imageBound,Estonia_overlayer,Estonia_polygon;
+    var Finland,Finlandpoly_array,Finland_imageBound,Finland_overlayer,Finland_polygon;
+    var Greece,Greecepoly_array,Greece_imageBound,Greece_overlayer,Greece_polygon;
+    var Latvia,Latviapoly_array,Latvia_imageBound,Latvia_overlayer,Latvia_polygon;
+    var Lithuania,Lithuaniapoly_array,Lithuania_imageBound,Lithuania_overlayer,Lithuania_polygon;
+    var Malta,Maltapoly_array,Malta_imageBound,Malta_overlayer,Malta_polygon;
+    var Portugal,Portugalpoly_array,Portugal_imageBound,Portugal_overlayer,Portugal_polygon;
+    var Italy,Italypoly_array,Italy_imageBound,Italy_overlayer,Italy_polygon;
+    var Romania,Romaniapoly_array,Romania_imageBound,Romania_overlayer,Romania_polygon;
+    var Denmark,Denmarkpoly_array,Denmark_imageBound,Denmark_overlayer,Denmark_polygon;
+    var Ireland, Irelandpoly_array, Ireland_imageBound, Ireland_overlay, Ireland_polygon;
+    var UK, UKpoly_array, UK_imageBound, UK_overlay, UK_polygon;
+    var Netherland, Netherlandpoly_array, Netherland_imageBound, Netherland_overlay, Netherland_polygon;
+    var Luxenburg, Luxenburgpoly_array, Luxenburg_imageBound, Luxenburg_overlay, Luxenburg_polygon;
+    var Austria, Austriapoly_array, Austria_imageBound, Austria_overlay, Austria_polygon;
+    var Czechia, Czechiapoly_array, Czechia_imageBound, Czechia_overlay, Czechia_polygon;
+    var Hungary, Hungarypoly_array, Hungary_imageBound, Hungary_overlay, Hungary_polygon;
+    var Slovakia, Slovakiapoly_array, Slovakia_imageBound, Slovakia_overlay, Slovakia_polygon;
+    var Poland, Polandpoly_array, Poland_imageBound, Poland_overlay, Poland_polygon;
+    var Slovenia, Sloveniapoly_array, Slovenia_imageBound, Slovenia_overlay, Slovenia_polygon;
+    var Sweden, Swedenpoly_array, Sweden_imageBound, Sweden_overlay, Sweden_polygon;
+
+
 
     var mymap = L.map('mapdiv', {
         center:[48.82791, 17.28320],
@@ -77,7 +151,77 @@
         ctlSidebar.toggle();
     }).addTo(mymap);
 
+    Deutschland = L.imageOverlay('img-EUFlag/background.png',[[52.2577,7.5457],[50.5643,12.8191]]);
+    Frankreich = L.imageOverlay('img-EUFlag/background.png',[[48.3152,-0.7863],[45.0089,5.3716]]);
+    Spanien = L.imageOverlay('img-EUFlag/background.png',[[41.9998,-5.9084],[38.2600,-0.8189]]);
+    Croatia = L.imageOverlay('img-EUFlag/background.png',[[45.2873,13.6488],[44.3642,15.6813]]);
+    Belgium = L.imageOverlay('img-EUFlag/background.png',[[51.3014,3.4596],[50.0367,6.0038]]);
+    Bulgaria = L.imageOverlay('img-EUFlag/background.png',[[43.7376,23.1167],[41.9248,27.5786]]);
+    Cyprus = L.imageOverlay('img-EUFlag/background.png',[[35.7397,32.0400],[34.5163,34.5912]]);
+    Estonia = L.imageOverlay('img-EUFlag/background.png',[[59.4646,22.7520],[58.06144,27.0812]]);
+    Finland = L.imageOverlay('img-EUFlag/background.png',[[63.9419,22.9676],[61.5146,29.7236]]);
+    Greece = L.imageOverlay('img-EUFlag/background.png',[[39.7219,20.8172],[37.2088,25.6197]]);
+    Latvia = L.imageOverlay('img-EUFlag/background.png',[[57.6583,23.0258],[56.4146,26.3036]]);
+    Lithuania = L.imageOverlay('img-EUFlag/background.png',[[56.0338,22.6544],[54.7295,25.66904]]);
+    Malta = L.imageOverlay('img-EUFlag/background.png',[[36.3225,13.85071],[35.5831,14.91651]]);
+    Portugal = L.imageOverlay('img-EUFlag/background.png',[[40.3449,-9.9469],[38.3883,-7.0671]]);
+    Italy = L.imageOverlay('img-EUFlag/background.png',[[44.5576,9.8925],[41.9827,13.7533]]);
+    Romania = L.imageOverlay('img-EUFlag/background.png',[[47.1194,22.4249],[44.6917,27.1438]]);
+    Denmark = L.imageOverlay('img-EUFlag/background.png',[[56.6316,7.8022],[55.4507,10.9407]]);
+    Ireland = L.imageOverlay('img-EUFlag/background.png',[[53.9679,-10.0330],[52.0897,-5.9310]]);
+    UK = L.imageOverlay('img-EUFlag/background.png',[[53.7260,-3.8692],[50.9529,1.2781]]);
+    Netherland = L.imageOverlay('img-EUFlag/background.png',[[53.1733,3.75354],[51.8742,6.6975]]);
+    Luxenburg = L.imageOverlay('img-EUFlag/background.png',[[49.9507,5.7681],[49.5245,6.4321]]);
+    Austria = L.imageOverlay('img-EUFlag/background.png',[[48.0767,13.0579],[46.8673,15.9291]]);
+    Czechia = L.imageOverlay('img-EUFlag/background.png',[[50.5032,13.2862],[49.1482,16.0714]]);
+    Hungary = L.imageOverlay('img-EUFlag/background.png',[[47.6656,17.5537],[46.3273,20.9670]]);
+    Slovakia = L.imageOverlay('img-EUFlag/background.png',[[49.0008,17.9197],[48.1833,20.23282]]);
+    Poland = L.imageOverlay('img-EUFlag/background.png',[[53.2500,16.71449],[51.2416,21.7946]]);
+    Slovenia = L.imageOverlay('img-EUFlag/background.png',[[46.3581,13.9128],[45.7320,15.2791]]);
+    Sweden = L.imageOverlay('img-EUFlag/background.png',[[60.6619,13.0230],[58.7009,18.8128]]);
 
+    Deutschland_overlay = L.imageOverlay("img-EUFlag/Germany.png",[[50.9779,-19.4233],[48.6701,-13.3545]]);
+    Frankreich_overlay = L.imageOverlay("img-EUFlag/France.png",[[47.9779,-19.4233],[45.6701,-13.3545]]);
+    Spanien_overlay = L.imageOverlay("img-EUFlag/Spain.png",[[44.9779,-19.4233],[42.6701,-13.3545]]);
+
+    Land_array=[Deutschland,Frankreich,Spanien,Croatia,Belgium,Bulgaria,Cyprus,Estonia,Finland,Greece,Latvia,Lithuania,Malta,Portugal,Italy,Romania,Denmark,Ireland,UK,Netherland,Luxenburg,Austria,Czechia,Hungary,Slovakia,Poland,Slovenia,Sweden];
+
+
+    var min=0;
+    var max=(Land_array.length);
+    //get a random integer between max and min
+    var index = Math.floor(Math.random()* (max - min)) + min;
+
+
+    for(let i=0;output.length<10;i++){
+        //get a random integer between max and min
+
+        index = Math.floor(Math.random()* (max - min)) + min;
+        if(!test_in_array(index,output))
+        {
+            continue;
+        }
+        output.push(index);
+    };
+
+    function test_in_array(index,arr)
+    {
+        for(let j=0;j<output.length;j++)
+        {
+            if(arr[j]==index)
+            {
+                return false;
+            }
+        }
+        return true;
+    };
+
+
+    for(let k = 0; k<output.length;k++)
+    {
+        Land_array[output[k]].addTo(mymap);
+        Land_array[output[k]] = L.imageOverlay(Land_overlay_imagepath[output[k]],Land_overlay_array_coordinate[k]).addTo(mymap);
+    }
 
 
     mymap.on('zoomend', function(){
