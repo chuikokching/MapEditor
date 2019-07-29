@@ -76,7 +76,7 @@
         "img-EUFlag/Ireland.png",
         "img-EUFlag/The United Kingdom.png",
         "img-EUFlag/The Netherlands.png",
-        "img-EUFlag/Luxemburg.png",
+        "img-EUFlag/Luxembourg.png",
         "img-EUFlag/Austria.png",
         "img-EUFlag/The Czech Republic.png",
         "img-EUFlag/Hungary.png",
@@ -276,8 +276,7 @@
          temp[3] = L.imageOverlay(Land_overlay_imagepath[output[k]],temp[2],{opacity:1, interactive:true}).addTo(mymap);
          temp[4].on('drag',function (e) {temp[3].setBounds(temp[4].getBounds());});
          temp[4].on('dragstart',function (e) {temp[3].setBounds(temp[4].getBounds());});
-         temp[4].on('dragend',function (e) {temp[3].setBounds(temp[4].getBounds());
-        });
+         temp[4].on('dragend',function (e) {temp[3].setBounds(temp[4].getBounds());});
     }
 
     mymap.on('zoomend', function(){
