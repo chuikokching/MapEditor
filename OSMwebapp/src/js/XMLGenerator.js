@@ -1,23 +1,15 @@
 function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_parameter){
     var length;
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
-    txt=txt+"<exercise type="+'"'+"fillIn"+'"'+">"+'\n';
+    txt=txt+"<exercise type="+'"'+"mc"+'"'+">"+'\n';
     txt=txt+"  <task>"+'\n';
 
     txt=txt+textContent+":"+'\n';
 
     txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
     txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,dragging: false,zoomControl: false,attributionControl: false});";
-    txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"&lt;/script>&lt;/div>";
-    // var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
-    // txt=txt+"<exercise type="+'"'+"mc"+'"'+">"+'\n';
-    // txt=txt+"       <Aufgabe>"+'\n';
-    // txt=txt+"          <Aufgabestellung>"+textContent+"</Aufgabestellung>"+'\n';
-    // txt=txt+"          <View_Coordinate>"+'\n';
-    // txt=txt+"              <lat>"+map_parameter[0]+"</lat>"+'\n';
-    // txt=txt+"              <lng>"+map_parameter[1]+"</lng>"+'\n';
-    // txt=txt+"          </View_Coordinate>"+'\n';
-    // txt=txt+"          <Zoom>"+map_parameter[2]+"</Zoom>"+'\n';
+    txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');"+"&lt;/script>&lt;/div>";
+
     // for(let i=0;i<arrayOption.length;i++)
     // {
     //     txt=txt+"          <Type>"+getGeoJsonType(arrayOption[i])+"</Type>"+'\n';
@@ -61,8 +53,11 @@ function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_paramet
     //     txt=txt+"          </Coordinate>"+'\n';
     //     txt=txt+"          <Answer>"+ "true" +"</Answer>"+'\n';
     // }
-    // txt=txt+"       </Aufgabe>"+'\n';
-    // txt=txt+"</exercise>";
+    txt=txt +'\n'+ "  </task>"+'\n';
+
+    txt= txt + "  <skipmessage>\n" +
+        "  </skipmessage>\n"
+    txt=txt+'\n'+"</exercise>";
     // //alert(txt);
     return txt;
 }
