@@ -169,6 +169,10 @@
         Liaoning = L.imageOverlay('img-China/LiaoNing.png',[[43.50012984642269,118.80220413208009],[38.720206539465494,125.88151931762697]]);
         Jiangxi = L.imageOverlay('img-China/JiangXi.png',[[30.085285625055473,113.46336364746092],[24.435272449257038,118.61045837402348]]);
 
+        temp =[[72.21762558220568,195.3515696525574],
+            [78.88135276987812,195.3515696525574],
+            [78.88135276987812,232.85157680511477],
+            [72.21762558220568,232.85157680511477]];
 
         Xinjiangpoly_array=[[46.49839225859788,96.47461116313909], [58.72259882804355,96.47461116313909],
             [58.72259882804355,119.4433593749998], [46.49839225859788,119.4433593749998]];
@@ -344,7 +348,8 @@
                 &&Number(Xinjiang_polygon.getBounds().getSouthEast().lat)>33.00052 && Number(Xinjiang_polygon.getBounds().getNorthWest().lng)>72.08867)
             {swal({position: 'top-end', text: 'Xinjiang', icon:"success", buttons: false, timer: 1000});
                 Xinjiang_overlayer.setBounds(Xinjiang.getBounds());
-                Xinjiang_polygon.dragging.disable();}});
+                Xinjiang_polygon.dragging.disable();
+                Xinjiang_polygon.setLatLngs(temp);}});
 
         Qinghai_polygon.on('drag',function (e) {Qinghai_overlayer.setBounds(Qinghai_polygon.getBounds());});
         Qinghai_polygon.on('dragstart',function (e) {Qinghai_overlayer.setBounds(Qinghai_polygon.getBounds());});
@@ -353,7 +358,8 @@
                 &&Number(Qinghai_polygon.getBounds().getSouthEast().lat)>30.66340 && Number(Qinghai_polygon.getBounds().getNorthWest().lng)>88.15504)
             {swal({position: 'top-end', text: 'Qinghai', icon:"success", buttons: false, timer: 1000});
                 Qinghai_overlayer.setBounds(Qinghai.getBounds());
-                Qinghai_polygon.dragging.disable();}});
+                Qinghai_polygon.dragging.disable();
+                Qinghai_polygon.setLatLngs(temp);}});
 
         Xizang_polygon.on('drag',function (e) {Xizang_overlayer.setBounds(Xizang_polygon.getBounds());});
         Xizang_polygon.on('dragstart',function (e) {Xizang_overlayer.setBounds(Xizang_polygon.getBounds());});
@@ -362,7 +368,8 @@
                 &&Number(Xizang_polygon.getBounds().getSouthEast().lat)>26.26166 && Number(Xizang_polygon.getBounds().getNorthWest().lng)>77.29082)
             {swal({position: 'top-end', text: 'Xizang', icon:"success", buttons: false, timer: 1000});
                 Xizang_overlayer.setBounds(Xizang.getBounds());
-                Xizang_polygon.dragging.disable();}});
+                Xizang_polygon.dragging.disable();
+                Xizang_polygon.setLatLngs(temp);}});
 
         Sichuan_polygon.on('drag',function (e) {Sichuan_overlayer.setBounds(Sichuan_polygon.getBounds());});
         Sichuan_polygon.on('dragstart',function (e) {Sichuan_overlayer.setBounds(Sichuan_polygon.getBounds());});
@@ -371,7 +378,8 @@
                 &&Number(Sichuan_polygon.getBounds().getSouthEast().lat)>24.92047 && Number(Sichuan_polygon.getBounds().getNorthWest().lng)>96.23125)
             {swal({position: 'top-end', text: 'Sichuan', icon:"success", buttons: false, timer: 1000});
                 Sichuan_overlayer.setBounds(Sichuan.getBounds());
-                Sichuan_polygon.dragging.disable();}});
+                Sichuan_polygon.dragging.disable();
+                Sichuan_polygon.setLatLngs(temp);}});
 
         Yunnan_polygon.on('drag',function (e) {Yunnan_overlayer.setBounds(Yunnan_polygon.getBounds());});
         Yunnan_polygon.on('dragstart',function (e) {Yunnan_overlayer.setBounds(Yunnan_polygon.getBounds());});
@@ -380,7 +388,8 @@
                 &&Number(Yunnan_polygon.getBounds().getSouthEast().lat)>20.14092 && Number(Yunnan_polygon.getBounds().getNorthWest().lng)>96.50084)
             {swal({position: 'top-end', text: 'Yunnan', icon:"success", buttons: false, timer: 1000});
                 Yunnan_overlayer.setBounds(Yunnan.getBounds());
-                Yunnan_polygon.dragging.disable();}});
+                Yunnan_polygon.dragging.disable();
+                Yunnan_polygon.setLatLngs(temp);}});
 
         Neimeng_polygon.on('drag',function (e) {Neimeng_overlayer.setBounds(Neimeng_polygon.getBounds());});
         Neimeng_polygon.on('dragstart',function (e) {Neimeng_overlayer.setBounds(Neimeng_polygon.getBounds());});
@@ -389,7 +398,8 @@
                 &&Number(Neimeng_polygon.getBounds().getSouthEast().lat)>36.37486 && Number(Neimeng_polygon.getBounds().getNorthWest().lng)>96.05859)
             {swal({position: 'top-end', text: 'Neimeng', icon:"success", buttons: false, timer: 1000});
                 Neimeng_overlayer.setBounds(Neimeng.getBounds());
-                Neimeng_polygon.dragging.disable();}});
+                Neimeng_polygon.dragging.disable();
+                Neimeng_polygon.setLatLngs(temp);}});
 
         Gansu_polygon.on('drag',function (e) {Gansu_overlayer.setBounds(Gansu_polygon.getBounds());});
         Gansu_polygon.on('dragstart',function (e) {Gansu_overlayer.setBounds(Gansu_polygon.getBounds());});
@@ -398,7 +408,8 @@
                 &&Number(Gansu_polygon.getBounds().getSouthEast().lat)>31.45337 && Number(Gansu_polygon.getBounds().getNorthWest().lng)>91.45672)
             {swal({position: 'top-end', text: 'Gansu', icon:"success", buttons: false, timer: 1000});
                 Gansu_overlayer.setBounds(Gansu.getBounds());
-                Gansu_polygon.dragging.disable();}});
+                Gansu_polygon.dragging.disable();
+                Gansu_polygon.setLatLngs(temp);}});
 
         Ningxia_polygon.on('drag',function (e) {Ningxia_overlayer.setBounds(Ningxia_polygon.getBounds());});
         Ningxia_polygon.on('dragstart',function (e) {Ningxia_overlayer.setBounds(Ningxia_polygon.getBounds());});
@@ -407,7 +418,8 @@
                 &&Number(Ningxia_polygon.getBounds().getSouthEast().lat)>34.26381 && Number(Ningxia_polygon.getBounds().getNorthWest().lng)>103.36223)
             {swal({position: 'top-end', text: 'Ningxia', icon:"success", buttons: false, timer: 1000});
                 Ningxia_overlayer.setBounds(Ningxia.getBounds());
-                Ningxia_polygon.dragging.disable();}});
+                Ningxia_polygon.dragging.disable();
+                Ningxia_polygon.setLatLngs(temp);}});
 
         Shaanxi_polygon.on('drag',function (e) {Shaanxi_overlayer.setBounds(Shaanxi_polygon.getBounds());});
         Shaanxi_polygon.on('dragstart',function (e) {Shaanxi_overlayer.setBounds(Shaanxi_polygon.getBounds());});
@@ -416,7 +428,8 @@
                 &&Number(Shaanxi_polygon.getBounds().getSouthEast().lat)>30.67854 && Number(Shaanxi_polygon.getBounds().getNorthWest().lng)>104.50059)
             {swal({position: 'top-end', text: 'Shaanxi', icon:"success", buttons: false, timer: 1000});
                 Shaanxi_overlayer.setBounds(Shaanxi.getBounds());
-                Shaanxi_polygon.dragging.disable();}});
+                Shaanxi_polygon.dragging.disable();
+                Shaanxi_polygon.setLatLngs(temp);}});
 
         Chongqing_polygon.on('drag',function (e) {Chongqing_overlayer.setBounds(Chongqing_polygon.getBounds());});
         Chongqing_polygon.on('dragstart',function (e) {Chongqing_overlayer.setBounds(Chongqing_polygon.getBounds());});
@@ -425,7 +438,8 @@
                 &&Number(Chongqing_polygon.getBounds().getSouthEast().lat)>27.17793 && Number(Chongqing_polygon.getBounds().getNorthWest().lng)>104.23691)
             {swal({position: 'top-end', text: 'Chongqing', icon:"success", buttons: false, timer: 1000});
                 Chongqing_overlayer.setBounds(Chongqing.getBounds());
-                Chongqing_polygon.dragging.disable();}});
+                Chongqing_polygon.dragging.disable();
+                Chongqing_polygon.setLatLngs(temp);}});
 
         Guizhou_polygon.on('drag',function (e) {Guizhou_overlayer.setBounds(Guizhou_polygon.getBounds());});
         Guizhou_polygon.on('dragstart',function (e) {Guizhou_overlayer.setBounds(Guizhou_polygon.getBounds());});
@@ -434,7 +448,8 @@
                 &&Number(Guizhou_polygon.getBounds().getSouthEast().lat)>23.59687 && Number(Guizhou_polygon.getBounds().getNorthWest().lng)>102.59121)
             {swal({position: 'top-end', text: 'Guizhou', icon:"success", buttons: false, timer: 1000});
                 Guizhou_overlayer.setBounds(Guizhou.getBounds());
-                Guizhou_polygon.dragging.disable();}});
+                Guizhou_polygon.dragging.disable();
+                Guizhou_polygon.setLatLngs(temp);}});
 
         Guangxi_polygon.on('drag',function (e) {Guangxi_overlayer.setBounds(Guangxi_polygon.getBounds());});
         Guangxi_polygon.on('dragstart',function (e) {Guangxi_overlayer.setBounds(Guangxi_polygon.getBounds());});
@@ -443,7 +458,8 @@
                 &&Number(Guangxi_polygon.getBounds().getSouthEast().lat)>20.44842 && Number(Guangxi_polygon.getBounds().getNorthWest().lng)>103.46209)
             {swal({position: 'top-end', text: 'Guangxi', icon:"success", buttons: false, timer: 1000});
                 Guangxi_overlayer.setBounds(Guangxi.getBounds());
-                Guangxi_polygon.dragging.disable();}});
+                Guangxi_polygon.dragging.disable();
+                Guangxi_polygon.setLatLngs(temp);}});
 
         Guangdong_polygon.on('drag',function (e) {Guangdong_overlayer.setBounds(Guangdong_polygon.getBounds());});
         Guangdong_polygon.on('dragstart',function (e) {Guangdong_overlayer.setBounds(Guangdong_polygon.getBounds());});
@@ -452,7 +468,8 @@
                 &&Number(Guangdong_polygon.getBounds().getSouthEast().lat)>19.20035&& Number(Guangdong_polygon.getBounds().getNorthWest().lng)>108.58750)
             {swal({position: 'top-end', text: 'Guangdong', icon:"success", buttons: false, timer: 1000});
                 Guangdong_overlayer.setBounds(Guangdong.getBounds());
-                Guangdong_polygon.dragging.disable();}});
+                Guangdong_polygon.dragging.disable();
+                Guangdong_polygon.setLatLngs(temp);}});
 
         Fujian_polygon.on('drag',function (e) {Fujian_overlayer.setBounds(Fujian_polygon.getBounds());});
         Fujian_polygon.on('dragstart',function (e) {Fujian_overlayer.setBounds(Fujian_polygon.getBounds());});
@@ -461,7 +478,8 @@
                 &&Number(Fujian_polygon.getBounds().getSouthEast().lat)>22.39370&& Number(Fujian_polygon.getBounds().getNorthWest().lng)>114.60379)
             {swal({position: 'top-end', text: 'Fujian', icon:"success", buttons: false, timer: 1000});
                 Fujian_overlayer.setBounds(Fujian.getBounds());
-                Fujian_polygon.dragging.disable();}});
+                Fujian_polygon.dragging.disable();
+                Fujian_polygon.setLatLngs(temp);}});
 
         Zhejiang_polygon.on('drag',function (e) {Zhejiang_overlayer.setBounds(Zhejiang_polygon.getBounds());});
         Zhejiang_polygon.on('dragstart',function (e) {Zhejiang_overlayer.setBounds(Zhejiang_polygon.getBounds());});
@@ -470,7 +488,8 @@
                 &&Number(Zhejiang_polygon.getBounds().getSouthEast().lat)>26.15692&& Number(Zhejiang_polygon.getBounds().getNorthWest().lng)>116.83199)
             {swal({position: 'top-end', text: 'Zhejiang', icon:"success", buttons: false, timer: 1000});
                 Zhejiang_overlayer.setBounds(Zhejiang.getBounds());
-                Zhejiang_polygon.dragging.disable();}});
+                Zhejiang_polygon.dragging.disable();
+                Zhejiang_polygon.setLatLngs(temp);}});
 
         Hainan_polygon.on('drag',function (e) {Hainan_overlayer.setBounds(Hainan_polygon.getBounds());});
         Hainan_polygon.on('dragstart',function (e) {Hainan_overlayer.setBounds(Hainan_polygon.getBounds());});
@@ -479,7 +498,8 @@
                 &&Number(Hainan_polygon.getBounds().getSouthEast().lat)>17.08761&& Number(Hainan_polygon.getBounds().getNorthWest().lng)>107.52070)
             {swal({position: 'top-end', text: 'Hainan', icon:"success", buttons: false, timer: 1000});
                 Hainan_overlayer.setBounds(Hainan.getBounds());
-                Hainan_polygon.dragging.disable();}});
+                Hainan_polygon.dragging.disable();
+                Hainan_polygon.setLatLngs(temp);}});
 
         Taiwan_polygon.on('drag',function (e) {Taiwan_overlayer.setBounds(Taiwan_polygon.getBounds());});
         Taiwan_polygon.on('dragstart',function (e) {Taiwan_overlayer.setBounds(Taiwan_polygon.getBounds());});
@@ -489,7 +509,8 @@
                 &&Number(Taiwan_polygon.getBounds().getSouthEast().lat)>20.94005&& Number(Taiwan_polygon.getBounds().getNorthWest().lng)>118.97070)
             {swal({position: 'top-end', text: 'Taiwan', icon:"success", buttons: false, timer: 1000});
                 Taiwan_overlayer.setBounds(Taiwan.getBounds());
-                Taiwan_polygon.dragging.disable();}});
+                Taiwan_polygon.dragging.disable();
+                Taiwan_polygon.setLatLngs(temp);}});
 
         Beijing_polygon.on('drag',function (e) {Beijing_overlay.setBounds(Beijing_polygon.getBounds());});
         Beijing_polygon.on('dragstart',function (e) {Beijing_overlay.setBounds(Beijing_polygon.getBounds());});
@@ -498,7 +519,8 @@
                 &&Number(Beijing_polygon.getBounds().getSouthEast().lat)>39.303 && Number(Beijing_polygon.getBounds().getNorthWest().lng)>115.017)
             {swal({position: 'top-end', icon:"success", text: 'Beijing', buttons: false, timer: 1000});
                 Beijing_overlay.setBounds(Beijing.getBounds());
-                Beijing_polygon.dragging.disable();}
+                Beijing_polygon.dragging.disable();
+                Beijing_polygon.setLatLngs(temp);}
             console.log(Beijing_polygon.getBounds().getNorthWest().lat);
             console.log(Beijing_polygon.getBounds().getSouthEast().lng);
             console.log(Beijing_polygon.getBounds().getSouthEast().lat);
@@ -511,7 +533,8 @@
                 &&Number(Tianjin_polygon.getBounds().getSouthEast().lat)>38.386 && Number(Tianjin_polygon.getBounds().getNorthWest().lng)>116.520)
             {swal({position: 'top-end', icon:"success", text: 'Tianjin', buttons: false,timer: 1000});
                 Tianjin_overlay.setBounds(Tianjin.getBounds());
-                Tianjin_polygon.dragging.disable();}
+                Tianjin_polygon.dragging.disable();
+                Tianjin_polygon.setLatLngs(temp);}
             console.log(Tianjin_polygon.getBounds().getNorthWest().lat);
             console.log(Tianjin_polygon.getBounds().getSouthEast().lng);
             console.log(Tianjin_polygon.getBounds().getSouthEast().lat);
@@ -524,7 +547,8 @@
                 &&Number(Hebei_polygon.getBounds().getSouthEast().lat)>35.808 && Number(Hebei_polygon.getBounds().getNorthWest().lng)>113.111)
             {swal({position: 'top-end', icon:"success", text: 'Hebei', buttons: false, timer: 1000});
                 Hebei_polygon.dragging.disable();
-                Hebei_overlay.setBounds(Hebei.getBounds());}});
+                Hebei_overlay.setBounds(Hebei.getBounds());
+                Hebei_polygon.setLatLngs(temp);}});
 
         Shanxi_polygon.on('drag',function (e) {Shanxi_overlay.setBounds(Shanxi_polygon.getBounds());});
         Shanxi_polygon.on('dragstart',function (e) {Shanxi_overlay.setBounds(Shanxi_polygon.getBounds());});
@@ -533,7 +557,8 @@
                 &&Number(Shanxi_polygon.getBounds().getSouthEast().lat)>34.176 && Number(Shanxi_polygon.getBounds().getNorthWest().lng)>109.649)
             {swal({position: 'top-end', icon:"success", text: 'Shanxi', buttons: false, timer: 1000});
                 Shanxi_polygon.dragging.disable();
-                Shanxi_overlay.setBounds(Shanxi.getBounds());}});
+                Shanxi_overlay.setBounds(Shanxi.getBounds());
+                Shanxi_polygon.setLatLngs(temp);}});
 
         Henan_polygon.on('drag',function (e) {Henan_overlay.setBounds(Henan_polygon.getBounds());});
         Henan_polygon.on('dragstart',function (e) {Henan_overlay.setBounds(Henan_polygon.getBounds());});
@@ -542,7 +567,8 @@
                 &&Number(Henan_polygon.getBounds().getSouthEast().lat)>31.245 && Number(Henan_polygon.getBounds().getNorthWest().lng)>109.933)
             {swal({position: 'top-end', icon:"success", text: 'Henan', buttons: false, timer: 1000});
                 Henan_polygon.dragging.disable();
-                Henan_overlay.setBounds(Henan.getBounds());}});
+                Henan_overlay.setBounds(Henan.getBounds());
+                Henan_polygon.setLatLngs(temp);}});
 
         Shandong_polygon.on('drag',function (e) {Shandong_overlay.setBounds(Shandong_polygon.getBounds());});
         Shandong_polygon.on('dragstart',function (e) {Shandong_overlay.setBounds(Shandong_polygon.getBounds());});
@@ -551,7 +577,8 @@
                 &&Number(Shandong_polygon.getBounds().getSouthEast().lat)>34.256 && Number(Shandong_polygon.getBounds().getNorthWest().lng)>114.572)
             {swal({position: 'top-end', icon:"success", text: 'Shandong', buttons: false, timer: 1000});
                 Shandong_polygon.dragging.disable();
-                Shandong_overlay.setBounds(Shandong.getBounds());}});
+                Shandong_overlay.setBounds(Shandong.getBounds());
+                Shandong_polygon.setLatLngs(temp);}});
 
         Anhui_polygon.on('drag',function (e) {Anhui_overlay.setBounds(Anhui_polygon.getBounds());});
         Anhui_polygon.on('dragstart',function (e) {Anhui_overlay.setBounds(Anhui_polygon.getBounds());});
@@ -560,7 +587,8 @@
                 &&Number(Anhui_polygon.getBounds().getSouthEast().lat)>29.085 && Number(Anhui_polygon.getBounds().getNorthWest().lng)>114.564)
             {swal({position: 'top-end', icon:"success", text: 'Anhui', buttons: false, timer: 1000});
                 Anhui_polygon.dragging.disable();
-                Anhui_overlay.setBounds(Anhui.getBounds());}});
+                Anhui_overlay.setBounds(Anhui.getBounds());
+                Anhui_polygon.setLatLngs(temp);}});
 
         Jiangsu_polygon.on('drag',function (e) {Jiangsu_overlay.setBounds(Jiangsu_polygon.getBounds());});
         Jiangsu_polygon.on('dragstart',function (e) {Jiangsu_overlay.setBounds(Jiangsu_polygon.getBounds());});
@@ -569,7 +597,8 @@
                 &&Number(Jiangsu_polygon.getBounds().getSouthEast().lat)>30.439 && Number(Jiangsu_polygon.getBounds().getNorthWest().lng)>115.875)
             {swal({position: 'top-end', icon:"success", text: 'Jiangsu', buttons: false, timer: 1000});
                 Jiangsu_polygon.dragging.disable();
-                Jiangsu_overlay.setBounds(Jiangsu.getBounds());}});
+                Jiangsu_overlay.setBounds(Jiangsu.getBounds());
+                Jiangsu_polygon.setLatLngs(temp);}});
 
         Shanghai_polygon.on('drag',function (e) {Shanghai_overlay.setBounds(Shanghai_polygon.getBounds());});
         Shanghai_polygon.on('dragstart',function (e) {Shanghai_overlay.setBounds(Shanghai_polygon.getBounds());});
@@ -578,7 +607,8 @@
                 &&Number(Shanghai_polygon.getBounds().getSouthEast().lat)>30.417 && Number(Shanghai_polygon.getBounds().getNorthWest().lng)>120.674)
             {swal({position: 'top-end', icon:"success", text: 'Shanghai', buttons: false, timer: 1000});
                 Shanghai_polygon.dragging.disable();
-                Shanghai_overlay.setBounds(Shanghai.getBounds());}
+                Shanghai_overlay.setBounds(Shanghai.getBounds());
+                Shanghai_polygon.setLatLngs(temp);}
             console.log(Shanghai_polygon.getBounds().getNorthWest().lat);
             console.log(Shanghai_polygon.getBounds().getSouthEast().lng);
             console.log(Shanghai_polygon.getBounds().getSouthEast().lat);
@@ -591,7 +621,8 @@
                 &&Number(Hubei_polygon.getBounds().getSouthEast().lat)>28.491 && Number(Hubei_polygon.getBounds().getNorthWest().lng)>107.640)
             {swal({position: 'top-end', icon:"success", text: 'Hubei', buttons: false, timer: 1000});
                 Hubei_polygon.dragging.disable();
-                Hubei_overlay.setBounds(Hubei.getBounds());}});
+                Hubei_overlay.setBounds(Hubei.getBounds());
+                Hubei_polygon.setLatLngs(temp);}});
 
         Hunan_polygon.on('drag',function (e) {Hunan_overlay.setBounds(Hunan_polygon.getBounds());});
         Hunan_polygon.on('dragstart',function (e) {Hunan_overlay.setBounds(Hunan_polygon.getBounds());});
@@ -600,7 +631,8 @@
                 &&Number(Hunan_polygon.getBounds().getSouthEast().lat)>24.187 && Number(Hunan_polygon.getBounds().getNorthWest().lng)>108.183)
             {swal({position: 'top-end', icon:"success", text: 'Hunan', buttons: false, timer: 1000});
                 Hunan_polygon.dragging.disable();
-                Hunan_overlay.setBounds(Hunan.getBounds());}});
+                Hunan_overlay.setBounds(Hunan.getBounds());
+                Hunan_polygon.setLatLngs(temp);}});
 
         Heilongjiang_polygon.on('drag',function (e) {Heilongjiang_overlay.setBounds(Heilongjiang_polygon.getBounds());});
         Heilongjiang_polygon.on('dragstart',function (e) {Heilongjiang_overlay.setBounds(Heilongjiang_polygon.getBounds());});
@@ -609,7 +641,8 @@
                 &&Number(Heilongjiang_polygon.getBounds().getSouthEast().lat)>42.892 && Number(Heilongjiang_polygon.getBounds().getNorthWest().lng)>120.337)
             {swal({position: 'top-end', icon:"success", text: 'Heilongjiang', buttons: false, timer: 1000});
                 Heilongjiang_polygon.dragging.disable();
-                Heilongjiang_overlay.setBounds(Heilongjiang.getBounds());}});
+                Heilongjiang_overlay.setBounds(Heilongjiang.getBounds());
+                Heilongjiang_polygon.setLatLngs(temp);}});
 
         Jilin_polygon.on('drag',function (e) { Jilin_overlay.setBounds( Jilin_polygon.getBounds());});
         Jilin_polygon.on('dragstart',function (e) { Jilin_overlay.setBounds( Jilin_polygon.getBounds());});
@@ -618,7 +651,8 @@
                 &&Number( Jilin_polygon.getBounds().getSouthEast().lat)>40.446 && Number(Jilin_polygon.getBounds().getNorthWest().lng)>120.869)
             {swal({position: 'top-end', icon:"success", text: 'Jilin', buttons: false, timer: 1000});
                 Jilin_polygon.dragging.disable();
-                Jilin_overlay.setBounds(Jilin.getBounds());}});
+                Jilin_overlay.setBounds(Jilin.getBounds());
+                Jilin_polygon.setLatLngs(temp);}});
 
         Liaoning_polygon.on('drag',function (e) { Liaoning_overlay.setBounds(Liaoning_polygon.getBounds());});
         Liaoning_polygon.on('dragstart',function (e) {Liaoning_overlay.setBounds(Liaoning_polygon.getBounds());});
@@ -627,7 +661,8 @@
                 &&Number(Liaoning_polygon.getBounds().getSouthEast().lat)>38.169 && Number(Liaoning_polygon.getBounds().getNorthWest().lng)>118.099)
             {swal({position: 'top-end', icon:"success", text: 'Liaoning', buttons: false, timer: 1000});
                 Liaoning_polygon.dragging.disable();
-                Liaoning_overlay.setBounds(Liaoning.getBounds());}});
+                Liaoning_overlay.setBounds(Liaoning.getBounds());
+                Liaoning_polygon.setLatLngs(temp);}});
 
         Jiangxi_polygon.on('drag',function (e) {Jiangxi_overlay.setBounds(Jiangxi_polygon.getBounds());});
         Jiangxi_polygon.on('dragstart',function (e) {Jiangxi_overlay.setBounds(Jiangxi_polygon.getBounds());});
@@ -636,7 +671,8 @@
                 &&Number(Jiangxi_polygon.getBounds().getSouthEast().lat)>23.873 && Number(Jiangxi_polygon.getBounds().getNorthWest().lng)>112.716)
             {swal({position: 'top-end', icon:"success", text: 'Jiangxi', buttons: false, timer: 1000});
                 Jiangxi_polygon.dragging.disable();
-                Jiangxi_overlay.setBounds(Jiangxi.getBounds());}
+                Jiangxi_overlay.setBounds(Jiangxi.getBounds());
+                Jiangxi_polygon.setLatLngs(temp);}
             // console.log(Jiangxi_polygon.getBounds().getNorthWest().lat);
             // console.log(Jiangxi_polygon.getBounds().getSouthEast().lng);
             // console.log(Jiangxi_polygon.getBounds().getSouthEast().lat);
