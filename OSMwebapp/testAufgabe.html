@@ -73,6 +73,7 @@
     var ctlLayers;
     var objBasemaps;
     var objOverlays;
+    var temp;
 
     var Croatia, Croatiapoly_array, Croatia_imageBound, Croatia_overlay, Croatia_polygon;
     var Belgium,Belgiumpoly_array,Belgium_imageBound,Belgium_overlayer,Belgium_polygon;
@@ -193,6 +194,10 @@
 
         Spain = L.imageOverlay('img-EU/spain.png',[[43.85037,-9.31895],[35.96969,4.36186]],{opacity:1}).addTo(mymap);
 
+        temp =[[65.3937972712156,110.9751319885254],
+            [70.08097154780967,110.9751319885254],
+            [70.08097154780967,124.31545257568361],
+            [65.3937972712156,124.31545257568361]];
 
         Deutschlandpoly_array=[
             [49.93539410727762,-22.9183387756349],
@@ -418,6 +423,7 @@
                 Croatia_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Croatia);
+                Croatia_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -463,6 +469,7 @@
                 Poland_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Poland);
+                Poland_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -510,6 +517,7 @@
                 Slovakia_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Slovakia);
+                Slovakia_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -557,6 +565,7 @@
                 Hungary_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Hungary);
+                Hungary_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -605,6 +614,7 @@
                 Czechia_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Czechia);
+                Czechia_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -651,6 +661,7 @@
                 Sweden_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Sweden);
+                Sweden_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -707,6 +718,7 @@
                 Slovenia_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Slovenia);
+                Slovenia_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -753,6 +765,7 @@
                 Luxenburg_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Luxenburg);
+                Luxenburg_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -800,6 +813,7 @@
                 Netherland_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Netherland);
+                Netherland_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -846,6 +860,7 @@
                 Austria_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Austria);
+                Austria_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -893,6 +908,7 @@
                 UK_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(UK);
+                UK_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -939,6 +955,7 @@
                 Ireland_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Ireland);
+                Ireland_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
@@ -1292,6 +1309,7 @@
                 Belgium_overlayer.setBounds(Belgium.getBounds());
                 Belgium_polygon.dragging.disable();
                 mymap.removeLayer(Belgium);
+                Belgium_polygon.setLatLngs(temp);
             }
             console.log(Belgium_polygon.getBounds().getNorthWest().lat);
             console.log(Belgium_polygon.getBounds().getSouthEast().lng);
@@ -1323,6 +1341,7 @@
                 Denmaik_overlayer.setBounds(Denmaik.getBounds());
                 Denmaik_polygon.dragging.disable();
                 mymap.removeLayer(Denmaik);
+                Denmaik_polygon.setLatLngs(temp);
             }
             console.log(Denmaik_polygon.getBounds().getNorthWest().lat);
             console.log(Denmaik_polygon.getBounds().getSouthEast().lng);
@@ -1355,6 +1374,7 @@
                 Romania_overlayer.setBounds(Romania.getBounds());
                 Romania_polygon.dragging.disable();
                 mymap.removeLayer(Romania);
+                Romania_polygon.setLatLngs(temp);
             }
             console.log(Romania_polygon.getBounds().getNorthWest().lat);
             console.log(Romania_polygon.getBounds().getSouthEast().lng);
@@ -1387,6 +1407,7 @@
                 Spain_overlayer.setBounds(Spain.getBounds());
                 Spain_polygon.dragging.disable();
                 mymap.removeLayer(Spain);
+                Spain_polygon.setLatLngs(temp);
             }
             console.log(Spain_polygon.getBounds().getNorthWest().lat);
             console.log(Spain_polygon.getBounds().getSouthEast().lng);
@@ -1415,10 +1436,11 @@
                     icon:"success",
                     buttons: false,
                     timer: 1000
-                })
+                });
                 Finland_overlayer.setBounds(Finland.getBounds());
                 Finland_polygon.dragging.disable();
                 mymap.removeLayer(Finland);
+                Finland_polygon.setLatLngs(temp);
             }
             console.log(Finland_polygon.getBounds().getNorthWest().lat);
             console.log(Finland_polygon.getBounds().getSouthEast().lng);
@@ -1450,6 +1472,7 @@
                 Lithuania_overlayer.setBounds(Lithuania.getBounds());
                 Lithuania_polygon.dragging.disable();
                 mymap.removeLayer(Lithuania);
+                Lithuania_polygon.setLatLngs(temp);
             }
             console.log(Lithuania_polygon.getBounds().getNorthWest().lat);
             console.log(Lithuania_polygon.getBounds().getSouthEast().lng);
@@ -1482,6 +1505,7 @@
                 Latvia_overlayer.setBounds(Latvia.getBounds());
                 Latvia_polygon.dragging.disable();
                 mymap.removeLayer(Latvia);
+                Latvia_polygon.setLatLngs(temp);
             }
             console.log(Latvia_polygon.getBounds().getNorthWest().lat);
             console.log(Latvia_polygon.getBounds().getSouthEast().lng);
@@ -1513,6 +1537,7 @@
                 Estonia_overlayer.setBounds(Estonia.getBounds());
                 Estonia_polygon.dragging.disable();
                 mymap.removeLayer(Estonia);
+                Estonia_polygon.setLatLngs(temp);
             }
             console.log(Estonia_polygon.getBounds().getNorthWest().lat);
             console.log(Estonia_polygon.getBounds().getSouthEast().lng);
@@ -1545,6 +1570,7 @@
                 Bulgaria_overlayer.setBounds(Bulgaria.getBounds());
                 Bulgaria_polygon.dragging.disable();
                 mymap.removeLayer(Bulgaria);
+                Bulgaria_polygon.setLatLngs(temp);
             }
             console.log(Bulgaria_polygon.getBounds().getNorthWest().lat);
             console.log(Bulgaria_polygon.getBounds().getSouthEast().lng);
@@ -1578,6 +1604,7 @@
                 France_overlayer.setBounds(France.getBounds());
                 France_polygon.dragging.disable();
                 mymap.removeLayer(France);
+                France_polygon.setLatLngs(temp);
             }
             console.log(France_polygon.getBounds().getNorthWest().lat);
             console.log(France_polygon.getBounds().getSouthEast().lng);
@@ -1610,6 +1637,7 @@
                 Cyprus_overlayer.setBounds(Cyprus.getBounds());
                 Cyprus_polygon.dragging.disable();
                 mymap.removeLayer(Cyprus);
+                Cyprus_polygon.setLatLngs(temp);
             }
             console.log(Cyprus_polygon.getBounds().getNorthWest().lat);
             console.log(Cyprus_polygon.getBounds().getSouthEast().lng);
@@ -1644,6 +1672,7 @@
                 Greece_overlayer.setBounds( Greece.getBounds());
                 Greece_polygon.dragging.disable();
                 mymap.removeLayer(Greece);
+                Greece_polygon.setLatLngs(temp);
             }
             console.log(Greece_polygon.getBounds().getNorthWest().lat);
             console.log(Greece_polygon.getBounds().getSouthEast().lng);
@@ -1676,6 +1705,7 @@
                 Malta_overlayer.setBounds(Malta.getBounds());
                 Malta_polygon.dragging.disable();
                 mymap.removeLayer(Malta);
+                Malta_polygon.setLatLngs(temp);
             }
             console.log(Malta_polygon.getBounds().getNorthWest().lat);
             console.log(Malta_polygon.getBounds().getSouthEast().lng);
@@ -1709,6 +1739,7 @@
                 Italy_overlayer.setBounds(Italy.getBounds());
                 Italy_polygon.dragging.disable();
                 mymap.removeLayer(Italy);
+                Italy_polygon.setLatLngs(temp);
             }
             console.log(Italy_polygon.getBounds().getNorthWest().lat);
             console.log(Italy_polygon.getBounds().getSouthEast().lng);
@@ -1741,6 +1772,7 @@
                 Portugal_overlayer.setBounds(Portugal.getBounds());
                 Portugal_polygon.dragging.disable();
                 mymap.removeLayer(Portugal);
+                Portugal_polygon.setLatLngs(temp);
             }
             console.log(Portugal_polygon.getBounds().getNorthWest().lat);
             console.log(Portugal_polygon.getBounds().getSouthEast().lng);
@@ -1776,6 +1808,7 @@
                 Deutschland_polygon.dragging.disable();
                 //Saarland_polygon.setStyle({opacity:0});
                 mymap.removeLayer(Deutschland);
+                Deutschland_polygon.setLatLngs(temp);
             }
 
             //console.log(Saarland_polygon.getBounds());
