@@ -273,16 +273,143 @@ function createXMLStringMapPuzzleCH(){
     return txt;
 }
 
-function createXMLStringAufgabe4fill_in_blanks(output,markerarray,EU_staaten){
+function createXMLStringAufgabe4DE(){
+    var txt = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        "<exercise type=\"fillIn\">\n" +
+        "\t<input>\n" +
+        "\t</input>\n" +
+        "\t<task>\n" +
+        "\tBitte geben Sie den Namen der folgenden Bundesländer ein:\n" +
+        "\n" +
+        "\t&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;/script>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';var popup_map;var marker_map;var coordination=[[48.45835,9.22852],[49.18170,11.60156],[52.45601,13.44727],[51.89154,14.00911],[52.98978,8.91146],[53.41096,10.22982],[50.43105,9.04329],[53.82665,12.63222],[52.77624,9.92958],[51.48144,7.44667],[49.92299,7.27089],[49.30162,7.06704],[50.97724,13.61489],[52.08436,11.68130],[54.23132,9.76968],[50.86643,11.08804]];var mymap = L.map('mapdiv', {center:[51.65001, 10.67920],zoom:7,scrollWheelZoom:false,dragging: true,zoomControl: false,closePopupOnClick:false,attributionControl: false});L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);var ctlattribute  = L.control.attribution({position:'bottomleft'});ctlattribute.addAttribution('OpenStreetMap').addTo(mymap);for(let k = 0; k&lt;16;k++){popup_map = L.popup({closeButton:false,autoClose:false}).setContent(\"Bundesland:\"+(k+1));marker_map = new L.Marker(coordination[k], { draggable:false});marker_map.bindPopup(popup_map).addTo(mymap).openPopup();}&lt;/script>&lt;/div>\t\n" +
+        "\t1 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t2 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t3 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t4 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t5 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t6 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t7 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t8 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t9 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t10 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t11 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t12 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t13 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t14 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t15 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t16 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        "\t</task>\n" +
+        "\t<advice>\n" +
+        "\t\t<option>Wenn Sie die entsprechende Nummer nicht finden können, verschieben Sie die Karte nach oben und unten.</option>\n" +
+        "\t\t<option>Beachtung der Großschreibung und die Verbingdungszeichen.</option>\n" +
+        "\n" +
+        "\t</advice>\n" +
+        "\n" +
+        "\t<correctanswer>\n" +
+        "\t\t<option result=\" equals(&apos;[pos=1]&apos;,&apos;Baden-Württemberg&apos;)&amp;&amp;equals(&apos;[pos=2]&apos;,&apos;Bayern&apos;)&amp;&amp;equals(&apos;[pos=3]&apos;,&apos;Berlin&apos;)&amp;&amp;equals(&apos;[pos=4]&apos;,&apos;Brandenburg&apos;)&amp;&amp;equals(&apos;[pos=5]&apos;,&apos;Bremen&apos;)&amp;&amp;equals(&apos;[pos=6]&apos;,&apos;Hamburg&apos;)&amp;&amp;equals(&apos;[pos=7]&apos;,&apos;Hessen&apos;)&amp;&amp;equals(&apos;[pos=8]&apos;,&apos;Mecklenburg-Vorpommern&apos;)&amp;&amp;equals(&apos;[pos=9]&apos;,&apos;Niedersachsen&apos;)&amp;&amp;equals(&apos;[pos=10]&apos;,&apos;Nordrhein-Westfalen&apos;)&amp;&amp;equals(&apos;[pos=11]&apos;,&apos;Rheinland-Pfalz&apos;)&amp;&amp;equals(&apos;[pos=12]&apos;,&apos;Saarland&apos;)&amp;&amp;equals(&apos;[pos=13]&apos;,&apos;Sachsen&apos;)&amp;&amp;equals(&apos;[pos=14]&apos;,&apos;Sachsen-Anhalt&apos;)&amp;&amp;equals(&apos;[pos=15]&apos;,&apos;Schleswig-Holstein&apos;)&amp;&amp;equals(&apos;[pos=16]&apos;,&apos;Thüringen&apos;)\n" +
+        "\"/>\n" +
+        "\t\t<message>Alle Lücken sind korrekt ausgefüllt!</message>\n" +
+        "\t</correctanswer>\n" +
+        "\n" +
+        "\t<feedback>\t\n" +
+        "\n" +
+        "\t\t<option result=\"equals(&apos;[pos=1]&apos;,&apos;Baden-Württemberg&apos;)\" points=\"8\">Bundesland 1 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=1]&apos;,&apos;Baden-Württemberg&apos;)\" points=\"0\">Bundesland 1 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=2]&apos;,&apos;Bayern&apos;)\" points=\"5\">Bundesland 2 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=2]&apos;,&apos;Bayern&apos;)\" points=\"0\">Bundesland 2 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=3]&apos;,&apos;Berlin&apos;)\" points=\"6\">Bundesland 3 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=3]&apos;,&apos;Berlin&apos;)\" points=\"0\">Bundesland 3 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=4]&apos;,&apos;Brandenburg&apos;)\" points=\"5\">Bundesland 4 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=4]&apos;,&apos;Brandenburg&apos;)\" points=\"0\">Bundesland 4 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=5]&apos;,&apos;Bremen&apos;)\" points=\"6\">Bundesland 5 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=5]&apos;,&apos;Bremen&apos;)\" points=\"0\">Bundesland 5 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=6]&apos;,&apos;Hamburg&apos;)\" points=\"6\">Bundesland 6 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=6]&apos;,&apos;Hamburg&apos;)\" points=\"0\">Bundesland 6 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=7]&apos;,&apos;Hessen&apos;)\" points=\"6\">Bundesland 7 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=7]&apos;,&apos;Hessen&apos;)\" points=\"0\">Bundesland 7 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=8]&apos;,&apos;Mecklenburg-Vorpommern&apos;)\" points=\"8\">Bundesland 8 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=8]&apos;,&apos;Mecklenburg-Vorpommern&apos;)\" points=\"0\">Bundesland 8 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=9]&apos;,&apos;Niedersachsen&apos;)\" points=\"6\">Bundesland 9 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=9]&apos;,&apos;Niedersachsen&apos;)\" points=\"0\">Bundesland 9 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=10]&apos;,&apos;Nordrhein-Westfalen&apos;)\" points=\"6\">Bundesland 10 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=10]&apos;,&apos;Nordrhein-Westfalen&apos;)\" points=\"0\">Bundesland 10 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=11]&apos;,&apos;Rheinland-Pfalz&apos;)\" points=\"8\">Bundesland 11 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=11]&apos;,&apos;Rheinland-Pfalz&apos;)\" points=\"0\">Bundesland 11 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=12]&apos;,&apos;Saarland&apos;)\" points=\"6\">Bundesland 12 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=12]&apos;,&apos;Saarland&apos;)\" points=\"0\">Bundesland 12 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=13]&apos;,&apos;Sachsen&apos;)\" points=\"5\">Bundesland 13 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=13]&apos;,&apos;Sachsen&apos;)\" points=\"0\">Bundesland 13 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=14]&apos;,&apos;Sachsen-Anhalt&apos;)\" points=\"5\">Bundesland 14 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=14]&apos;,&apos;Sachsen-Anhalt&apos;)\" points=\"0\">Bundesland 14 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=15]&apos;,&apos;Schleswig-Holstein&apos;)\" points=\"8\">Bundesland 15 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=15]&apos;,&apos;Schleswig-Holstein&apos;)\" points=\"0\">Bundesland 15 ist nicht richtig!</option>\n" +
+        "\t\t<option result=\"equals(&apos;[pos=16]&apos;,&apos;Thüringen&apos;)\" points=\"6\">Bundesland 16 ist richtig!</option>\n" +
+        "\t\t<option result=\"!equals(&apos;[pos=16]&apos;,&apos;Thüringen&apos;)\" points=\"0\">Bundesland 16 ist nicht richtig!</option>\n" +
+        "\t</feedback>\n" +
+        "\n" +
+        "\t<output>\n" +
+        "\t</output>\n" +
+        "\n" +
+        "\t<skipmessage>\n" +
+        "\t\tIn die Lücken gehören in folgender Reihenfolge: (1) &lt;pre style=\"display:inline-block;\">Baden-Württemberg&lt;/pre>, (2) &lt;pre style=\"display:inline-block;\">Bayern&lt;/pre>, (3) &lt;pre style=\"display:inline-block;\">Berlin&lt;/pre>, (4) &lt;pre style=\"display:inline-block;\">Brandenburg&lt;/pre>, (5) &lt;pre style=\"display:inline-block;\">rBremen&lt;/pre>, (6) &lt;pre style=\"display:inline-block;\">Hamburg&lt;/pre>, (7) &lt;pre style=\"display:inline-block;\">Hessen&lt;/pre>, (8) &lt;pre style=\"display:inline-block;\">Mecklenburg-Vorpommern&lt;/pre>, (9) &lt;pre style=\"display:inline-block;\">Niedersachsen&lt;/pre>, (10) &lt;pre style=\"display:inline-block;\">Nordrhein-Westfalen&lt;/pre>, (11) &lt;pre style=\"display:inline-block;\">Rheinland-Pfalz&lt;/pre>, (12) &lt;pre style=\"display:inline-block;\">Saarland&lt;/pre>, (13) &lt;pre style=\"display:inline-block;\">Sachsen&lt;/pre>,(14) &lt;pre style=\"display:inline-block;\">Sachsen-Anhalt&lt;/pre>,(15) &lt;pre style=\"display:inline-block;\">Schleswig-Holstein&lt;/pre>,(16) &lt;pre style=\"display:inline-block;\">Thüringen&lt;/pre>,\n" +
+        "  </skipmessage>\n" +
+        "</exercise>\n";
+    return txt;
+}
 
-    var txt=" Bitte geben Sie den Namen der folgenden EU-Mitgliedsstaaten ein:  "+'\n'+'\n';
-    txt=txt + "&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapContainer\">&lt;div id=\"mapdiv\">&lt;script>";
-    txt=txt + "&lt;/script>&lt;/div>&lt;/div>"+'\n'+'\n';
-
-    for(let i = 0;i<output.length;i++)
-    {
-        txt=txt +" "+(i+1) +" Staat:" + "&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n";
-    }
-
+function createXMLStringAufgabe4EU(){
+    var txt = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+        "<exercise type=\"fillIn\">\n" +
+        "    <task>\n" +
+        " Bitte geben Sie den Namen der folgenden EU-Mitgliedsstaaten ein:  \n" +
+        "\n" +
+        "&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;div id=\"1\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\" ][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;div id=\"2\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\"][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;div id=\"3\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\"][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;div id=\"4\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\"][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;div id=\"5\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\"][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;script>  var marker_map;var popup_map;var output=[];document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';var Europäische_Union=[\"Deutschland\",\"Niederlande\",\"Belgien\",\"Luxemburg\",\"Frankreich\",\"Spanien\",\"Portugal\",\"Österreich\",\"Italien\",\"Kroatien\",\"Slowenien\",\"Dänemark\",\"Tschechien\",\"Polen\",\"Schweden\",\"Irland\",\"Vereinigtes Königreich\",\"Finnland\",\"Estland\",\"Lettland\",\"Litauen\",\"Griechenland\",\"Malta\",\"Ungarn\",\"Rumänien\",\"Bulgarien\",\"Zypern\",\"Slowakei\"];var markerarray=[[50.93057,9.84375],[52.12000,5.38330],[50.67171,4.75056],[49.71521,6.13483],[47.06141,2.46969],[40.48058,-3.40714],[39.74118,-8.15323],[47.54415,14.48110],[44.33668,11.40492],[45.57560,16.52927],[46.00459,14.74949],[55.99372,9.35469],[49.73935,15.32172],[52.02609,19.29877],[60.86631,15.33691],[53.22577,-7.82227],[53.38333,-1.66992],[62.45141,26.45508],[58.76767,25.3725],[56.99232,25.08685],[55.31606,23.94427],[39.10535,22.35271],[35.85177,14.31759],[46.85544,19.30289],[45.96159,24.75211],[42.5965,25.27946],[34.97438,33.2054],[48.76343,19.29199]];var map = L.map('mapdiv', {center:[48.82791, 17.28320],zoom:5,scrollWheelZoom:true,dragging: true,zoomControl: false,closePopupOnClick:false,attributionControl: false});L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(map);map.options.maxZoom=6;map.options.minZoom=4;var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');var min=0;var max=(markerarray.length-1);var index = Math.floor(Math.random()* (max - min)) + min;for(let i=0;output.length&lt;10;i++){index = Math.floor(Math.random()* (max - min)) + min;if(!test_in_array(index,output)){continue;}output.push(index);};function test_in_array(index,arr){for(let j=0;j&lt;output.length;j++){if(arr[j]==index){return false;}}return true;};document.getElementById('1').firstChild.firstChild.setAttribute('value',Europäische_Union[output[0]]);document.getElementById('1').firstChild.lastChild.setAttribute('value',Europäische_Union[output[1]]);document.getElementById('2').firstChild.firstChild.setAttribute('value',Europäische_Union[output[2]]);document.getElementById('2').firstChild.lastChild.setAttribute('value',Europäische_Union[output[3]]);document.getElementById('3').firstChild.firstChild.setAttribute('value',Europäische_Union[output[4]]);document.getElementById('3').firstChild.lastChild.setAttribute('value',Europäische_Union[output[5]]);document.getElementById('4').firstChild.firstChild.setAttribute('value',Europäische_Union[output[6]]);document.getElementById('4').firstChild.lastChild.setAttribute('value',Europäische_Union[output[7]]);document.getElementById('5').firstChild.firstChild.setAttribute('value',Europäische_Union[output[8]]);document.getElementById('5').firstChild.lastChild.setAttribute('value',Europäische_Union[output[9]]);for(let k = 0; k&lt;output.length;k++){popup_map = L.popup({closeButton:false,autoClose:false}).setContent(\"Staat:\"+(k+1));marker_map = new L.Marker(markerarray[output[k]], { draggable:false});marker_map.bindPopup(popup_map).addTo(map).openPopup();}&lt;/script>&lt;/div>\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        " 1 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 2 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 3 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 4 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 5 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 6 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 7 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 8 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 9 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " 10 Staat:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        "    </task>\n" +
+        "\n" +
+        "    <correctanswer>\n" +
+        "    \t<option result=\"equals(&apos;[pos=1]&apos;,&apos;[pos=11]&apos;)&amp;&amp;equals(&apos;[pos=2]&apos;,&apos;[pos=12]&apos;)&amp;&amp;equals(&apos;[pos=3]&apos;,&apos;[pos=13]&apos;)&amp;&amp;equals(&apos;[pos=4]&apos;,&apos;[pos=14]&apos;)&amp;&amp;equals(&apos;[pos=5]&apos;,&apos;[pos=15]&apos;)&amp;&amp;equals(&apos;[pos=6]&apos;,&apos;[pos=16]&apos;)&amp;&amp;equals(&apos;[pos=7]&apos;,&apos;[pos=17]&apos;)&amp;&amp;equals(&apos;[pos=8]&apos;,&apos;[pos=18]&apos;)&amp;&amp;equals(&apos;[pos=9]&apos;,&apos;[pos=19]&apos;)&amp;&amp;equals(&apos;[pos=10]&apos;,&apos;[pos=20]&apos;)\n" +
+        "\"/>\n" +
+        "        <message>Alle Lücken sind korrekt ausgefüllt!</message>\n" +
+        "    </correctanswer>\n" +
+        "\n" +
+        "    <feedback>\n" +
+        "    \t<option result=\"equals(&apos;[pos=1]&apos;,&apos;[pos=11]&apos;)\" points=\"10\">Staat 1 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=1]&apos;,&apos;[pos=11]&apos;)\" points=\"0\">Staat 1 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=2]&apos;,&apos;[pos=12]&apos;)\" points=\"10\">Staat 2 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=2]&apos;,&apos;[pos=12]&apos;)\" points=\"0\">Staat 2 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=3]&apos;,&apos;[pos=13]&apos;)\" points=\"10\">Staat 3 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=3]&apos;,&apos;[pos=13]&apos;)\" points=\"0\">Staat 3 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=4]&apos;,&apos;[pos=14]&apos;)\" points=\"10\">Staat 4 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=4]&apos;,&apos;[pos=14]&apos;)\" points=\"0\">Staat 4 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=5]&apos;,&apos;[pos=15]&apos;)\" points=\"10\">Staat 5 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=5]&apos;,&apos;[pos=15]&apos;)\" points=\"0\">Staat 5 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=6]&apos;,&apos;[pos=16]&apos;)\" points=\"10\">Staat 6 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=6]&apos;,&apos;[pos=16]&apos;)\" points=\"0\">Staat 6 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=7]&apos;,&apos;[pos=17]&apos;)\" points=\"10\">Staat 7 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=7]&apos;,&apos;[pos=17]&apos;)\" points=\"0\">Staat 7 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=8]&apos;,&apos;[pos=18]&apos;)\" points=\"10\">Staat 8 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=8]&apos;,&apos;[pos=18]&apos;)\" points=\"0\">Staat 8 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=9]&apos;,&apos;[pos=19]&apos;)\" points=\"10\">Staat 9 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=9]&apos;,&apos;[pos=19]&apos;)\" points=\"0\">Staat 9 ist nicht richtig!</option>\n" +
+        "        <option result=\"equals(&apos;[pos=10]&apos;,&apos;[pos=20]&apos;)\" points=\"10\">Staat 10 ist richtig!</option>\n" +
+        "        <option result=\"!equals(&apos;[pos=10]&apos;,&apos;[pos=20]&apos;)\" points=\"0\">Staat 10 ist nicht richtig!</option>\n" +
+        "    </feedback>\n" +
+        "   \n" +
+        "\n" +
+        "   <skipmessage/>\n" +
+        "</exercise>";
     return txt;
 }

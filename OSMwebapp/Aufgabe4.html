@@ -54,8 +54,9 @@
 
 </div>
 <script type="text/javascript">
+    var DE = true, EU = false;
     var ctlMouseposition,ctlSidebar,ctlEasybutton;
-    var marker_map,popup_map;
+    var marker_map,popup_map,txt;
     var output=[],record=[],markerDE=[],markerEU=[];
     var Europäische_Union=["Deutschland","Niederlande","Belgien","Luxemburg","Frankreich","Spanien","Portugal",
     "Österreich","Italien","Kroatien","Slowenien","Dänemark","Tschechien","Polen","Schweden","Irland","Vereinigtes Königreich","Finnland",
@@ -96,6 +97,8 @@
     /*-------------------------------------Deutschland-------------------------------*/
 
     $("#Germany").click(function () {
+        DE = true;
+        EU = false;
         mymap.flyTo([51.65001, 10.67920],6);
         mymap.options.maxZoom=7;
         mymap.options.minZoom=4;
@@ -119,6 +122,8 @@
     /*-------------------------------------Europe Union-------------------------------*/
 
     $("#Europa").click(function () {
+        DE = false;
+        EU = true;
         mymap.flyTo([49.69673, 1.52744],5);
         mymap.options.maxZoom=6;
         mymap.options.minZoom=4;
@@ -185,14 +190,12 @@
     });
 
     $("#export_Stage").click(function () {
-        var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
-        txt= txt + "<exercise type=\"fillIn\">"+'\n';
-        txt= txt + "    <task>"+'\n';
-        txt= txt + createXMLStringAufgabe4fill_in_blanks(output,markerarray,Europäische_Union);
-        txt= txt + "    </task>"+'\n';
-        txt= txt + "   <skipmessage>" +'\n';
-        txt= txt + "   </skipmessage>"+'\n';
-        txt= txt + "</exercise>";
+        if(DE=== true){
+            txt = createXMLStringAufgabe4DE() +'\n';
+        }
+        else if(EU===true){
+            txt = createXMLStringAufgabe4EU() +'\n';
+        }
         var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
         saveAs(blob, "stage1.xml");
     });
