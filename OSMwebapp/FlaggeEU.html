@@ -525,7 +525,6 @@
         Lettland,Litauen,Malta,Portugal,Italien,Rumaenien,Daenemark,Irland,VereinigtesKoenigreich,Niederlande,Luxemburg,Tschechien,Ungarn,Slowakei,Polen,Slowenien,Schweden];
 
 
-
     var min=0;
     var max=3;
     //get a random integer between max and min
@@ -533,8 +532,6 @@
 
     for(let j=0;j<9;j++)
     {
-        console.log(index);
-
         Land_array[index][0].addTo(mymap);
         Land_array[index][4].addTo(mymap);
         Land_array[index][3].addTo(mymap);
@@ -543,7 +540,6 @@
         //get a random integer between max and min
         index = Math.floor(Math.random()* (max - min)) + min;
     }
-
 
 
 
