@@ -61,11 +61,11 @@
     </div>
 </div>
 <script>
-    var mymap;
+    var mymap,txt;
     var lyrOSM,lyrWatercolor,lyrTopo,lyrImagery,lyrOutdoors,lyrCavans,lyStammtoner,lyStammtonerlite;
     var ctlAttribute,ctlMouseposition,ctlEasybutton,ctlSidebar,ctlLayers;
     var objBasemaps,objOverlays;
-
+    var DE = true, EU = false, CH = false;
     /*----------------------------Deutschland-Bundesland-------------------------------*/
 
     var Nieder_spare,Bawuer_spare,Bayern_spare,NRW_spare,Brandenburg_spare,temp,temp1;
@@ -1533,6 +1533,9 @@
 
 
         $("#Germany").click(function () {
+            DE = true;
+            EU = false;
+            CH = false;
             DEadd();
             EUremove();
             CHremove();
@@ -1545,6 +1548,9 @@
         });
 
         $("#Europa").click(function () {
+            DE = false;
+            EU = true;
+            CH = false;
             DEremove();
             CHremove();
             EUadd();
@@ -1557,6 +1563,9 @@
         });
 
         $("#China").click(function () {
+            DE = false;
+            EU = false;
+            CH = true;
             DEremove();
             EUremove();
             CHadd();
@@ -1826,8 +1835,15 @@
 
 
         $("#export_Stage").click(function(){
-
-            var txt= createXMLStringMapPuzzleGermany() +'\n';
+            if(DE === true){
+                txt= createXMLStringMapPuzzleGermany() +'\n';
+            }
+            else if(EU === true){
+                txt= createXMLStringMapPuzzleEU() +'\n';
+            }
+            else if (CH === true){
+                txt= createXMLStringMapPuzzleCH() +'\n';
+            }
 
             var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "stage1.xml");
