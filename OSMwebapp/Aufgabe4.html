@@ -39,6 +39,10 @@
         <h4>Map Center: <span id='map-center'></span></h4>
         <h4>Mouse Location: <span id='mouse-location'></span></h4>
         <br>
+        <button id="Germany" style="width: 120px; height:79px; border-style:none;background:url(img/Germany.png) no-repeat left top; margin-right: 10px"></button>
+        <button id="Europa" style="width: 120px; height:79px;border-style:none;background:url(img/EU.png) no-repeat left top;margin-right: 10px"></button>
+        <br>
+        <br>
         <div>
             <button id="export_exerciseChain" class="btn btn-primary btn-block">ExerciseChain Export</button>
         </div>
@@ -50,45 +54,25 @@
 
 </div>
 <script type="text/javascript">
-    var ctlMouseposition;
-    var ctlSidebar;
-    var ctlEasybutton;
-    var marker_map;
-    var popup_map;
-    var output=[];
-    var record=[];
+    var ctlMouseposition,ctlSidebar,ctlEasybutton;
+    var marker_map,popup_map;
+    var output=[],record=[],markerDE=[],markerEU=[];
     var Europäische_Union=["Deutschland","Niederlande","Belgien","Luxemburg","Frankreich","Spanien","Portugal",
     "Österreich","Italien","Kroatien","Slowenien","Dänemark","Tschechien","Polen","Schweden","Irland","Vereinigtes Königreich","Finnland",
     "Estland","Lettland","Litauen","Griechenland","Malta","Ungarn","Rumänien","Bulgarien","Zypern","Slowakei"];
-    var markerarray=[
-        [50.93057,9.84375],
-        [52.12000,5.38330],
-        [50.67171,4.75056],
-        [49.71521,6.13483],
-        [47.06141,2.46969],
-        [40.48058,-3.40714],
-        [39.74118,-8.15323],
-        [47.54415,14.48110],
-        [44.33668,11.40492],
-        [45.57560,16.52927],
-        [46.00459,14.74949],
-        [55.99372,9.35469],
-        [49.73935,15.32172],
-        [52.02609,19.29877],
-        [60.86631,15.33691],
-        [53.22577,-7.82227],
-        [53.38333,-1.66992],
-        [62.45141,26.45508],
-        [58.76767,25.3725],
-        [56.99232,25.08685],
-        [55.31606,23.94427],
-        [39.10535,22.35271],
-        [35.85177,14.31759],
-        [46.85544,19.30289],
-        [45.96159,24.75211],
-        [42.5965,25.27946],
-        [34.97438,33.2054],
-        [48.76343,19.29199]];
+    var markerarray=[[50.93057,9.84375], [52.12000,5.38330], [50.67171,4.75056], [49.71521,6.13483], [47.06141,2.46969],
+        [40.48058,-3.40714], [39.74118,-8.15323], [47.54415,14.48110], [44.33668,11.40492], [45.57560,16.52927],
+        [46.00459,14.74949], [55.99372,9.35469], [49.73935,15.32172], [52.02609,19.29877], [60.86631,15.33691],
+        [53.22577,-7.82227], [53.38333,-1.66992], [62.45141,26.45508], [58.76767,25.3725], [56.99232,25.08685],
+        [55.31606,23.94427], [39.10535,22.35271], [35.85177,14.31759], [46.85544,19.30289], [45.96159,24.75211],
+        [42.5965,25.27946], [34.97438,33.2054], [48.76343,19.29199]];
+
+    var Deutschland=["Baden-Württemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern",
+        "Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"];
+    var coordinates=[[48.45835,9.22852], [49.18170,11.60156], [52.45601,13.44727], [51.89154,14.00911], [52.98978,8.91146],
+        [53.41096,10.22982], [50.43105,9.04329], [53.82665,12.63222], [52.77624,9.92958], [51.48144,7.44667], [49.92299,7.27089],
+        [49.30162,7.06704], [50.97724,13.61489], [52.08436,11.68130], [54.23132,9.76968], [50.86643,11.08804]];
+
 
     var mymap = L.map('mapdiv', {
         center:[48.82791, 17.28320],
@@ -99,16 +83,48 @@
         closePopupOnClick:false,
         attributionControl: false});
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png').addTo(mymap);
+    L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);
 
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
-    ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
-        ctlSidebar.toggle();
-    }).addTo(mymap);
+    ctlEasybutton = L.easyButton('glyphicon-transfer', function(){ctlSidebar.toggle();}).addTo(mymap);
 
+
+
+    /*-------------------------------------Deutschland-------------------------------*/
+
+    $("#Germany").click(function () {
+        mymap.flyTo([51.65001, 10.67920],6);
+        mymap.options.maxZoom=7;
+        mymap.options.minZoom=4;
+        DEadd();
+        EUremove();
+    });
+    function DEadd(){
+        for(let n = 0; n<16;n++)
+        {
+            popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Bundesland:"+(n+1));
+            marker_map = new L.Marker(coordinates[n], {draggable:false});
+            marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
+            markerDE.push(marker_map);
+        }};
+
+    function DEremove(){
+        for(let a = 0; a< markerDE.length;a++){
+            mymap.removeLayer(markerDE[a]);
+        }};
+
+    /*-------------------------------------Europe Union-------------------------------*/
+
+    $("#Europa").click(function () {
+        mymap.flyTo([49.69673, 1.52744],5);
+        mymap.options.maxZoom=6;
+        mymap.options.minZoom=4;
+        DEremove();
+        EUadd();
+    });
 
     var min=0;
     var max=(markerarray.length-1);
@@ -119,8 +135,7 @@
         //get a random integer between max and min
 
         index = Math.floor(Math.random()* (max - min)) + min;
-        if(!test_in_array(index,output))
-        {
+        if(!test_in_array(index,output)) {
             continue;
         }
         output.push(index);
@@ -130,35 +145,32 @@
     {
         for(let j=0;j<output.length;j++)
         {
-            if(arr[j]==index)
-            {
-               return false;
-            }
+            if(arr[j]==index) {
+               return false;}
         }
         return true;
     };
-    
+
+    function EUadd(){
     for(let k = 0; k<output.length;k++)
     {
         console.log(markerarray[output[k]]+ " " + Europäische_Union[output[k]]);
         popup_map = L.popup({closeButton:false,autoClose:false}).setContent("Staat:"+(k+1));
         marker_map = new L.Marker(markerarray[output[k]], { draggable:false});
         marker_map.bindPopup(popup_map).addTo(mymap).openPopup();
+        markerEU.push(marker_map);
+    }};
 
-    }
+    function EUremove(){
+        for(let a = 0; a< markerEU.length;a++){
+            mymap.removeLayer(markerEU[a]);
+        }};
 
+    mymap.on('zoomend', function(){$("#zoom-level").html(mymap.getZoom());});
 
-    mymap.on('zoomend', function(){
-        $("#zoom-level").html(mymap.getZoom());
-    });
+    mymap.on('moveend', function(){$("#map-center").html(LatLngToArrayString(mymap.getCenter()));});
 
-    mymap.on('moveend', function(){
-        $("#map-center").html(LatLngToArrayString(mymap.getCenter()));
-    });
-
-    mymap.on('mousemove', function(e){
-        $("#mouse-location").html(LatLngToArrayString(e.latlng));
-    });
+    mymap.on('mousemove', function(e){$("#mouse-location").html(LatLngToArrayString(e.latlng));});
 
     $("#export_exerciseChain").click(function () {
         var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
