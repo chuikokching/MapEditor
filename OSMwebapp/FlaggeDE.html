@@ -210,12 +210,7 @@
         {swal({position: 'top-end', icon:"success", text: 'sachsen', buttons: false, timer: 1000});
             sachsen_overlay.setBounds(sachsen.getBounds());
             sachsen_polygon.dragging.disable();
-            mymap.removeLayer(sachsen);}
-        console.log(sachsen_polygon.getBounds().getNorthWest().lat);
-        console.log(sachsen_polygon.getBounds().getSouthEast().lng);
-        console.log(sachsen_polygon.getBounds().getSouthEast().lat);
-        console.log(sachsen_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(sachsen);}});
 
     badenwuerttemberg_polygon.on('drag',function (e) {badenwuerttemberg_overlay.setBounds(badenwuerttemberg_polygon.getBounds());});
     badenwuerttemberg_polygon.on('dragstart',function (e) {badenwuerttemberg_overlay.setBounds(badenwuerttemberg_polygon.getBounds());});
@@ -225,12 +220,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Baden-Württemberg', buttons: false, timer: 1000});
             badenwuerttemberg_overlay.setBounds(badenwuerttemberg.getBounds());
             badenwuerttemberg_polygon.dragging.disable();
-            mymap.removeLayer(badenwuerttemberg);}
-        console.log(badenwuerttemberg_polygon.getBounds().getNorthWest().lat);
-        console.log(badenwuerttemberg_polygon.getBounds().getSouthEast().lng);
-        console.log(badenwuerttemberg_polygon.getBounds().getSouthEast().lat);
-        console.log(badenwuerttemberg_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(badenwuerttemberg);}});
 
     bayern_polygon.on('drag',function (e) {bayern_overlay.setBounds(bayern_polygon.getBounds());});
     bayern_polygon.on('dragstart',function (e) {bayern_overlay.setBounds(bayern_polygon.getBounds());});
@@ -240,12 +230,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Bayern', buttons: false, timer: 1000});
             bayern_overlay.setBounds(bayern.getBounds());
             bayern_polygon.dragging.disable();
-            mymap.removeLayer(bayern);}
-        console.log(bayern_polygon.getBounds().getNorthWest().lat);
-        console.log(bayern_polygon.getBounds().getSouthEast().lng);
-        console.log(bayern_polygon.getBounds().getSouthEast().lat);
-        console.log(bayern_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(bayern);}});
 
     berlin_polygon.on('drag',function (e) {berlin_overlay.setBounds(berlin_polygon.getBounds());});
     berlin_polygon.on('dragstart',function (e) {berlin_overlay.setBounds(berlin_polygon.getBounds());});
@@ -255,12 +240,8 @@
         {swal({position: 'top-end', icon:"success", text: 'Berlin', buttons: false, timer: 1000});
             berlin_overlay.setBounds(berlin.getBounds());
             berlin_polygon.dragging.disable();
-            mymap.removeLayer(berlin);}
-        console.log(berlin_polygon.getBounds().getNorthWest().lat);
-        console.log(berlin_polygon.getBounds().getSouthEast().lng);
-        console.log(berlin_polygon.getBounds().getSouthEast().lat);
-        console.log(berlin_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(berlin);}});
+
     saarland_polygon.on('drag',function (e) {saarland_overlay.setBounds(saarland_polygon.getBounds());});
     saarland_polygon.on('dragstart',function (e) {saarland_overlay.setBounds(saarland_polygon.getBounds());});
     saarland_polygon.on('dragend',function (e) {saarland_overlay.setBounds(saarland_polygon.getBounds());
@@ -269,12 +250,8 @@
         {swal({position: 'top-end', icon:"success", text: 'Saarland', buttons: false, timer: 1000});
             saarland_overlay.setBounds(saarland.getBounds());
             saarland_polygon.dragging.disable();
-            mymap.removeLayer(saarland);}
-        console.log(saarland_polygon.getBounds().getNorthWest().lat);
-        console.log(saarland_polygon.getBounds().getSouthEast().lng);
-        console.log(saarland_polygon.getBounds().getSouthEast().lat);
-        console.log(saarland_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(saarland);}});
+
     rheinlandplatz_polygon.on('drag',function (e) {rheinlandplatz_overlay.setBounds(rheinlandplatz_polygon.getBounds());});
     rheinlandplatz_polygon.on('dragstart',function (e) {rheinlandplatz_overlay.setBounds(rheinlandplatz_polygon.getBounds());});
     rheinlandplatz_polygon.on('dragend',function (e) {rheinlandplatz_overlay.setBounds(rheinlandplatz_polygon.getBounds());
@@ -283,12 +260,8 @@
         {swal({position: 'top-end', icon:"success", text: 'Rheinland-Pflaz', buttons: false, timer: 1000});
             rheinlandplatz_overlay.setBounds(rheinlandplatz.getBounds());
             rheinlandplatz_polygon.dragging.disable();
-            mymap.removeLayer(rheinlandplatz);}
-        console.log(rheinlandplatz_polygon.getBounds().getNorthWest().lat);
-        console.log(rheinlandplatz_polygon.getBounds().getSouthEast().lng);
-        console.log(rheinlandplatz_polygon.getBounds().getSouthEast().lat);
-        console.log(rheinlandplatz_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(rheinlandplatz);}});
+
     nordrhein_polygon.on('drag',function (e) {nordrhein_overlay.setBounds(nordrhein_polygon.getBounds());});
     nordrhein_polygon.on('dragstart',function (e) {nordrhein_overlay.setBounds(nordrhein_polygon.getBounds());});
     nordrhein_polygon.on('dragend',function (e) {nordrhein_overlay.setBounds(nordrhein_polygon.getBounds());
@@ -297,12 +270,8 @@
         {swal({position: 'top-end', icon:"success", text: 'Nordrhein-Westfalen', buttons: false, timer: 1000});
             nordrhein_overlay.setBounds(nordrhein.getBounds());
             nordrhein_polygon.dragging.disable();
-            mymap.removeLayer(nordrhein);}
-        console.log(nordrhein_polygon.getBounds().getNorthWest().lat);
-        console.log(nordrhein_polygon.getBounds().getSouthEast().lng);
-        console.log(nordrhein_polygon.getBounds().getSouthEast().lat);
-        console.log(nordrhein_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(nordrhein);}});
+
     hessen_polygon.on('drag',function (e) {hessen_overlay.setBounds(hessen_polygon.getBounds());});
     hessen_polygon.on('dragstart',function (e) {hessen_overlay.setBounds(hessen_polygon.getBounds());});
     hessen_polygon.on('dragend',function (e) {hessen_overlay.setBounds(hessen_polygon.getBounds());
@@ -311,12 +280,8 @@
         {swal({position: 'top-end', icon:"success", text: 'Hessen', buttons: false, timer: 1000});
             hessen_overlay.setBounds(hessen.getBounds());
             hessen_polygon.dragging.disable();
-            mymap.removeLayer(hessen);}
-        console.log(hessen_polygon.getBounds().getNorthWest().lat);
-        console.log(hessen_polygon.getBounds().getSouthEast().lng);
-        console.log(hessen_polygon.getBounds().getSouthEast().lat);
-        console.log(hessen_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(hessen);}});
+
     tueringen_polygon.on('drag',function (e) {tueringen_overlay.setBounds(tueringen_polygon.getBounds());});
     tueringen_polygon.on('dragstart',function (e) {tueringen_overlay.setBounds(tueringen_polygon.getBounds());});
     tueringen_polygon.on('dragend',function (e) {tueringen_overlay.setBounds(tueringen_polygon.getBounds());
@@ -325,12 +290,7 @@
         {swal({position: 'top-end', icon:"success", text: 'Thüringen', buttons: false, timer: 1000});
             tueringen_overlay.setBounds(tueringen.getBounds());
             tueringen_polygon.dragging.disable();
-            mymap.removeLayer(tueringen);}
-        console.log(tueringen_polygon.getBounds().getNorthWest().lat);
-        console.log(tueringen_polygon.getBounds().getSouthEast().lng);
-        console.log(tueringen_polygon.getBounds().getSouthEast().lat);
-        console.log(tueringen_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(tueringen);}});
 
     SaxonyAnhalt_polygon.on('drag',function (e) {SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt_polygon.getBounds());});
     SaxonyAnhalt_polygon.on('dragstart',function (e) {SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt_polygon.getBounds());});
@@ -340,12 +300,8 @@
         {swal({position: 'top-end', text: 'Sachsen-Anhalt', icon:"success", buttons: false, timer: 1000});
             SaxonyAnhalt_overlay.setBounds(SaxonyAnhalt.getBounds());
             SaxonyAnhalt_polygon.dragging.disable();
-            mymap.removeLayer(SaxonyAnhalt);}
-        console.log(SaxonyAnhalt_polygon.getBounds().getNorthWest().lat);
-        console.log(SaxonyAnhalt_polygon.getBounds().getSouthEast().lng);
-        console.log(SaxonyAnhalt_polygon.getBounds().getSouthEast().lat);
-        console.log(SaxonyAnhalt_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(SaxonyAnhalt);}});
+
     SchleswingHolstein_polygon.on('drag',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
     SchleswingHolstein_polygon.on('dragstart',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());});
     SchleswingHolstein_polygon.on('dragend',function (e) {SchleswingHolstein_overlay.setBounds(SchleswingHolstein_polygon.getBounds());
@@ -354,12 +310,7 @@
         {swal({position: 'top-end', text: 'Schleswig-Holstein', icon:"success", buttons: false, timer: 1000});
             SchleswingHolstein_overlay.setBounds(SchleswingHolstein.getBounds());
             SchleswingHolstein_polygon.dragging.disable();
-            mymap.removeLayer(SchleswingHolstein);}
-        console.log( SchleswingHolstein_polygon.getBounds().getNorthWest().lat);
-        console.log( SchleswingHolstein_polygon.getBounds().getSouthEast().lng);
-        console.log( SchleswingHolstein_polygon.getBounds().getSouthEast().lat);
-        console.log( SchleswingHolstein_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(SchleswingHolstein);}});
 
     MecklenburgVorpommern_polygon.on('drag',function (e) {MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern_polygon.getBounds());});
     MecklenburgVorpommern_polygon.on('dragstart',function (e) {MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern_polygon.getBounds());});
@@ -369,12 +320,7 @@
         {swal({position: 'top-end', text: 'Mecklenburg-Vorpommern', icon:"success", buttons: false, timer: 1000});
             MecklenburgVorpommern_overlay.setBounds(MecklenburgVorpommern.getBounds());
             MecklenburgVorpommern_polygon.dragging.disable();
-            mymap.removeLayer(MecklenburgVorpommern);}
-        console.log(MecklenburgVorpommern_polygon.getBounds().getNorthWest().lat);
-        console.log(MecklenburgVorpommern_polygon.getBounds().getSouthEast().lng);
-        console.log(MecklenburgVorpommern_polygon.getBounds().getSouthEast().lat);
-        console.log(MecklenburgVorpommern_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(MecklenburgVorpommern);}});
 
     Niedersachsen_polygon.on('drag',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
     Niedersachsen_polygon.on('dragstart',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
@@ -384,12 +330,7 @@
         {swal({position: 'top-end', text: 'Niedersachsen', icon:"success", buttons: false, timer: 1000});
             Niedersachsen_overlay.setBounds(Niedersachsen.getBounds());
             Niedersachsen_polygon.dragging.disable();
-            mymap.removeLayer(Niedersachsen);}
-        console.log(Niedersachsen_polygon.getBounds().getNorthWest().lat);
-        console.log(Niedersachsen_polygon.getBounds().getSouthEast().lng);
-        console.log(Niedersachsen_polygon.getBounds().getSouthEast().lat);
-        console.log(Niedersachsen_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(Niedersachsen);}});
 
     Hamburg_polygon.on('drag',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
     Hamburg_polygon.on('dragstart',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
@@ -399,12 +340,7 @@
         {swal({position: 'top-end', text: 'Hamburg', icon:"success", buttons: false, timer: 1000});
             Hamburg_overlay.setBounds(Hamburg.getBounds());
             Hamburg_polygon.dragging.disable();
-            mymap.removeLayer(Hamburg);}
-        console.log(Hamburg_polygon.getBounds().getNorthWest().lat);
-        console.log(Hamburg_polygon.getBounds().getSouthEast().lng);
-        console.log(Hamburg_polygon.getBounds().getSouthEast().lat);
-        console.log(Hamburg_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(Hamburg);}});
 
     Brandenburg_polygon.on('drag',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
     Brandenburg_polygon.on('dragstart',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
@@ -414,12 +350,7 @@
         {swal({position: 'top-end', text: 'Brandenburg', icon:"success", buttons: false, timer: 1000});
             Brandenburg_overlay.setBounds(Brandenburg.getBounds());
             Brandenburg_polygon.dragging.disable();
-            mymap.removeLayer(Brandenburg);}
-        console.log(Brandenburg_polygon.getBounds().getNorthWest().lat);
-        console.log(Brandenburg_polygon.getBounds().getSouthEast().lng);
-        console.log(Brandenburg_polygon.getBounds().getSouthEast().lat);
-        console.log(Brandenburg_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(Brandenburg);}});
 
     Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
     Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
@@ -429,12 +360,7 @@
         {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
             Bremen_overlay.setBounds(Bremen.getBounds());
             Bremen_polygon.dragging.disable();
-            mymap.removeLayer(Bremen);}
-        console.log(Bremen_polygon.getBounds().getNorthWest().lat);
-        console.log(Bremen_polygon.getBounds().getSouthEast().lng);
-        console.log(Bremen_polygon.getBounds().getSouthEast().lat);
-        console.log(Bremen_polygon.getBounds().getNorthWest().lng);
-    });
+            mymap.removeLayer(Bremen);}});
 
 
 
