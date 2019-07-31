@@ -62,68 +62,57 @@
 </div>
 <script>
     var mymap;
-    var lyrOSM;
-    var lyrWatercolor;
-    var lyrTopo;
-    var lyrImagery;
-    var lyrOutdoors;
+    var lyrOSM,lyrWatercolor,lyrTopo,lyrImagery,lyrOutdoors,lyrCavans;
+    var ctlAttribute,ctlMouseposition,ctlEasybutton,ctlSidebar,ctlLayers;
+    var objBasemaps,objOverlays;
 
-    var lyrCavans;
-    var ctlAttribute;
-    var ctlMouseposition;
-    var ctlEasybutton;
-    var ctlSidebar;
-    var ctlLayers;
-    var objBasemaps;
-    var objOverlays;
-
-
-    var Iceland;
-    var UK;
-    var Austria;
-    var Belgium;
-    var Denmaik;
-    var Deutschland;
-    var Netherland;
-    var Luxenburg;
-    var Hungary;
-    var Slovakia;
-    var Poland;
-    var Slovenia;
-    var Croatia;
-    var Czechia;
-    var Romania;
-    var Sweden;
-    var Italy;
-    var Bulgaria;
-    var Cyprus;
-    var Estonia;
-    var Finland;
-    var France;
-    var Greece;
-    var Latvia;
-    var Lithuania;
-    var Malta;
-    var Portugal;
-    var Spain;
 
     var Nieder_spare,Bawuer_spare,Bayern_spare,NRW_spare,Brandenburg_spare,temp;
-    var Bremen,Bremenpoly_array,Bremen_polygon,Bremen_imageBound,Bremen_overlay,Bremen_color;
-    var Brandenburg,Brandenburgpoly_array,Brandenburg_polygon,Brandenburg_imageBound,Brandenburg_overlay,Brandenburg_color;
-    var Niedersachsen,Niedersachsenpoly_array,Niedersachsen_polygon,Niedersachsen_imageBound,Niedersachsen_overlay,Niedersachsen_color;
-    var Sachsen_Anhalt,Sachsen_Anhaltpoly_array,Sachsen_Anhalt_polygon,Sachsen_Anhalt_imageBound,Sachsen_Anhalt_overlay,Sachsen_Anhalt_color;
-    var Hessen,Hessenpoly_array,Hessen_polygon,Hessen_imageBound,Hessen_overlay,Hessen_color;
-    var Schleswig,Schleswigpoly_array,Schleswig_polygon,Schleswig_imageBound,Schleswig_overlay,Schleswig_color;
-    var NRW,NRWpoly_array,NRW_polygon,NRW_imageBound,NRW_overlay,NRW_color;
-    var Thueringen,Thueringenpoly_array,Thueringen_polygon,Thueringen_imageBound,Thueringen_overlay,Thueringen_color;
-    var Sachsen,Sachsenpoly_array,Sachsen_polygon,Sachsen_overlay,Sachsen_imageBound,Sachsen_color;
-    var Bayern,Bayernpoly_array,Bayern_polygon,Bayern_overlay,Bayern_imageBound,Bayern_color;
-    var Mecklenburg,Mecklenburgpoly_array,Mecklenburg_polygon,Mecklenburg_overlay,Mecklenburg_imageBound,Mecklenburg_color;
-    var Berlin,Berlinpoly_array,Berlin_polygon,Berlin_imageBound,Berlin_overlay,Berlin_color;
-    var Hamburg,Hamburgpoly_array,Hamburg_polygon,Hamburg_imageBound,Hamburg_overlay,Hamburg_color;
-    var Rheinland,Rheinlandpoly_array,Rheinland_polygon,Rheinland_imageBound,Rheinland_overlay,Rheinland_color;
-    var Badenwuer,Badenwuerpoly_array,Badenwuer_polygon,Badenwuer_imageBound,Badenwuer_overlay,Badenwuer_color;
-    var Saarlandpoly_array,Saarland,Saarland_polygon,Saarland_overlay,Saarland_imageBound,Saarland_color;
+    var Bremen,Bremenpoly_array,Bremen_polygon,Bremen_imageBound,Bremen_overlay;
+    var Brandenburg,Brandenburgpoly_array,Brandenburg_polygon,Brandenburg_imageBound,Brandenburg_overlay;
+    var Niedersachsen,Niedersachsenpoly_array,Niedersachsen_polygon,Niedersachsen_imageBound,Niedersachsen_overlay;
+    var Sachsen_Anhalt,Sachsen_Anhaltpoly_array,Sachsen_Anhalt_polygon,Sachsen_Anhalt_imageBound,Sachsen_Anhalt_overlay;
+    var Hessen,Hessenpoly_array,Hessen_polygon,Hessen_imageBound,Hessen_overlay;
+    var Schleswig,Schleswigpoly_array,Schleswig_polygon,Schleswig_imageBound,Schleswig_overlay;
+    var NRW,NRWpoly_array,NRW_polygon,NRW_imageBound,NRW_overlay;
+    var Thueringen,Thueringenpoly_array,Thueringen_polygon,Thueringen_imageBound,Thueringen_overlay;
+    var Sachsen,Sachsenpoly_array,Sachsen_polygon,Sachsen_overlay,Sachsen_imageBound;
+    var Bayern,Bayernpoly_array,Bayern_polygon,Bayern_overlay,Bayern_imageBound;
+    var Mecklenburg,Mecklenburgpoly_array,Mecklenburg_polygon,Mecklenburg_overlay,Mecklenburg_imageBound;
+    var Berlin,Berlinpoly_array,Berlin_polygon,Berlin_imageBound,Berlin_overlay;
+    var Hamburg,Hamburgpoly_array,Hamburg_polygon,Hamburg_imageBound,Hamburg_overlay;
+    var Rheinland,Rheinlandpoly_array,Rheinland_polygon,Rheinland_imageBound,Rheinland_overlay;
+    var Badenwuer,Badenwuerpoly_array,Badenwuer_polygon,Badenwuer_imageBound,Badenwuer_overlay;
+    var Saarlandpoly_array,Saarland,Saarland_polygon,Saarland_overlay,Saarland_imageBound;
+
+    var Croatia, Croatiapoly_array, Croatia_imageBound, Croatia_overlay, Croatia_polygon;
+    var Belgium,Belgiumpoly_array,Belgium_imageBound,Belgium_overlayer,Belgium_polygon;
+    var Bulgaria,Bulgariapoly_array,Bulgaria_imageBound,Bulgaria_overlayer,Bulgaria_polygon;
+    var Cyprus,Cypruspoly_array,Cyprus_imageBound,Cyprus_overlayer,Cyprus_polygon;
+    var Estonia,Estoniapoly_array,Estonia_imageBound,Estonia_overlayer,Estonia_polygon;
+    var Finland,Finlandpoly_array,Finland_imageBound,Finland_overlayer,Finland_polygon;
+    var France,Francepoly_array,France_imageBound,France_overlayer,France_polygon;
+    var Greece,Greecepoly_array,Greece_imageBound,Greece_overlayer,Greece_polygon;
+    var Latvia,Latviapoly_array,Latvia_imageBound,Latvia_overlayer,Latvia_polygon;
+    var Lithuania,Lithuaniapoly_array,Lithuania_imageBound,Lithuania_overlayer,Lithuania_polygon;
+    var Malta,Maltapoly_array,Malta_imageBound,Malta_overlayer,Malta_polygon;
+    var Portugal,Portugalpoly_array,Portugal_imageBound,Portugal_overlayer,Portugal_polygon;
+    var Spain,Spainpoly_array,Spain_imageBound,Spain_overlayer,Spain_polygon;
+    var Italy,Italypoly_array,Italy_imageBound,Italy_overlayer,Italy_polygon;
+    var Romania,Romaniapoly_array,Romania_imageBound,Romania_overlayer,Romania_polygon;
+    var Denmaik,Denmaikpoly_array,Denmaik_imageBound,Denmaik_overlayer,Denmaik_polygon;
+    var Ireland, Irelandpoly_array, Ireland_imageBound, Ireland_overlay, Ireland_polygon;
+    var UK, UKpoly_array, UK_imageBound, UK_overlay, UK_polygon;
+    var Netherland, Netherlandpoly_array, Netherland_imageBound, Netherland_overlay, Netherland_polygon;
+    var Luxenburg, Luxenburgpoly_array, Luxenburg_imageBound, Luxenburg_overlay, Luxenburg_polygon;
+    var Austria, Austriapoly_array, Austria_imageBound, Austria_overlay, Austria_polygon;
+    var Deutschland,Deutschlandpoly_array,Deutschland_polygon,Deutschland_imageBound,Deutschland_overlay;
+    var Czechia, Czechiapoly_array, Czechia_imageBound, Czechia_overlay, Czechia_polygon;
+    var Hungary, Hungarypoly_array, Hungary_imageBound, Hungary_overlay, Hungary_polygon;
+    var Slovakia, Slovakiapoly_array, Slovakia_imageBound, Slovakia_overlay, Slovakia_polygon;
+    var Poland, Polandpoly_array, Poland_imageBound, Poland_overlay, Poland_polygon;
+    var Slovenia, Sloveniapoly_array, Slovenia_imageBound, Slovenia_overlay, Slovenia_polygon;
+    var Sweden, Swedenpoly_array, Sweden_imageBound, Sweden_overlay, Sweden_polygon;
 
     $(document).ready(function(){
         mymap = L.map('mapdiv', {
@@ -143,488 +132,8 @@
         lyrWatercolor = L.tileLayer.provider('Stamen.Watercolor');
         lyrCavans=L.tileLayer.provider('Esri.WorldGrayCanvas');
         mymap.addLayer(lyrOSM);
-
         mymap.options.maxZoom=7;
         mymap.options.minZoom=4;
-
-        temp =[[65.3937972712156,110.9751319885254],
-            [70.08097154780967,110.9751319885254],
-            [70.08097154780967,124.31545257568361],
-            [65.3937972712156,124.31545257568361]];
-
-        Berlinpoly_array=[
-            [54.29695544000936,1.7041683197019484],
-            [54.620319521707685,1.7041683197019484],
-            [54.620319521707685,2.4146533012388254],
-            [54.29695544000936,2.4146533012388254]];
-
-        Niedersachsenpoly_array=[
-            [51.75000257658626,0.6815814971923454],
-            [48.98734251962303,0.6815814971923454],
-            [48.98734251962303,5.689845085144006],
-            [51.75000257658626,5.689845085144006]];
-
-        Brandenburgpoly_array=[
-            [54.29790712851649,3.810710906981897],
-            [56.36968310786767,3.810710906981897],
-            [56.36968310786767,7.432980537414028],
-            [54.29790712851649,7.432980537414028]];
-
-        Hessenpoly_array = [
-            [53.67976834496321,3.408486843109058],
-            [51.51567325569717,3.408486843109058],
-            [51.51567325569717,6.013641357421802],
-            [53.67976834496321,6.013641357421802]];
-
-        Sachsen_Anhaltpoly_array=[
-            [55.0509163404584,9.514524936675953],
-            [56.969099944173806,9.514524936675953],
-            [56.969099944173806,12.201755046844413],
-            [55.0509163404584,12.201755046844413]];
-
-        Bremenpoly_array = [
-            [50.20653022738872,5.5589747428890925],
-            [49.54230950299553,5.5589747428890925],
-            [49.54230950299553,6.105995178222346],
-            [50.20653022738872,6.105995178222346]];
-
-        Saarlandpoly_array = [
-            [49.31955549534387,4.99455213546753],
-            [48.80980283266952,5.015494823455811],
-            [48.80604379790249,6.1542749404907235],
-            [49.31867430894288,6.120564937591554]];
-
-        Schleswigpoly_array=[
-            [50.98909756726335,15.500743389129646],
-            [49.07535587960909,15.500743389129646],
-            [49.07535587960909,18.696713447570808],
-            [50.98909756726335,18.696713447570808]];
-
-        Mecklenburgpoly_array = [
-            [49.116649840729025,14.41910505294793],
-            [47.30599336887515,14.41910505294793],
-            [47.30599336887515,18.312685489654477],
-            [49.116649840729025,18.312685489654477]];
-
-        Badenwuerpoly_array=[
-            [54.795823681390075,16.145439147949148],
-            [52.76265801854019,16.145439147949148],
-            [52.76265801854019,19.326453208923265],
-            [54.795823681390075,19.326453208923265]];
-
-        Hamburgpoly_array=[
-            [48.31209967417024,5.734369754791137],
-            [47.91513400081241,5.734369754791137],
-            [47.91513400081241,6.396768093109009],
-            [48.31209967417024,6.396768093109009]];
-
-        Thueringenpoly_array=[
-            [45.838950602379875,12.79360055923454],
-            [45.838950602379875,15.66914319992058],
-            [47.44769531578523,15.66914319992058],
-            [47.44769531578523,12.79360055923454],
-        ];
-
-        Rheinlandpoly_array=[
-            [45.61240136397272,5.41475772857663],
-            [47.74903410536781,5.41475772857663],
-            [47.74903410536781,7.865610122680634],
-            [45.61240136397272,7.865610122680634]];
-
-        NRWpoly_array=[
-            [54.68800519200004,13.341457843780383],
-            [56.70053842926295,13.341457843780383],
-            [56.70053842926295,17.008810043334822],
-            [54.68800519200004,17.008810043334822]];
-
-
-        Bayernpoly_array=[
-            [49.458292054244836,17.67367601394647],
-            [52.6244538190952,17.67367601394647],
-            [52.6244538190952,22.598361968994077],
-            [49.458292054244836,22.598361968994077]];
-
-
-        Sachsenpoly_array=[
-            [45.47338859338971,8.937592506408542],
-            [47.16296223706786,8.937592506408542],
-            [47.16296223706786,12.12405681610092],
-            [45.47338859338971,12.12405681610092]];
-        //mymap.fitBounds(Saarpolygon.getBounds());
-
-
-        /*-------------------------------------Europe Union-------------------------------*/
-
-        Iceland = L.imageOverlay('img-EU/Iceland_grey.png',[[55.39967,-10.80284],[51.33054,-5.86644]],{opacity:1});
-
-        UK = L.imageOverlay('img-EU/UK_grey.png',[[60.93439,-8.40180],[49.85510,3.23311]],{opacity:1});
-
-        Austria = L.imageOverlay('img-EU/Austria.png',[[49.08250,9.50115],[46.34658,17.20256]],{opacity:1});
-
-        Belgium = L.imageOverlay('img-EU/Belgium.png',[[51.52291,2.51672],[49.50668,6.42785]],{opacity:1});
-
-        Denmaik = L.imageOverlay('img-EU/Denmaik.png',[[57.79589,8.02885],[54.52946,12.70916]],{opacity:1});
-
-        Deutschland = L.imageOverlay('img-EU/Deutschland.png',[[55.08081,5.81999],[47.22000,15.08901]],{opacity:1});
-
-        Netherland = L.imageOverlay('img-EU/Netherland.png',[[53.52636,3.34687],[50.75692,7.21406]],{opacity:1});
-
-        Luxenburg = L.imageOverlay('img-EU/Luxenburg.png',[[50.18446,5.72073],[49.44570,6.51175]],{opacity:1});
-
-        Hungary = L.imageOverlay('img-EU/Hungary.png',[[48.60508,16.11591],[45.73038,22.96546]],{opacity:1});
-
-        Slovakia = L.imageOverlay('img-EU/Slovakia.png',[[49.62573,16.81903],[47.70480,22.59784]],{opacity:1});
-
-        Poland = L.imageOverlay('img-EU/Poland.png',[[54.86267,14.05039],[48.99806,24.15781]],{opacity:1});
-
-        Slovenia = L.imageOverlay('img-EU/Slovenia.png',[[46.87579,13.35486],[45.40242,16.66695]],{opacity:1});
-
-        Croatia = L.imageOverlay('img-EU/croatia.png',[[46.55371,13.50888],[42.35481,19.45953]],{opacity:1});
-
-        Czechia = L.imageOverlay('img-EU/C zechia.png',[[51.07226,12.10480],[48.55835,18.83643]],{opacity:1});
-
-        Romania = L.imageOverlay('img-EU/romania.png',[[48.26397,20.19226],[43.60243,29.63958]],{opacity:1});
-
-        Sweden = L.imageOverlay('img-EU/sweden.png',[[69.13583,9.26957],[55.12188,25.37861]],{opacity:1});
-
-
-        Italy = L.imageOverlay('img-EU/Italy.png',[[47.18971,6.30003],[36.45664,18.88465]],{opacity:1});
-
-        Bulgaria = L.imageOverlay('img-EU/Bulgaria.png',[[44.36957,22.25830],[41.06279,28.75023]],{opacity:1});
-
-        Cyprus = L.imageOverlay('img-EU/Cyprus.png',[[35.76326,32.17994],[34.47939,34.66187]],{opacity:1});
-
-        Estonia =L.imageOverlay('img-EU/estonia.png',[[59.77533,21.68504],[57.38578,28.49954]],{opacity:1});
-
-        Finland =L.imageOverlay('img-EU/Finland.png',[[70.23290,19.19600],[59.69962,32.73119]],{opacity:1});
-
-        France = L.imageOverlay('img-EU/France.png',[[51.24034,-5.2200],[41.14865,9.99630]],{opacity:1});
-
-        Greece = L.imageOverlay('img-EU/Greece.png',[[41.93766,19.30080],[34.81380,28.57064]],{opacity:1});
-
-        Latvia = L.imageOverlay('img-EU/Latvia.png',[[58.11271,20.78613],[55.52863,28.41797]],{opacity:1});
-
-        Lithuania= L.imageOverlay('img-EU/Lithuania.png',[[56.55948,20.80205],[53.76170,26.96777]],{opacity:1});
-
-        Malta = L.imageOverlay('img-EU/Malta.png',[[36.09992,14.15955],[35.75691,14.61548]],{opacity:1});
-
-        Portugal = L.imageOverlay('img-EU/Portugal.png',[[42.23936,-9.79064],[36.80101,-5.60713]],{opacity:1});
-
-        Spain = L.imageOverlay('img-EU/spain.png',[[43.85037,-9.31895],[35.96969,4.36186]],{opacity:1});
-
-
-        /*-------------------------------------Europe Union-------------------------------*/
-
-        /*-------------------------------------Deutschland--------------------------------*/
-
-
-
-        Bremen = L.imageOverlay('img/Bremen_grey.png',[[53.60835,8.47211],[53.00432,9.00545]],{opacity:1}).addTo(mymap);
-
-        Brandenburg = L.imageOverlay('img/Brandenburg_grey.png',[[53.52929,11.22867],[51.30927,14.84964]],{opacity:1}).addTo(mymap);
-
-        Niedersachsen = L.imageOverlay('img/Niedersachsen_grey.png',[[53.89239,6.62980],[51.29734,11.60111]],{opacity:1}).addTo(mymap);
-
-        Sachsen_Anhalt = L.imageOverlay('img/Sachsen_anhalt_grey.png',[[53.04464,10.53756],[50.92030,13.23773]],{opacity:1}).addTo(mymap);
-
-        Hessen = L.imageOverlay('img/Hessen_grey.png',[[51.65980,7.6821684837338005],[49.39444,10.287322998046543]],{opacity:1}).addTo(mymap);
-
-        Schleswig = L.imageOverlay('img/Schleswig_grey.png',[[55.05861,8.25925],[53.35106,11.35555]],{opacity:1}).addTo(mymap);
-
-
-        NRW = L.imageOverlay('img/NRW_grey.png',[[52.53119,5.88121],[50.34092,9.46275]],{opacity:1}).addTo(mymap);
-
-        Thueringen = L.imageOverlay('img/Thuringia_grey.png',[[51.65233,9.85657],[50.18390,12.65060]],{opacity:1}).addTo(mymap);
-
-        Sachsen = L.imageOverlay(('img/Sachsen_grey.png'),[[51.66456,11.85723],[50.15131,15.05426]],{opacity:1}).addTo(mymap);
-
-        Bayern = L.imageOverlay('img/Bayern_grey.png',[[50.55000,8.97031],[47.26300,13.83726]],{opacity:1}).addTo(mymap);
-
-        Mecklenburg = L.imageOverlay('img/Mecklenburg_grey.png',[[54.67401,10.59490],[53.10725,14.40715]],{opacity:1}).addTo(mymap);
-
-        Berlin = L.imageOverlay('img/Berlin_grey.png',[[52.69606,13.06570],[52.30901,13.77083]],{opacity:1}).addTo(mymap);
-
-        Hamburg = L.imageOverlay('img/Hamburg_grey.png',[[53.76820,9.73389],[53.36039,10.35461]],{opacity:1}).addTo(mymap);
-
-        Saarland = L.imageOverlay('img/Saarland_grey.png', [[49.63850,6.36108],[49.11984,7.41028]], {opacity:1}).addTo(mymap);
-
-        Rheinland = L.imageOverlay('img/Rheinland_grey.png',[[50.93035,6.13589],[48.97219,8.49595]],{opacity:1}).addTo(mymap);
-
-        Badenwuer = L.imageOverlay('img/Bawuer_grey.png',[[49.79906,7.49879],[47.53232,10.48808]] ,{opacity:1}).addTo(mymap);
-
-        Brandenburg_spare=L.imageOverlay('img/Brandenburg_grey.png',[[53.57769065527759,11.171550750732148],[51.35871813296017,14.793820381164277]],{opacity:1});
-        NRW_spare= L.imageOverlay('img/NRW_grey.png',[[52.51850886754137,5.821316242217626],[50.29096508631147,9.48866844177207]],{opacity:1});
-        Bayern_spare = L.imageOverlay('img/Bayern_grey.png',[[50.556783665674764,8.950531482696327],[47.246595713429365,13.875217437743935]],{opacity:1});
-        Bawuer_spare = L.imageOverlay('img/Bawuer_grey.png',[[49.79000601294606,7.367362976073452],[47.516939844015326,10.54837703704757]],{opacity:1});
-        Nieder_spare = L.imageOverlay('img/Niedersachsen_grey.png',[[53.893831774203306,6.570253372191822],[51.26183428873217,11.57851696014348]],{opacity:1});
-
-        Niedersachsen_imageBound = L.latLngBounds([
-            Niedersachsenpoly_array[0],
-            Niedersachsenpoly_array[2]
-        ]);
-
-        Bayern_imageBound = L.latLngBounds([
-            Bayernpoly_array[0],
-            Bayernpoly_array[2]
-        ]);
-
-        Berlin_imageBound = L.latLngBounds([
-            Berlinpoly_array[0],
-            Berlinpoly_array[2]
-        ]);
-
-        Sachsen_Anhalt_imageBound = L.latLngBounds([
-            Sachsen_Anhaltpoly_array[0],
-            Sachsen_Anhaltpoly_array[2]
-        ]);
-
-        Brandenburg_imageBound = L.latLngBounds([
-            Brandenburgpoly_array[0],
-            Brandenburgpoly_array[2]
-        ]);
-
-        Hessen_imageBound = L.latLngBounds([
-            Hessenpoly_array[0],
-            Hessenpoly_array[2]
-        ]);
-
-        Saarland_imageBound = L.latLngBounds([
-            Saarlandpoly_array[0],
-            Saarlandpoly_array[2]
-        ]);
-
-        Schleswig_imageBound = L.latLngBounds([
-            Schleswigpoly_array[0],
-            Schleswigpoly_array[2]
-        ]);
-
-        Badenwuer_imageBound = L.latLngBounds([
-            Badenwuerpoly_array[0],
-            Badenwuerpoly_array[2]
-        ]);
-
-        Hamburg_imageBound = L.latLngBounds([
-            Hamburgpoly_array[0],
-            Hamburgpoly_array[2]
-        ]);
-
-        Mecklenburg_imageBound = L.latLngBounds([
-            Mecklenburgpoly_array[0],
-            Mecklenburgpoly_array[2]
-        ]);
-
-        Bremen_imageBound = L.latLngBounds([
-            Bremenpoly_array[0],
-            Bremenpoly_array[2]
-        ]);
-
-
-        Thueringen_imageBound = L.latLngBounds([
-            Thueringenpoly_array[0],
-            Thueringenpoly_array[2]
-        ]);
-
-        Rheinland_imageBound = L.latLngBounds([
-            Rheinlandpoly_array[0],
-            Rheinlandpoly_array[2]
-        ]);
-
-        NRW_imageBound = L.latLngBounds([
-            NRWpoly_array[0],
-            NRWpoly_array[2]
-        ]);
-
-        Sachsen_imageBound =L.latLngBounds([
-            Sachsenpoly_array[0],
-            Sachsenpoly_array[2]
-        ]);
-
-        Sachsen_Anhalt_overlay = L.imageOverlay(('img_puzzle/Sachsen_anhalt.png'),Sachsen_Anhalt_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Sachsen_Anhalt_polygon = L.polygon((Sachsen_Anhaltpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-
-        Berlin_overlay = L.imageOverlay(('img_puzzle/Berlin.png'),Berlin_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Berlin_polygon = L.polygon((Berlinpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Rheinland_overlay = L.imageOverlay(('img_puzzle/Rheinland.png'),Rheinland_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Rheinland_polygon = L.polygon((Rheinlandpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-
-        Bayern_overlay = L.imageOverlay(('img_puzzle/Bayern.png'),Bayern_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Bayern_polygon = L.polygon((Bayernpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Sachsen_overlay = L.imageOverlay(('img_puzzle/Sachsen.png'),Sachsen_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Sachsen_polygon = L.polygon((Sachsenpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-
-        NRW_overlay = L.imageOverlay(('img_puzzle/NRW.png'),NRW_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        NRW_polygon = L.polygon((NRWpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Thueringen_overlay = L.imageOverlay(('img_puzzle/Thueringen.png'),Thueringen_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Thueringen_polygon = L.polygon((Thueringenpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Niedersachsen_overlay = L.imageOverlay(('img_puzzle/Niedersachsen.png'),Niedersachsen_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Niedersachsen_polygon =L.polygon((Niedersachsenpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-
-        Brandenburg_overlay = L.imageOverlay(('img_puzzle/Brandenburg.png'),Brandenburg_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Brandenburg_polygon = L.polygon((Brandenburgpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Hessen_overlay = L.imageOverlay(('img_puzzle/Hessen.png'),Hessen_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Hessen_polygon = L.polygon((Hessenpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Bremen_overlay = L.imageOverlay(('img_puzzle/Bremen.png'),Bremen_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Bremen_polygon = L.polygon((Bremenpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        Mecklenburg_overlay = L.imageOverlay(('img_puzzle/Mecklenburg.png'),Mecklenburg_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Mecklenburg_polygon = L.polygon((Mecklenburgpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-
-        /*Hamburg*/
-        Hamburg_overlay = L.imageOverlay(('img_puzzle/Hamburg.png'),Hamburg_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Hamburg_polygon = L.polygon((Hamburgpoly_array),{
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        /*Saarland*/
-        Saarland_overlay = L.imageOverlay('img_puzzle/Saarland.png', Saarland_imageBound, {
-            opacity: 1,
-            interactive: true
-        }).addTo(mymap);
-
-        Saarland_polygon=L.polygon(Saarlandpoly_array, {
-            draggable: true,
-            opacity: 0,
-            fillOpacity: 0
-        }).addTo(mymap);
-
-        /*Schleswig*/
-        Schleswig_overlay = L.imageOverlay('img_puzzle/Schleswig.png',Schleswig_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Schleswig_polygon = L.polygon(Schleswigpoly_array,{
-            draggable: true,
-            opacity:0,
-            fillOpacity:0
-        }).addTo(mymap);
-
-        /*Badenwuerttemberg*/
-        Badenwuer_overlay = L.imageOverlay('img_puzzle/Bawuer.png',Badenwuer_imageBound,{
-            opacity:1,
-            interactive:true
-        }).addTo(mymap);
-
-        Badenwuer_polygon = L.polygon(Badenwuerpoly_array,{
-            draggable:true,
-            opacity:0,
-            fillOpacity:0
-        }).addTo(mymap);
-
-        /*-------------------------------------Deutschland--------------------------------*/
 
         objBasemaps = {
             "Open Street Maps": lyrOSM,
@@ -634,34 +143,13 @@
             "Watercolor":lyrWatercolor,
             "Canvans":lyrCavans
         };
-
-        objOverlays = {
-            "Saarland Image":Saarland,
-            "Bawur Image":Badenwuer,
-            "Rheinland Image":Rheinland,
-            "Hamburg Image":Hamburg,
-            "Berlin Image":Berlin,
-            "Mecklenburg Image":Mecklenburg,
-            "Bayern Image":Bayern,
-            "Saxony Image":Sachsen,
-            "NRW Image":NRW,
-            "Schleswig Image":Schleswig,
-            "Thuringen Image":Thueringen,
-            "Hessen Image":Hessen,
-            "Saxony_anhalt Image":Sachsen_Anhalt,
-            "Niedersachsen Image":Niedersachsen,
-            "Brandenburg Image":Brandenburg,
-            "Bremen Image":Bremen
-        };
+        objOverlays = {};
 
         ctlLayers = L.control.layers(objBasemaps, objOverlays).addTo(mymap);
 
         ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
-        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){
-            ctlSidebar.toggle();
-        }).addTo(mymap);
-
+        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){ctlSidebar.toggle();}).addTo(mymap);
 
         ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
         ctlAttribute.addAttribution('OSM');
@@ -669,659 +157,820 @@
 
         ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
+        temp =[[65.3937972712156,110.9751319885254], [70.08097154780967,110.9751319885254],
+            [70.08097154780967,124.31545257568361], [65.3937972712156,124.31545257568361]];
 
-        mymap.on('zoomend', function(){
-            $("#zoom-level").html(mymap.getZoom());
-        });
+        /*----------------------------Deutschland-Bundesland-Initial-------------------------------*/
 
-        mymap.on('moveend', function(){
-            $("#map-center").html(LatLngToArrayString(mymap.getCenter()));
-        });
+        Berlinpoly_array=[[54.29695544000936,1.7041683197019484], [54.620319521707685,1.7041683197019484],
+            [54.620319521707685,2.4146533012388254], [54.29695544000936,2.4146533012388254]];
+        Niedersachsenpoly_array=[[51.75000257658626,0.6815814971923454], [48.98734251962303,0.6815814971923454],
+            [48.98734251962303,5.689845085144006], [51.75000257658626,5.689845085144006]];
+        Brandenburgpoly_array=[[54.29790712851649,3.810710906981897], [56.36968310786767,3.810710906981897],
+            [56.36968310786767,7.432980537414028], [54.29790712851649,7.432980537414028]];
+        Hessenpoly_array = [[53.67976834496321,3.408486843109058], [51.51567325569717,3.408486843109058],
+            [51.51567325569717,6.013641357421802], [53.67976834496321,6.013641357421802]];
+        Sachsen_Anhaltpoly_array=[[55.0509163404584,9.514524936675953], [56.969099944173806,9.514524936675953],
+            [56.969099944173806,12.201755046844413], [55.0509163404584,12.201755046844413]];
+        Bremenpoly_array = [[50.20653022738872,5.5589747428890925], [49.54230950299553,5.5589747428890925],
+            [49.54230950299553,6.105995178222346], [50.20653022738872,6.105995178222346]];
+        Saarlandpoly_array = [[49.31955549534387,4.99455213546753], [48.80980283266952,5.015494823455811],
+            [48.80604379790249,6.1542749404907235], [49.31867430894288,6.120564937591554]];
+        Schleswigpoly_array=[[50.98909756726335,15.500743389129646], [49.07535587960909,15.500743389129646],
+            [49.07535587960909,18.696713447570808], [50.98909756726335,18.696713447570808]];
+        Mecklenburgpoly_array = [[49.116649840729025,14.41910505294793], [47.30599336887515,14.41910505294793],
+            [47.30599336887515,18.312685489654477], [49.116649840729025,18.312685489654477]];
+        Badenwuerpoly_array=[[54.795823681390075,16.145439147949148], [52.76265801854019,16.145439147949148],
+            [52.76265801854019,19.326453208923265], [54.795823681390075,19.326453208923265]];
+        Hamburgpoly_array=[[48.31209967417024,5.734369754791137], [47.91513400081241,5.734369754791137],
+            [47.91513400081241,6.396768093109009], [48.31209967417024,6.396768093109009]];
+        Thueringenpoly_array=[[45.838950602379875,12.79360055923454], [45.838950602379875,15.66914319992058],
+            [47.44769531578523,15.66914319992058], [47.44769531578523,12.79360055923454],];
+        Rheinlandpoly_array=[[45.61240136397272,5.41475772857663], [47.74903410536781,5.41475772857663],
+            [47.74903410536781,7.865610122680634], [45.61240136397272,7.865610122680634]];
+        NRWpoly_array=[[54.68800519200004,13.341457843780383], [56.70053842926295,13.341457843780383],
+            [56.70053842926295,17.008810043334822], [54.68800519200004,17.008810043334822]];
+        Bayernpoly_array=[[49.458292054244836,17.67367601394647], [52.6244538190952,17.67367601394647],
+            [52.6244538190952,22.598361968994077], [49.458292054244836,22.598361968994077]];
+        Sachsenpoly_array=[[45.47338859338971,8.937592506408542], [47.16296223706786,8.937592506408542],
+            [47.16296223706786,12.12405681610092], [45.47338859338971,12.12405681610092]];
 
-        mymap.on('mousemove', function(e){
-            $("#mouse-location").html(LatLngToArrayString(e.latlng));
-        });
+        /*-------------------------------------Deutschland-Background--------------------------------*/
 
-        /*Saarland*/
-        Saarland_polygon.on('drag',function (e) {
+        Bremen = L.imageOverlay('img/Bremen_grey.png',[[53.60835,8.47211],[53.00432,9.00545]],{opacity:1}).addTo(mymap);
+        Brandenburg = L.imageOverlay('img/Brandenburg_grey.png',[[53.52929,11.22867],[51.30927,14.84964]],{opacity:1}).addTo(mymap);
+        Niedersachsen = L.imageOverlay('img/Niedersachsen_grey.png',[[53.89239,6.62980],[51.29734,11.60111]],{opacity:1}).addTo(mymap);
+        Sachsen_Anhalt = L.imageOverlay('img/Sachsen_anhalt_grey.png',[[53.04464,10.53756],[50.92030,13.23773]],{opacity:1}).addTo(mymap);
+        Hessen = L.imageOverlay('img/Hessen_grey.png',[[51.65980,7.6821684837338005],[49.39444,10.287322998046543]],{opacity:1}).addTo(mymap);
+        Schleswig = L.imageOverlay('img/Schleswig_grey.png',[[55.05861,8.25925],[53.35106,11.35555]],{opacity:1}).addTo(mymap);
+        NRW = L.imageOverlay('img/NRW_grey.png',[[52.53119,5.88121],[50.34092,9.46275]],{opacity:1}).addTo(mymap);
+        Thueringen = L.imageOverlay('img/Thuringia_grey.png',[[51.65233,9.85657],[50.18390,12.65060]],{opacity:1}).addTo(mymap);
+        Sachsen = L.imageOverlay(('img/Sachsen_grey.png'),[[51.66456,11.85723],[50.15131,15.05426]],{opacity:1}).addTo(mymap);
+        Bayern = L.imageOverlay('img/Bayern_grey.png',[[50.55000,8.97031],[47.26300,13.83726]],{opacity:1}).addTo(mymap);
+        Mecklenburg = L.imageOverlay('img/Mecklenburg_grey.png',[[54.67401,10.59490],[53.10725,14.40715]],{opacity:1}).addTo(mymap);
+        Berlin = L.imageOverlay('img/Berlin_grey.png',[[52.69606,13.06570],[52.30901,13.77083]],{opacity:1}).addTo(mymap);
+        Hamburg = L.imageOverlay('img/Hamburg_grey.png',[[53.76820,9.73389],[53.36039,10.35461]],{opacity:1}).addTo(mymap);
+        Saarland = L.imageOverlay('img/Saarland_grey.png', [[49.63850,6.36108],[49.11984,7.41028]], {opacity:1}).addTo(mymap);
+        Rheinland = L.imageOverlay('img/Rheinland_grey.png',[[50.93035,6.13589],[48.97219,8.49595]],{opacity:1}).addTo(mymap);
+        Badenwuer = L.imageOverlay('img/Bawuer_grey.png',[[49.79906,7.49879],[47.53232,10.48808]] ,{opacity:1}).addTo(mymap);
+        Brandenburg_spare=L.imageOverlay('img/Brandenburg_grey.png',[[53.57769065527759,11.171550750732148],[51.35871813296017,14.793820381164277]],{opacity:1});
+        NRW_spare= L.imageOverlay('img/NRW_grey.png',[[52.51850886754137,5.821316242217626],[50.29096508631147,9.48866844177207]],{opacity:1});
+        Bayern_spare = L.imageOverlay('img/Bayern_grey.png',[[50.556783665674764,8.950531482696327],[47.246595713429365,13.875217437743935]],{opacity:1});
+        Bawuer_spare = L.imageOverlay('img/Bawuer_grey.png',[[49.79000601294606,7.367362976073452],[47.516939844015326,10.54837703704757]],{opacity:1});
+        Nieder_spare = L.imageOverlay('img/Niedersachsen_grey.png',[[53.893831774203306,6.570253372191822],[51.26183428873217,11.57851696014348]],{opacity:1});
 
-            Saarland_overlay.setBounds(Saarland_polygon.getBounds());
-        });
+        /*-------------------------------------Deutschland-imageBound--------------------------------*/
 
-        Saarland_polygon.on('dragstart',function (e) {
+        Niedersachsen_imageBound = L.latLngBounds([Niedersachsenpoly_array[0], Niedersachsenpoly_array[2]]);
+        Bayern_imageBound = L.latLngBounds([Bayernpoly_array[0], Bayernpoly_array[2]]);
+        Berlin_imageBound = L.latLngBounds([Berlinpoly_array[0], Berlinpoly_array[2]]);
+        Sachsen_Anhalt_imageBound = L.latLngBounds([Sachsen_Anhaltpoly_array[0], Sachsen_Anhaltpoly_array[2]]);
+        Brandenburg_imageBound = L.latLngBounds([Brandenburgpoly_array[0], Brandenburgpoly_array[2]]);
+        Hessen_imageBound = L.latLngBounds([Hessenpoly_array[0], Hessenpoly_array[2]]);
+        Saarland_imageBound = L.latLngBounds([Saarlandpoly_array[0], Saarlandpoly_array[2]]);
+        Schleswig_imageBound = L.latLngBounds([Schleswigpoly_array[0], Schleswigpoly_array[2]]);
+        Badenwuer_imageBound = L.latLngBounds([Badenwuerpoly_array[0], Badenwuerpoly_array[2]]);
+        Hamburg_imageBound = L.latLngBounds([Hamburgpoly_array[0], Hamburgpoly_array[2]]);
+        Mecklenburg_imageBound = L.latLngBounds([Mecklenburgpoly_array[0], Mecklenburgpoly_array[2]]);
+        Bremen_imageBound = L.latLngBounds([Bremenpoly_array[0], Bremenpoly_array[2]]);
+        Thueringen_imageBound = L.latLngBounds([Thueringenpoly_array[0], Thueringenpoly_array[2]]);
+        Rheinland_imageBound = L.latLngBounds([Rheinlandpoly_array[0], Rheinlandpoly_array[2]]);
+        NRW_imageBound = L.latLngBounds([NRWpoly_array[0], NRWpoly_array[2]]);
+        Sachsen_imageBound =L.latLngBounds([Sachsenpoly_array[0], Sachsenpoly_array[2]]);
 
-            Saarland_overlay.setBounds(Saarland_polygon.getBounds());
-        });
+        /*-------------------------------------Deutschland-color-------------------------------*/
 
-        Saarland_polygon.on('dragend',function (e) {
-            Saarland_overlay.setBounds(Saarland_polygon.getBounds());
+        Sachsen_Anhalt_overlay = L.imageOverlay(('img_puzzle/Sachsen_anhalt.png'),Sachsen_Anhalt_imageBound,{opacity:1, interactive:true});
+        Berlin_overlay = L.imageOverlay(('img_puzzle/Berlin.png'),Berlin_imageBound,{opacity:1, interactive:true});
+        Rheinland_overlay = L.imageOverlay(('img_puzzle/Rheinland.png'),Rheinland_imageBound,{opacity:1, interactive:true});
+        Bayern_overlay = L.imageOverlay(('img_puzzle/Bayern.png'),Bayern_imageBound,{opacity:1, interactive:true});
+        Sachsen_overlay = L.imageOverlay(('img_puzzle/Sachsen.png'),Sachsen_imageBound,{opacity:1, interactive:true});
+        NRW_overlay = L.imageOverlay(('img_puzzle/NRW.png'),NRW_imageBound,{opacity:1, interactive:true});
+        Thueringen_overlay = L.imageOverlay(('img_puzzle/Thueringen.png'),Thueringen_imageBound,{opacity:1, interactive:true});
+        Niedersachsen_overlay = L.imageOverlay(('img_puzzle/Niedersachsen.png'),Niedersachsen_imageBound,{opacity:1, interactive:true});
+        Brandenburg_overlay = L.imageOverlay(('img_puzzle/Brandenburg.png'),Brandenburg_imageBound,{opacity:1, interactive:true});
+        Hessen_overlay = L.imageOverlay(('img_puzzle/Hessen.png'),Hessen_imageBound,{opacity:1, interactive:true});
+        Bremen_overlay = L.imageOverlay(('img_puzzle/Bremen.png'),Bremen_imageBound,{opacity:1, interactive:true});
+        Mecklenburg_overlay = L.imageOverlay(('img_puzzle/Mecklenburg.png'),Mecklenburg_imageBound,{opacity:1, interactive:true});
+        Hamburg_overlay = L.imageOverlay(('img_puzzle/Hamburg.png'),Hamburg_imageBound,{opacity:1, interactive:true});
+        Saarland_overlay = L.imageOverlay('img_puzzle/Saarland.png', Saarland_imageBound, {opacity: 1, interactive: true});
+        Schleswig_overlay = L.imageOverlay('img_puzzle/Schleswig.png',Schleswig_imageBound,{opacity:1, interactive:true});
+        Badenwuer_overlay = L.imageOverlay('img_puzzle/Bawuer.png',Badenwuer_imageBound,{opacity:1, interactive:true});
+
+        /*-------------------------------------Deutschland-polygon-------------------------------*/
+
+        Sachsen_Anhalt_polygon = L.polygon((Sachsen_Anhaltpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Berlin_polygon = L.polygon((Berlinpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Rheinland_polygon = L.polygon((Rheinlandpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Bayern_polygon = L.polygon((Bayernpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Sachsen_polygon = L.polygon((Sachsenpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        NRW_polygon = L.polygon((NRWpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Thueringen_polygon = L.polygon((Thueringenpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Niedersachsen_polygon =L.polygon((Niedersachsenpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Brandenburg_polygon = L.polygon((Brandenburgpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Hessen_polygon = L.polygon((Hessenpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Bremen_polygon = L.polygon((Bremenpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Mecklenburg_polygon = L.polygon((Mecklenburgpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Hamburg_polygon = L.polygon((Hamburgpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Saarland_polygon=L.polygon(Saarlandpoly_array, {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Schleswig_polygon = L.polygon(Schleswigpoly_array,{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Badenwuer_polygon = L.polygon(Badenwuerpoly_array,{draggable:true, opacity:0, fillOpacity:0}).addTo(mymap);
+
+        /*-------------------------------------Deutschland-pictures-drag-------------------------------*/
+
+        Saarland_polygon.on('drag',function (e) {Saarland_overlay.setBounds(Saarland_polygon.getBounds());});
+        Saarland_polygon.on('dragstart',function (e) {Saarland_overlay.setBounds(Saarland_polygon.getBounds());});
+        Saarland_polygon.on('dragend',function (e) {Saarland_overlay.setBounds(Saarland_polygon.getBounds());
             if(Number(Saarland_polygon.getBounds().getNorthWest().lat)<49.843 && Number(Saarland_polygon.getBounds().getSouthEast().lng)<7.60753
                 &&Number(Saarland_polygon.getBounds().getSouthEast().lat)>49.000 && Number(Saarland_polygon.getBounds().getNorthWest().lng)>6.056)
-            {
-                swal({
-                    position: 'top-end',
-                    icon:"success",
-                    text: 'Saarland',
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', icon:"success", text: 'Saarland', buttons: false, timer: 1000});
                 Saarland_overlay.setBounds(Saarland.getBounds());
                 Saarland_polygon.dragging.disable();
                 mymap.removeLayer(Saarland);
-                Saarland_polygon.setLatLngs(temp);
-            }
+                Saarland_polygon.setLatLngs(temp);}});
 
-            //console.log(Saarland_polygon.getBounds());
-            console.log(Saarland_polygon.getBounds().getNorthWest().lat);
-            console.log(Saarland_polygon.getBounds().getSouthEast().lng);
-            console.log(Saarland_polygon.getBounds().getSouthEast().lat);
-            console.log(Saarland_polygon.getBounds().getNorthWest().lng);
 
-        });
-
-        /*Schleswig*/
-        Schleswig_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());
-        });
-
-        Schleswig_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());
-        });
-
-        Schleswig_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());
+        Schleswig_polygon.on('drag',function (e) {Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());});
+        Schleswig_polygon.on('dragstart',function (e) {Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());});
+        Schleswig_polygon.on('dragend',function (e) {Schleswig_overlay.setBounds(Schleswig_polygon.getBounds());
             if(Number(Schleswig_polygon.getBounds().getNorthWest().lat)<55.306 && Number(Schleswig_polygon.getBounds().getSouthEast().lng)<11.797
                 &&Number(Schleswig_polygon.getBounds().getSouthEast().lat)>53.141 && Number(Schleswig_polygon.getBounds().getNorthWest().lng)>7.898)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Schleswig',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end',text: 'Schleswig', icon:"success", buttons: false, timer: 1000});
                 Schleswig_overlay.setBounds(Schleswig.getBounds());
                 Schleswig_polygon.dragging.disable();
                 mymap.removeLayer(Schleswig);
-                Schleswig_polygon.setLatLngs(temp);
-            }
+                Schleswig_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Schleswig_polygon.getBounds().getNorthWest().lat);
-            console.log(Schleswig_polygon.getBounds().getSouthEast().lng);
-            console.log(Schleswig_polygon.getBounds().getSouthEast().lat);
-            console.log(Schleswig_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-
-        /*Badenwuerttemberg*/
-        Badenwuer_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());
-        });
-
-        Badenwuer_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());
-        });
-
-        Badenwuer_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());
+        Badenwuer_polygon.on('drag',function (e) {Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());});
+        Badenwuer_polygon.on('dragstart',function (e) {Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());});
+        Badenwuer_polygon.on('dragend',function (e) {Badenwuer_overlay.setBounds(Badenwuer_polygon.getBounds());
             if(Number(Badenwuer_polygon.getBounds().getNorthWest().lat)<50.016 && Number(Badenwuer_polygon.getBounds().getSouthEast().lng)<10.888
                 &&Number(Badenwuer_polygon.getBounds().getSouthEast().lat)>47.293 && Number(Badenwuer_polygon.getBounds().getNorthWest().lng)>7.070)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Badenwuerttemberg',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end',text: 'Badenwuerttemberg', icon:"success", buttons: false, timer: 1000});
                 Badenwuer_overlay.setBounds(Bawuer_spare.getBounds());
                 Badenwuer_polygon.dragging.disable();
                 mymap.removeLayer(Badenwuer);
-                Badenwuer_polygon.setLatLngs(temp);
-            }
+                Badenwuer_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Badenwuer_polygon.getBounds().getNorthWest().lat);
-            console.log(Badenwuer_polygon.getBounds().getSouthEast().lng);
-            console.log(Badenwuer_polygon.getBounds().getSouthEast().lat);
-            console.log(Badenwuer_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-
-        /*Hamburg*/
-        Hamburg_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
-        });
-
-        Hamburg_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
-        });
-
-        Hamburg_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
+        Hamburg_polygon.on('drag',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
+        Hamburg_polygon.on('dragstart',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());});
+        Hamburg_polygon.on('dragend',function (e) {Hamburg_overlay.setBounds(Hamburg_polygon.getBounds());
             if(Number(Hamburg_polygon.getBounds().getNorthWest().lat)<53.787 && Number(Hamburg_polygon.getBounds().getSouthEast().lng)<10.516
                 &&Number(Hamburg_polygon.getBounds().getSouthEast().lat)>53.296 && Number(Hamburg_polygon.getBounds().getNorthWest().lng)>9.568)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Hamburg',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Hamburg', icon:"success", buttons: false, timer: 1000});
                 Hamburg_overlay.setBounds(Hamburg.getBounds());
                 Hamburg_polygon.dragging.disable();
                 mymap.removeLayer(Hamburg);
-                Hamburg_polygon.setLatLngs(temp);
-            }
+                Hamburg_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Hamburg_polygon.getBounds().getNorthWest().lat);
-            console.log(Hamburg_polygon.getBounds().getSouthEast().lng);
-            console.log(Hamburg_polygon.getBounds().getSouthEast().lat);
-            console.log(Hamburg_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-
-        /*Mecklenburg*/
-        Mecklenburg_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());
-        });
-
-        Mecklenburg_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());
-        });
-
-        Mecklenburg_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());
+        Mecklenburg_polygon.on('drag',function (e) {Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());});
+        Mecklenburg_polygon.on('dragstart',function (e) {Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());});
+        Mecklenburg_polygon.on('dragend',function (e) {Mecklenburg_overlay.setBounds(Mecklenburg_polygon.getBounds());
             if(Number(Mecklenburg_polygon.getBounds().getNorthWest().lat)<54.822 && Number(Mecklenburg_polygon.getBounds().getSouthEast().lng)<14.731
                 &&Number(Mecklenburg_polygon.getBounds().getSouthEast().lat)>52.929 && Number(Mecklenburg_polygon.getBounds().getNorthWest().lng)>10.343)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Mecklenburg',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            { swal({ position: 'top-end', text: 'Mecklenburg', icon:"success", buttons: false, timer: 1000});
                 Mecklenburg_overlay.setBounds(Mecklenburg.getBounds());
                 Mecklenburg_polygon.dragging.disable();
                 mymap.removeLayer(Mecklenburg);
-                Mecklenburg_polygon.setLatLngs(temp);
-            }
+                Mecklenburg_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Mecklenburg_polygon.getBounds().getNorthWest().lat);
-            console.log(Mecklenburg_polygon.getBounds().getSouthEast().lng);
-            console.log(Mecklenburg_polygon.getBounds().getSouthEast().lat);
-            console.log(Mecklenburg_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-        /*Bremen*/
-        Bremen_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Bremen_overlay.setBounds(Bremen_polygon.getBounds());
-        });
-
-        Bremen_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Bremen_overlay.setBounds(Bremen_polygon.getBounds());
-        });
-
-        Bremen_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Bremen_overlay.setBounds(Bremen_polygon.getBounds());
+        Bremen_polygon.on('drag',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
+        Bremen_polygon.on('dragstart',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());});
+        Bremen_polygon.on('dragend',function (e) {Bremen_overlay.setBounds(Bremen_polygon.getBounds());
             if(Number(Bremen_polygon.getBounds().getNorthWest().lat)<53.662 && Number(Bremen_polygon.getBounds().getSouthEast().lng)<9.127
                 &&Number(Bremen_polygon.getBounds().getSouthEast().lat)>52.961 && Number(Bremen_polygon.getBounds().getNorthWest().lng)>8.382)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Bremen',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Bremen', icon:"success", buttons: false, timer: 1000});
                 Bremen_overlay.setBounds(Bremen.getBounds());
                 Bremen_polygon.dragging.disable();
                 mymap.removeLayer(Bremen);
-                Bremen_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Bremen_polygon.getBounds().getNorthWest().lat);
-            console.log(Bremen_polygon.getBounds().getSouthEast().lng);
-            console.log(Bremen_polygon.getBounds().getSouthEast().lat);
-            console.log(Bremen_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Bremen_polygon.setLatLngs(temp);}});
 
-        });
-
-
-        /*Niedersachsen*/
-        Niedersachsen_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());
-        });
-
-        Niedersachsen_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());
-        });
-
-        Niedersachsen_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());
+        Niedersachsen_polygon.on('drag',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
+        Niedersachsen_polygon.on('dragstart',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());});
+        Niedersachsen_polygon.on('dragend',function (e) {Niedersachsen_overlay.setBounds(Niedersachsen_polygon.getBounds());
             if(Number(Niedersachsen_polygon.getBounds().getNorthWest().lat)<54.081 && Number(Niedersachsen_polygon.getBounds().getSouthEast().lng)<11.864
                 &&Number(Niedersachsen_polygon.getBounds().getSouthEast().lat)>51.151 && Number(Niedersachsen_polygon.getBounds().getNorthWest().lng)>6.372)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Niedersachsen',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Niedersachsen', icon:"success", buttons: false, timer: 1000});
                 Niedersachsen_overlay.setBounds(Nieder_spare.getBounds());
                 Niedersachsen_polygon.dragging.disable();
                 mymap.removeLayer(Niedersachsen);
-                Niedersachsen_polygon.setLatLngs(temp);
-            }
+                Niedersachsen_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Niedersachsen_polygon.getBounds().getNorthWest().lat);
-            console.log(Niedersachsen_polygon.getBounds().getSouthEast().lng);
-            console.log(Niedersachsen_polygon.getBounds().getSouthEast().lat);
-            console.log(Niedersachsen_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-
-        /*Hessen*/
-        Hessen_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Hessen_overlay.setBounds(Hessen_polygon.getBounds());
-        });
-
-        Hessen_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Hessen_overlay.setBounds(Hessen_polygon.getBounds());
-        });
-
-        Hessen_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Hessen_overlay.setBounds(Hessen_polygon.getBounds());
+        Hessen_polygon.on('drag',function (e) {Hessen_overlay.setBounds(Hessen_polygon.getBounds());});
+        Hessen_polygon.on('dragstart',function (e) {Hessen_overlay.setBounds(Hessen_polygon.getBounds());});
+        Hessen_polygon.on('dragend',function (e) {Hessen_overlay.setBounds(Hessen_polygon.getBounds());
             if(Number(Hessen_polygon.getBounds().getNorthWest().lat)<51.777 && Number(Hessen_polygon.getBounds().getSouthEast().lng)<10.507
                 &&Number(Hessen_polygon.getBounds().getSouthEast().lat)>49.282 && Number(Hessen_polygon.getBounds().getNorthWest().lng)>7.511)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Hessen',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Hessen', icon:"success", buttons: false, timer: 1000});
                 Hessen_overlay.setBounds(Hessen.getBounds());
                 Hessen_polygon.dragging.disable();
                 mymap.removeLayer(Hessen);
-                Hessen_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Hessen_polygon.getBounds().getNorthWest().lat);
-            console.log(Hessen_polygon.getBounds().getSouthEast().lng);
-            console.log(Hessen_polygon.getBounds().getSouthEast().lat);
-            console.log(Hessen_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Hessen_polygon.setLatLngs(temp);}});
 
-        });
-
-
-        /*Thueringen*/
-        Thueringen_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());
-        });
-
-        Thueringen_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());
-        });
-
-        Thueringen_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());
+        Thueringen_polygon.on('drag',function (e) {Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());});
+        Thueringen_polygon.on('dragstart',function (e) {Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());});
+        Thueringen_polygon.on('dragend',function (e) {Thueringen_overlay.setBounds(Thueringen_polygon.getBounds());
             if(Number(Thueringen_polygon.getBounds().getNorthWest().lat)<51.758 && Number(Thueringen_polygon.getBounds().getSouthEast().lng)<12.873
                 &&Number(Thueringen_polygon.getBounds().getSouthEast().lat)>50.073 && Number(Thueringen_polygon.getBounds().getNorthWest().lng)>9.624)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Thueringen',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Thueringen', icon:"success",buttons: false, timer: 1000});
                 Thueringen_overlay.setBounds(Thueringen.getBounds());
                 Thueringen_polygon.dragging.disable();
                 mymap.removeLayer(Thueringen);
-                Thueringen_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Thueringen_polygon.getBounds().getNorthWest().lat);
-            console.log(Thueringen_polygon.getBounds().getSouthEast().lng);
-            console.log(Thueringen_polygon.getBounds().getSouthEast().lat);
-            console.log(Thueringen_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
+                Thueringen_polygon.setLatLngs(temp);}});
 
 
-        /*Sachsen*/
-        Sachsen_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());
-        });
-
-        Sachsen_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());
-        });
-
-        Sachsen_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());
+        Sachsen_polygon.on('drag',function (e) {Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());});
+        Sachsen_polygon.on('dragstart',function (e) {Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());});
+        Sachsen_polygon.on('dragend',function (e) {Sachsen_overlay.setBounds(Sachsen_polygon.getBounds());
             if(Number(Sachsen_polygon.getBounds().getNorthWest().lat)<51.825 && Number(Sachsen_polygon.getBounds().getSouthEast().lng)<15.299
                 &&Number(Sachsen_polygon.getBounds().getSouthEast().lat)>49.991 && Number(Sachsen_polygon.getBounds().getNorthWest().lng)>11.662)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Sachsen',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Sachsen', icon:"success", buttons: false, timer: 1000});
                 Sachsen_overlay.setBounds(Sachsen.getBounds());
                 Sachsen_polygon.dragging.disable();
                 mymap.removeLayer(Sachsen);
-                Sachsen_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Sachsen_polygon.getBounds().getNorthWest().lat);
-            console.log(Sachsen_polygon.getBounds().getSouthEast().lng);
-            console.log(Sachsen_polygon.getBounds().getSouthEast().lat);
-            console.log(Sachsen_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Sachsen_polygon.setLatLngs(temp);}});
 
-        });
-
-
-        /*NRW*/
-        NRW_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            NRW_overlay.setBounds(NRW_polygon.getBounds());
-        });
-
-        NRW_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            NRW_overlay.setBounds(NRW_polygon.getBounds());
-        });
-
-        NRW_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            NRW_overlay.setBounds(NRW_polygon.getBounds());
+        NRW_polygon.on('drag',function (e) {NRW_overlay.setBounds(NRW_polygon.getBounds());});
+        NRW_polygon.on('dragstart',function (e) {NRW_overlay.setBounds(NRW_polygon.getBounds());});
+        NRW_polygon.on('dragend',function (e) {NRW_overlay.setBounds(NRW_polygon.getBounds());
             if(Number(NRW_polygon.getBounds().getNorthWest().lat)<52.712 && Number(NRW_polygon.getBounds().getSouthEast().lng)<9.841
                 &&Number(NRW_polygon.getBounds().getSouthEast().lat)>50.085 && Number(NRW_polygon.getBounds().getNorthWest().lng)>5.413)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'NRW',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'NRW', icon:"success", buttons: false, timer: 1000});
                 NRW_overlay.setBounds(NRW_spare.getBounds());
                 NRW_polygon.dragging.disable();
                 mymap.removeLayer(NRW);
-                NRW_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(NRW_polygon.getBounds().getNorthWest().lat);
-            console.log(NRW_polygon.getBounds().getSouthEast().lng);
-            console.log(NRW_polygon.getBounds().getSouthEast().lat);
-            console.log(NRW_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                NRW_polygon.setLatLngs(temp);}});
 
-        });
-
-        /*Bayern*/
-        Bayern_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Bayern_overlay.setBounds(Bayern_polygon.getBounds());
-        });
-
-        Bayern_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Bayern_overlay.setBounds(Bayern_polygon.getBounds());
-        });
-
-        Bayern_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Bayern_overlay.setBounds(Bayern_polygon.getBounds());
+        Bayern_polygon.on('drag',function (e) {Bayern_overlay.setBounds(Bayern_polygon.getBounds());});
+        Bayern_polygon.on('dragstart',function (e) {Bayern_overlay.setBounds(Bayern_polygon.getBounds());});
+        Bayern_polygon.on('dragend',function (e) {Bayern_overlay.setBounds(Bayern_polygon.getBounds());
             if(Number(Bayern_polygon.getBounds().getNorthWest().lat)<50.717 && Number(Bayern_polygon.getBounds().getSouthEast().lng)<14.204
                 &&Number(Bayern_polygon.getBounds().getSouthEast().lat)>47.059 && Number(Bayern_polygon.getBounds().getNorthWest().lng)>8.620)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Bayern',
-                    icon:'success',
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Bayern', icon:'success', buttons: false, timer: 1000});
                 Bayern_overlay.setBounds(Bayern_spare.getBounds());
                 Bayern_polygon.dragging.disable();
                 mymap.removeLayer(Bayern);
-                Bayern_polygon.setLatLngs(temp);
-            }
-            console.log(Bayern_polygon.getBounds());
-            console.log(Bayern_polygon.getBounds().getNorthWest().lat);
-            console.log(Bayern_polygon.getBounds().getSouthEast().lng);
-            console.log(Bayern_polygon.getBounds().getSouthEast().lat);
-            console.log(Bayern_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Bayern_polygon.setLatLngs(temp);}});
 
-        });
-
-
-        /*Rheinland*/
-        Rheinland_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());
-        });
-
-        Rheinland_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());
-        });
-
-        Rheinland_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());
+        Rheinland_polygon.on('drag',function (e) {Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());});
+        Rheinland_polygon.on('dragstart',function (e) {Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());});
+        Rheinland_polygon.on('dragend',function (e) {Rheinland_overlay.setBounds(Rheinland_polygon.getBounds());
             if(Number(Rheinland_polygon.getBounds().getNorthWest().lat)<51.119 && Number(Rheinland_polygon.getBounds().getSouthEast().lng)<8.700
                 &&Number(Rheinland_polygon.getBounds().getSouthEast().lat)>48.783 && Number(Rheinland_polygon.getBounds().getNorthWest().lng)>5.733)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Rheinland',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({ position: 'top-end', text: 'Rheinland', icon:"success", buttons: false, timer: 1000});
                 Rheinland_overlay.setBounds(Rheinland.getBounds());
                 Rheinland_polygon.dragging.disable();
                 mymap.removeLayer(Rheinland);
-                Rheinland_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Rheinland_polygon.getBounds().getNorthWest().lat);
-            console.log(Rheinland_polygon.getBounds().getSouthEast().lng);
-            console.log(Rheinland_polygon.getBounds().getSouthEast().lat);
-            console.log(Rheinland_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Rheinland_polygon.setLatLngs(temp);}});
 
-        });
-
-
-        /*Berlin*/
-        Berlin_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Berlin_overlay.setBounds(Berlin_polygon.getBounds());
-        });
-
-        Berlin_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Berlin_overlay.setBounds(Berlin_polygon.getBounds());
-        });
-
-        Berlin_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Berlin_overlay.setBounds(Berlin_polygon.getBounds());
+        Berlin_polygon.on('drag',function (e) {Berlin_overlay.setBounds(Berlin_polygon.getBounds());});
+        Berlin_polygon.on('dragstart',function (e) {Berlin_overlay.setBounds(Berlin_polygon.getBounds());});
+        Berlin_polygon.on('dragend',function (e) {Berlin_overlay.setBounds(Berlin_polygon.getBounds());
             if(Number(Berlin_polygon.getBounds().getNorthWest().lat)<52.726 && Number(Berlin_polygon.getBounds().getSouthEast().lng)<13.834
                 &&Number(Berlin_polygon.getBounds().getSouthEast().lat)>52.281 && Number(Berlin_polygon.getBounds().getNorthWest().lng)>12.976)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Berlin',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Berlin', icon:"success", buttons: false, timer: 1000});
                 Berlin_overlay.setBounds(Berlin.getBounds());
                 Berlin_polygon.dragging.disable();
                 mymap.removeLayer(Berlin);
-                Berlin_polygon.setLatLngs(temp);
-            }
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Berlin_polygon.getBounds().getNorthWest().lat);
-            console.log(Berlin_polygon.getBounds().getSouthEast().lng);
-            console.log(Berlin_polygon.getBounds().getSouthEast().lat);
-            console.log(Berlin_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+                Berlin_polygon.setLatLngs(temp);}});
 
-        });
-
-        /*Brandenburg*/
-        Brandenburg_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());
-        });
-
-        Brandenburg_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());
-        });
-
-        Brandenburg_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());
+        Brandenburg_polygon.on('drag',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
+        Brandenburg_polygon.on('dragstart',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());});
+        Brandenburg_polygon.on('dragend',function (e) {Brandenburg_overlay.setBounds(Brandenburg_polygon.getBounds());
             if(Number(Brandenburg_polygon.getBounds().getNorthWest().lat)<53.733 && Number(Brandenburg_polygon.getBounds().getSouthEast().lng)<15.035
                 &&Number(Brandenburg_polygon.getBounds().getSouthEast().lat)>51.207 && Number(Brandenburg_polygon.getBounds().getNorthWest().lng)>10.819)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Brandenburg',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Brandenburg', icon:"success", buttons: false, timer: 1000});
                 Brandenburg_overlay.setBounds(Brandenburg_spare.getBounds());
                 Brandenburg_polygon.dragging.disable();
                 mymap.removeLayer(Brandenburg);
-                Brandenburg_polygon.setLatLngs(temp);
-            }
+                Brandenburg_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Brandenburg_polygon.getBounds().getNorthWest().lat);
-            console.log(Brandenburg_polygon.getBounds().getSouthEast().lng);
-            console.log(Brandenburg_polygon.getBounds().getSouthEast().lat);
-            console.log(Brandenburg_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
-
-        });
-
-        /*Sachsen_anhalt*/
-        Sachsen_Anhalt_polygon.on('drag',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());
-        });
-
-        Sachsen_Anhalt_polygon.on('dragstart',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-            Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());
-        });
-
-        Sachsen_Anhalt_polygon.on('dragend',function (e) {
-            //console.log(Schleswigpolygon.getBounds());
-
-            Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());
+        Sachsen_Anhalt_polygon.on('drag',function (e) {Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());});
+        Sachsen_Anhalt_polygon.on('dragstart',function (e) {Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());});
+        Sachsen_Anhalt_polygon.on('dragend',function (e) {Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt_polygon.getBounds());
             if(Number(Sachsen_Anhalt_polygon.getBounds().getNorthWest().lat)<53.150 && Number(Sachsen_Anhalt_polygon.getBounds().getSouthEast().lng)<13.404
                 &&Number(Sachsen_Anhalt_polygon.getBounds().getSouthEast().lat)>50.806 && Number(Sachsen_Anhalt_polygon.getBounds().getNorthWest().lng)>10.360)
-            {
-                swal({
-                    position: 'top-end',
-                    text: 'Sachsen_Anhalt',
-                    icon:"success",
-                    buttons: false,
-                    timer: 1000
-                });
+            {swal({position: 'top-end', text: 'Sachsen_Anhalt', icon:"success", buttons: false, timer: 1000});
                 Sachsen_Anhalt_overlay.setBounds(Sachsen_Anhalt.getBounds());
                 Sachsen_Anhalt_polygon.dragging.disable();
                 mymap.removeLayer(Sachsen_Anhalt);
-                Sachsen_Anhalt_polygon.setLatLngs(temp);
-            }
+                Sachsen_Anhalt_polygon.setLatLngs(temp);}});
 
-            //console.log(Schleswigpolygon.getBounds());
-            console.log(Sachsen_Anhalt_polygon.getBounds().getNorthWest().lat);
-            console.log(Sachsen_Anhalt_polygon.getBounds().getSouthEast().lng);
-            console.log(Sachsen_Anhalt_polygon.getBounds().getSouthEast().lat);
-            console.log(Sachsen_Anhalt_polygon.getBounds().getNorthWest().lng);
-            console.log("------------------------");
+        /*----------------------------EU-Initial-------------------------------*/
+        Deutschlandpoly_array=[[49.93539410727762,-22.9183387756349], [57.201008756008505,-22.9183387756349],
+            [57.201008756008505,-13.67068290710463], [49.93539410727762,-13.67068290710463]];
+        Italypoly_array=[[47.16979875619434,28.989258706569657], [56.01475977456154,28.989258706569657],
+            [56.01475977456154,41.29394888877868], [47.16979875619434,41.29394888877868]];
+        Maltapoly_array=[[44.13228500143385,31.618652343749975], [44.478217280514876,31.618652343749975],
+            [44.478217280514876,32.18261763453481], [44.13228500143385,32.18261763453481]];
+        Portugalpoly_array=[[59.9916606429098,35.00976651906964], [63.27976926782188,35.00976651906964],
+            [63.27976926782188,38.42285200953481], [59.9916606429098,38.42285200953481]];
+        Spainpoly_array=[[39.10732984426001,34.5410156249999], [46.709735944071596,34.5410156249999],
+            [46.709735944071596,48.57422053813923], [39.10732984426001,48.57422053813923]];
+        Greecepoly_array=[[54.9607962644227,35.712891519069636], [59.90363101350112,35.712891519069636],
+            [59.90363101350112,44.73632812499997], [54.9607962644227,44.73632812499997]];
+        Cypruspoly_array=[[62.04213770379771,50.77880859374988], [62.75472592723191,50.77880859374988],
+            [62.75472592723191,53.28369140624987], [62.04213770379771,53.28369140624987]];
+        Francepoly_array=[[62.76143081917503,30.820312947034587], [68.66188543468544,30.820312947034587],
+            [68.66188543468544,45.64453214406949], [62.76143081917503,45.64453214406949]];
+        Bulgariapoly_array=[[56.52717914270987,28.959960937499922], [58.768200159239676,28.959960937499922],
+            [58.768200159239676,35.449219644069586], [56.52717914270987,35.449219644069586]];
+        Estoniapoly_array=[[46.76996843356982,41.83593749999999], [49.73394780638437,41.83593749999999],
+            [49.73394780638437,48.31054866313934], [46.76996843356982,48.31054866313934]];
+        Latviapoly_array=[[34.89794587997245, 35.48583984374994], [38.49086085153679, 35.48583984374994],
+            [38.49086085153679, 42.89795011281962], [34.89794587997245, 42.89795011281962]];
+        Lithuaniapoly_array=[[58.36331429175086,45.27832210063919], [60.96599838162175,45.27832210063919],
+            [60.96599838162175,51.694337725639194], [58.36331429175086,51.694337725639194]];
+        Finlandpoly_array=[[38.06539235133267,48.1640624999999], [55.128649068488954,48.1640624999999],
+            [55.128649068488954,60.76171964406957], [38.06539235133267,60.76171964406957]];
+        Romaniapoly_array=[[64.2827595282341,46.20849609374983], [67.12444337957778,46.20849609374983],
+            [67.12444337957778,55.8618173003195], [64.2827595282341,55.8618173003195]];
+        Denmaikpoly_array=[[51.289405902716815,43.007813394069636], [54.80068486732238,43.007813394069636],
+            [54.80068486732238,47.7832035720348], [51.289405902716815,47.7832035720348]];
+        Belgiumpoly_array=[[55.48715388372055,47.966308593749964], [57.318612163019004,47.966308593749964],
+            [57.318612163019004,52.053222656249964], [55.48715388372055,52.053222656249964]];
+        Irelandpoly_array=[[66.26022281807587,-14.491653442383042], [63.467077583306825,-14.491653442383042],
+            [63.467077583306825,-9.706420898437727], [66.26022281807587,-9.706420898437727]];
+        UKpoly_array=[[51.46170806631929,-20.78201293945341], [37.30737562795691,-20.78201293945341],
+            [37.30737562795691,-11.096878051758088], [51.46170806631929,-11.096878051758088]];
+        Austriapoly_array=[[60.15415086696475,-18.6314392089844], [58.12540739611359,-18.6314392089844],
+            [58.12540739611359,-10.94169616699221], [60.15415086696475,-10.94169616699221]];
+        Netherlandpoly_array=[[62.59191850373101,-21.34849548339856], [60.33816330486975,-21.34849548339856],
+            [60.33816330486975,-17.15171813964856], [62.59191850373101,-17.15171813964856]];
+        Luxenburgpoly_array=[[65.583165588584,-6.355934143066525], [65.00881990883812,-6.355934143066525],
+            [65.00881990883812,-5.113792419433712], [65.583165588584,-5.113792419433712]];
+        Swedenpoly_array=[[68.98032174180835,55.65330505371088], [54.23393231264943,55.65330505371088],
+            [54.23393231264943,72.55783081054683], [68.98032174180835,72.55783081054683]];
+        Sloveniapoly_array=[[67.72740946164645,-6.0774993896484375], [66.6080373146333,-6.0774993896484375],
+            [66.6080373146333,-2.8207397460937482], [67.72740946164645,-2.8207397460937482]];
+        Hungarypoly_array=[[64.46480327905698,-9.771652221679748], [62.49202773042693,-9.771652221679748],
+            [62.49202773042693,-3.277359008789121], [64.46480327905698,-3.277359008789121]];
+        Czechiapoly_array=[[62.31190464190223,-13.305816650390737], [60.45772564363175,-13.305816650390737],
+            [60.45772564363175,-6.2718200683594825], [62.31190464190223,-6.2718200683594825]];
+        Slovakiapoly_array=[[47.3775458137917,-12.348976135253942], [45.3240304030886,-12.348976135253942],
+            [45.3240304030886,-6.558837890625035], [47.3775458137917,-6.558837890625035]];
+        Polandpoly_array=[[66.44996617603819,-3.224143981933682], [62.1691886725781,-3.224143981933682],
+            [62.1691886725781,7.010650634765532], [66.44996617603819,7.010650634765532]];
+        Croatiapoly_array=[[68.6533059210651,2.18559265136716], [66.5892199876693,2.18559265136716],
+            [66.5892199876693,8.180694580078093], [68.6533059210651,8.180694580078093]];
 
-        });
+        /*-------------------------------------Europe Union-Background-------------------------------*/
 
-        /*--------------------------Deutschland---------------------------*/
+        Ireland = L.imageOverlay('img-EU/Ireland.png',[[55.39967,-10.80284],[51.33054,-5.86644]],{opacity:1});
+        UK = L.imageOverlay('img-EU/UK.png',[[60.93439,-8.40180],[49.85510,3.23311]],{opacity:1});
+        Austria = L.imageOverlay('img-EU/Austria.png',[[49.08250,9.50115],[46.34658,17.20256]],{opacity:1});
+        Belgium = L.imageOverlay('img-EU/Belgium.png',[[51.52291,2.51672],[49.50668,6.42785]],{opacity:1});
+        Denmaik = L.imageOverlay('img-EU/Denmaik.png',[[57.79589,8.02885],[54.52946,12.70916]],{opacity:1});
+        Deutschland = L.imageOverlay('img-EU/Deutschland.png',[[55.08081,5.81999],[47.22000,15.08901]],{opacity:1});
+        Netherland = L.imageOverlay('img-EU/Netherland.png',[[53.52636,3.34687],[50.75692,7.21406]],{opacity:1});
+        Luxenburg = L.imageOverlay('img-EU/Luxenburg.png',[[50.18446,5.72073],[49.44570,6.51175]],{opacity:1});
+        Hungary = L.imageOverlay('img-EU/Hungary.png',[[48.60508,16.11591],[45.73038,22.96546]],{opacity:1});
+        Slovakia = L.imageOverlay('img-EU/Slovakia.png',[[49.62573,16.81903],[47.70480,22.59784]],{opacity:1});
+        Poland = L.imageOverlay('img-EU/Poland.png',[[54.86267,14.05039],[48.99806,24.15781]],{opacity:1});
+        Slovenia = L.imageOverlay('img-EU/Slovenia.png',[[46.87579,13.35486],[45.40242,16.66695]],{opacity:1});
+        Croatia = L.imageOverlay('img-EU/croatia.png',[[46.55371,13.50888],[42.35481,19.45953]],{opacity:1});
+        Czechia = L.imageOverlay('img-EU/C zechia.png',[[51.07226,12.10480],[48.55835,18.83643]],{opacity:1});
+        Romania = L.imageOverlay('img-EU/romania.png',[[48.26397,20.19226],[43.60243,29.63958]],{opacity:1});
+        Sweden = L.imageOverlay('img-EU/sweden.png',[[69.13583,9.26957],[55.12188,25.37861]],{opacity:1});
+        Italy = L.imageOverlay('img-EU/Italy.png',[[47.18971,6.30003],[36.45664,18.88465]],{opacity:1});
+        Bulgaria = L.imageOverlay('img-EU/Bulgaria.png',[[44.36957,22.25830],[41.06279,28.75023]],{opacity:1});
+        Cyprus = L.imageOverlay('img-EU/Cyprus.png',[[35.76326,32.17994],[34.47939,34.66187]],{opacity:1});
+        Estonia =L.imageOverlay('img-EU/estonia.png',[[59.77533,21.68504],[57.38578,28.49954]],{opacity:1});
+        Finland =L.imageOverlay('img-EU/Finland.png',[[70.23290,19.19600],[59.69962,32.73119]],{opacity:1});
+        France = L.imageOverlay('img-EU/France.png',[[51.24034,-5.2200],[41.14865,9.99630]],{opacity:1});
+        Greece = L.imageOverlay('img-EU/Greece.png',[[41.93766,19.30080],[34.81380,28.57064]],{opacity:1});
+        Latvia = L.imageOverlay('img-EU/Latvia.png',[[58.11271,20.78613],[55.52863,28.41797]],{opacity:1});
+        Lithuania= L.imageOverlay('img-EU/Lithuania.png',[[56.55948,20.80205],[53.76170,26.96777]],{opacity:1});
+        Malta = L.imageOverlay('img-EU/Malta.png',[[36.09992,14.15955],[35.75691,14.61548]],{opacity:1});
+        Portugal = L.imageOverlay('img-EU/Portugal.png',[[42.23936,-9.79064],[36.80101,-5.60713]],{opacity:1});
+        Spain = L.imageOverlay('img-EU/spain.png',[[43.85037,-9.31895],[35.96969,4.36186]],{opacity:1});
+
+        /*-------------------------------------EU-imageBound--------------------------------*/
+
+        Croatia_imageBound = L.latLngBounds([Croatiapoly_array[0], Croatiapoly_array[2]]);
+        Poland_imageBound = L.latLngBounds([Polandpoly_array[0], Polandpoly_array[2]]);
+        Slovakia_imageBound = L.latLngBounds([Slovakiapoly_array[0], Slovakiapoly_array[2]]);
+        Hungary_imageBound = L.latLngBounds([Hungarypoly_array[0], Hungarypoly_array[2]]);
+        Czechia_imageBound = L.latLngBounds([Czechiapoly_array[0], Czechiapoly_array[2]]);
+        Sweden_imageBound = L.latLngBounds([Swedenpoly_array[0], Swedenpoly_array[2]]);
+        Slovenia_imageBound = L.latLngBounds([Sloveniapoly_array[0], Sloveniapoly_array[2]]);
+        Luxenburg_imageBound = L.latLngBounds([Luxenburgpoly_array[0], Luxenburgpoly_array[2]]);
+        Netherland_imageBound = L.latLngBounds([Netherlandpoly_array[0], Netherlandpoly_array[2]]);
+        Austria_imageBound = L.latLngBounds([Austriapoly_array[0], Austriapoly_array[2]]);
+        UK_imageBound = L.latLngBounds([UKpoly_array[0], UKpoly_array[2]]);
+        Ireland_imageBound = L.latLngBounds([Irelandpoly_array[0], Irelandpoly_array[2]]);
+        Belgium_imageBound = L.latLngBounds([Belgiumpoly_array[0], Belgiumpoly_array[2]]);
+        Denmaik_imageBound = L.latLngBounds([Denmaikpoly_array[0], Denmaikpoly_array[2]]);
+        Romania_imageBound = L.latLngBounds([Romaniapoly_array[0], Romaniapoly_array[2]]);
+        Finland_imageBound = L.latLngBounds([Finlandpoly_array[0], Finlandpoly_array[2]]);
+        Lithuania_imageBound = L.latLngBounds([Lithuaniapoly_array[0], Lithuaniapoly_array[2]]);
+        Latvia_imageBound = L.latLngBounds([Latviapoly_array[0], Latviapoly_array[2]]);
+        Estonia_imageBound = L.latLngBounds([Estoniapoly_array[0], Estoniapoly_array[2]]);
+        Bulgaria_imageBound = L.latLngBounds([Bulgariapoly_array[0], Bulgariapoly_array[2]]);
+        France_imageBound = L.latLngBounds([Francepoly_array[0], Francepoly_array[2]]);
+        Cyprus_imageBound = L.latLngBounds([Cypruspoly_array[0], Cypruspoly_array[2]]);
+        Greece_imageBound = L.latLngBounds([Greecepoly_array[0], Greecepoly_array[2]]);
+        Spain_imageBound = L.latLngBounds([Spainpoly_array[0], Spainpoly_array[2]]);
+        Malta_imageBound = L.latLngBounds([Maltapoly_array[0], Maltapoly_array[2]]);
+        Italy_imageBound = L.latLngBounds([Italypoly_array[0], Italypoly_array[2]]);
+        Portugal_imageBound = L.latLngBounds([Portugalpoly_array[0], Portugalpoly_array[2]]);
+        Deutschland_imageBound=L.latLngBounds([Deutschlandpoly_array[0],Deutschlandpoly_array[2]]);
+
+        /*-------------------------------------EU-color-------------------------------*/
+        Croatia_overlay = L.imageOverlay(('img-EU-color/Croatia.png'),Croatia_imageBound,{opacity:1, interactive:true});
+        Poland_overlay = L.imageOverlay(('img-EU-color/Poland.png'),Poland_imageBound,{opacity:1, interactive:true});
+        Slovakia_overlay = L.imageOverlay(('img-EU-color/Slovakia.png'),Slovakia_imageBound,{opacity:1, interactive:true});
+        Hungary_overlay = L.imageOverlay(('img-EU-color/Hungary.png'),Hungary_imageBound,{opacity:1, interactive:true});
+        Czechia_overlay = L.imageOverlay(('img-EU-color/C zechia.png'),Czechia_imageBound,{opacity:1, interactive:true});
+        Sweden_overlay = L.imageOverlay(('img-EU-color/Sweden.png'),Sweden_imageBound,{opacity:1, interactive:true});
+        Slovenia_overlay = L.imageOverlay(('img-EU-color/Slovenia.png'),Slovenia_imageBound,{opacity:1, interactive:true});
+        Luxenburg_overlay = L.imageOverlay(('img-EU-color/Luxenburg.png'),Luxenburg_imageBound,{opacity:1, interactive:true});
+        Netherland_overlay = L.imageOverlay(('img-EU-color/Netherland.png'),Netherland_imageBound,{opacity:1, interactive:true});
+        Austria_overlay = L.imageOverlay(('img-EU-color/Austria.png'),Austria_imageBound,{opacity:1, interactive:true});
+        UK_overlay = L.imageOverlay(('img-EU-color/UK.png'),UK_imageBound,{opacity:1, interactive:true});
+        Ireland_overlay = L.imageOverlay(('img-EU-color/Ireland.png'),Ireland_imageBound,{opacity:1, interactive:true});
+        Belgium_overlayer = L.imageOverlay(('img-EU-color/Belgium.png'),Belgium_imageBound,{opacity:1, interactive:true});
+        Denmaik_overlayer = L.imageOverlay(('img-EU-color/Denmaik.png'),Denmaik_imageBound,{opacity:1, interactive:true});
+        Romania_overlayer = L.imageOverlay(('img-EU-color/romania.png'),Romania_imageBound,{opacity:1, interactive:true});
+        Finland_overlayer = L.imageOverlay(('img-EU-color/Finland.png'),Finland_imageBound,{opacity:1, interactive:true});
+        Lithuania_overlayer = L.imageOverlay(('img-EU-color/Lithuania.png'),Lithuania_imageBound,{opacity:1, interactive:true});
+        Latvia_overlayer = L.imageOverlay(('img-EU-color/Latvia.png'),Latvia_imageBound,{opacity:1, interactive:true});
+        Estonia_overlayer = L.imageOverlay(('img-EU-color/Estonia.png'),Estonia_imageBound,{opacity:1, interactive:true});
+        Bulgaria_overlayer = L.imageOverlay(('img-EU-color/Bulgaria.png'),Bulgaria_imageBound,{opacity:1, interactive:true});
+        France_overlayer = L.imageOverlay(('img-EU-color/France.png'),  France_imageBound,{opacity:1, interactive:true});
+        Cyprus_overlayer = L.imageOverlay(('img-EU-color/Cyprus.png'),Cyprus_imageBound,{opacity:1, interactive:true});
+        Greece_overlayer = L.imageOverlay(('img-EU-color/Greece.png'), Greece_imageBound,{opacity:1, interactive:true});
+        Spain_overlayer = L.imageOverlay(('img-EU-color/Spain.png'),Spain_imageBound,{opacity:1, interactive:true});
+        Malta_overlayer = L.imageOverlay(('img-EU-color/Malta.png'),Malta_imageBound,{opacity:1, interactive:true});
+        Italy_overlayer = L.imageOverlay(('img-EU-color/Italy.png'),Italy_imageBound,{opacity:1, interactive:true});
+        Portugal_overlayer = L.imageOverlay(('img-EU-color/Portugal.png'),  Portugal_imageBound,{opacity:1, interactive:true});
+        Deutschland_overlay=L.imageOverlay(('img-EU-color/Deutschland.png'),Deutschland_imageBound,{opacity:1, interactive:true});
+
+        /*-------------------------------------EU-polygon-------------------------------*/
+
+        Croatia_polygon = L.polygon((Croatiapoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Poland_polygon = L.polygon((Polandpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Slovakia_polygon = L.polygon((Slovakiapoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Hungary_polygon = L.polygon((Hungarypoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Czechia_polygon = L.polygon((Czechiapoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Sweden_polygon = L.polygon((Swedenpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Slovenia_polygon = L.polygon((Sloveniapoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Luxenburg_polygon = L.polygon((Luxenburgpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Netherland_polygon = L.polygon((Netherlandpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Austria_polygon = L.polygon((Austriapoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        UK_polygon = L.polygon((UKpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Ireland_polygon = L.polygon((Irelandpoly_array), {draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        Belgium_polygon = L.polygon((Belgiumpoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Denmaik_polygon = L.polygon((Denmaikpoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Romania_polygon = L.polygon((Romaniapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Finland_polygon = L.polygon((Finlandpoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Lithuania_polygon = L.polygon((Lithuaniapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Latvia_polygon = L.polygon((Latviapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Estonia_polygon = L.polygon((Estoniapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Bulgaria_polygon = L.polygon((Bulgariapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        France_polygon = L.polygon((  Francepoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Cyprus_polygon = L.polygon((Cypruspoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Greece_polygon = L.polygon((Greecepoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Spain_polygon = L.polygon((Spainpoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Malta_polygon = L.polygon((Maltapoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Italy_polygon = L.polygon((Italypoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Portugal_polygon = L.polygon((Portugalpoly_array),{draggable: true, opacity:0, fillOpacity:0}).addTo(mymap);
+        Deutschland_polygon = L.polygon((Deutschlandpoly_array),{draggable: true, opacity: 0, fillOpacity: 0}).addTo(mymap);
+        /*-------------------------------------EU-pictures-drag-------------------------------*/
+
+        Croatia_polygon.on('drag',function (e) {Croatia_overlay.setBounds(Croatia_polygon.getBounds());});
+        Croatia_polygon.on('dragstart',function (e) {Croatia_overlay.setBounds(Croatia_polygon.getBounds());});
+        Croatia_polygon.on('dragend',function (e) {Croatia_overlay.setBounds(Croatia_polygon.getBounds());
+            if(Number(Croatia_polygon.getBounds().getNorthWest().lat)<46.73 && Number(Croatia_polygon.getBounds().getSouthEast().lng)<20.133
+                &&Number(Croatia_polygon.getBounds().getSouthEast().lat)>42.239 && Number(Croatia_polygon.getBounds().getNorthWest().lng)>13.084)
+            {swal({position: 'top-end', icon:"success", text: 'Croatia', buttons: false, timer: 1000});
+                Croatia_overlay.setBounds(Croatia.getBounds());
+                Croatia_polygon.dragging.disable();
+                mymap.removeLayer(Croatia);
+                Croatia_polygon.setLatLngs(temp);}});
+
+        Poland_polygon.on('drag',function (e) {Poland_overlay.setBounds(Poland_polygon.getBounds());});
+        Poland_polygon.on('dragstart',function (e) {Poland_overlay.setBounds(Poland_polygon.getBounds());});
+        Poland_polygon.on('dragend',function (e) {Poland_overlay.setBounds(Poland_polygon.getBounds());
+            if(Number(Poland_polygon.getBounds().getNorthWest().lat)<55.712 && Number(Poland_polygon.getBounds().getSouthEast().lng)<25.819
+                &&Number(Poland_polygon.getBounds().getSouthEast().lat)>48.112 && Number(Poland_polygon.getBounds().getNorthWest().lng)>13.211)
+            {swal({position: 'top-end', icon:"success", text: 'Poland', buttons: false, timer: 1000});
+                Poland_overlay.setBounds(Poland.getBounds());
+                Poland_polygon.dragging.disable();
+                mymap.removeLayer(Poland);
+                Poland_polygon.setLatLngs(temp);}});
+
+        Slovakia_polygon.on('drag',function (e) {Slovakia_overlay.setBounds(Slovakia_polygon.getBounds());});
+        Slovakia_polygon.on('dragstart',function (e) {Slovakia_overlay.setBounds(Slovakia_polygon.getBounds());});
+        Slovakia_polygon.on('dragend',function (e) {Slovakia_overlay.setBounds(Slovakia_polygon.getBounds());
+            if(Number(Slovakia_polygon.getBounds().getNorthWest().lat)<50.016 && Number(Slovakia_polygon.getBounds().getSouthEast().lng)<22.994
+                &&Number(Slovakia_polygon.getBounds().getSouthEast().lat)>47.296 && Number(Slovakia_polygon.getBounds().getNorthWest().lng)>16.171)
+            {swal({position: 'top-end', icon:"success", text: 'Slovakia', buttons: false, timer: 1000});
+                Slovakia_overlay.setBounds(Slovakia.getBounds());
+                Slovakia_polygon.dragging.disable();
+                mymap.removeLayer(Slovakia);
+                Slovakia_polygon.setLatLngs(temp);}});
+
+        Hungary_polygon.on('drag',function (e) {Hungary_overlay.setBounds(Hungary_polygon.getBounds());});
+        Hungary_polygon.on('dragstart',function (e) {Hungary_overlay.setBounds(Hungary_polygon.getBounds());});
+        Hungary_polygon.on('dragend',function (e) {Hungary_overlay.setBounds(Hungary_polygon.getBounds());
+            if(Number(Hungary_polygon.getBounds().getNorthWest().lat)<49.083 && Number(Hungary_polygon.getBounds().getSouthEast().lng)<23.529
+                &&Number(Hungary_polygon.getBounds().getSouthEast().lat)>45.367 && Number(Hungary_polygon.getBounds().getNorthWest().lng)>15.365)
+            {swal({position: 'top-end', icon:"success", text: 'Hungary', buttons: false, timer: 1000});
+                Hungary_overlay.setBounds(Hungary.getBounds());
+                Hungary_polygon.dragging.disable();
+                mymap.removeLayer(Hungary);
+                Hungary_polygon.setLatLngs(temp);}});
+
+        Czechia_polygon.on('drag',function (e) {Czechia_overlay.setBounds(Czechia_polygon.getBounds());});
+        Czechia_polygon.on('dragstart',function (e) {Czechia_overlay.setBounds(Czechia_polygon.getBounds());});
+        Czechia_polygon.on('dragend',function (e) {Czechia_overlay.setBounds(Czechia_polygon.getBounds());
+            if(Number(Czechia_polygon.getBounds().getNorthWest().lat)<51.485 && Number(Czechia_polygon.getBounds().getSouthEast().lng)<19.919
+                &&Number(Czechia_polygon.getBounds().getSouthEast().lat)>48.137 && Number(Czechia_polygon.getBounds().getNorthWest().lng)>10.995)
+            {swal({position: 'top-end', icon:"success", text: 'Czechia', buttons: false, timer: 1000});
+                Czechia_overlay.setBounds(Czechia.getBounds());
+                Czechia_polygon.dragging.disable();
+                mymap.removeLayer(Czechia);
+                Czechia_polygon.setLatLngs(temp);}});
+
+        Sweden_polygon.on('drag',function (e) {Sweden_overlay.setBounds(Sweden_polygon.getBounds());});
+        Sweden_polygon.on('dragstart',function (e) {Sweden_overlay.setBounds(Sweden_polygon.getBounds());});
+        Sweden_polygon.on('dragend',function (e) {Sweden_overlay.setBounds(Sweden_polygon.getBounds());
+            if(Number(Sweden_polygon.getBounds().getNorthWest().lat)<69.754 && Number(Sweden_polygon.getBounds().getSouthEast().lng)<26.854
+                &&Number(Sweden_polygon.getBounds().getSouthEast().lat)>53.872 && Number(Sweden_polygon.getBounds().getNorthWest().lng)>7.665)
+            {swal({position: 'top-end', icon:"success", text: 'Sweden', buttons: false, timer: 1000});
+                Sweden_overlay.setBounds(Sweden.getBounds());
+                Sweden_polygon.dragging.disable();
+                mymap.removeLayer(Sweden);
+                Sweden_polygon.setLatLngs(temp);}});
+
+        Slovenia_polygon.on('drag',function (e) {Slovenia_overlay.setBounds(Slovenia_polygon.getBounds());});
+        Slovenia_polygon.on('dragstart',function (e) {Slovenia_overlay.setBounds(Slovenia_polygon.getBounds());});
+        Slovenia_polygon.on('dragend',function (e) {Slovenia_overlay.setBounds(Slovenia_polygon.getBounds());
+            if(Number(Slovenia_polygon.getBounds().getNorthWest().lat)<47.251 && Number(Slovenia_polygon.getBounds().getSouthEast().lng)<17.042
+                &&Number(Slovenia_polygon.getBounds().getSouthEast().lat)>44.759 && Number(Slovenia_polygon.getBounds().getNorthWest().lng)>12.643)
+            {swal({position: 'top-end', icon:"success", text: 'Slovenia', buttons: false, timer: 1000});
+                Slovenia_overlay.setBounds(Slovenia.getBounds());
+                Slovenia_polygon.dragging.disable();
+                mymap.removeLayer(Slovenia);
+                Slovenia_polygon.setLatLngs(temp);}});
+
+        Luxenburg_polygon.on('drag',function (e) {Luxenburg_overlay.setBounds(Luxenburg_polygon.getBounds());});
+        Luxenburg_polygon.on('dragstart',function (e) {Luxenburg_overlay.setBounds(Luxenburg_polygon.getBounds());});
+        Luxenburg_polygon.on('dragend',function (e) {Luxenburg_overlay.setBounds(Luxenburg_polygon.getBounds());
+            if(Number(Luxenburg_polygon.getBounds().getNorthWest().lat)<50.425 && Number(Luxenburg_polygon.getBounds().getSouthEast().lng)<6.993
+                &&Number(Luxenburg_polygon.getBounds().getSouthEast().lat)>49.184 && Number(Luxenburg_polygon.getBounds().getNorthWest().lng)>5.333)
+            {swal({position: 'top-end', icon:"success", text: 'Luxenburg', buttons: false, timer: 1000});
+                Luxenburg_overlay.setBounds(Luxenburg.getBounds());
+                Luxenburg_polygon.dragging.disable();
+                mymap.removeLayer(Luxenburg);
+                Luxenburg_polygon.setLatLngs(temp);}});
+
+        Netherland_polygon.on('drag',function (e) {Netherland_overlay.setBounds(Netherland_polygon.getBounds());});
+        Netherland_polygon.on('dragstart',function (e) {Netherland_overlay.setBounds(Netherland_polygon.getBounds());});
+        Netherland_polygon.on('dragend',function (e) {Netherland_overlay.setBounds(Netherland_polygon.getBounds());
+            if(Number(Netherland_polygon.getBounds().getNorthWest().lat)<53.850 && Number(Netherland_polygon.getBounds().getSouthEast().lng)<7.985
+                &&Number(Netherland_polygon.getBounds().getSouthEast().lat)>50.471 && Number(Netherland_polygon.getBounds().getNorthWest().lng)>2.645)
+            {swal({position: 'top-end', icon:"success", text: 'Netherland', buttons: false, timer: 1000});
+                Netherland_overlay.setBounds(Netherland.getBounds());
+                Netherland_polygon.dragging.disable();
+                mymap.removeLayer(Netherland);
+                Netherland_polygon.setLatLngs(temp);}});
+
+        Austria_polygon.on('drag',function (e) {Austria_overlay.setBounds(Austria_polygon.getBounds());});
+        Austria_polygon.on('dragstart',function (e) {Austria_overlay.setBounds(Austria_polygon.getBounds());});
+        Austria_polygon.on('dragend',function (e) {Austria_overlay.setBounds(Austria_polygon.getBounds());
+            if(Number(Austria_polygon.getBounds().getNorthWest().lat)<49.270 && Number(Austria_polygon.getBounds().getSouthEast().lng)<17.930
+                &&Number(Austria_polygon.getBounds().getSouthEast().lat)>46.166 && Number(Austria_polygon.getBounds().getNorthWest().lng)>9.098)
+            {swal({position: 'top-end', icon:"success", text: 'Austria', buttons: false, timer: 1000});
+                Austria_overlay.setBounds(Austria.getBounds());
+                Austria_polygon.dragging.disable();
+                mymap.removeLayer(Austria);
+                Austria_polygon.setLatLngs(temp);}});
+
+        UK_polygon.on('drag',function (e) {UK_overlay.setBounds(UK_polygon.getBounds());});
+        UK_polygon.on('dragstart',function (e) {UK_overlay.setBounds(UK_polygon.getBounds());});
+        UK_polygon.on('dragend',function (e) {UK_overlay.setBounds(UK_polygon.getBounds());
+            if(Number(UK_polygon.getBounds().getNorthWest().lat)<61.318 && Number(UK_polygon.getBounds().getSouthEast().lng)<3.233
+                &&Number(UK_polygon.getBounds().getSouthEast().lat)>48.955 && Number(UK_polygon.getBounds().getNorthWest().lng)>-9.365)
+            {swal({position: 'top-end', icon:"success", text: 'UK', buttons: false, timer: 1000});
+                UK_overlay.setBounds(UK.getBounds());
+                UK_polygon.dragging.disable();
+                mymap.removeLayer(UK);
+                UK_polygon.setLatLngs(temp);}});
+
+        Ireland_polygon.on('drag',function (e) {Ireland_overlay.setBounds(Ireland_polygon.getBounds());});
+        Ireland_polygon.on('dragstart',function (e) {Ireland_overlay.setBounds(Ireland_polygon.getBounds());});
+        Ireland_polygon.on('dragend',function (e) {Ireland_overlay.setBounds(Ireland_polygon.getBounds());
+            if(Number(Ireland_polygon.getBounds().getNorthWest().lat)<55.569 && Number(Ireland_polygon.getBounds().getSouthEast().lng)<-5.575
+                &&Number(Ireland_polygon.getBounds().getSouthEast().lat)>51.285 && Number(Ireland_polygon.getBounds().getNorthWest().lng)>-11.063)
+            {swal({position: 'top-end', icon:"success", text: 'Ireland', buttons: false, timer: 1000});
+                Ireland_overlay.setBounds(Ireland.getBounds());
+                Ireland_polygon.dragging.disable();
+                mymap.removeLayer(Ireland);
+                Ireland_polygon.setLatLngs(temp);}});
+
+        Belgium_polygon.on('drag',function (e) {Belgium_overlayer.setBounds(Belgium_polygon.getBounds());});
+        Belgium_polygon.on('dragstart',function (e) {Belgium_overlayer.setBounds(Belgium_polygon.getBounds());});
+        Belgium_polygon.on('dragend',function (e) {Belgium_overlayer.setBounds(Belgium_polygon.getBounds());
+            if(Number(Belgium_polygon.getBounds().getNorthWest().lat)<52.52291 && Number(Belgium_polygon.getBounds().getSouthEast().lng)<7.42785
+                &&Number(Belgium_polygon.getBounds().getSouthEast().lat)>48.50668 && Number(Belgium_polygon.getBounds().getNorthWest().lng)>1.51672)
+            {swal({position: 'top-end', text: 'Belgium', icon:"success", buttons: false, timer: 1000});
+                Belgium_overlayer.setBounds(Belgium.getBounds());
+                Belgium_polygon.dragging.disable();
+                mymap.removeLayer(Belgium);
+                Belgium_polygon.setLatLngs(temp);}});
+
+        Denmaik_polygon.on('drag',function (e) {Denmaik_overlayer.setBounds(Denmaik_polygon.getBounds());});
+        Denmaik_polygon.on('dragstart',function (e) {Denmaik_overlayer.setBounds(Denmaik_polygon.getBounds());});
+        Denmaik_polygon.on('dragend',function (e) {Denmaik_overlayer.setBounds(Denmaik_polygon.getBounds());
+            if(Number(Denmaik_polygon.getBounds().getNorthWest().lat)<58.79589 && Number(Denmaik_polygon.getBounds().getSouthEast().lng)<13.70916
+                &&Number(Denmaik_polygon.getBounds().getSouthEast().lat)>53.52946 && Number(Denmaik_polygon.getBounds().getNorthWest().lng)>7.02885)
+            {swal({position: 'top-end', text: 'Denmaik', icon:"success", buttons: false, timer: 1000});
+                Denmaik_overlayer.setBounds(Denmaik.getBounds());
+                Denmaik_polygon.dragging.disable();
+                mymap.removeLayer(Denmaik);
+                Denmaik_polygon.setLatLngs(temp);}});
+
+
+        Romania_polygon.on('drag',function (e) {Romania_overlayer.setBounds(Romania_polygon.getBounds());});
+        Romania_polygon.on('dragstart',function (e) {Romania_overlayer.setBounds(Romania_polygon.getBounds());});
+        Romania_polygon.on('dragend',function (e) {Romania_overlayer.setBounds(Romania_polygon.getBounds());
+            if(Number(Romania_polygon.getBounds().getNorthWest().lat)<49.26397 && Number(Romania_polygon.getBounds().getSouthEast().lng)<30.63958
+                &&Number(Romania_polygon.getBounds().getSouthEast().lat)>42.60243 && Number(Romania_polygon.getBounds().getNorthWest().lng)>19.19226)
+            {swal({position: 'top-end', text: 'Romania', icon:"success", buttons: false,timer: 1000});
+                Romania_overlayer.setBounds(Romania.getBounds());
+                Romania_polygon.dragging.disable();
+                mymap.removeLayer(Romania);
+                Romania_polygon.setLatLngs(temp);}});
+
+        Spain_polygon.on('drag',function (e) {Spain_overlayer.setBounds(Spain_polygon.getBounds());});
+        Spain_polygon.on('dragstart',function (e) {Spain_overlayer.setBounds(Spain_polygon.getBounds());});
+        Spain_polygon.on('dragend',function (e) {Spain_overlayer.setBounds(Spain_polygon.getBounds());
+            if(Number(Spain_polygon.getBounds().getNorthWest().lat)<45.09037 && Number(Spain_polygon.getBounds().getSouthEast().lng)<5.96186
+                &&Number(Spain_polygon.getBounds().getSouthEast().lat)>34.06969 && Number(Spain_polygon.getBounds().getNorthWest().lng)>-10.91895)
+            {swal({position: 'top-end', text: 'Spain', icon:"success", buttons: false, timer: 1000});
+                Spain_overlayer.setBounds(Spain.getBounds());
+                Spain_polygon.dragging.disable();
+                mymap.removeLayer(Spain);
+                Spain_polygon.setLatLngs(temp);}});
+
+        Finland_polygon.on('drag',function (e) {Finland_overlayer.setBounds(Finland_polygon.getBounds());});
+        Finland_polygon.on('dragstart',function (e) {Finland_overlayer.setBounds(Finland_polygon.getBounds());});
+        Finland_polygon.on('dragend',function (e) {Finland_overlayer.setBounds(Finland_polygon.getBounds());
+            if(Number(Finland_polygon.getBounds().getNorthWest().lat)<71.23290 && Number(Finland_polygon.getBounds().getSouthEast().lng)<33.73119
+                &&Number(Finland_polygon.getBounds().getSouthEast().lat)>58.69962 && Number(Finland_polygon.getBounds().getNorthWest().lng)>18.19600)
+            {swal({position: 'top-end', text: 'Finland', icon:"success", buttons: false, timer: 1000});
+                Finland_overlayer.setBounds(Finland.getBounds());
+                Finland_polygon.dragging.disable();
+                mymap.removeLayer(Finland);
+                Finland_polygon.setLatLngs(temp);}});
+
+        Lithuania_polygon.on('drag',function (e) {Lithuania_overlayer.setBounds(Lithuania_polygon.getBounds());});
+        Lithuania_polygon.on('dragstart',function (e) {Lithuania_overlayer.setBounds(Lithuania_polygon.getBounds());});
+        Lithuania_polygon.on('dragend',function (e) {Lithuania_overlayer.setBounds(Lithuania_polygon.getBounds());
+            if(Number(Lithuania_polygon.getBounds().getNorthWest().lat)<57.55948 && Number(Lithuania_polygon.getBounds().getSouthEast().lng)<27.96777
+                &&Number(Lithuania_polygon.getBounds().getSouthEast().lat)>52.76170 && Number(Lithuania_polygon.getBounds().getNorthWest().lng)>19.80205)
+            {swal({position: 'top-end', text: 'Lithuania', icon:"success", buttons: false, timer: 1000});
+                Lithuania_overlayer.setBounds(Lithuania.getBounds());
+                Lithuania_polygon.dragging.disable();
+                mymap.removeLayer(Lithuania);
+                Lithuania_polygon.setLatLngs(temp);}});
+
+        Latvia_polygon.on('drag',function (e) {Latvia_overlayer.setBounds(Latvia_polygon.getBounds());});
+        Latvia_polygon.on('dragstart',function (e) {Latvia_overlayer.setBounds(Latvia_polygon.getBounds());});
+        Latvia_polygon.on('dragend',function (e) {Latvia_overlayer.setBounds(Latvia_polygon.getBounds());
+            if(Number(Latvia_polygon.getBounds().getNorthWest().lat)<59.11271 && Number(Latvia_polygon.getBounds().getSouthEast().lng)<29.41797
+                &&Number(Latvia_polygon.getBounds().getSouthEast().lat)>54.52863 && Number(Latvia_polygon.getBounds().getNorthWest().lng)>19.78613)
+            {swal({position: 'top-end', text: 'Latvia', icon:"success", buttons: false, timer: 1000});
+                Latvia_overlayer.setBounds(Latvia.getBounds());
+                Latvia_polygon.dragging.disable();
+                mymap.removeLayer(Latvia);
+                Latvia_polygon.setLatLngs(temp);}});
+
+        Estonia_polygon.on('drag',function (e) {Estonia_overlayer.setBounds(Estonia_polygon.getBounds());});
+        Estonia_polygon.on('dragstart',function (e) {Estonia_overlayer.setBounds(Estonia_polygon.getBounds());});
+        Estonia_polygon.on('dragend',function (e) {Estonia_overlayer.setBounds(Estonia_polygon.getBounds());
+            if(Number(Estonia_polygon.getBounds().getNorthWest().lat)<60.77533 && Number(Estonia_polygon.getBounds().getSouthEast().lng)<29.49954
+                &&Number(Estonia_polygon.getBounds().getSouthEast().lat)>56.38578 && Number(Estonia_polygon.getBounds().getNorthWest().lng)>20.68504)
+            {swal({position: 'top-end', text: 'Estonia', icon:"success", buttons: false, timer: 1000});
+                Estonia_overlayer.setBounds(Estonia.getBounds());
+                Estonia_polygon.dragging.disable();
+                mymap.removeLayer(Estonia);
+                Estonia_polygon.setLatLngs(temp);}});
+
+        Bulgaria_polygon.on('drag',function (e) {Bulgaria_overlayer.setBounds(Bulgaria_polygon.getBounds());});
+        Bulgaria_polygon.on('dragstart',function (e) {Bulgaria_overlayer.setBounds(Bulgaria_polygon.getBounds());});
+        Bulgaria_polygon.on('dragend',function (e) {Bulgaria_overlayer.setBounds(Bulgaria_polygon.getBounds());
+            if(Number(Bulgaria_polygon.getBounds().getNorthWest().lat)<45.36957 && Number(Bulgaria_polygon.getBounds().getSouthEast().lng)<29.75023
+                &&Number(Bulgaria_polygon.getBounds().getSouthEast().lat)>40.06279 && Number(Bulgaria_polygon.getBounds().getNorthWest().lng)>21.25830)
+            {swal({position: 'top-end', text: 'Bulgaria', icon:"success", buttons: false, timer: 1000});
+                Bulgaria_overlayer.setBounds(Bulgaria.getBounds());
+                Bulgaria_polygon.dragging.disable();
+                mymap.removeLayer(Bulgaria);
+                Bulgaria_polygon.setLatLngs(temp);}});
+
+        France_polygon.on('drag',function (e) {France_overlayer.setBounds(  France_polygon.getBounds());});
+        France_polygon.on('dragstart',function (e) {France_overlayer.setBounds(  France_polygon.getBounds());});
+        France_polygon.on('dragend',function (e) {France_overlayer.setBounds(  France_polygon.getBounds());
+            if(Number(France_polygon.getBounds().getNorthWest().lat)<52.24034 && Number(France_polygon.getBounds().getSouthEast().lng)<10.99630
+                &&Number(France_polygon.getBounds().getSouthEast().lat)>40.14865 && Number(France_polygon.getBounds().getNorthWest().lng)>-6.2200)
+            {swal({position: 'top-end', text: '  France', icon:"success", buttons: false, timer: 1000});
+                France_overlayer.setBounds(France.getBounds());
+                France_polygon.dragging.disable();
+                mymap.removeLayer(France);
+                France_polygon.setLatLngs(temp);}});
+
+
+        Cyprus_polygon.on('drag',function (e) {Cyprus_overlayer.setBounds(Cyprus_polygon.getBounds());});
+        Cyprus_polygon.on('dragstart',function (e) {Cyprus_overlayer.setBounds(Cyprus_polygon.getBounds());});
+        Cyprus_polygon.on('dragend',function (e) {Cyprus_overlayer.setBounds(Cyprus_polygon.getBounds());
+            if(Number(Cyprus_polygon.getBounds().getNorthWest().lat)<35.96326 && Number(Cyprus_polygon.getBounds().getSouthEast().lng)<34.96187
+                &&Number(Cyprus_polygon.getBounds().getSouthEast().lat)>34.07939 && Number(Cyprus_polygon.getBounds().getNorthWest().lng)>32.00994)
+            {swal({position: 'top-end', text: 'Cyprus', icon:"success", buttons: false, timer: 1000});
+                Cyprus_overlayer.setBounds(Cyprus.getBounds());
+                Cyprus_polygon.dragging.disable();
+                mymap.removeLayer(Cyprus);
+                Cyprus_polygon.setLatLngs(temp);}});
+
+        Greece_polygon.on('drag',function (e) {Greece_overlayer.setBounds( Greece_polygon.getBounds());});
+        Greece_polygon.on('dragstart',function (e) {Greece_overlayer.setBounds( Greece_polygon.getBounds());});
+        Greece_polygon.on('dragend',function (e) {Greece_overlayer.setBounds( Greece_polygon.getBounds());
+            if(Number( Greece_polygon.getBounds().getNorthWest().lat)<43.0000 && Number( Greece_polygon.getBounds().getSouthEast().lng)<29.97064
+                &&Number( Greece_polygon.getBounds().getSouthEast().lat)>33.51380&& Number( Greece_polygon.getBounds().getNorthWest().lng)>18.00080)
+            {swal({position: 'top-end', text: 'Greece', icon:"success", buttons: false, timer: 1000});
+                Greece_overlayer.setBounds( Greece.getBounds());
+                Greece_polygon.dragging.disable();
+                mymap.removeLayer(Greece);
+                Greece_polygon.setLatLngs(temp);}});
+
+        Malta_polygon.on('drag',function (e) {Malta_overlayer.setBounds(Malta_polygon.getBounds());});
+        Malta_polygon.on('dragstart',function (e) {Malta_overlayer.setBounds(Malta_polygon.getBounds());});
+        Malta_polygon.on('dragend',function (e) {Malta_overlayer.setBounds(Malta_polygon.getBounds());
+            if(Number(Malta_polygon.getBounds().getNorthWest().lat)<37.19992 && Number(Malta_polygon.getBounds().getSouthEast().lng)<15.71548
+                &&Number(Malta_polygon.getBounds().getSouthEast().lat)>34.65691 && Number(Malta_polygon.getBounds().getNorthWest().lng)>13.05955)
+            {swal({position: 'top-end', text: 'Malta', icon:"success", buttons: false, timer: 1000});
+                Malta_overlayer.setBounds(Malta.getBounds());
+                Malta_polygon.dragging.disable();
+                mymap.removeLayer(Malta);
+                Malta_polygon.setLatLngs(temp);}});
+
+        Italy_polygon.on('drag',function (e) {Italy_overlayer.setBounds(Italy_polygon.getBounds());});
+        Italy_polygon.on('dragstart',function (e) {Italy_overlayer.setBounds(Italy_polygon.getBounds());});
+        Italy_polygon.on('dragend',function (e) {Italy_overlayer.setBounds(Italy_polygon.getBounds());
+            if(Number(Italy_polygon.getBounds().getNorthWest().lat)<49.99971 && Number(Italy_polygon.getBounds().getSouthEast().lng)<20.09965
+                &&Number(Italy_polygon.getBounds().getSouthEast().lat)>35.00664 && Number(Italy_polygon.getBounds().getNorthWest().lng)>5.00000)
+            {swal({position: 'top-end', text: 'Italy', icon:"success", buttons: false, timer: 1000});
+                Italy_overlayer.setBounds(Italy.getBounds());
+                Italy_polygon.dragging.disable();
+                mymap.removeLayer(Italy);
+                Italy_polygon.setLatLngs(temp);}});
+
+        Portugal_polygon.on('drag',function (e) {Portugal_overlayer.setBounds(  Portugal_polygon.getBounds());});
+        Portugal_polygon.on('dragstart',function (e) {Portugal_overlayer.setBounds(  Portugal_polygon.getBounds());});
+        Portugal_polygon.on('dragend',function (e) {Portugal_overlayer.setBounds(Portugal_polygon.getBounds());
+            if(Number( Portugal_polygon.getBounds().getNorthWest().lat)<44.33936 && Number( Portugal_polygon.getBounds().getSouthEast().lng)<-5.40713
+                &&Number( Portugal_polygon.getBounds().getSouthEast().lat)>34.90101 && Number( Portugal_polygon.getBounds().getNorthWest().lng)>-11.09064)
+            {swal({position: 'top-end', text: 'Portugal', icon:"success", buttons: false, timer: 1000});
+                Portugal_overlayer.setBounds(Portugal.getBounds());
+                Portugal_polygon.dragging.disable();
+                mymap.removeLayer(Portugal);
+                Portugal_polygon.setLatLngs(temp);}});
+
+        Deutschland_polygon.on('drag',function (e) {Deutschland_overlay.setBounds(Deutschland_polygon.getBounds());});
+        Deutschland_polygon.on('dragstart',function (e) {Deutschland_overlay.setBounds(Deutschland_polygon.getBounds());});
+        Deutschland_polygon.on('dragend',function (e) {Deutschland_overlay.setBounds(Deutschland_polygon.getBounds());
+            if(Number(Deutschland_polygon.getBounds().getNorthWest().lat)<55.24702 && Number(Deutschland_polygon.getBounds().getSouthEast().lng)<15.90451
+                &&Number(Deutschland_polygon.getBounds().getSouthEast().lat)>47.08330 && Number(Deutschland_polygon.getBounds().getNorthWest().lng)>5.052)
+            {swal({position: 'top-end', icon:"success", text: 'Deutschland', buttons: false, timer: 1000});
+                Deutschland_overlay.setBounds(Deutschland.getBounds());
+                Deutschland_polygon.dragging.disable();
+                mymap.removeLayer(Deutschland);
+                Deutschland_polygon.setLatLngs(temp);}});
+
+
+        /*----------------------------Deutschland-Bundesland-Initial-------------------------------*/
+
+        /*-------------------------------------Europe Union-Background-------------------------------*/
+
+        /*-------------------------------------Deutschland-imageBound--------------------------------*/
+        /*-------------------------------------Deutschland-color-------------------------------*/
+        /*-------------------------------------Deutschland-polygon-------------------------------*/
+        /*-------------------------------------Deutschland-pictures-drag-------------------------------*/
+
+
+
+
+        mymap.on('zoomend', function(){$("#zoom-level").html(mymap.getZoom());});
+
+        mymap.on('moveend', function(){$("#map-center").html(LatLngToArrayString(mymap.getCenter()));});
+
+        mymap.on('mousemove', function(e){$("#mouse-location").html(LatLngToArrayString(e.latlng));});
+
+
+
+
+
 
         $("#Germany").click(function () {
             DEadd();
@@ -1342,7 +991,7 @@
         });
 
         function EUremove(){
-            mymap.removeLayer(Iceland) ;
+            mymap.removeLayer(Ireland) ;
             mymap.removeLayer(UK);
             mymap.removeLayer(Austria) ;
             mymap.removeLayer(Belgium) ;
@@ -1375,11 +1024,11 @@
 
             mymap.addLayer(Greece);
             mymap.addLayer (Latvia);
-            mymap.addLayer ( Lithuania);
+            mymap.addLayer (Lithuania);
             mymap.addLayer (Malta);
             mymap.addLayer (Portugal);
             mymap.addLayer(Spain) ;
-            mymap.addLayer(Iceland) ;
+            mymap.addLayer(Ireland) ;
             mymap.addLayer(UK);
             mymap.addLayer(Austria) ;
             mymap.addLayer(Belgium) ;
