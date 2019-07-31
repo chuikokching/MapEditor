@@ -3,6 +3,7 @@ var easyAufgabe1;
 var easyAufgabe2;
 var easyAufgabe3;
 var easyAufgabe4;
+var easyAufgabe5;
 var removeLayer;
 var shades;
 var bounds;
@@ -105,6 +106,18 @@ easyAufgabe4= L.easyButton({
         }
     }]
 }).addTo(map);
+
+    easyAufgabe5= L.easyButton({
+        states: [{
+            stateName: 'Aufgabe5',
+            icon: 'glyphicon-duplicate',
+            title: 'Drag and Drop',
+            onClick: function() {
+                window.open('Aufgabe5.html','new','height=600, width=800, top=50%,left=50%,location=no,toolbar=no');
+                return false;
+            }
+        }]
+    }).addTo(map);
 
 removeLayer= L.easyButton({
     states: [{
