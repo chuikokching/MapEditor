@@ -1826,14 +1826,9 @@
 
 
         $("#export_Stage").click(function(){
-            var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
-            txt= txt + "<exercise type=\"fillIn\">"+'\n';
-            txt= txt + "    <task>"+'\n';
-            txt= txt + createXMLStringMapPuzzleGermany() +'\n';
-            txt= txt + "    </task>"+'\n';
-            txt= txt + "   <skipmessage>" +'\n';
-            txt= txt + "   </skipmessage>"+'\n';
-            txt= txt + "</exercise>";
+
+            var txt= createXMLStringMapPuzzleGermany() +'\n';
+
             var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "stage1.xml");
         });
