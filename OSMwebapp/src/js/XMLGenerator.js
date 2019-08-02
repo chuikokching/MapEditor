@@ -35,7 +35,7 @@ function createOptionStringAufgabe2(option_pattern,sum,array_index) {
 
 function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_parameter){
     var array_length;
-    var color=["blue","green","yellow","red","purple","pink","orange","black","cyan","lightcoral","darkturquoise","rosybrown"];
+    var color=["blue","green","yellow","red","purple","pink","orange","black","cyan","lightcoral","grey","rosybrown"];
     var color_array=[];
     var color_index=0;
     var min=0;
