@@ -1,64 +1,182 @@
+function createAnswerStringAufgabe2(sum,array_index) {
+
+    var pattern="";
+    for(let i=0,j=0;i<sum;i++)
+    {
+
+        if(i==array_index[j])
+        {
+            pattern=pattern+"1";
+            j++;
+        }
+        else
+            pattern=pattern+"0";
+    }
+    return pattern;
+}
+function createOptionStringAufgabe2(option_pattern,sum,array_index) {
+
+    let temp="";
+    for(let i=0;i<array_index.length;i++)
+    {
+        let temp="";
+        for(let j=0;j<sum;j++)
+        {
+            if(j==array_index[i])
+                temp=temp+"1";
+            else
+                temp=temp+"0";
+        }
+        option_pattern.push(temp);
+    }
+    return option_pattern;
+}
+
+
 function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_parameter){
-    var length;
+    var array_length;
+    var color=["blue","green","yellow","red","purple","pink","orange","black","cyan","lightcoral","darkturquoise","rosybrown"];
+    var color_array=[];
+    var color_index=0;
+    var min=0;
+    var max=color.length;
+    var sum=arrayAnswer.length+arrayOption.length;
+    for(let i=0;color_array.length<sum;i++){
+        index = Math.floor(Math.random()* (max - min)) + min;
+        if(!test_in_array(index,color_array)) {
+            continue;
+        }
+       color_array.push(index);
+    };
+    color_array.sort(function (x,y) {
+        return x-y;
+    });
+
+    // for(let i in color_array)
+    //     console.log(color[color_array[i]]);
     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
     txt=txt+"<exercise type="+'"'+"mc"+'"'+">"+'\n';
     txt=txt+"  <task>"+'\n';
+    txt=txt+textContent+":"+'\n'+'\n';
+    txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='800px';document.getElementById('mapdiv').style.width='1300px';";
+    txt=txt+"var latlngs,poly;var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,dragging: true,zoomControl: false,attributionControl: false});";
+    txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');"
 
-    txt=txt+textContent+":"+'\n';
+    for(let i=0;i<arrayOption.length;i++)
+    {
+        txt=txt+"latlngs=[";
+        if(getGeoJsonType(arrayOption[i])=="Polygon")
+        {
+            array_length=arrayOption[i].geometry.coordinates[0].length;
 
-    txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
-    txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,dragging: false,zoomControl: false,attributionControl: false});";
-    txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');"+"&lt;/script>&lt;/div>";
+            for(let j=0;j<array_length;j++)
+            {
+                if(j==array_length-1)
+                txt=txt+"["+arrayOption[i].geometry.coordinates[0][j][1].toFixed(5)+","+arrayOption[i].geometry.coordinates[0][j][0].toFixed(5)+"]];";
+                else
+                txt=txt+"["+arrayOption[i].geometry.coordinates[0][j][1].toFixed(5)+","+arrayOption[i].geometry.coordinates[0][j][0].toFixed(5)+"],";
+            }
+            txt=txt+"poly=L.polygon(latlngs, {color: '"+color[color_array[color_index]]+"'"+"}).addTo(map);";
+            color_index++;
+        }
+    }
+    for(let k=0; k<arrayAnswer.length; k++)
+    {
+        txt=txt+"latlngs=[";
+        if(getGeoJsonType(arrayAnswer[k])=="Polygon")
+        {
+            array_length=arrayAnswer[k].geometry.coordinates[0].length;
+            for(let z=0;z<array_length;z++)
+            {
+                if(z==array_length-1)
+                    txt=txt+"["+ arrayAnswer[k].geometry.coordinates[0][z][1].toFixed(5)+","+arrayAnswer[k].geometry.coordinates[0][z][0].toFixed(5)+"]];";
+                else
+                txt=txt+"["+ arrayAnswer[k].geometry.coordinates[0][z][1].toFixed(5)+","+arrayAnswer[k].geometry.coordinates[0][z][0].toFixed(5)+"],";
+            }
+            txt=txt+"poly=L.polygon(latlngs, {color: '"+color[color_array[color_index]]+"'"+"}).addTo(map);";
+            color_index++;
+        }
+    }
+    txt=txt +"&lt;/script>&lt;/div>"+'\n'+ "  </task>"+'\n';
 
-    // for(let i=0;i<arrayOption.length;i++)
-    // {
-    //     txt=txt+"          <Type>"+getGeoJsonType(arrayOption[i])+"</Type>"+'\n';
-    //     txt=txt+"          <Coordinate>"+'\n';
-    //     if(getGeoJsonType(arrayOption[i])=="Point")
-    //     {
-    //         txt=txt+"              <lat>"+ arrayOption[i].geometry.coordinates[0]+"</lat>"+'\n';
-    //         txt=txt+"              <lng>"+ arrayOption[i].geometry.coordinates[1]+"</lng>"+'\n';
-    //     }
-    //     if(getGeoJsonType(arrayOption[i])=="Polygon")
-    //     {
-    //         length=arrayOption[i].geometry.coordinates[0].length;
-    //
-    //         for(let j=0;j<length;j++)
-    //         {
-    //             txt=txt+"              <lat>"+ arrayOption[i].geometry.coordinates[0][j][0]+"</lat>"+'\n';
-    //             txt=txt+"              <lng>"+ arrayOption[i].geometry.coordinates[0][j][1]+"</lng>"+'\n';
-    //         }
-    //     }
-    //     txt=txt+"          </Coordinate>"+'\n';
-    //     txt=txt+"          <Answer>"+ "false" +"</Answer>"+'\n';
-    // }
-    // for(let k=0; k<arrayAnswer.length; k++)
-    // {
-    //     txt=txt+"          <Type>"+getGeoJsonType(arrayAnswer[k])+"</Type>"+'\n';
-    //     txt=txt+"          <Coordinate>"+'\n';
-    //     if(getGeoJsonType(arrayAnswer[k])=="Point")
-    //     {
-    //         txt=txt+"              <lat>"+ arrayAnswer[k].geometry.coordinates[0]+"</lat>"+'\n';
-    //         txt=txt+"              <lng>"+ arrayAnswer[k].geometry.coordinates[1]+"</lng>"+'\n';
-    //     }
-    //     if(getGeoJsonType(arrayAnswer[k])=="Polygon")
-    //     {
-    //         length=arrayAnswer[k].geometry.coordinates[0].length;
-    //         for(let z=0;z<length;z++)
-    //         {
-    //             txt=txt+"              <lat>"+ arrayAnswer[k].geometry.coordinates[0][z][0]+"</lat>"+'\n';
-    //             txt=txt+"              <lng>"+ arrayAnswer[k].geometry.coordinates[0][z][1]+"</lng>"+'\n';
-    //         }
-    //     }
-    //     txt=txt+"          </Coordinate>"+'\n';
-    //     txt=txt+"          <Answer>"+ "true" +"</Answer>"+'\n';
-    // }
-    txt=txt +'\n'+ "  </task>"+'\n';
+     min=0;
+     max=sum;
+     var array_index=[];
+     var option_pattern=[];
 
-    txt= txt + "  <skipmessage>\n" +
-        "  </skipmessage>\n"
-    txt=txt+'\n'+"</exercise>";
-    // //alert(txt);
+     for(let i=0;array_index.length<arrayAnswer.length;i++){
+         //get a random integer between max and min
+
+         let index1 = Math.floor(Math.random()* (max - min)) + min;
+         if(!test_in_array(index1,array_index)) {
+             continue;
+         }
+         array_index.push(index1);
+     };
+
+    array_index.sort(function (x,y) {
+        return x-y;
+    });
+
+    function test_in_array(index,arr)
+    {
+        for(let j=0;j<arr.length;j++)
+        {
+            if(arr[j]==index) {
+                return false;}
+        }
+        return true;
+    };
+    var answerString=createAnswerStringAufgabe2(sum,array_index);
+    var answer=[];
+    txt=txt +"  <answers randomize=\"true\" >\n";
+
+    for(let i=0,j=0,k=arrayOption.length;i<sum;i++)
+    {
+        //console.log(k+" k wert " + j + " j wert ");
+        if(answerString.charAt(i)==="1")
+        {
+            txt=txt+"\t\t<option>"+color[color_array[k]]+"</option>"+'\n';
+            answer.push(color[color_array[k]]);
+            k++;
+        }
+        else
+        {
+            txt=txt+"\t\t<option>"+color[color_array[j]]+"</option>"+'\n';
+            j++;
+        }
+    }
+    txt=txt+"   </answers>\n" +
+        "\n" +
+        "  \t<correctanswer>\n" +
+        "\n" +
+        "\t\t<choice pattern="+'"'+answerString+'"'+"/>\n"
+        txt=txt+"\t\t<message>Das ist korrekt!</message>\n" +
+        "\n" +
+        "\t</correctanswer>\n" +
+        "\n" +
+        "\t<feedback>\n" +
+        "\n" ;
+        option_pattern=createOptionStringAufgabe2(option_pattern,sum,array_index);
+        if(arrayAnswer.length>1)
+        {
+            for(let i in option_pattern)
+            {
+                txt=txt+ "\t\t<choice pattern="+'"'+option_pattern[i]+'"'+" points="+'"'+(100/option_pattern.length).toFixed(0)+'"'+">\n";
+                txt=txt+ "\t\t\tSie haben nur eine richtige Antwort ausgewaehlt.\n"+"\t\t</choice>"+'\n';
+            }
+        }
+        txt=txt+"\t\t<choice pattern=\"andere\" points=\"0\">\n" +
+        "\t\t\tDas ist leider nicht richtig. \n" +
+        "\t\t</choice>\n" + '\n' + "\t</feedback>\n" + '\n' + "  <skipmessage>\n";
+         for(let i=0;i<answer.length;i++)
+         {
+             if(i==answer.length-1)
+                 txt=txt+" "+answer[i]+" ";
+             else
+                txt=txt+" "+answer[i]+",";
+         }
+        txt=txt+" Bereiche sind korrekt!"+ '\n'+"  </skipmessage>"+'\n'+"</exercise>";
     return txt;
 }
 
