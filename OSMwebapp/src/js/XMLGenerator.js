@@ -72,16 +72,13 @@ function createXMLStringAufgabe1(textContent,array,map_parameter){
     txt=txt+textContent+":"+'\n';
     txt=txt+"Bitte geben Sie alle entsprechende Koordinaten ein:"+'\n';
 
-    txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css\">&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;script src=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
+    txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css\">&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;script src=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;div id=\"1\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\" ][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
     txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,closePopupOnClick:false,dragging: false,zoomControl: false,attributionControl: false});";
     txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');";
     txt=txt+"var ctlEasybutton = L.easyButton('glyphicon glyphicon-play', function(){popup_map = L.popup({closeButton:false,autoClose:false}).setContent(&quot;lat: &quot;+"+Number(map_parameter[0]).toFixed(5)+"+&quot; lng: &quot;+"+Number(map_parameter[1]).toFixed(5)+");";
     txt=txt+"var testmarker = new L.Marker(["+map_parameter[0]+","+map_parameter[1]+"],{draggable: true});";
-    txt=txt+"testmarker.bindPopup(popup_map).addTo(map).openPopup();testmarker.on('drag', function(event){popup_map.setContent(&quot;lat: &quot;+event.latlng.lat.toFixed(5)+&quot;,lng: &quot;+event.latlng.lng.toFixed(5));testmarker.openPopup();});}).addTo(map);";
+    txt=txt+"testmarker.bindPopup(popup_map).addTo(map).openPopup();testmarker.on('drag', function(event){popup_map.setContent(&quot;lat: &quot;+event.latlng.lat.toFixed(5)+&quot;,lng: &quot;+event.latlng.lng.toFixed(5));testmarker.openPopup();document.getElementById('1').firstChild.firstChild.setAttribute('value',testmarker.getLatLng().lat);document.getElementById('1').firstChild.lastChild.setAttribute('value',testmarker.getLatLng().lng)});}).addTo(map);";
     txt=txt+"&lt;/script>&lt;/div>"+'\n'+'\n';
-    for(let i=0;i<array.length;i++){
-        txt=txt +" Koordinaten des "+(i+1) +".Bereichs: " +'\n'+ "lat:&#xA0;[fillIn groesse=&quot;15&quot; editor=&quot;false&quot; parser=&quot;none&quot;]"+" lng:&#xA0;[fillIn groesse=&quot;15&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n";
-    }
     txt=txt+'\n'+"  </task>"+'\n';
     txt=txt+'\n'+"  <correctanswer>"+'\n';
     var min,max;
