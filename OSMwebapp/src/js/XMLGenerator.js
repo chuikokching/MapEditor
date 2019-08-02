@@ -188,7 +188,7 @@ function createXMLStringAufgabe1(textContent,array,map_parameter){
     txt=txt+"  <task>"+'\n';
 
     txt=txt+textContent+":"+'\n';
-    txt=txt+"Bitte geben Sie alle entsprechende Koordinaten ein:"+'\n';
+    txt=txt+"Bitte geben Sie alle entsprechenden Koordinaten ein:"+'\n';
 
     txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css\">&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;script src=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;div id=\"1\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\" ][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
     txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,closePopupOnClick:false,dragging: false,zoomControl: false,attributionControl: false});";
@@ -233,7 +233,7 @@ function createXMLStringAufgabe1(textContent,array,map_parameter){
 
     txt=txt+'\n'+"  </correctanswer>"+'\n';
     txt=txt+'\n'+"  <advice>"+'\n'+ "    <option>"+
-        "Klicken Sie auf das obige Button, um den Marker zu bekommen, und danach bewegen Sie den Marker in den richtigen Bereich damit alle entsprechende Koordinatenwert erzielt werden koennen."+"</option>" +'\n'+"  </advice>"+'\n';
+        "Klicken Sie auf das obige Button, um den Marker zu bekommen, und danach bewegen Sie den Marker in den richtigen Bereich damit alle entsprechenden Koordinatenwerte erzielt werden koennen."+"</option>" +'\n'+"  </advice>"+'\n';
 
 
     txt=txt+'\n'+"    <feedback>\n" +
@@ -539,7 +539,7 @@ function createXMLStringAufgabe5DE(){
         "\t</task>\n" +
         "\t\n" +
         "\t<advice>\n" +
-        "\t\t<option>Wenn Sie die entsprechende Plätze nicht finden können, verschieben Sie die Karte nach oben oder unten.</option>\n" +
+        "\t\t<option>Wenn Sie die entsprechenden Plätze nicht finden können, verschieben Sie die Karte nach oben oder unten.</option>\n" +
         "\t\t<option>Die Kartesicht kann einmal vergrößert werden.</option>\n" +
         "\n" +
         "\t</advice>\n" +
@@ -584,7 +584,7 @@ function createXMLStringAufgabe5EU(){
         "\t</task>\n" +
         "\t\n" +
         "\t<advice>\n" +
-        "\t\t<option>Wenn Sie die entsprechende Plätze nicht finden können, verschieben Sie die Karte nach oben oder unten.</option>\n" +
+        "\t\t<option>Wenn Sie die entsprechenden Plätze nicht finden können, verschieben Sie die Karte nach oben oder unten.</option>\n" +
         "\t\t<option>Die Kartesicht kann einmal vergrößert werden.</option>\n" +
         "\n" +
         "\t</advice>\n" +
