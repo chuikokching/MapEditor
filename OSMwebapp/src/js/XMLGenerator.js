@@ -181,79 +181,6 @@ function createXMLStringAufgabe2(textContent,arrayOption,arrayAnswer,map_paramet
 }
 
 
-// function createXMLStringAufgabe1(textContent,array,map_parameter){
-//     var length;
-//     var txt="<?xml version="+'"'+"1.0"+'"'+ " encoding=" + '"'+"UTF-8"+ '"' + "?>"+'\n';
-//     txt=txt+"<exercise type="+'"'+"fillIn"+'"'+">"+'\n';
-//     txt=txt+"  <task>"+'\n';
-//
-//     txt=txt+textContent+":"+'\n';
-//     txt=txt+"Bitte geben Sie alle entsprechenden Koordinaten ein:"+'\n';
-//
-//     txt=txt+"&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css\">&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;script src=\"https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js\">&lt;/script>&lt;div id=\"mapdiv\">&lt;div id=\"1\">&lt;span style=\"visibility:hidden\">[fillIn groesse=\"20\" ][fillIn groesse=\"20\"]&lt;/span>&lt;/div>&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';";
-//     txt=txt+"var map = L.map('mapdiv', {center:["+map_parameter[0]+","+map_parameter[1]+"],zoom:"+map_parameter[2]+",scrollWheelZoom:false,closePopupOnClick:false,dragging: false,zoomControl: false,attributionControl: false});";
-//     txt=txt+"L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);"+"var ctlattribute  = L.control.attribution({position:'bottomleft'}).addTo(map);ctlattribute.addAttribution('OpenStreetMap');";
-//     txt=txt+"var ctlEasybutton = L.easyButton('glyphicon glyphicon-play', function(){popup_map = L.popup({closeButton:false,autoClose:false}).setContent(&quot;lat: &quot;+"+Number(map_parameter[0]).toFixed(5)+"+&quot; lng: &quot;+"+Number(map_parameter[1]).toFixed(5)+");";
-//     txt=txt+"var testmarker = new L.Marker(["+map_parameter[0]+","+map_parameter[1]+"],{draggable: true});";
-//     txt=txt+"testmarker.bindPopup(popup_map).addTo(map).openPopup();testmarker.on('drag', function(event){popup_map.setContent(&quot;lat: &quot;+event.latlng.lat.toFixed(5)+&quot;,lng: &quot;+event.latlng.lng.toFixed(5));testmarker.openPopup();document.getElementById('1').firstChild.firstChild.setAttribute('value',testmarker.getLatLng().lat);document.getElementById('1').firstChild.lastChild.setAttribute('value',testmarker.getLatLng().lng)});}).addTo(map);";
-//     txt=txt+"&lt;/script>&lt;/div>"+'\n'+'\n';
-//     txt=txt+'\n'+"  </task>"+'\n';
-//     txt=txt+'\n'+"  <correctanswer>"+'\n';
-//     var min,max;
-//     var quermin,quermax;
-//     var arr=[];
-//     var arrayall=[];
-//     for(let i=0;i<array.length;i++)
-//     {
-//             if(getGeoJsonType(array[i])=="Polygon")
-//             {
-//                 length=array[i].geometry.coordinates[0].length;
-//                 min=array[i].geometry.coordinates[0][0][1].toFixed(5);
-//                 max=array[i].geometry.coordinates[0][0][1].toFixed(5);
-//                 quermin=array[i].geometry.coordinates[0][0][0].toFixed(5);
-//                 quermax=array[i].geometry.coordinates[0][0][0].toFixed(5);
-//                 for(let j=0;j<length;j++)
-//                 {
-//                     if(array[i].geometry.coordinates[0][j][1].toFixed(5)<min)
-//                         min=array[i].geometry.coordinates[0][j][1].toFixed(5);
-//                     if(array[i].geometry.coordinates[0][j][1].toFixed(5)>max)
-//                         max=array[i].geometry.coordinates[0][j][1].toFixed(5);
-//
-//                     if(array[i].geometry.coordinates[0][j][0].toFixed(5)<quermin)
-//                         quermin=array[i].geometry.coordinates[0][j][0].toFixed(5);
-//                     if(array[i].geometry.coordinates[0][j][0].toFixed(5)>quermax)
-//                         quermax=array[i].geometry.coordinates[0][j][0].toFixed(5);
-//                 //<correctanswer>
-//                 //<option result="(lessThan(&apos;[pos=1]&apos;,&apos;5&apos;)||lessThan(&apos;[pos=2]&apos;,&apos;5&apos;))&amp;&amp;(lessThan(&apos;[pos=3]&apos;,&apos;5&apos;))">korreckt</option>
-//                  //   </correctanswer>
-//                 }
-//                 console.log(min+" "+max+ " "+quermin + " " + quermax);
-//                 arr=[min,max,quermin,quermax];
-//                 arrayall.push(arr);
-//             }
-//            // txt=txt+"  <option result="+'"'+"(lessThan(&apos;[pos=1]&apos;,&apos;"+max+"&apos;)&amp;&amp;greaterThan(&apos;[pos=1]&apos;,&apos;"+min+"&apos;))&amp;&amp;(lessThan(&apos;[pos=2]&apos;,&apos;"+quermax+"&apos;)&amp;&amp;greaterThan(&apos;[pos=2]&apos;,&apos;"+quermin+"&apos;))"
-//              //   +'"'+">korreckt</option>";
-//     }
-//
-//     console.log(arrayall.length);
-//     txt=txt+'\n'+"  </correctanswer>"+'\n';
-//     txt=txt+'\n'+"  <advice>"+'\n'+ "    <option>"+
-//         "Klicken Sie auf das obige Button, um den Marker zu bekommen, und danach bewegen Sie den Marker in den richtigen Bereich damit alle entsprechenden Koordinatenwerte erzielt werden koennen."+"</option>" +'\n'+"  </advice>"+'\n';
-//
-//
-//     txt=txt+'\n'+"    <feedback>\n" +
-//    "   <option result=\"(lessThan(&apos;[pos=1]&apos;,&apos;51.46257&apos;)&amp;&amp;greaterThan(&apos;[pos=1]&apos;,&apos;51.46223&apos;))\" points=\"50\">Luecke 1 Korreckt</option><option result=\"!(lessThan(&apos;[pos=1]&apos;,&apos;51.46257&apos;)&amp;&amp;greaterThan(&apos;[pos=1]&apos;,&apos;51.46223&apos;))\" points=\"0\">Luecke 1 nicht Korreckt</option>\n" +
-//         "      <option result=\"(lessThan(&apos;[pos=2]&apos;,&apos;7.01156&apos;)&amp;&amp;greaterThan(&apos;[pos=2]&apos;,&apos;7.01072&apos;))\" points=\"50\">Luecke 2 Korreckt</option><option result=\"!(lessThan(&apos;[pos=2]&apos;,&apos;7.01156&apos;)&amp;&amp;greaterThan(&apos;[pos=2]&apos;,&apos;7.01072&apos;))\" points=\"0\">Luecke 2 nicht Korreckt</option>"
-//         +'\n'+  "    </feedback>"+'\n';
-//
-//
-//     txt=txt+"  <skipmessage>" + '\n'+
-//         "\tIn die Luecken gehoeren in folgender Reihenfolge: (1) &lt;pre style=\"display:inline-block;\">"+min+"-"+max+"&lt;/pre>, (2) &lt;pre style=\"display:inline-block;\">"+quermin+"-"+quermax+"&lt;/pre>"+'\n'+
-//         "  </skipmessage>"+'\n';
-//     txt=txt+"</exercise>";
-//     return txt;
-// }
-
 
 function createXMLStringAufgabe1(textContent,array,map_parameter){
     var length;
@@ -283,15 +210,11 @@ function createXMLStringAufgabe1(textContent,array,map_parameter){
                     quermin=array[i].geometry.coordinates[0][j][0].toFixed(5);
                 if(array[i].geometry.coordinates[0][j][0].toFixed(5)>quermax)
                     quermax=array[i].geometry.coordinates[0][j][0].toFixed(5);
-                //<correctanswer>
-                //<option result="(lessThan(&apos;[pos=1]&apos;,&apos;5&apos;)||lessThan(&apos;[pos=2]&apos;,&apos;5&apos;))&amp;&amp;(lessThan(&apos;[pos=3]&apos;,&apos;5&apos;))">korreckt</option>
-                //   </correctanswer>
             }
             arr=[min,max,quermin,quermax];
             arrayall.push(arr);
         }
     }
-
 
     txt=txt+textContent+":"+'\n'+'\n';
 
