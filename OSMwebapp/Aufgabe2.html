@@ -258,13 +258,13 @@
             {
                 swal("Please input your task description!");
             }
-            else{
+            if(GeojasonObjectOption.length!=0&&GeojasonObjectAnswer.length!=0&&textContent!=""){
                 map_parameter.push(op1,op2,map.getZoom());
                 var txt=createXMLStringAufgabe2(textContent,GeojasonObjectOption,GeojasonObjectAnswer,map_parameter);
                 var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "stage1.xml");
             }
-        })
+        });
 
         $("#export_exerciseChain").click(function () {
             var txt="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+'\n';
@@ -276,7 +276,7 @@
             txt= txt +"</exercisechain>";
             var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
             saveAs(blob, "exerciseChain.xml");
-        })
+        });
 
     });
 </script>
