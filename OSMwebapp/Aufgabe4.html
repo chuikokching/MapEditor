@@ -90,7 +90,17 @@
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
 
-    ctlEasybutton = L.easyButton('glyphicon-transfer', function(){ctlSidebar.toggle();}).addTo(mymap);
+    ctlEasybutton= L.easyButton({
+        states: [{
+            stateName: 'Toolbar',
+            icon: 'glyphicon-transfer',
+            title: 'Country selection ',
+            onClick: function() {
+                ctlSidebar.toggle();
+            }
+        }]
+    }).addTo(mymap);
+
 
 
 

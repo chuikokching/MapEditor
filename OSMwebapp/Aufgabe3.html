@@ -191,8 +191,16 @@
         ctlLayers = L.control.layers(objBasemaps, objOverlays).addTo(mymap);
 
         ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
-
-        ctlEasybutton = L.easyButton('glyphicon-transfer', function(){ctlSidebar.toggle();}).addTo(mymap);
+        ctlEasybutton= L.easyButton({
+            states: [{
+                stateName: 'Toolbar',
+                icon: 'glyphicon-transfer',
+                title: 'Country selection ',
+                onClick: function() {
+                    ctlSidebar.toggle();
+                }
+            }]
+        }).addTo(mymap);
 
         ctlAttribute = L.control.attribution({position:'bottomleft'}).addTo(mymap);
         ctlAttribute.addAttribution('OSM');

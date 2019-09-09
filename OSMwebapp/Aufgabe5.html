@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Map puzzle</title>
+    <title>Drag & Drop</title>
     <link rel="stylesheet" href="src/leaflet.css">
     <link rel="stylesheet" href="src/css/bootstrap.css">
     <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
@@ -80,8 +80,17 @@
     ctlSidebar = L.control.sidebar('side-bar').addTo(mymap);
 
     ctlMouseposition = L.control.mousePosition().addTo(mymap);
+    ctlEasybutton= L.easyButton({
+        states: [{
+            stateName: 'Toolbar',
+            icon: 'glyphicon-transfer',
+            title: 'Country selection ',
+            onClick: function() {
+                ctlSidebar.toggle();
+            }
+        }]
+    }).addTo(mymap);
 
-    ctlEasybutton = L.easyButton('glyphicon-transfer', function(){ctlSidebar.toggle();}).addTo(mymap);
 
     /*----------------------------Deutschland-Bundesland-------------------------------*/
     var badenwuerttemberg,badenwuerttemberg_array,badenwuerttemberg_imageBound,badenwuerttemberg_overlay;
