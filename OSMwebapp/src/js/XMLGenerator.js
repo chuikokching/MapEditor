@@ -475,22 +475,22 @@ function createXMLStringAufgabe4DE(){
         "\tBitte geben Sie den Namen der folgenden Bundesländer ein:\n" +
         "\n" +
         "\t&lt;link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.css\"/>&lt;/script>&lt;script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\">&lt;/script>&lt;/script>&lt;div id=\"mapdiv\">&lt;script>document.getElementById('mapdiv').style.height='700px';document.getElementById('mapdiv').style.width='1150px';var popup_map;var marker_map;var coordination=[[48.45835,9.22852],[49.18170,11.60156],[52.45601,13.44727],[51.89154,14.00911],[52.98978,8.91146],[53.41096,10.22982],[50.43105,9.04329],[53.82665,12.63222],[52.77624,9.92958],[51.48144,7.44667],[49.92299,7.27089],[49.30162,7.06704],[50.97724,13.61489],[52.08436,11.68130],[54.23132,9.76968],[50.86643,11.08804]];var mymap = L.map('mapdiv', {center:[51.65001, 10.67920],zoom:7,scrollWheelZoom:false,dragging: true,zoomControl: false,closePopupOnClick:false,attributionControl: false});L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png').addTo(mymap);var ctlattribute  = L.control.attribution({position:'bottomleft'});ctlattribute.addAttribution('OpenStreetMap').addTo(mymap);for(let k = 0; k&lt;16;k++){popup_map = L.popup({closeButton:false,autoClose:false}).setContent(\"Bundesland:\"+(k+1));marker_map = new L.Marker(coordination[k], { draggable:false});marker_map.bindPopup(popup_map).addTo(mymap).openPopup();}&lt;/script>&lt;/div>\t\n" +
-        "\t1 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t2 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t3 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t4 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t5 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t6 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t7 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        "\t1 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t2 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t3 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t4 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t5 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t6 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t7 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
         " \t8 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t9 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t10 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t11 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t12 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t13 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t14 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t15 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
-        " \t16 Bundesland:&#xA0;[fillIn groesse=&quot;20&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t9 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t10 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t11 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t12 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t13 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t14 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t15 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
+        " \t16 Bundesland:&#xA0;[fillIn groesse=&quot;25&quot; editor=&quot;false&quot; parser=&quot;none&quot;]\n" +
         "\t</task>\n" +
         "\t<advice>\n" +
         "\t\t<option>Wenn Sie die entsprechende Nummer nicht finden können, verschieben Sie die Karte nach oben und unten.</option>\n" +
